@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge_Geometry",
+  "solution_module": "Solution_Geometry",
+  "theorem_names": [
+    "UndergradKB.Headlines.Geometry.gauss_wantzel",
+    "UndergradKB.Headlines.Geometry.wallace_bolyai_gerwien",
+    "UndergradKB.Headlines.Geometry.poncelet_steiner",
+    "UndergradKB.Headlines.Geometry.desargues",
+    "UndergradKB.Headlines.Geometry.pappus"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

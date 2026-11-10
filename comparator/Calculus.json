@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge_Calculus",
+  "solution_module": "Solution_Calculus",
+  "theorem_names": [
+    "UndergradKB.Headlines.Calculus.riemann_rearrangement",
+    "UndergradKB.Headlines.Calculus.simpson_error_bound"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,22 @@
+{
+  "challenge_module": "Challenge_Combinatorics",
+  "solution_module": "Solution_Combinatorics",
+  "theorem_names": [
+    "UndergradKB.Headlines.Combinatorics.dilworth",
+    "UndergradKB.Headlines.Combinatorics.brooks",
+    "UndergradKB.Headlines.Combinatorics.cayley_formula",
+    "UndergradKB.Headlines.Combinatorics.stable_matching_exists",
+    "UndergradKB.Headlines.Combinatorics.gale_shapley_correct",
+    "UndergradKB.Headlines.Combinatorics.gale_ryser",
+    "UndergradKB.Headlines.Combinatorics.gosper_algorithm",
+    "UndergradKB.Headlines.Combinatorics.sister_celine",
+    "UndergradKB.Headlines.Combinatorics.hyper_complete"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

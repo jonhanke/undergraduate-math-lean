@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenge_Trigonometry",
+  "solution_module": "Solution_Trigonometry",
+  "theorem_names": [
+    "UndergradKB.Headlines.Trigonometry.heron",
+    "UndergradKB.Headlines.Trigonometry.law_of_tangents",
+    "UndergradKB.Headlines.Trigonometry.cos_eq_self_existsUnique",
+    "UndergradKB.Headlines.Trigonometry.tendsto_iterate_cos"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

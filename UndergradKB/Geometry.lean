@@ -1,0 +1,62 @@
+import UndergradKB.Common.Attr
+import UndergradKB.Geometry.AffineFundamental
+import UndergradKB.Geometry.AffineSpaceModel
+import UndergradKB.Geometry.AffineTheorems
+import UndergradKB.Geometry.Arcs
+import UndergradKB.Geometry.Area
+import UndergradKB.Geometry.Area2
+import UndergradKB.Geometry.Axioms
+import UndergradKB.Geometry.Bisector
+import UndergradKB.Geometry.ClassicalProblems
+import UndergradKB.Geometry.CentreVerification
+import UndergradKB.Geometry.ComplexCoordinates
+import UndergradKB.Geometry.Constructible
+import UndergradKB.Geometry.Constructions2
+import UndergradKB.Geometry.Course.Ch01to04
+import UndergradKB.Geometry.Course.Ch05to09
+import UndergradKB.Geometry.Course.Ch10to15
+import UndergradKB.Geometry.Course.Ch16to20
+import UndergradKB.Geometry.FractionalLinear
+import UndergradKB.Geometry.GaussWantzel
+import UndergradKB.Geometry.GaussWantzelSuff
+import UndergradKB.Geometry.HPlane
+import UndergradKB.Geometry.HPlaneNeutral
+import UndergradKB.Geometry.HypAngles
+import UndergradKB.Geometry.HypArea
+import UndergradKB.Geometry.HypArea2
+import UndergradKB.Geometry.HypInradius
+import UndergradKB.Geometry.HypLines
+import UndergradKB.Geometry.HypTriangles
+import UndergradKB.Geometry.HyperbolicDisc
+import UndergradKB.Geometry.HyperbolicDisc2
+import UndergradKB.Geometry.Inversion
+import UndergradKB.Geometry.InversiveClassification
+import UndergradKB.Geometry.InversivePlane
+import UndergradKB.Geometry.KleinModel
+import UndergradKB.Geometry.KleinModel2
+import UndergradKB.Geometry.Lines
+import UndergradKB.Geometry.Motions
+import UndergradKB.Geometry.Neutral
+import UndergradKB.Geometry.NeutralEuclidean
+import UndergradKB.Geometry.Parallels
+import UndergradKB.Geometry.PonceletSteiner
+import UndergradKB.Geometry.ProjectiveDuality
+import UndergradKB.Geometry.ProjectivePlane
+import UndergradKB.Geometry.ProjectivePlane2
+import UndergradKB.Geometry.ProjectiveFundamental
+import UndergradKB.Geometry.RulerCompass
+import UndergradKB.Geometry.RulerCompassConverse
+import UndergradKB.Geometry.RulerParallel
+import UndergradKB.Geometry.SchwarzPickEq
+import UndergradKB.Geometry.SetSquare
+import UndergradKB.Geometry.SpaceModel
+import UndergradKB.Geometry.Spherical
+import UndergradKB.Geometry.Spherical2
+import UndergradKB.Geometry.TransversalEulerInversion
+import UndergradKB.Geometry.Triangles
+import UndergradKB.Geometry.WallaceBolyai
+
+/-! # Geometry (Petrunin, Euclidean Plane and its Relatives)
+
+Root of the topic: imports every file of the topic. Topic files import specific Mathlib modules (never all of
+`Mathlib`) and `UndergradKB.Common`, never another topic (docs/ARCHITECTURE.md). -/
