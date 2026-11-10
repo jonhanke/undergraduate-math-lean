@@ -1,6 +1,6 @@
 # Undergraduate mathematics in Lean 4
 
-[![Lean build](https://github.com/jonhanke/undergraduate-math-lean/actions/workflows/build.yml/badge.svg)](https://github.com/jonhanke/undergraduate-math-lean/actions/workflows/build.yml)
+[![Lean build](https://github.com/jonhanke/undergraduate-math-lean/actions/workflows/build.yml/badge.svg)](https://github.com/jonhanke/undergraduate-math-lean/actions/workflows/build.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24119531.svg)](https://doi.org/10.5281/zenodo.24119531)
 
 A Lean 4 library (built on Mathlib) that formalizes nine openly available undergraduate textbooks in six topics, item
 by item: **linear algebra** (Axler; Hefferon), **abstract algebra** (Judson–Beezer), **combinatorics**
@@ -211,9 +211,9 @@ Corrections and reports of mis-formalizations are very welcome.
 
 ## Releases
 
-Releases are tagged with semantic versions; `main` continues to develop.
+Releases are tagged with semantic versions; `main` continues to develop. The DOI [10.5281/zenodo.24119531](https://doi.org/10.5281/zenodo.24119531) always resolves to the latest release. To cite a specific version, use its release page or the "Cite this repository" button.
 
-- **v0.1.0** (Lean v4.36.0-rc2, Mathlib `1b1ccf4`): the first release: the six topics, the maps and course outlines
+- **[v0.1.0](https://github.com/jonhanke/undergraduate-math-lean/releases/tag/v0.1.0)** (Lean v4.36.0-rc2, Mathlib `1b1ccf4`), archived on Zenodo as [doi:10.5281/zenodo.24119532](https://doi.org/10.5281/zenodo.24119532): the first release: the six topics, the maps and course outlines
   of the nine books, and the 29 headline statements above.
 
 ## License
