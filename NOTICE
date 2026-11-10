@@ -1,0 +1,14 @@
+Copyright 2026 Jonathan Hanke
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It depends on Mathlib (https://github.com/leanprover-community/mathlib4), licensed under the Apache License,
+Version 2.0, as a Lake dependency.
+
+It contains no code copied or adapted from other projects. The scripts scripts/verify-comparator.sh and
+.github/workflows/build.yml are adapted from elementary-number-theory-lean v0.1.0 by the same author, whose
+comparator script is itself adapted from PalomarRegistry/PalomarTemplate (Apache License 2.0).
+
+The textbooks whose results are formalized (listed in README.md with their licences) are cited, never copied: this
+repository holds item numbers, page numbers, Lean statements and short paraphrases of our own, and none of the
+books' text.

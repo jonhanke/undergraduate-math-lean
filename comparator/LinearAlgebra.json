@@ -1,0 +1,16 @@
+{
+  "challenge_module": "Challenge_LinearAlgebra",
+  "solution_module": "Solution_LinearAlgebra",
+  "theorem_names": [
+    "UndergradKB.Headlines.LinearAlgebra.jordan_normal_form",
+    "UndergradKB.Headlines.LinearAlgebra.jordan_form_unique",
+    "UndergradKB.Headlines.LinearAlgebra.schur_triangularization"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

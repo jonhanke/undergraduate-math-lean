@@ -1,0 +1,52 @@
+{
+  "description": "One lake comparator check per topic (a combined check of all headlines needs far more memory). Run one topic with: ./scripts/verify-comparator.sh <topic>. Each entry's config is a complete lake comparator configuration.",
+  "topics": [
+    {
+      "topic": "LinearAlgebra",
+      "config": "comparator/LinearAlgebra.json",
+      "challenge_module": "Challenge_LinearAlgebra",
+      "solution_module": "Solution_LinearAlgebra",
+      "theorems": 3
+    },
+    {
+      "topic": "AbstractAlgebra",
+      "config": "comparator/AbstractAlgebra.json",
+      "challenge_module": "Challenge_AbstractAlgebra",
+      "solution_module": "Solution_AbstractAlgebra",
+      "theorems": 6
+    },
+    {
+      "topic": "Combinatorics",
+      "config": "comparator/Combinatorics.json",
+      "challenge_module": "Challenge_Combinatorics",
+      "solution_module": "Solution_Combinatorics",
+      "theorems": 9
+    },
+    {
+      "topic": "Calculus",
+      "config": "comparator/Calculus.json",
+      "challenge_module": "Challenge_Calculus",
+      "solution_module": "Solution_Calculus",
+      "theorems": 2
+    },
+    {
+      "topic": "Trigonometry",
+      "config": "comparator/Trigonometry.json",
+      "challenge_module": "Challenge_Trigonometry",
+      "solution_module": "Solution_Trigonometry",
+      "theorems": 4
+    },
+    {
+      "topic": "Geometry",
+      "config": "comparator/Geometry.json",
+      "challenge_module": "Challenge_Geometry",
+      "solution_module": "Solution_Geometry",
+      "theorems": 5
+    }
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

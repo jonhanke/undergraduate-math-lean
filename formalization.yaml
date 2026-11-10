@@ -1,0 +1,276 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "undergraduate-math-lean (UndergradKB): undergraduate mathematics"
+  description: >-
+    A Lean 4 + Mathlib formalization of nine openly available undergraduate textbooks in six topics, item by item:
+    linear algebra (Axler, Linear Algebra Done Right, 4th edition; Hefferon, Linear Algebra, 4th edition), abstract
+    algebra (Judson and Beezer, Abstract Algebra: Theory and Applications), combinatorics (Keller and Trotter,
+    Applied Combinatorics; Petkovsek, Wilf and Zeilberger, A=B), calculus (OpenStax Calculus, Volumes 1 to 3),
+    trigonometry (Corral, Trigonometry; OpenStax Algebra and Trigonometry) and geometry (Petrunin, Euclidean Plane
+    and its Relatives). Every item of every book is mapped to its Lean declaration (in this library or in Mathlib)
+    and its status in docs/books/, and each book has a course outline in docs/courses/. Principal results not in
+    Mathlib: the Jordan normal form and its uniqueness; Schur's triangularization; the transcendence of pi; the
+    constructible numbers and the three classical impossibilities; an explicit quintic not solvable by radicals;
+    the theorems of Dilworth, Brooks, Cayley (n^(n-2) trees), Gale-Shapley and Gale-Ryser; Gosper's algorithm,
+    Sister Celine's theorem and Petkovsek's algorithm Hyper, as decision and correctness theorems; Riemann's
+    rearrangement theorem; the error bound of Simpson's rule; Heron's formula and the law of tangents; the
+    Gauss-Wantzel theorem, the Wallace-Bolyai-Gerwien theorem, the Poncelet-Steiner theorem, and the theorems of
+    Desargues and Pappus in the real projective plane.
+  authors:
+    - "Jonathan Hanke"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Jonathan Hanke"
+
+classification:
+  arxiv: ["math.HO", "math.CO", "math.RA", "math.MG", "math.CA"]
+  # 97 mathematics education; 15A linear algebra; 20 group theory; 12F field extensions; 11J81 transcendence;
+  # 05 combinatorics; 33F10 symbolic computation of special functions; 26 real functions; 65D32 quadrature;
+  # 51 geometry; 03B35 mechanization of proofs.
+  msc2020: ["97-01", "15A21", "12F10", "11J81", "05A15", "05C15", "06A07", "33F10", "40A05", "65D32", "51M04", "51A20", "03B35"]
+
+sources:
+  - title: "Linear Algebra Done Right (4th edition)"
+    authors: ["Sheldon Axler"]
+    type: "book"
+    location: "Springer, 2024 (open access, CC BY-NC 4.0); mapped in docs/books/axler2024.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Linear Algebra (4th edition)"
+    authors: ["Jim Hefferon"]
+    type: "book"
+    location: "2020 (GNU FDL or CC BY-SA 3.0 US); mapped in docs/books/hefferon2020.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Abstract Algebra: Theory and Applications (2026 edition)"
+    authors: ["Thomas W. Judson", "Robert A. Beezer"]
+    type: "book"
+    location: "GNU FDL 1.2 or later; mapped in docs/books/judson2026.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Applied Combinatorics (2017 edition)"
+    authors: ["Mitchel T. Keller", "William T. Trotter"]
+    type: "book"
+    location: "CC BY-SA 4.0; mapped in docs/books/kellertrotter2017.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "A=B"
+    authors: ["Marko Petkovsek", "Herbert S. Wilf", "Doron Zeilberger"]
+    type: "book"
+    location: "A K Peters, 1996 (free download from the authors; cited only); mapped in docs/books/petkovsekwilfzeilberger1996.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Calculus, Volumes 1-3"
+    authors: ["Gilbert Strang", "Edwin Herman"]
+    type: "book"
+    location: "OpenStax, 2016 (CC BY-NC-SA 4.0); mapped in docs/books/openstax-calculus.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Trigonometry"
+    authors: ["Michael Corral"]
+    type: "book"
+    location: "GNU FDL 1.3 or later; mapped in docs/books/corraltrig.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Algebra and Trigonometry (2nd edition)"
+    authors: ["Jay Abramson"]
+    type: "book"
+    location: "OpenStax (CC BY-NC-SA 4.0); mapped in docs/books/openstaxalgtrig2e.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Euclidean Plane and its Relatives: a minimalist introduction (3rd edition)"
+    authors: ["Anton Petrunin"]
+    type: "book"
+    location: "arXiv:1302.1630v25, 2025 (CC BY-SA 4.0); mapped in docs/books/petrunin2025.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Further references"
+    type: "bibliography"
+    location: "references.bib in this repository; each result is tagged with @[kb \"<key>\" \"<locator>\"]"
+    relationship: "background"
+
+related_formalizations:
+  - id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "builds-on"
+    note: "Built on Mathlib at commit 1b1ccf4. The headline verdicts compare with Mathlib master (df6966d, 2026-11-07); each book map names the Mathlib declaration of every item Mathlib has, and a course-layer theorem of this library states it in the book's terms."
+  - id: "https://github.com/TauCetiProject/TauCeti"
+    relationship: "related"
+    note: >-
+      Not a dependency, and no code is ported from it. Headlines are only results Tau Ceti main (d2083f0f) does not
+      have; results proved here that Tau Ceti also proves (for example the singular value decomposition, the
+      Schwarz-Pick lemma, Green's theorem, the area of a hyperbolic triangle) are not headlines. Tau Ceti proves the
+      Lindemann-Weierstrass theorem, which implies the transcendence of pi, but does not state that corollary.
+
+status:
+  scope: >-
+    Formalized (the 29 statements of the Challenge_<Topic>.lean files, proved in the
+    Solution_<Topic>.lean files), and every item of the nine books classified in the book maps: proved here, in
+    Mathlib, partly in Mathlib, not formalized, or not a result. No headline depends on an unproved input.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  # No custom axioms; the standard axioms used (checked by scripts/check_axioms/ and lake comparator):
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Opus 5.5", "Claude Sonnet 5.5"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code orchestrating parallel agents, each in its own git branch, with Lean kernel builds (lake build)
+        as the check and pull requests merged into the main branch; human direction throughout.
+      prompting_notes: >-
+        Human-chosen books; agents classified every numbered item of each book against Mathlib, then proved the
+        missing results topic by topic, with written notes passed between sessions. A kernel-level audit decides
+        what is proved.
+  notes: >-
+    Jonathan Hanke designed and directed the project; the Lean code was written by Claude Opus 5.5 and Claude
+    Sonnet 5.5 in November 2026. All proofs are checked by the Lean kernel; the headline statements are collected
+    in the Challenge_<Topic>.lean files for human review.
+
+fidelity:
+  divergences: >-
+    (1) Geometry is formalized in concrete models (the Euclidean plane as R^2, the real projective plane from R^3,
+    the Poincare disc), not from Petrunin's axioms of a neutral plane; the neutral-plane axioms are stated and
+    checked in the Euclidean and hyperbolic models, but no theorem is derived from them. (2) The algorithms of A=B
+    are formalized as mathematical decision and correctness theorems (their outputs are chosen classically), not
+    as executable programs; Zeilberger's algorithm and the WZ method are formalized as the soundness of supplied
+    certificates only. (3) Calculus and trigonometry are mostly techniques and worked examples: their reusable facts
+    are rows of the maps, and most theory is Mathlib's. (4) The book maps' one-line statements are our paraphrases,
+    not the books' wording; the Lean statement is the authority.
+
+review:
+  status: "not yet reviewed: the 29 headline statements of the Challenge_<Topic>.lean files and the definitions they use have not yet been reviewed by a human"
+  reviewers: []
+  notes: >-
+    The headline statements and the definitions they use have not yet been reviewed by a human; that review is
+    planned. The rest of the library (its other definitions and results, and the book maps) has not been reviewed
+    by a human, and there has been no external review. Lean checks the proofs; lake comparator checks, one topic at
+    a time, that each Solution_<Topic>.lean proves exactly the Challenge_<Topic>.lean statements using only the
+    standard axioms.
+
+alignment:
+  namespace: "UndergradKB"
+  statements:
+    - source: "Axler 8.46: Jordan normal form"
+      lean: "UndergradKB.Headlines.LinearAlgebra.jordan_normal_form"
+      module: "Challenge_LinearAlgebra / Solution_LinearAlgebra"
+      status: "proved"
+    - source: "Hefferon Remark Five.IV.2.9, matrix form: Uniqueness of the Jordan form"
+      lean: "UndergradKB.Headlines.LinearAlgebra.jordan_form_unique"
+      module: "Challenge_LinearAlgebra / Solution_LinearAlgebra"
+      status: "proved"
+    - source: "Axler 6.38: Schur's triangularization"
+      lean: "UndergradKB.Headlines.LinearAlgebra.schur_triangularization"
+      module: "Challenge_LinearAlgebra / Solution_LinearAlgebra"
+      status: "proved"
+    - source: "Lindemann; used in Judson and Beezer, Section 21.3.2, p. 298: The number π is transcendental"
+      lean: "UndergradKB.Headlines.AbstractAlgebra.transcendental_pi"
+      module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
+      status: "proved"
+    - source: "Judson and Beezer, Theorem 21.3.7, p. 297: Constructible numbers are the square-root towers"
+      lean: "UndergradKB.Headlines.AbstractAlgebra.constructible_iff_sqrt_tower"
+      module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
+      status: "proved"
+    - source: "Judson and Beezer, Section 21.3.2, p. 298: Doubling the cube is impossible"
+      lean: "UndergradKB.Headlines.AbstractAlgebra.not_constructible_cbrt_two"
+      module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
+      status: "proved"
+    - source: "Judson and Beezer, Section 21.3.3, p. 298: Trisecting a 60 degree angle is impossible"
+      lean: "UndergradKB.Headlines.AbstractAlgebra.not_constructible_cos_pi_div_nine"
+      module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
+      status: "proved"
+    - source: "Judson and Beezer, Section 21.3.2, p. 298: Squaring the circle is impossible"
+      lean: "UndergradKB.Headlines.AbstractAlgebra.not_constructible_sqrt_pi"
+      module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
+      status: "proved"
+    - source: "Judson and Beezer, Example 23.3.7, p. 331: An explicit quintic that is not solvable by radicals"
+      lean: "UndergradKB.Headlines.AbstractAlgebra.quintic_not_solvable_by_radicals"
+      module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
+      status: "proved"
+    - source: "Keller–Trotter, Theorem 6.17: Dilworth's theorem"
+      lean: "UndergradKB.Headlines.Combinatorics.dilworth"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "Keller–Trotter, Exercise 5.9.43: Brooks's theorem"
+      lean: "UndergradKB.Headlines.Combinatorics.brooks"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "Keller–Trotter, Theorem 5.39: Cayley's formula"
+      lean: "UndergradKB.Headlines.Combinatorics.cayley_formula"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "Keller–Trotter, Section 16.4, p. 345: The Stable Matching Theorem"
+      lean: "UndergradKB.Headlines.Combinatorics.stable_matching_exists"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "Keller–Trotter, Section 16.4, p. 346: Correctness of the Gale–Shapley proposal algorithm"
+      lean: "UndergradKB.Headlines.Combinatorics.gale_shapley_correct"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "Keller–Trotter, Theorem 16.12: The Gale–Ryser theorem"
+      lean: "UndergradKB.Headlines.Combinatorics.gale_ryser"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "A=B, Chapter 5, the outline on p. 87: Gosper's algorithm"
+      lean: "UndergradKB.Headlines.Combinatorics.gosper_algorithm"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "A=B, Theorem 4.4.1: Sister Celine's fundamental theorem"
+      lean: "UndergradKB.Headlines.Combinatorics.sister_celine"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "A=B, Theorem 8.4.1 and Algorithm Hyper, p. 162: Completeness of Petkovšek's algorithm Hyper"
+      lean: "UndergradKB.Headlines.Combinatorics.hyper_complete"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "OpenStax Calculus Volume 2, §5.5: Riemann's rearrangement theorem"
+      lean: "UndergradKB.Headlines.Calculus.riemann_rearrangement"
+      module: "Challenge_Calculus / Solution_Calculus"
+      status: "proved"
+    - source: "OpenStax Calculus Volume 2, §3.6: Error bound of Simpson's rule"
+      lean: "UndergradKB.Headlines.Calculus.simpson_error_bound"
+      module: "Challenge_Calculus / Solution_Calculus"
+      status: "proved"
+    - source: "Corral §2.4: Heron's formula"
+      lean: "UndergradKB.Headlines.Trigonometry.heron"
+      module: "Challenge_Trigonometry / Solution_Trigonometry"
+      status: "proved"
+    - source: "Corral Theorem 2.3: Law of tangents"
+      lean: "UndergradKB.Headlines.Trigonometry.law_of_tangents"
+      module: "Challenge_Trigonometry / Solution_Trigonometry"
+      status: "proved"
+    - source: "Corral §6.2: The equation `cos x = x` has exactly one real solution"
+      lean: "UndergradKB.Headlines.Trigonometry.cos_eq_self_existsUnique"
+      module: "Challenge_Trigonometry / Solution_Trigonometry"
+      status: "proved"
+    - source: "Corral §6.2: Iterating the cosine converges to its fixed point"
+      lean: "UndergradKB.Headlines.Trigonometry.tendsto_iterate_cos"
+      module: "Challenge_Trigonometry / Solution_Trigonometry"
+      status: "proved"
+    - source: "Petrunin, Theorem 19.6, p. 158: Gauss–Wantzel theorem"
+      lean: "UndergradKB.Headlines.Geometry.gauss_wantzel"
+      module: "Challenge_Geometry / Solution_Geometry"
+      status: "proved"
+    - source: "Petrunin, remark after Proposition 20.10, p. 170: Wallace–Bolyai–Gerwien theorem"
+      lean: "UndergradKB.Headlines.Geometry.wallace_bolyai_gerwien"
+      module: "Challenge_Geometry / Solution_Geometry"
+      status: "proved"
+    - source: "Petrunin, p. 164: Poncelet–Steiner theorem"
+      lean: "UndergradKB.Headlines.Geometry.poncelet_steiner"
+      module: "Challenge_Geometry / Solution_Geometry"
+      status: "proved"
+    - source: "Petrunin, Theorems 15.5 and 15.14, p. 129: Desargues' theorem with its converse"
+      lean: "UndergradKB.Headlines.Geometry.desargues"
+      module: "Challenge_Geometry / Solution_Geometry"
+      status: "proved"
+    - source: "Petrunin, Theorem 15.6, p. 126: Pappus' theorem"
+      lean: "UndergradKB.Headlines.Geometry.pappus"
+      module: "Challenge_Geometry / Solution_Geometry"
+      status: "proved"
+
+acknowledgements: >-
+  The authors of the nine textbooks, for making them openly available; Mathlib and its contributors; the Lean FRO
+  for Lean, Lake and lake comparator; Claude Code (Anthropic).

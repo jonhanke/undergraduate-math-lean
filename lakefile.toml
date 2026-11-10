@@ -1,0 +1,104 @@
+name = "undergraduate_math_lean"
+version = "0.1.0"
+defaultTargets = ["Common", "LinearAlgebra", "AbstractAlgebra", "Combinatorics", "Calculus", "Trigonometry", "Geometry",
+  "Challenge_LinearAlgebra", "Solution_LinearAlgebra", "Challenge_AbstractAlgebra", "Solution_AbstractAlgebra",
+  "Challenge_Combinatorics", "Solution_Combinatorics", "Challenge_Calculus", "Solution_Calculus",
+  "Challenge_Trigonometry", "Solution_Trigonometry", "Challenge_Geometry", "Solution_Geometry"]
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+
+# Mathlib only, prebuilt from its cache. Pinned to the Mathlib commit of Tau Ceti's main branch at 2026-11-07, the
+# same commit as elementary-number-theory-lean v0.1.0.
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "1b1ccf4b088b32fa3f23f2de1127433254a81e1e"
+
+# One library per topic. A topic imports Mathlib modules and UndergradKB.Common only, never another topic and never
+# all of Mathlib, so a change in one topic never rebuilds or rechecks another (scripts/check_modularity.py).
+[[lean_lib]]
+name = "Common"
+roots = ["UndergradKB.Common"]
+globs = ["UndergradKB.Common.*"]
+
+[[lean_lib]]
+name = "LinearAlgebra"
+roots = ["UndergradKB.LinearAlgebra"]
+globs = ["UndergradKB.LinearAlgebra.*"]
+
+[[lean_lib]]
+name = "AbstractAlgebra"
+roots = ["UndergradKB.AbstractAlgebra"]
+globs = ["UndergradKB.AbstractAlgebra.*"]
+
+[[lean_lib]]
+name = "Combinatorics"
+roots = ["UndergradKB.Combinatorics"]
+globs = ["UndergradKB.Combinatorics.*"]
+
+[[lean_lib]]
+name = "Calculus"
+roots = ["UndergradKB.Calculus"]
+globs = ["UndergradKB.Calculus.*"]
+
+[[lean_lib]]
+name = "Trigonometry"
+roots = ["UndergradKB.Trigonometry"]
+globs = ["UndergradKB.Trigonometry.*"]
+
+[[lean_lib]]
+name = "Geometry"
+roots = ["UndergradKB.Geometry"]
+globs = ["UndergradKB.Geometry.*"]
+
+# One headline check per topic: Challenge_<Topic> states the headline results (proofs: deliberate sorry),
+# Solution_<Topic> proves them from the library; each imports only the modules of its own topic it needs.
+[[lean_lib]]
+name = "Challenge_LinearAlgebra"
+roots = ["Challenge_LinearAlgebra"]
+
+[[lean_lib]]
+name = "Solution_LinearAlgebra"
+roots = ["Solution_LinearAlgebra"]
+
+[[lean_lib]]
+name = "Challenge_AbstractAlgebra"
+roots = ["Challenge_AbstractAlgebra"]
+
+[[lean_lib]]
+name = "Solution_AbstractAlgebra"
+roots = ["Solution_AbstractAlgebra"]
+
+[[lean_lib]]
+name = "Challenge_Combinatorics"
+roots = ["Challenge_Combinatorics"]
+
+[[lean_lib]]
+name = "Solution_Combinatorics"
+roots = ["Solution_Combinatorics"]
+
+[[lean_lib]]
+name = "Challenge_Calculus"
+roots = ["Challenge_Calculus"]
+
+[[lean_lib]]
+name = "Solution_Calculus"
+roots = ["Solution_Calculus"]
+
+[[lean_lib]]
+name = "Challenge_Trigonometry"
+roots = ["Challenge_Trigonometry"]
+
+[[lean_lib]]
+name = "Solution_Trigonometry"
+roots = ["Solution_Trigonometry"]
+
+[[lean_lib]]
+name = "Challenge_Geometry"
+roots = ["Challenge_Geometry"]
+
+[[lean_lib]]
+name = "Solution_Geometry"
+roots = ["Solution_Geometry"]

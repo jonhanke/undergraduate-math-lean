@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite it as below. undergraduate-math-lean (Lean library UndergradKB) was
+  developed with AI assistance (Claude Code, Anthropic), designed and directed by Jonathan Hanke; every proof is
+  checked by the Lean kernel.
+title: "Undergraduate mathematics in Lean 4 (undergraduate-math-lean)"
+type: software
+authors:
+  - family-names: Hanke
+    given-names: Jonathan
+license: Apache-2.0
+version: "0.1.0"
+repository-code: "https://github.com/jonhanke/undergraduate-math-lean"
+keywords:
+  - Lean 4
+  - Mathlib
+  - formalization
+  - undergraduate mathematics
+  - linear algebra
+  - abstract algebra
+  - combinatorics
+  - calculus
+  - trigonometry
+  - geometry
+  - textbooks
