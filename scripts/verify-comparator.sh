@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Usage: ./scripts/verify-comparator.sh TOPIC     (TOPIC: LinearAlgebra, AbstractAlgebra, Combinatorics, Calculus,
-#                                                   Trigonometry or Geometry)
+# Usage: ./scripts/verify-comparator.sh TOPIC     (TOPIC: one of the topics listed in comparator.json, e.g.
+#                                                   LinearAlgebra, Calculus, Probability or Topology)
 #
 # Judge Solution_TOPIC against Challenge_TOPIC the way Palomar does: with the `lake comparator` that ships in this
 # project's own toolchain, replaying the proof through Lean's kernel and the toolchain's bundled independent kernels

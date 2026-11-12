@@ -316,7 +316,7 @@ theorem log_div_rpow_tendsto_zero {p : ℝ} (hp : 0 < p) :
     Tendsto (fun x : ℝ => Real.log x / x ^ p) atTop (𝓝 0) :=
   (isLittleO_log_rpow_atTop hp).tendsto_div_nhds_zero
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 1:Theorem 4.3 (CA-143). For `f` continuous on `[a, b]`, any absolute extremum
 on `[a, b]` is at an endpoint or at a critical point, and both extrema exist at such points. -/

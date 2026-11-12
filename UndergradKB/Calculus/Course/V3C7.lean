@@ -68,7 +68,7 @@ theorem cramers_rule_matrix {n : Type*} [Fintype n] [DecidableEq n] (A : Matrix 
       ∀ i, Matrix.cramer A b i = (A.updateCol i b).det :=
   ⟨Matrix.mulVec_cramer A b, fun i => Matrix.cramer_apply A b i⟩
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 section ProvedInKB
 

@@ -121,7 +121,7 @@ theorem harmonic_iff_laplace {f : EuclideanSpace ℝ (Fin 2) → ℝ} {p : Eucli
     (EuclideanSpace.basisFun (Fin 2) ℝ)]
   simp [Fin.sum_univ_two, iteratedFDeriv_two_apply, Filter.EventuallyEq]
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 section ProvedInKB
 

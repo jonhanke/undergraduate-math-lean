@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge_RepresentationTheory",
+  "solution_module": "Solution_RepresentationTheory",
+  "theorem_names": [
+    "UndergradKB.Headlines.RepresentationTheory.groupDeterminant_factorization",
+    "UndergradKB.Headlines.RepresentationTheory.dixmier_lemma"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

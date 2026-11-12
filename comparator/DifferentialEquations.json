@@ -1,0 +1,16 @@
+{
+  "challenge_module": "Challenge_DifferentialEquations",
+  "solution_module": "Solution_DifferentialEquations",
+  "theorem_names": [
+    "UndergradKB.Headlines.DifferentialEquations.laplace_unique",
+    "UndergradKB.Headlines.DifferentialEquations.linN_general_solution",
+    "UndergradKB.Headlines.DifferentialEquations.wave_general_solution"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

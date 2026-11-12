@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge_Precalculus",
+  "solution_module": "Solution_Precalculus",
+  "theorem_names": [
+    "UndergradKB.Headlines.Precalculus.descartes_rule_of_signs",
+    "UndergradKB.Headlines.Precalculus.descartes_rule_of_signs_neg"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

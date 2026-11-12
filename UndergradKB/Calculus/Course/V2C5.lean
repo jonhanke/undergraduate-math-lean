@@ -286,7 +286,7 @@ theorem ratio_test_diverges_of_tendsto_atTop {a : ℕ → ℝ}
     rw [abs_div, le_div_iff₀ hpos] at hn
     simpa [Real.norm_eq_abs, mul_comm] using hn
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 2:Theorem 5.8 (CA-344). Divergence test: if `a n` does not tend to `0`, the
 series `∑ a n` diverges; the converse fails (the harmonic series diverges although `1/n → 0`). -/

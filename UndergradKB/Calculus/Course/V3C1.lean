@@ -12,7 +12,7 @@ namespace UndergradKB.Calculus.Course.V3C1
 
 open UndergradKB.Calculus
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 3:§1.5 Definition (parabola) (CA-411).
 A point is equidistant from the focus `(h + p, k)` and the directrix `x = h - p` exactly when it

@@ -1,0 +1,6 @@
+import UndergradKB.RepresentationTheory.Course.Etingof1
+import UndergradKB.RepresentationTheory.Course.Etingof2
+import UndergradKB.RepresentationTheory.Course.Etingof3
+import UndergradKB.RepresentationTheory.Course.Etingof4
+import UndergradKB.RepresentationTheory.Course.Etingof6
+import UndergradKB.RepresentationTheory.Course.Etingof7

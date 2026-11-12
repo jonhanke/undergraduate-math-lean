@@ -77,7 +77,7 @@ theorem log_differentiable_continuous :
     DifferentiableOn ℝ Real.log {0}ᶜ ∧ ContinuousOn Real.log {0}ᶜ :=
   ⟨Real.differentiableOn_log, Real.continuousOn_log⟩
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 open UndergradKB.Calculus
 

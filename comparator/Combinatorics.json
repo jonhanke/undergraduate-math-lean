@@ -10,7 +10,13 @@
     "UndergradKB.Headlines.Combinatorics.gale_ryser",
     "UndergradKB.Headlines.Combinatorics.gosper_algorithm",
     "UndergradKB.Headlines.Combinatorics.sister_celine",
-    "UndergradKB.Headlines.Combinatorics.hyper_complete"
+    "UndergradKB.Headlines.Combinatorics.hyper_complete",
+    "UndergradKB.Headlines.Combinatorics.euler_circuit_iff",
+    "UndergradKB.Headlines.Combinatorics.dirac",
+    "UndergradKB.Headlines.Combinatorics.lovasz_local_lemma",
+    "UndergradKB.Headlines.Combinatorics.gauss_hypergeometric_sum",
+    "UndergradKB.Headlines.Combinatorics.dougall_sum",
+    "UndergradKB.Headlines.Combinatorics.dixon_sum"
   ],
   "definition_names": [],
   "permitted_axioms": [

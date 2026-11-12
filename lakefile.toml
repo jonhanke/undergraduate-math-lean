@@ -1,16 +1,22 @@
 name = "undergraduate_math_lean"
-version = "0.1.0"
-defaultTargets = ["Common", "LinearAlgebra", "AbstractAlgebra", "Combinatorics", "Calculus", "Trigonometry", "Geometry",
-  "Challenge_LinearAlgebra", "Solution_LinearAlgebra", "Challenge_AbstractAlgebra", "Solution_AbstractAlgebra",
-  "Challenge_Combinatorics", "Solution_Combinatorics", "Challenge_Calculus", "Solution_Calculus",
-  "Challenge_Trigonometry", "Solution_Trigonometry", "Challenge_Geometry", "Solution_Geometry"]
+version = "0.2.0"
+defaultTargets = ["Common", "LinearAlgebra", "AbstractAlgebra", "Combinatorics", "Calculus", "Trigonometry",
+  "Geometry", "Precalculus", "Statistics", "Probability", "Foundations", "DifferentialEquations", "ComplexAnalysis",
+  "RepresentationTheory", "Topology", "Challenge_LinearAlgebra", "Solution_LinearAlgebra",
+  "Challenge_AbstractAlgebra", "Solution_AbstractAlgebra", "Challenge_Combinatorics", "Solution_Combinatorics",
+  "Challenge_Calculus", "Solution_Calculus", "Challenge_Trigonometry", "Solution_Trigonometry", "Challenge_Geometry",
+  "Solution_Geometry", "Challenge_Precalculus", "Solution_Precalculus", "Challenge_Statistics",
+  "Solution_Statistics", "Challenge_Probability", "Solution_Probability",
+  "Challenge_DifferentialEquations", "Solution_DifferentialEquations",
+  "Challenge_ComplexAnalysis", "Solution_ComplexAnalysis", "Challenge_RepresentationTheory",
+  "Solution_RepresentationTheory", "Challenge_Topology", "Solution_Topology"]
 
 [leanOptions]
 pp.unicode.fun = true
 autoImplicit = false
 
 # Mathlib only, prebuilt from its cache. Pinned to the Mathlib commit of Tau Ceti's main branch at 2026-11-07, the
-# same commit as elementary-number-theory-lean v0.1.0.
+# same commit as elementary-number-theory-lean v0.1.0 and undergraduate-math-lean v0.1.0.
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4"
@@ -52,6 +58,46 @@ globs = ["UndergradKB.Trigonometry.*"]
 name = "Geometry"
 roots = ["UndergradKB.Geometry"]
 globs = ["UndergradKB.Geometry.*"]
+
+[[lean_lib]]
+name = "Precalculus"
+roots = ["UndergradKB.Precalculus"]
+globs = ["UndergradKB.Precalculus.*"]
+
+[[lean_lib]]
+name = "Statistics"
+roots = ["UndergradKB.Statistics"]
+globs = ["UndergradKB.Statistics.*"]
+
+[[lean_lib]]
+name = "Probability"
+roots = ["UndergradKB.Probability"]
+globs = ["UndergradKB.Probability.*"]
+
+[[lean_lib]]
+name = "Foundations"
+roots = ["UndergradKB.Foundations"]
+globs = ["UndergradKB.Foundations.*"]
+
+[[lean_lib]]
+name = "DifferentialEquations"
+roots = ["UndergradKB.DifferentialEquations"]
+globs = ["UndergradKB.DifferentialEquations.*"]
+
+[[lean_lib]]
+name = "ComplexAnalysis"
+roots = ["UndergradKB.ComplexAnalysis"]
+globs = ["UndergradKB.ComplexAnalysis.*"]
+
+[[lean_lib]]
+name = "RepresentationTheory"
+roots = ["UndergradKB.RepresentationTheory"]
+globs = ["UndergradKB.RepresentationTheory.*"]
+
+[[lean_lib]]
+name = "Topology"
+roots = ["UndergradKB.Topology"]
+globs = ["UndergradKB.Topology.*"]
 
 # One headline check per topic: Challenge_<Topic> states the headline results (proofs: deliberate sorry),
 # Solution_<Topic> proves them from the library; each imports only the modules of its own topic it needs.
@@ -102,3 +148,59 @@ roots = ["Challenge_Geometry"]
 [[lean_lib]]
 name = "Solution_Geometry"
 roots = ["Solution_Geometry"]
+
+[[lean_lib]]
+name = "Challenge_Precalculus"
+roots = ["Challenge_Precalculus"]
+
+[[lean_lib]]
+name = "Solution_Precalculus"
+roots = ["Solution_Precalculus"]
+
+[[lean_lib]]
+name = "Challenge_Statistics"
+roots = ["Challenge_Statistics"]
+
+[[lean_lib]]
+name = "Solution_Statistics"
+roots = ["Solution_Statistics"]
+
+[[lean_lib]]
+name = "Challenge_Probability"
+roots = ["Challenge_Probability"]
+
+[[lean_lib]]
+name = "Solution_Probability"
+roots = ["Solution_Probability"]
+
+[[lean_lib]]
+name = "Challenge_DifferentialEquations"
+roots = ["Challenge_DifferentialEquations"]
+
+[[lean_lib]]
+name = "Solution_DifferentialEquations"
+roots = ["Solution_DifferentialEquations"]
+
+[[lean_lib]]
+name = "Challenge_ComplexAnalysis"
+roots = ["Challenge_ComplexAnalysis"]
+
+[[lean_lib]]
+name = "Solution_ComplexAnalysis"
+roots = ["Solution_ComplexAnalysis"]
+
+[[lean_lib]]
+name = "Challenge_RepresentationTheory"
+roots = ["Challenge_RepresentationTheory"]
+
+[[lean_lib]]
+name = "Solution_RepresentationTheory"
+roots = ["Solution_RepresentationTheory"]
+
+[[lean_lib]]
+name = "Challenge_Topology"
+roots = ["Challenge_Topology"]
+
+[[lean_lib]]
+name = "Solution_Topology"
+roots = ["Solution_Topology"]

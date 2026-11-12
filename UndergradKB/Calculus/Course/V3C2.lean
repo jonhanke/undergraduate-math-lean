@@ -268,7 +268,7 @@ theorem segment_vector_equation {n : ℕ} (P Q : Fin n → ℝ) :
     segment ℝ P Q = (fun t : ℝ => (1 - t) • P + t • Q) '' Set.Icc 0 1 :=
   segment_eq_image ℝ P Q
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 section ProvedInKB
 

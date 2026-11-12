@@ -210,7 +210,7 @@ theorem hasDerivAt_log_abs {u : ℝ} (hu : u ≠ 0) :
   rw [this]
   exact Real.hasDerivAt_log hu
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 1:§5.1 Rule (sums and powers of integers) (CA-180). Closed forms for
 `1 + ... + n`, the sum of the first `n` squares, and the sum of the first `n` cubes. -/

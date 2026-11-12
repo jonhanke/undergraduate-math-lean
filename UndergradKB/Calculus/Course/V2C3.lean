@@ -197,7 +197,7 @@ theorem improper_comparison_diverges {f g : ℝ → ℝ} {a : ℝ} (hf : Continu
     (hdiv : ¬ IntegrableOn f (Ici a)) : ¬ IntegrableOn g (Ici a) :=
   fun hg => hdiv (improper_comparison_converges hf h0 hfg hg)
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 2:Theorem 3.1 (CA-213). Integration by parts: if `H' = v u'` then
 `u v - H` is an antiderivative of `u v'` (that is, `∫ u dv = u v - ∫ v du`), and the definite

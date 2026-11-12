@@ -7,6 +7,10 @@ import UndergradKB.Geometry.GaussWantzelSuff
 import UndergradKB.Geometry.WallaceBolyai
 import UndergradKB.Geometry.PonceletSteiner
 import UndergradKB.Geometry.ProjectivePlane
+import UndergradKB.Geometry.AffineFundamental
+import UndergradKB.Geometry.ProjectiveFundamental
+import UndergradKB.Geometry.NeutralTheorem1116
+import UndergradKB.Geometry.NeutralLegendre
 
 /-!
 # Proofs of the geometry headline statements (Petrunin)
@@ -68,5 +72,29 @@ theorem pappus {A B C A' B' C' X Y Z : UndergradKB.Geometry.ProjPoint}
     UndergradKB.Geometry.ProjCollinear X Y Z :=
   UndergradKB.Geometry.pappus_proj hABC hA'B'C' hAB hBC hCA hA'B' hB'C' hC'A' hAB' hA'B hBC' hB'C hCA' hC'A
     hX hY hZ hlX hlY hlZ
+
+theorem fundamental_affine {V₁ V₂ P₁ P₂ : Type*} [AddCommGroup V₁] [Module ℝ V₁] [AddTorsor V₁ P₁]
+    [AddCommGroup V₂] [Module ℝ V₂] [AddTorsor V₂ P₂] {f : P₁ → P₂} (hf : Function.Bijective f)
+    (hfwd : ∀ A B C : P₁, Collinear ℝ ({A, B, C} : Set P₁) → Collinear ℝ ({f A, f B, f C} : Set P₂))
+    (hV₁ : Module.finrank ℝ V₁ = 2) (hV₂ : Module.finrank ℝ V₂ = 2) :
+    ∃ g : P₁ ≃ᵃ[ℝ] P₂, ⇑g = f :=
+  UndergradKB.Geometry.exists_affineEquiv_of_collinear_preserving hf hfwd hV₁ hV₂
+
+theorem fundamental_projective {F : UndergradKB.Geometry.ProjPoint → UndergradKB.Geometry.ProjPoint}
+    (hF : UndergradKB.Geometry.IsProjectiveTransformation F) :
+    ∃ M : UndergradKB.Geometry.Space3 ≃ₗ[ℝ] UndergradKB.Geometry.Space3,
+      F = UndergradKB.Geometry.ProjPoint.map M :=
+  UndergradKB.Geometry.fundamental_projective hF
+
+theorem neutral_plane_parallel_axiom {P : Type*} [MetricSpace P] (N : UndergradKB.Geometry.NeutralPlane P) :
+    (N.AxiomV ↔ N.OnlyOneParallel) ∧ (N.AxiomV ↔ N.AllTrianglesCircumscribable) ∧
+      (N.AxiomV ↔ N.BoundedDistantLines) ∧ (N.AxiomV ↔ N.ArbitrarilyLargeInradius) ∧
+        (N.AxiomV ↔ N.ZeroDefectTriangle) ∧ (N.AxiomV ↔ N.HasRectangle) :=
+  UndergradKB.Geometry.NeutralPlane.theorem_11_16 N
+
+theorem saccheri_legendre {P : Type*} [MetricSpace P] (N : UndergradKB.Geometry.NeutralPlane P) {A B C : P}
+    (hT : UndergradKB.Geometry.IsTriangle A B C) :
+    N.uangle A B C + N.uangle B C A + N.uangle C A B ≤ Real.pi :=
+  UndergradKB.Geometry.NeutralPlane.uangle_sum_le_pi N hT
 
 end UndergradKB.Headlines.Geometry

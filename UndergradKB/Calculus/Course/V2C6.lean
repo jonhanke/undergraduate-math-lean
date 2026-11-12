@@ -333,7 +333,7 @@ theorem binomial_series_radius_eq_top_of_nat (r : ℕ) :
     (ofScalars ℝ (fun n => Ring.choose (r : ℝ) n)).radius = ⊤ :=
   binomialSeries_radius_eq_top_of_nat (𝔸 := ℝ) (𝕂 := ℝ)
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 open scoped ENNReal
 

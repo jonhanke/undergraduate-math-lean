@@ -7,7 +7,10 @@
     "UndergradKB.Headlines.AbstractAlgebra.not_constructible_cbrt_two",
     "UndergradKB.Headlines.AbstractAlgebra.not_constructible_cos_pi_div_nine",
     "UndergradKB.Headlines.AbstractAlgebra.not_constructible_sqrt_pi",
-    "UndergradKB.Headlines.AbstractAlgebra.quintic_not_solvable_by_radicals"
+    "UndergradKB.Headlines.AbstractAlgebra.quintic_not_solvable_by_radicals",
+    "UndergradKB.Headlines.AbstractAlgebra.crystallographic_restriction",
+    "UndergradKB.Headlines.AbstractAlgebra.finite_subgroup_orthogonal_two",
+    "UndergradKB.Headlines.AbstractAlgebra.bch_bound"
   ],
   "definition_names": [],
   "permitted_axioms": [

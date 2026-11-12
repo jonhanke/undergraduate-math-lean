@@ -6,15 +6,19 @@ Authors: Jonathan Hanke
 import UndergradKB.AbstractAlgebra.Constructible
 import UndergradKB.AbstractAlgebra.PiTranscendental
 import UndergradKB.AbstractAlgebra.Galois
+import UndergradKB.AbstractAlgebra.MatrixGroups2
+import UndergradKB.AbstractAlgebra.FiniteSymmetry
+import UndergradKB.AbstractAlgebra.CyclicCodes
 
 /-!
-# Headline statements of undergraduate-math-lean 0.1.0: abstract algebra (Judson and Beezer)
+# Headline statements of undergraduate-math-lean 0.2.0: abstract algebra (Judson and Beezer)
 
 The main results of this topic that Mathlib and Tau Ceti lack, one theorem each, with every proof a deliberate
 `sorry`: to check what is claimed, read this file. They are: the number π is transcendental over the rationals;
 a real number is constructible with straightedge and compass exactly when it lies in a tower of square-root
 extensions of the rationals; the three classical impossibilities (doubling the cube, trisecting a 60 degree
-angle, squaring the circle); and an explicit quintic polynomial that is not solvable by radicals.
+angle, squaring the circle); an explicit quintic polynomial that is not solvable by radicals; and, new in 0.2.0,
+the crystallographic restriction, the finite subgroups of `O(2)`, and the BCH bound for cyclic codes.
 `Solution_AbstractAlgebra.lean` proves the same statements from the library, and `lake comparator` (configured by
 `comparator/AbstractAlgebra.json`) checks that each proved statement is exactly the one here and uses only the
 standard axioms `propext`, `Classical.choice` and `Quot.sound`.
@@ -37,6 +41,10 @@ these too:
 * `UndergradKB.AbstractAlgebra.SolvableByRadicals`: a polynomial is solvable by radicals when every root in its
   splitting field lies in Mathlib's `solvableByRad`, the smallest subfield closed under taking roots of any order.
 * `UndergradKB.AbstractAlgebra.Quintic.quintic`: the rational polynomial `x^5 - 6x^3 - 27x - 3`.
+* `UndergradKB.AbstractAlgebra.lattice2 x y`: the integer span of `x` and `y`.
+* `UndergradKB.AbstractAlgebra.rotationPart G`: the elements of `G` of determinant 1 (the rotations).
+* `UndergradKB.AbstractAlgebra.CyclicCodes.cyclicCodeOf n g`: the words `w : Fin n → F` whose polynomial
+  `∑ i, w i X^i` is divisible by `g`.
 -/
 
 namespace UndergradKB.Headlines.AbstractAlgebra
@@ -86,6 +94,40 @@ of the criterion (`isSolvable_gal_of_irreducible`) and a prime-degree criterion 
 `FieldTheory/GaloisGroups/Quintic.lean` is about groups only and not about `solvableByRad`. -/
 theorem quintic_not_solvable_by_radicals :
     ¬ UndergradKB.AbstractAlgebra.SolvableByRadicals ℚ UndergradKB.AbstractAlgebra.Quintic.quintic := by
+  sorry
+
+/-- **The crystallographic restriction** (Judson and Beezer, Theorem 12.2.9; new in 0.2.0): a linear map of finite
+order of a real plane that maps a lattice (the integer span of two independent vectors) into itself has order 1, 2,
+3, 4 or 6. Related: neither Mathlib nor Tau Ceti has it (their "crystallographic" results are about root
+systems). -/
+theorem crystallographic_restriction {V : Type*} [AddCommGroup V] [Module ℝ V]
+    (hV : Module.finrank ℝ V = 2) {x y : V}
+    (hxy : LinearIndependent ℝ ![x, y]) (T : V →ₗ[ℝ] V)
+    (hT : ∀ v ∈ UndergradKB.AbstractAlgebra.lattice2 x y, T v ∈ UndergradKB.AbstractAlgebra.lattice2 x y)
+    (m : ℕ) (hm : m ≠ 0) (hTm : T ^ m = 1) :
+    orderOf T = 1 ∨ orderOf T = 2 ∨ orderOf T = 3 ∨ orderOf T = 4 ∨ orderOf T = 6 := by
+  sorry
+
+/-- **Finite groups of plane symmetries** (Judson and Beezer, Theorem 12.2.4; new in 0.2.0): a finite subgroup of
+the orthogonal group `O(2)` is cyclic or dihedral of order determined by its number `n ≥ 1` of rotations. Related:
+Mathlib describes the elements of `SO(2)`; neither Mathlib nor Tau Ceti classifies the finite subgroups of
+`O(2)`. -/
+theorem finite_subgroup_orthogonal_two (G : Subgroup (Matrix.orthogonalGroup (Fin 2) ℝ)) [Finite G] :
+    ∃ n : ℕ, n = Nat.card (UndergradKB.AbstractAlgebra.rotationPart G) ∧ 0 < n ∧
+      (Nonempty (G ≃* Multiplicative (ZMod n)) ∨ Nonempty (G ≃* DihedralGroup n)) := by
+  sorry
+
+open Polynomial in
+/-- **The BCH bound** (Judson and Beezer, Theorem 22.2.8; new in 0.2.0): if the generator polynomial `g` of a
+cyclic code of length `n` over a field `F` vanishes at `s` consecutive powers `ω^a, …, ω^(a+s-1)` of a primitive
+`n`-th root of unity `ω` (in an extension field `E`), every nonzero code word has at least `s + 1` nonzero
+entries. Related: Mathlib and Tau Ceti have Hamming distance and some codes, but no cyclic codes and no BCH
+bound. -/
+theorem bch_bound {F : Type*} [Field F] {n : ℕ} {E : Type*} [Field E] [Algebra F E] [DecidableEq F] [NeZero n]
+    {ω : E} (hω : IsPrimitiveRoot ω n) (a s : ℕ) {g : F[X]}
+    (hg : ∀ k < s, aeval (ω ^ (a + k)) g = 0) {w : Fin n → F}
+    (hw : w ∈ UndergradKB.AbstractAlgebra.CyclicCodes.cyclicCodeOf n g)
+    (hw0 : w ≠ 0) : s + 1 ≤ hammingNorm w := by
   sorry
 
 end UndergradKB.Headlines.AbstractAlgebra

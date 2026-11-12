@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge_Statistics",
+  "solution_module": "Solution_Statistics",
+  "theorem_names": [
+    "UndergradKB.Headlines.Statistics.indepFun_sampleMean_sampleVariance",
+    "UndergradKB.Headlines.Statistics.hasLaw_sampleVariance_chiSquared",
+    "UndergradKB.Headlines.Statistics.hasLaw_tStatistic",
+    "UndergradKB.Headlines.Statistics.hasLaw_fStatistic",
+    "UndergradKB.Headlines.Statistics.hasLaw_correlation_tStatistic"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

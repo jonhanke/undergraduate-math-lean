@@ -63,7 +63,7 @@ theorem polar_radius_sq (x y : ℝ) : ‖(⟨x, y⟩ : ℂ)‖ ^ 2 = x ^ 2 + y ^
 theorem tan_polar_angle (x y : ℝ) : tan (Complex.arg ⟨x, y⟩) = y / x :=
   Complex.tan_arg ⟨x, y⟩
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 open Filter Topology Set intervalIntegral MeasureTheory
 

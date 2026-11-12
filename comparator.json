@@ -13,14 +13,14 @@
       "config": "comparator/AbstractAlgebra.json",
       "challenge_module": "Challenge_AbstractAlgebra",
       "solution_module": "Solution_AbstractAlgebra",
-      "theorems": 6
+      "theorems": 9
     },
     {
       "topic": "Combinatorics",
       "config": "comparator/Combinatorics.json",
       "challenge_module": "Challenge_Combinatorics",
       "solution_module": "Solution_Combinatorics",
-      "theorems": 9
+      "theorems": 15
     },
     {
       "topic": "Calculus",
@@ -41,7 +41,56 @@
       "config": "comparator/Geometry.json",
       "challenge_module": "Challenge_Geometry",
       "solution_module": "Solution_Geometry",
+      "theorems": 9
+    },
+    {
+      "topic": "Precalculus",
+      "config": "comparator/Precalculus.json",
+      "challenge_module": "Challenge_Precalculus",
+      "solution_module": "Solution_Precalculus",
+      "theorems": 2
+    },
+    {
+      "topic": "Statistics",
+      "config": "comparator/Statistics.json",
+      "challenge_module": "Challenge_Statistics",
+      "solution_module": "Solution_Statistics",
       "theorems": 5
+    },
+    {
+      "topic": "Probability",
+      "config": "comparator/Probability.json",
+      "challenge_module": "Challenge_Probability",
+      "solution_module": "Solution_Probability",
+      "theorems": 11
+    },
+    {
+      "topic": "DifferentialEquations",
+      "config": "comparator/DifferentialEquations.json",
+      "challenge_module": "Challenge_DifferentialEquations",
+      "solution_module": "Solution_DifferentialEquations",
+      "theorems": 3
+    },
+    {
+      "topic": "ComplexAnalysis",
+      "config": "comparator/ComplexAnalysis.json",
+      "challenge_module": "Challenge_ComplexAnalysis",
+      "solution_module": "Solution_ComplexAnalysis",
+      "theorems": 2
+    },
+    {
+      "topic": "RepresentationTheory",
+      "config": "comparator/RepresentationTheory.json",
+      "challenge_module": "Challenge_RepresentationTheory",
+      "solution_module": "Solution_RepresentationTheory",
+      "theorems": 2
+    },
+    {
+      "topic": "Topology",
+      "config": "comparator/Topology.json",
+      "challenge_module": "Challenge_Topology",
+      "solution_module": "Solution_Topology",
+      "theorems": 9
     }
   ],
   "permitted_axioms": [
