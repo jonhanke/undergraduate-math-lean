@@ -361,7 +361,7 @@ Corrections and reports of mis-formalizations are very welcome.
 
 Releases are tagged with semantic versions; `main` continues to develop. The DOI [10.5281/zenodo.24119531](https://doi.org/10.5281/zenodo.24119531) always resolves to the latest release. To cite a specific version, use its release page or the "Cite this repository" button.
 
-- **[v0.2.0](https://github.com/jonhanke/undergraduate-math-lean/releases/tag/v0.2.0)** (Lean v4.36.0-rc2, Mathlib `1b1ccf4`), archived on Zenodo as [doi:ZENODO-DOI-v0.2.0](https://doi.org/ZENODO-DOI-v0.2.0): eight new topics (precalculus, statistics, probability, proofs, logic and sets, differential equations, complex analysis, representation theory, topology) with the maps and course outlines of their nine books, new work in the six topics of 0.1.0, and 76 headline statements in thirteen topics.
+- **[v0.2.0](https://github.com/jonhanke/undergraduate-math-lean/releases/tag/v0.2.0)** (Lean v4.36.0-rc2, Mathlib `1b1ccf4`), archived on Zenodo as [doi:10.5281/zenodo.24166717](https://doi.org/10.5281/zenodo.24166717): eight new topics (precalculus, statistics, probability, proofs, logic and sets, differential equations, complex analysis, representation theory, topology) with the maps and course outlines of their nine books, new work in the six topics of 0.1.0, and 76 headline statements in thirteen topics.
 - **[v0.1.0](https://github.com/jonhanke/undergraduate-math-lean/releases/tag/v0.1.0)** (Lean v4.36.0-rc2, Mathlib `1b1ccf4`), archived on Zenodo as [doi:10.5281/zenodo.24119532](https://doi.org/10.5281/zenodo.24119532): the first release: the six topics, the maps and course outlines
   of the nine books, and the 29 headline statements above.
 
