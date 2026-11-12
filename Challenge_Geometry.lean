@@ -7,15 +7,22 @@ import UndergradKB.Geometry.GaussWantzelSuff
 import UndergradKB.Geometry.WallaceBolyai
 import UndergradKB.Geometry.PonceletSteiner
 import UndergradKB.Geometry.ProjectivePlane
+import UndergradKB.Geometry.AffineFundamental
+import UndergradKB.Geometry.ProjectiveFundamental
+import UndergradKB.Geometry.NeutralTheorem1116
+import UndergradKB.Geometry.NeutralLegendre
 
 /-!
-# Headline statements of undergraduate-math-lean 0.1.0: geometry (Petrunin)
+# Headline statements of undergraduate-math-lean 0.2.0: geometry (Petrunin)
 
 The main results of this topic that Mathlib and Tau Ceti lack, one theorem each, with every proof a deliberate
 `sorry`: to check what is claimed, read this file. They are: the Gauss–Wantzel theorem on constructible regular
 polygons; the Wallace–Bolyai–Gerwien theorem on cutting polygons into congruent pieces; the Poncelet–Steiner
 theorem (a ruler and one given circle with its centre construct what ruler and compass construct); and the
-theorems of Desargues (with its converse) and Pappus in the real projective plane.
+theorems of Desargues (with its converse) and Pappus in the real projective plane; new in 0.2.0, the fundamental
+theorems of affine and of projective geometry in the real plane, and, for a plane satisfying only the first four
+axioms (a neutral plane), the equivalence of the parallel axiom with six classical conditions and the
+Saccheri–Legendre theorem.
 `Solution_Geometry.lean` proves the same statements from the library, and `lake comparator` (configured by
 `comparator/Geometry.json`) checks that each proved statement is exactly the one here and uses only the standard
 axioms `propext`, `Classical.choice` and `Quot.sound`.
@@ -47,6 +54,21 @@ these too:
 * `UndergradKB.Geometry.ProjPoint.LiesOn`: a point lies on a line when the subspace is contained in the other.
 * `UndergradKB.Geometry.ProjCollinear`: three points of the projective plane are collinear when they lie on a
   common line.
+* `UndergradKB.Geometry.IsProjectiveTransformation F`: `F` is a bijection of the points of the projective plane that
+  maps the points of every line onto the points of a line; `ProjPoint.map M` is the map induced by a linear
+  automorphism `M` of `Space3 = EuclideanSpace ℝ (Fin 3)`.
+* `UndergradKB.Geometry.NeutralPlane P` (Petrunin, p. 83): a metric space `P` with an angle measure `angle A O B`
+  (in `Real.Angle`) satisfying Petrunin's Axioms I to IV (p. 19): two distinct points; a unique line (a subset
+  isometric to `ℝ`) through two points; the protractor axioms (constructing an angle, additivity, continuity away
+  from straight angles); side-angle-side congruence by motions of the plane. Both the Euclidean plane and the
+  hyperbolic plane are neutral planes (`euclideanNeutralPlane`, `hyperbolicNeutralPlane`).
+* `NeutralPlane.AxiomV` (Petrunin's Axiom V): scaling two sides of a triangle at a vertex by `k > 0` scales the third
+  side by `k` and keeps the other two angles. Theorem 11.16's conditions: `OnlyOneParallel` (some line and point off
+  it with exactly one parallel through the point); `AllTrianglesCircumscribable` (every nondegenerate triangle lies
+  on a circle); `BoundedDistantLines` (two distinct lines at bounded distance); `ArbitrarilyLargeInradius`
+  (triangles containing discs of every radius); `ZeroDefectTriangle` (a nondegenerate triangle with angle sum `π`);
+  `HasRectangle` (four distinct points with four right angles).
+* `IsTriangle A B C`: `A`, `B`, `C` are distinct; `N.uangle A O B = |angle A O B|` (as a real number in `[0, π]`).
 -/
 
 namespace UndergradKB.Headlines.Geometry
@@ -124,6 +146,43 @@ theorem pappus {A B C A' B' C' X Y Z : UndergradKB.Geometry.ProjPoint}
     (hlY : ¬ ∃ ℓ : UndergradKB.Geometry.ProjLine, C.LiesOn ℓ ∧ A'.LiesOn ℓ ∧ C'.LiesOn ℓ ∧ A.LiesOn ℓ)
     (hlZ : ¬ ∃ ℓ : UndergradKB.Geometry.ProjLine, A.LiesOn ℓ ∧ B'.LiesOn ℓ ∧ A'.LiesOn ℓ ∧ B.LiesOn ℓ) :
     UndergradKB.Geometry.ProjCollinear X Y Z := by
+  sorry
+
+/-- **The fundamental theorem of affine geometry** (Petrunin, Theorem 14.12 with Exercise 14.4; new in 0.2.0): a
+bijection between two real affine planes that maps collinear triples to collinear triples is an affine
+isomorphism. Related: neither Mathlib nor Tau Ceti has it. -/
+theorem fundamental_affine {V₁ V₂ P₁ P₂ : Type*} [AddCommGroup V₁] [Module ℝ V₁] [AddTorsor V₁ P₁]
+    [AddCommGroup V₂] [Module ℝ V₂] [AddTorsor V₂ P₂] {f : P₁ → P₂} (hf : Function.Bijective f)
+    (hfwd : ∀ A B C : P₁, Collinear ℝ ({A, B, C} : Set P₁) → Collinear ℝ ({f A, f B, f C} : Set P₂))
+    (hV₁ : Module.finrank ℝ V₁ = 2) (hV₂ : Module.finrank ℝ V₂ = 2) :
+    ∃ g : P₁ ≃ᵃ[ℝ] P₂, ⇑g = f := by
+  sorry
+
+/-- **The fundamental theorem of projective geometry** (Petrunin, Theorem 15.2; new in 0.2.0): every bijection of
+the real projective plane that maps lines onto lines is induced by an invertible linear map of `ℝ³`. Related:
+Mathlib has collinearity in projective spaces but no such theorem; Tau Ceti has none. -/
+theorem fundamental_projective {F : UndergradKB.Geometry.ProjPoint → UndergradKB.Geometry.ProjPoint}
+    (hF : UndergradKB.Geometry.IsProjectiveTransformation F) :
+    ∃ M : UndergradKB.Geometry.Space3 ≃ₗ[ℝ] UndergradKB.Geometry.Space3,
+      F = UndergradKB.Geometry.ProjPoint.map M := by
+  sorry
+
+/-- **Equivalent forms of the parallel axiom** (Petrunin, Theorem 11.16; new in 0.2.0): in a neutral plane (Axioms
+I to IV only), Axiom V holds if and only if each of the following holds: some point off some line has exactly one
+parallel; every triangle can be circumscribed; two distinct lines are at bounded distance; there are triangles of
+arbitrarily large inradius; some triangle has angle sum `π`; there is a rectangle. Related: neither Mathlib nor Tau
+Ceti has axiomatic plane geometry. -/
+theorem neutral_plane_parallel_axiom {P : Type*} [MetricSpace P] (N : UndergradKB.Geometry.NeutralPlane P) :
+    (N.AxiomV ↔ N.OnlyOneParallel) ∧ (N.AxiomV ↔ N.AllTrianglesCircumscribable) ∧
+      (N.AxiomV ↔ N.BoundedDistantLines) ∧ (N.AxiomV ↔ N.ArbitrarilyLargeInradius) ∧
+        (N.AxiomV ↔ N.ZeroDefectTriangle) ∧ (N.AxiomV ↔ N.HasRectangle) := by
+  sorry
+
+/-- **The Saccheri–Legendre theorem** (Petrunin, Theorem 11.10; new in 0.2.0): in a neutral plane, the angles of
+every triangle add up to at most `π`. Related: neither Mathlib nor Tau Ceti has axiomatic plane geometry. -/
+theorem saccheri_legendre {P : Type*} [MetricSpace P] (N : UndergradKB.Geometry.NeutralPlane P) {A B C : P}
+    (hT : UndergradKB.Geometry.IsTriangle A B C) :
+    N.uangle A B C + N.uangle B C A + N.uangle C A B ≤ Real.pi := by
   sorry
 
 end UndergradKB.Headlines.Geometry

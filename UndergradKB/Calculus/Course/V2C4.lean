@@ -10,7 +10,7 @@ namespace UndergradKB.Calculus.Course.V2C4
 
 open Set Filter Topology
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 2:Theorem 4.1 (CA-315). Error bound for Euler's method (iterates
 `UndergradKB.Calculus.eulerIter`): for step `h > 0`, the error after `n` steps is at most

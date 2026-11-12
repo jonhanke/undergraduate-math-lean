@@ -48,7 +48,8 @@ def TriangleCongruent {P : Type*} [MetricSpace P] (A B C A' B' C' : P) : Prop :=
 /-- **Neutral plane (Chapter 11, p. 83).** Petrunin's Axioms I-IV (Section 2A, p. 19) on a metric
 space `P`, with angle measure `angle A O B` (the book's `∡AOB`, here in `Real.Angle`):
 I. at least two points; II. a unique line (a subset isometric to `ℝ`) through two distinct points;
-IIIa. a unique half-line at a given angle from a given half-line; IIIb. angles add;
+IIIa. a unique half-line at a given angle from a given half-line (the measure is that of the angle, i.e. it
+depends only on the half-lines: field `axiomIII_halfLine`); IIIb. angles add;
 IIIc. continuity of the angle measure away from straight angles; IV. side-angle-side congruence
 (triangles have distinct vertices; congruence is by a motion of the plane). -/
 @[kb "petrunin2025" "Definition of the neutral plane, p. 83; Axioms I-IV, p. 19"]
@@ -59,6 +60,10 @@ structure NeutralPlane where
   axiomII : ∀ A B : P, A ≠ B → ∃! L : Set P, IsLine L ∧ A ∈ L ∧ B ∈ L
   axiomIIIa : ∀ O A : P, A ≠ O → ∀ α : Real.Angle,
     ∃ B : P, B ≠ O ∧ angle A O B = α ∧ ∀ B' : P, B' ≠ O → angle A O B' = α → B' ∈ metricHalfLine O B
+  /-- Axiom III speaks of the measure `∡AOB` of the *angle* `∠AOB`, the pair of half-lines `[OA)`, `[OB)`
+  (Section 1G): the measure does not change when `A` is replaced by another point `A' ≠ O` of `[OA)`. -/
+  axiomIII_halfLine : ∀ O A A' B : P, A ≠ O → A' ∈ metricHalfLine O A → A' ≠ O → B ≠ O →
+    angle A' O B = angle A O B
   axiomIIIb : ∀ O A B C : P, A ≠ O → B ≠ O → C ≠ O → angle A O B + angle B O C = angle A O C
   axiomIIIc : ∀ A O B : P, A ≠ O → B ≠ O → angle A O B ≠ (Real.pi : Real.Angle) →
     ContinuousAt (fun x : P × P × P => angle x.1 x.2.1 x.2.2) (A, O, B)
@@ -176,6 +181,15 @@ noncomputable def euclideanNeutralPlane : NeutralPlane P where
     have hsr := huniq B' hB' h'
     obtain ⟨r, hr, hrv⟩ := hsr.symm.exists_nonneg_left (vsub_ne_zero.2 hB)
     exact ⟨r, hr, by rw [AffineMap.lineMap_apply, hrv, vsub_vadd]⟩
+  axiomIII_halfLine O A A' B hA hA' hA'O _ := by
+    rw [metricHalfLine_eq_halfLine, halfLine_eq hA.symm] at hA'
+    obtain ⟨t, ht, rfl⟩ := hA'
+    have ht0 : 0 < t := by
+      rcases ht.lt_or_eq with h | h
+      · exact h
+      · subst h; simp at hA'O
+    simp only [EuclideanGeometry.oangle, AffineMap.lineMap_vsub_left]
+    exact (o).oangle_smul_left_of_pos _ _ ht0
   axiomIIIb O A B C hA hB hC := oangle_add hA hB hC
   axiomIIIc A O B hA hB _ := continuousAt_oangle (x := (A, O, B)) hA hB
   axiomIV A B C A' B' C' hAB hBC hCA hAB' hBC' hCA' := by

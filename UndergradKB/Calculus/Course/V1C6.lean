@@ -159,7 +159,7 @@ theorem rpow_eq_exp_mul_log {b : ℝ} (hb : 0 < b) (x : ℝ) : b ^ x = Real.exp 
 theorem logb_eq_log_div_log (b x : ℝ) : Real.logb b x = Real.log x / Real.log b :=
   rfl
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 1:Theorem 6.2 (CA-250). For continuous `f, g` on `[a, b]` whose graphs may
 cross, the area between them is `∫ a..b |f - g|`. -/

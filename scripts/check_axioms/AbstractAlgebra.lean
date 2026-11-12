@@ -8,3 +8,6 @@ import Solution_AbstractAlgebra
 #print axioms UndergradKB.Headlines.AbstractAlgebra.not_constructible_cos_pi_div_nine
 #print axioms UndergradKB.Headlines.AbstractAlgebra.not_constructible_sqrt_pi
 #print axioms UndergradKB.Headlines.AbstractAlgebra.quintic_not_solvable_by_radicals
+#print axioms UndergradKB.Headlines.AbstractAlgebra.crystallographic_restriction
+#print axioms UndergradKB.Headlines.AbstractAlgebra.finite_subgroup_orthogonal_two
+#print axioms UndergradKB.Headlines.AbstractAlgebra.bch_bound

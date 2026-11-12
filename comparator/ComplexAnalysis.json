@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge_ComplexAnalysis",
+  "solution_module": "Solution_ComplexAnalysis",
+  "theorem_names": [
+    "UndergradKB.Headlines.ComplexAnalysis.casorati_weierstrass",
+    "UndergradKB.Headlines.ComplexAnalysis.dedekind_sum_reciprocity"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

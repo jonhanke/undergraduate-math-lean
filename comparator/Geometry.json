@@ -6,7 +6,11 @@
     "UndergradKB.Headlines.Geometry.wallace_bolyai_gerwien",
     "UndergradKB.Headlines.Geometry.poncelet_steiner",
     "UndergradKB.Headlines.Geometry.desargues",
-    "UndergradKB.Headlines.Geometry.pappus"
+    "UndergradKB.Headlines.Geometry.pappus",
+    "UndergradKB.Headlines.Geometry.fundamental_affine",
+    "UndergradKB.Headlines.Geometry.fundamental_projective",
+    "UndergradKB.Headlines.Geometry.neutral_plane_parallel_axiom",
+    "UndergradKB.Headlines.Geometry.saccheri_legendre"
   ],
   "definition_names": [],
   "permitted_axioms": [

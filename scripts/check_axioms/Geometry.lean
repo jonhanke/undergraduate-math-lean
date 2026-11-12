@@ -7,3 +7,7 @@ import Solution_Geometry
 #print axioms UndergradKB.Headlines.Geometry.poncelet_steiner
 #print axioms UndergradKB.Headlines.Geometry.desargues
 #print axioms UndergradKB.Headlines.Geometry.pappus
+#print axioms UndergradKB.Headlines.Geometry.fundamental_affine
+#print axioms UndergradKB.Headlines.Geometry.fundamental_projective
+#print axioms UndergradKB.Headlines.Geometry.neutral_plane_parallel_axiom
+#print axioms UndergradKB.Headlines.Geometry.saccheri_legendre

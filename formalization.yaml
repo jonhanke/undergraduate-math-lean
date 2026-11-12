@@ -4,20 +4,32 @@ version: "v0.4"
 project:
   name: "undergraduate-math-lean (UndergradKB): undergraduate mathematics"
   description: >-
-    A Lean 4 + Mathlib formalization of nine openly available undergraduate textbooks in six topics, item by item:
-    linear algebra (Axler, Linear Algebra Done Right, 4th edition; Hefferon, Linear Algebra, 4th edition), abstract
-    algebra (Judson and Beezer, Abstract Algebra: Theory and Applications), combinatorics (Keller and Trotter,
-    Applied Combinatorics; Petkovsek, Wilf and Zeilberger, A=B), calculus (OpenStax Calculus, Volumes 1 to 3),
-    trigonometry (Corral, Trigonometry; OpenStax Algebra and Trigonometry) and geometry (Petrunin, Euclidean Plane
-    and its Relatives). Every item of every book is mapped to its Lean declaration (in this library or in Mathlib)
-    and its status in docs/books/, and each book has a course outline in docs/courses/. Principal results not in
-    Mathlib: the Jordan normal form and its uniqueness; Schur's triangularization; the transcendence of pi; the
-    constructible numbers and the three classical impossibilities; an explicit quintic not solvable by radicals;
-    the theorems of Dilworth, Brooks, Cayley (n^(n-2) trees), Gale-Shapley and Gale-Ryser; Gosper's algorithm,
-    Sister Celine's theorem and Petkovsek's algorithm Hyper, as decision and correctness theorems; Riemann's
-    rearrangement theorem; the error bound of Simpson's rule; Heron's formula and the law of tangents; the
-    Gauss-Wantzel theorem, the Wallace-Bolyai-Gerwien theorem, the Poncelet-Steiner theorem, and the theorems of
-    Desargues and Pappus in the real projective plane.
+    A Lean 4 + Mathlib formalization of eighteen openly available undergraduate textbooks in fourteen topics, item
+    by item: linear algebra (Axler, Linear Algebra Done Right, 4th edition; Hefferon, Linear Algebra, 4th edition),
+    abstract algebra (Judson and Beezer, Abstract Algebra: Theory and Applications), combinatorics (Keller and
+    Trotter, Applied Combinatorics; Petkovsek, Wilf and Zeilberger, A=B), calculus (OpenStax Calculus, Volumes 1 to
+    3), trigonometry (Corral, Trigonometry; OpenStax Algebra and Trigonometry), geometry (Petrunin, Euclidean Plane
+    and its Relatives), precalculus (Stitz and Zeager), statistics (OpenStax Introductory Statistics), probability
+    (Grinstead and Snell), proofs, logic and sets (Hammack, Book of Proof; Levin, Discrete Mathematics), differential
+    equations (Lebl, Notes on Diffy Qs), complex analysis (Beck, Marchesi, Pixton and Sabalka), representation
+    theory (Etingof et al.) and topology (Morris, Topology Without Tears). Every item of every book is mapped to its
+    Lean declaration (in this library or in Mathlib) and its status in docs/books/, and each book has a course
+    outline in docs/courses/. Principal results not in Mathlib: the Jordan normal form and its uniqueness; Schur's
+    triangularization; the transcendence of pi; the constructible numbers and the three classical impossibilities;
+    an explicit quintic not solvable by radicals; the crystallographic restriction; the finite subgroups of O(2);
+    the BCH bound; the theorems of Dilworth, Brooks, Cayley (n^(n-2) trees), Gale-Shapley, Gale-Ryser, Euler
+    (circuits) and Dirac; the Lovasz local lemma; Gosper's algorithm, Sister Celine's theorem and Petkovsek's
+    algorithm Hyper, as decision and correctness theorems; the summation theorems of Gauss, Dougall and Dixon;
+    Riemann's rearrangement theorem; the error bound of Simpson's rule; Heron's formula and the law of tangents;
+    the Gauss-Wantzel, Wallace-Bolyai-Gerwien and Poncelet-Steiner theorems; Desargues and Pappus; the fundamental
+    theorems of affine and projective geometry; the equivalent forms of the parallel axiom in a neutral plane and
+    the Saccheri-Legendre theorem; Descartes' rule of signs with parity; the sampling distributions of the t, chi
+    square and F tests; convergence of regular and ergodic Markov chains, absorbing chains, Polya's theorem, the arc
+    sine law, riffle shuffles and the local limit theorem; Lerch's uniqueness theorem for the Laplace transform, the
+    solution space of a linear equation of order n, and the general solution of the wave equation; the
+    Casorati-Weierstrass theorem and Dedekind reciprocity; the factorization of the group determinant and
+    Dixmier's lemma; the period three theorem, Peano's curve, the Banach-Mazur theorem, closed subgroups of R^n and
+    of tori, the Wallman compactification, and Pontryagin duality for R^a x T^b x Z^c.
   authors:
     - "Jonathan Hanke"
   license: "Apache-2.0"
@@ -25,11 +37,12 @@ project:
     - "Jonathan Hanke"
 
 classification:
-  arxiv: ["math.HO", "math.CO", "math.RA", "math.MG", "math.CA"]
+  arxiv: ["math.HO", "math.CO", "math.RA", "math.MG", "math.CA", "math.PR", "math.ST", "math.CV", "math.RT", "math.GN", "math.LO"]
   # 97 mathematics education; 15A linear algebra; 20 group theory; 12F field extensions; 11J81 transcendence;
   # 05 combinatorics; 33F10 symbolic computation of special functions; 26 real functions; 65D32 quadrature;
-  # 51 geometry; 03B35 mechanization of proofs.
-  msc2020: ["97-01", "15A21", "12F10", "11J81", "05A15", "05C15", "06A07", "33F10", "40A05", "65D32", "51M04", "51A20", "03B35"]
+  # 51 geometry; 60J10 Markov chains; 62 statistics; 30 functions of a complex variable; 20C representations
+  # of finite groups; 54 general topology; 34 ordinary differential equations; 03B35 mechanization of proofs.
+  msc2020: ["97-01", "15A21", "12F10", "11J81", "05A15", "05C15", "06A07", "33F10", "40A05", "65D32", "51M04", "51A20", "60J10", "62F03", "30D30", "20C15", "54D35", "34A30", "03B35"]
 
 sources:
   - title: "Linear Algebra Done Right (4th edition)"
@@ -86,6 +99,60 @@ sources:
     location: "arXiv:1302.1630v25, 2025 (CC BY-SA 4.0); mapped in docs/books/petrunin2025.md"
     relationship: "formalizes"
     author_endorsement: "n/a"
+  - title: "Precalculus (corrected edition)"
+    authors: ["Carl Stitz", "Jeff Zeager"]
+    type: "book"
+    location: "2013 (CC BY-NC-SA 3.0); mapped in docs/books/stitzzeager2013.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Introductory Statistics (2nd edition)"
+    authors: ["Barbara Illowsky", "Susan Dean"]
+    type: "book"
+    location: "OpenStax, 2023 (CC BY-NC-SA 4.0); mapped in docs/books/openstaxintrostats2e.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Introduction to Probability (2nd edition)"
+    authors: ["Charles M. Grinstead", "J. Laurie Snell"]
+    type: "book"
+    location: "American Mathematical Society; version of 4 July 2006 (GNU FDL); mapped in docs/books/grinsteadsnell2006.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Book of Proof (3rd edition)"
+    authors: ["Richard Hammack"]
+    type: "book"
+    location: "2018, edition 3.4 (CC BY-NC-ND 4.0); mapped in docs/books/hammack2018.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Discrete Mathematics: An Open Introduction (4th edition)"
+    authors: ["Oscar Levin"]
+    type: "book"
+    location: "CC BY-NC-SA 4.0; mapped in docs/books/levin2025.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Notes on Diffy Qs: Differential Equations for Engineers (version 6.11)"
+    authors: ["Jiri Lebl"]
+    type: "book"
+    location: "2026 (CC BY-NC-SA 4.0 or CC BY-SA 4.0); mapped in docs/books/lebldiffyqs2026.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "A First Course in Complex Analysis (edition 1.6)"
+    authors: ["Matthias Beck", "Gerald Marchesi", "Dennis Pixton", "Lucas Sabalka"]
+    type: "book"
+    location: "2025 (CC BY 4.0); mapped in docs/books/beck2025.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Introduction to Representation Theory"
+    authors: ["Pavel Etingof", "Oleg Golberg", "Sebastian Hensel", "Tiankai Liu", "Alex Schwendner", "Dmitry Vaintrob", "Elena Yudovina"]
+    type: "book"
+    location: "American Mathematical Society, 2011; arXiv:0901.0827v5 (cited only); mapped in docs/books/etingof2011.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Topology Without Tears"
+    authors: ["Sidney A. Morris"]
+    type: "book"
+    location: "version of 6 August 2024 (free download from the author; cited only); mapped in docs/books/morris2024.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
   - title: "Further references"
     type: "bibliography"
     location: "references.bib in this repository; each result is tagged with @[kb \"<key>\" \"<locator>\"]"
@@ -105,8 +172,8 @@ related_formalizations:
 
 status:
   scope: >-
-    Formalized (the 29 statements of the Challenge_<Topic>.lean files, proved in the
-    Solution_<Topic>.lean files), and every item of the nine books classified in the book maps: proved here, in
+    Formalized (the 76 statements of the Challenge_<Topic>.lean files, proved in the
+    Solution_<Topic>.lean files), and every item of the eighteen books classified in the book maps: proved here, in
     Mathlib, partly in Mathlib, not formalized, or not a result. No headline depends on an unproved input.
   sorry_count: 0
   sorry_in_definitions: 0
@@ -133,16 +200,21 @@ automation:
 fidelity:
   divergences: >-
     (1) Geometry is formalized in concrete models (the Euclidean plane as R^2, the real projective plane from R^3,
-    the Poincare disc), not from Petrunin's axioms of a neutral plane; the neutral-plane axioms are stated and
-    checked in the Euclidean and hyperbolic models, but no theorem is derived from them. (2) The algorithms of A=B
+    the Poincare disc); Petrunin's axioms of a neutral plane are stated, checked in the Euclidean and hyperbolic
+    models, and used to derive the Saccheri-Legendre theorem and the equivalent forms of the parallel axiom
+    (Theorem 11.16); the other chapters work in the models. (2) The algorithms of A=B
     are formalized as mathematical decision and correctness theorems (their outputs are chosen classically), not
     as executable programs; Zeilberger's algorithm and the WZ method are formalized as the soundness of supplied
     certificates only. (3) Calculus and trigonometry are mostly techniques and worked examples: their reusable facts
     are rows of the maps, and most theory is Mathlib's. (4) The book maps' one-line statements are our paraphrases,
-    not the books' wording; the Lean statement is the authority.
+    not the books' wording; the Lean statement is the authority. (5) Statistics: the t test of the correlation
+    coefficient is stated conditionally on the predictor values (independent normal responses), not for a
+    bivariate normal sample. (6) Probability: random walks and shuffles are modelled by their finite paths, all
+    equally likely; Markov chains by their transition matrices. (7) The topic proofs, logic and sets has no
+    headline: its results are in Mathlib or its Archive, or are exercises.
 
 review:
-  status: "not yet reviewed: the 29 headline statements of the Challenge_<Topic>.lean files and the definitions they use have not yet been reviewed by a human"
+  status: "not yet reviewed: the 76 headline statements of the Challenge_<Topic>.lean files and the definitions they use have not yet been reviewed by a human"
   reviewers: []
   notes: >-
     The headline statements and the definitions they use have not yet been reviewed by a human; that review is
@@ -190,6 +262,18 @@ alignment:
       lean: "UndergradKB.Headlines.AbstractAlgebra.quintic_not_solvable_by_radicals"
       module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
       status: "proved"
+    - source: "Judson and Beezer, Theorem 12.2.9; new in 0.2.0: The crystallographic restriction"
+      lean: "UndergradKB.Headlines.AbstractAlgebra.crystallographic_restriction"
+      module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
+      status: "proved"
+    - source: "Judson and Beezer, Theorem 12.2.4; new in 0.2.0: Finite groups of plane symmetries"
+      lean: "UndergradKB.Headlines.AbstractAlgebra.finite_subgroup_orthogonal_two"
+      module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
+      status: "proved"
+    - source: "Judson and Beezer, Theorem 22.2.8; new in 0.2.0: The BCH bound"
+      lean: "UndergradKB.Headlines.AbstractAlgebra.bch_bound"
+      module: "Challenge_AbstractAlgebra / Solution_AbstractAlgebra"
+      status: "proved"
     - source: "Keller–Trotter, Theorem 6.17: Dilworth's theorem"
       lean: "UndergradKB.Headlines.Combinatorics.dilworth"
       module: "Challenge_Combinatorics / Solution_Combinatorics"
@@ -224,6 +308,30 @@ alignment:
       status: "proved"
     - source: "A=B, Theorem 8.4.1 and Algorithm Hyper, p. 162: Completeness of Petkovšek's algorithm Hyper"
       lean: "UndergradKB.Headlines.Combinatorics.hyper_complete"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "Keller–Trotter Theorem 5.13; new in 0.2.0: Euler's theorem"
+      lean: "UndergradKB.Headlines.Combinatorics.euler_circuit_iff"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "Keller–Trotter Theorem 5.18; new in 0.2.0: Dirac's theorem"
+      lean: "UndergradKB.Headlines.Combinatorics.dirac"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "Keller–Trotter Lemma 16.14; new in 0.2.0: The Lovász local lemma"
+      lean: "UndergradKB.Headlines.Combinatorics.lovasz_local_lemma"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "A=B, identity (I: Gauss's summation of `₂F₁` at 1"
+      lean: "UndergradKB.Headlines.Combinatorics.gauss_hypergeometric_sum"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "A=B, identity (VI: Dougall's theorem"
+      lean: "UndergradKB.Headlines.Combinatorics.dougall_sum"
+      module: "Challenge_Combinatorics / Solution_Combinatorics"
+      status: "proved"
+    - source: "A=B, p. 55; new in 0.2.0: Dixon's theorem"
+      lean: "UndergradKB.Headlines.Combinatorics.dixon_sum"
       module: "Challenge_Combinatorics / Solution_Combinatorics"
       status: "proved"
     - source: "OpenStax Calculus Volume 2, §5.5: Riemann's rearrangement theorem"
@@ -270,7 +378,159 @@ alignment:
       lean: "UndergradKB.Headlines.Geometry.pappus"
       module: "Challenge_Geometry / Solution_Geometry"
       status: "proved"
+    - source: "Petrunin, Theorem 14.12 with Exercise 14.4; new in 0.2.0: The fundamental theorem of affine geometry"
+      lean: "UndergradKB.Headlines.Geometry.fundamental_affine"
+      module: "Challenge_Geometry / Solution_Geometry"
+      status: "proved"
+    - source: "Petrunin, Theorem 15.2; new in 0.2.0: The fundamental theorem of projective geometry"
+      lean: "UndergradKB.Headlines.Geometry.fundamental_projective"
+      module: "Challenge_Geometry / Solution_Geometry"
+      status: "proved"
+    - source: "Petrunin, Theorem 11.16; new in 0.2.0: Equivalent forms of the parallel axiom"
+      lean: "UndergradKB.Headlines.Geometry.neutral_plane_parallel_axiom"
+      module: "Challenge_Geometry / Solution_Geometry"
+      status: "proved"
+    - source: "Petrunin, Theorem 11.10; new in 0.2.0: The Saccheri–Legendre theorem"
+      lean: "UndergradKB.Headlines.Geometry.saccheri_legendre"
+      module: "Challenge_Geometry / Solution_Geometry"
+      status: "proved"
+    - source: "Stitz–Zeager Theorem 3.10: Descartes' rule of signs, positive zeros"
+      lean: "UndergradKB.Headlines.Precalculus.descartes_rule_of_signs"
+      module: "Challenge_Precalculus / Solution_Precalculus"
+      status: "proved"
+    - source: "Stitz–Zeager Theorem 3.10: Descartes' rule of signs, negative zeros"
+      lean: "UndergradKB.Headlines.Precalculus.descartes_rule_of_signs_neg"
+      module: "Challenge_Precalculus / Solution_Precalculus"
+      status: "proved"
+    - source: "OpenStax *Introductory Statistics* §§ 8.2, 11.6; Student's theorem: The sample mean and the sample variance of a normal sample are independent"
+      lean: "UndergradKB.Headlines.Statistics.indepFun_sampleMean_sampleVariance"
+      module: "Challenge_Statistics / Solution_Statistics"
+      status: "proved"
+    - source: "OpenStax *Introductory Statistics* § 11.6, the test of a single variance: The scaled sample variance of a normal sample is chi-square"
+      lean: "UndergradKB.Headlines.Statistics.hasLaw_sampleVariance_chiSquared"
+      module: "Challenge_Statistics / Solution_Statistics"
+      status: "proved"
+    - source: "OpenStax *Introductory Statistics* §§ 8.2, 9.3: The t statistic of a normal sample has the Student t law"
+      lean: "UndergradKB.Headlines.Statistics.hasLaw_tStatistic"
+      module: "Challenge_Statistics / Solution_Statistics"
+      status: "proved"
+    - source: "OpenStax *Introductory Statistics* § 13.2: The F test of one-way analysis of variance"
+      lean: "UndergradKB.Headlines.Statistics.hasLaw_fStatistic"
+      module: "Challenge_Statistics / Solution_Statistics"
+      status: "proved"
+    - source: "OpenStax *Introductory Statistics* § 12.4: The t test of the correlation coefficient"
+      lean: "UndergradKB.Headlines.Statistics.hasLaw_correlation_tStatistic"
+      module: "Challenge_Statistics / Solution_Statistics"
+      status: "proved"
+    - source: "Grinstead–Snell Theorems 11.7, 11.8: Convergence of regular Markov chains"
+      lean: "UndergradKB.Headlines.Probability.regular_pow_tendsto"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Theorems 11.10, 11.11: The ergodic theorem for finite Markov chains"
+      lean: "UndergradKB.Headlines.Probability.ergodic_cesaro_tendsto"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Theorem 11.3: Absorption is certain"
+      lean: "UndergradKB.Headlines.Probability.absorption_certain"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Theorem 11.5: Expected time to absorption"
+      lean: "UndergradKB.Headlines.Probability.hasSum_absorption_time"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Theorem 11.6: Absorption probabilities"
+      lean: "UndergradKB.Headlines.Probability.absorption_prob_tendsto"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Example 12.2: Pólya's theorem in dimension 2"
+      lean: "UndergradKB.Headlines.Probability.polya_two"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Example 12.3: Pólya's theorem in dimension 3"
+      lean: "UndergradKB.Headlines.Probability.polya_three"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Theorem 12.4: The arc sine law for the time in the lead"
+      lean: "UndergradKB.Headlines.Probability.arcsine_law_lead"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Theorem 3.10: An `a`-shuffle followed by a `b`-shuffle is an `ab`-shuffle"
+      lean: "UndergradKB.Headlines.Probability.riffle_shuffle_composition"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Theorem 3.11: The number of riffle shuffles giving an order"
+      lean: "UndergradKB.Headlines.Probability.card_riffle_shuffles"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Grinstead–Snell Theorem 9.3: The local limit theorem"
+      lean: "UndergradKB.Headlines.Probability.local_limit_theorem"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
+    - source: "Lebl Theorem 6.1.3: Uniqueness of the Laplace transform (Lerch's theorem)"
+      lean: "UndergradKB.Headlines.DifferentialEquations.laplace_unique"
+      module: "Challenge_DifferentialEquations / Solution_DifferentialEquations"
+      status: "proved"
+    - source: "Lebl Theorem 2.3.3; Theorem 2.1.3 for order 2: The general solution of a homogeneous linear equation of order `n`"
+      lean: "UndergradKB.Headlines.DifferentialEquations.linN_general_solution"
+      module: "Challenge_DifferentialEquations / Solution_DifferentialEquations"
+      status: "proved"
+    - source: "Lebl § 4.8, characteristic coordinates: The general solution of the wave equation"
+      lean: "UndergradKB.Headlines.DifferentialEquations.wave_general_solution"
+      module: "Challenge_DifferentialEquations / Solution_DifferentialEquations"
+      status: "proved"
+    - source: "Beck Theorem 9.1.9: The Casorati–Weierstrass theorem"
+      lean: "UndergradKB.Headlines.ComplexAnalysis.casorati_weierstrass"
+      module: "Challenge_ComplexAnalysis / Solution_ComplexAnalysis"
+      status: "proved"
+    - source: "Beck § 10.4, Exercise 2: The reciprocity law for Dedekind sums"
+      lean: "UndergradKB.Headlines.ComplexAnalysis.dedekind_sum_reciprocity"
+      module: "Challenge_ComplexAnalysis / Solution_ComplexAnalysis"
+      status: "proved"
+    - source: "Etingof et al. Theorem 4.7: Frobenius's factorization of the group determinant"
+      lean: "UndergradKB.Headlines.RepresentationTheory.groupDeterminant_factorization"
+      module: "Challenge_RepresentationTheory / Solution_RepresentationTheory"
+      status: "proved"
+    - source: "Etingof et al. Problem 1.23: Dixmier's lemma"
+      lean: "UndergradKB.Headlines.RepresentationTheory.dixmier_lemma"
+      module: "Challenge_RepresentationTheory / Solution_RepresentationTheory"
+      status: "proved"
+    - source: "Morris Theorem A3.6.2: The period three theorem"
+      lean: "UndergradKB.Headlines.Topology.period_three"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Theorem 9.5.9: Peano's space-filling curve"
+      lean: "UndergradKB.Headlines.Topology.peano_curve"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Remark 12.2.31: The Banach–Mazur theorem"
+      lean: "UndergradKB.Headlines.Topology.banach_mazur"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Theorem A5.5.13: Closed subgroups of `ℝⁿ`"
+      lean: "UndergradKB.Headlines.Topology.closed_subgroup_equiv"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Theorem A5.5.13: Quotients of `ℝⁿ` by closed subgroups"
+      lean: "UndergradKB.Headlines.Topology.quotient_closed_subgroup_equiv"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Corollary A5.5.20: Closed subgroups of the torus"
+      lean: "UndergradKB.Headlines.Topology.closed_subgroup_torus_equiv"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Theorem A6.4.6: The Wallman compactification"
+      lean: "UndergradKB.Headlines.Topology.wallman_compactification"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Corollary A6.4.8: The Wallman compactification is the Stone–Čech compactification exactly for normal spaces"
+      lean: "UndergradKB.Headlines.Topology.normalSpace_iff_wallman_eq_stoneCech"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Corollary A5.9.4, the case without a finite factor: Pontryagin–van Kampen duality for `ℝᵃ × 𝕋ᵇ × ℤᶜ`"
+      lean: "UndergradKB.Headlines.Topology.pontryagin_duality_real_circle_int"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
 
 acknowledgements: >-
-  The authors of the nine textbooks, for making them openly available; Mathlib and its contributors; the Lean FRO
+  The authors of the eighteen textbooks, for making them openly available; Mathlib and its contributors; the Lean FRO
   for Lean, Lake and lake comparator; Claude Code (Anthropic).

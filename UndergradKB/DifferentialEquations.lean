@@ -1,0 +1,31 @@
+import UndergradKB.Common
+import UndergradKB.DifferentialEquations.LinearSystems
+import UndergradKB.DifferentialEquations.SecondOrderLinear
+import UndergradKB.DifferentialEquations.MatrixSystems
+import UndergradKB.DifferentialEquations.Nonlinear
+import UndergradKB.DifferentialEquations.Laplace
+import UndergradKB.DifferentialEquations.FirstOrder
+import UndergradKB.DifferentialEquations.NthOrderLinear
+import UndergradKB.DifferentialEquations.SecondOrderSystems
+import UndergradKB.DifferentialEquations.VariationOfParameters
+import UndergradKB.DifferentialEquations.PlanarClassification
+import UndergradKB.DifferentialEquations.PowerSeriesMethod
+import UndergradKB.DifferentialEquations.ConstantCoefficients
+import UndergradKB.DifferentialEquations.Oscillations
+import UndergradKB.DifferentialEquations.PDE
+import UndergradKB.DifferentialEquations.ExactEquations
+import UndergradKB.DifferentialEquations.LaplaceUniqueness
+import UndergradKB.DifferentialEquations.HigherOrderConstant
+import UndergradKB.DifferentialEquations.Picard
+import UndergradKB.DifferentialEquations.BoundaryValue
+import UndergradKB.DifferentialEquations.Course.Ch1
+import UndergradKB.DifferentialEquations.Course.Ch2
+import UndergradKB.DifferentialEquations.Course.Ch3
+import UndergradKB.DifferentialEquations.Course.Ch4
+import UndergradKB.DifferentialEquations.Course.Ch7
+import UndergradKB.DifferentialEquations.Course.Ch8
+import UndergradKB.DifferentialEquations.Course.AppendixA
+
+/-! # Ordinary differential equations
+Topic root. Import every file of the topic here; a topic imports Mathlib modules
+and `UndergradKB.Common` only (docs/ARCHITECTURE.md). Coverage: docs/coverage/. -/

@@ -30,7 +30,7 @@ import UndergradKB.Trigonometry.Secant
 /-! # Course layer: Corral, *Trigonometry*, items proved in the knowledge base
 
 Thin theorems in the book's terms whose proofs are the theorems of `UndergradKB/Trigonometry/*.lean`
-listed in the coverage checklist (rows classified `in undergrad-kb`).  All angles are in radians.
+listed in the coverage checklist (rows classified `in this library`).  All angles are in radians.
 -/
 
 namespace UndergradKB.Trigonometry.Course.Corral

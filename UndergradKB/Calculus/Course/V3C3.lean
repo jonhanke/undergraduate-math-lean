@@ -126,7 +126,7 @@ theorem integral_vector_function_ftc {n : ℕ} {r r' : ℝ → Fin n → ℝ} {a
     ∫ t in a..b, r' t = r b - r a :=
   intervalIntegral.integral_eq_sub_of_hasDerivAt hd hint
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 section ProvedInKB
 

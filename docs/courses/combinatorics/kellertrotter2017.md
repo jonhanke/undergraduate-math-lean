@@ -3,7 +3,7 @@
 Generated from [`docs/coverage/combinatorics/checklist.md`](../../coverage/combinatorics/checklist.md); do not edit by hand.
 Items are in the book's order. Statements are our own paraphrases, not book text. Cite the Lean name; `lake build Combinatorics` builds this topic.
 
-419 items in 17 chapters; 400 with a Lean name (95.5%).
+419 items in 17 chapters; 404 with a Lean name (96.4%).
 
 ## (unplaced)
 
@@ -19,13 +19,13 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 1
 
-8 items; 8 with a Lean name; 3 proved proved here; 4 in Mathlib; 1 not formalized.
+8 items; 8 with a Lean name; 4 proved proved here; 4 in Mathlib.
 
 - **Ex 1.8**, p.33 [CO-326]: Collatz sequence: from n go to 3n+1 if n odd, n/2 if even, stop at 1. — *proved proved here* — `UndergradKB.Combinatorics.collatzStep`, `UndergradKB.Combinatorics.CollatzReachesOne`, `UndergradKB.Combinatorics.collatzList_28`, `UndergradKB.Combinatorics.collatzList_19`
 - **def p.33 Collatz sequence**, p.33 [CO-326]: Collatz sequence: from n go to 3n+1 if n odd, n/2 if even, stop at 1. — *proved proved here* — `UndergradKB.Combinatorics.collatzStep`, `UndergradKB.Combinatorics.CollatzReachesOne`, `UndergradKB.Combinatorics.collatzList_28`, `UndergradKB.Combinatorics.collatzList_19`
 - **def p.35 partition (Ex 1.10)**, p.35 [CO-192]: Integer partition of n: unordered sum of positive integers equal to n; partitions into odd parts and into distinct parts are distinguished. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.def_p192_partition`, `Nat.Partition`, `Nat.Partition.odds`, `Nat.Partition.distincts`
 - **Ex 1.10**, p.35 [CO-193]: The number of partitions of n into odd parts equals the number of partitions of n into distinct parts. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.thm_8_16`, `Nat.Partition.card_odds_eq_card_distincts`
-- **Ex 1.12**, p.36 [CO-214]: n lines in general position cut the plane into r(n) regions with r(1)=2 and r(n)=n+r(n-1). — *not formalized* — `UndergradKB.Combinatorics.Recurrence.lines_regions_closed_form'`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit'`
+- **Ex 1.12**, p.36 [CO-214]: n lines in general position cut the plane into r(n) regions with r(1)=2 and r(n)=n+r(n-1). — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.lines_regions_closed_form'`, `UndergradKB.Combinatorics.Recurrence.LineRegions.lines_regions_card`, `UndergradKB.Combinatorics.Recurrence.LineRegions.lines_regions_succ`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit`
 - **def p.38 spanning tree (Ex 1.19)**, p.38 [CO-083]: A spanning tree of a connected weighted graph is a tree subgraph on all vertices; its weight is the sum of edge weights, and a minimum weight one is sought. — *proved proved here* — `UndergradKB.Combinatorics.SpanningTree.IsMinSpanningTree`, `UndergradKB.Combinatorics.SpanningTree.exists_spanning_tree`, `UndergradKB.Combinatorics.SpanningTree.exists_isMinSpanningTree`
 - **def p.41 X-string**, p.41 [CO-001]: An X-string of length n is a function [n] -> X; synonyms sequence, word, array, tuple in a product; 0-1 and ternary strings are the cases \|X\|=2,3. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.def_p41_string`, `List.Vector`
 - **def p.41 word/alphabet**, p.41 [CO-001]: An X-string of length n is a function [n] -> X; synonyms sequence, word, array, tuple in a product; 0-1 and ternary strings are the cases \|X\|=2,3. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.def_p41_string`, `List.Vector`
@@ -66,13 +66,13 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 3
 
-22 items; 22 with a Lean name; 7 proved proved here; 14 in Mathlib; 1 not formalized.
+22 items; 22 with a Lean name; 8 proved proved here; 14 in Mathlib.
 
 - **Principle 3.1**, p.64 [CO-057]: Every non-empty set of positive integers has a least element. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.principle_3_1`, `Nat.find`, `Nat.find_min`, `Nat.find_min'`
 - **text p.65 recursive sum**, p.65 [CO-058]: Recursive/inductive definitions (finite sums, n!, multiplication) are legitimate: define the base case and step from smaller arguments. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.recursive_sum`, `UndergradKB.Combinatorics.Course.KellerTrotter.recursive_factorial`, `UndergradKB.Combinatorics.Course.KellerTrotter.inductive_definitions`, `Nat.factorial`
 - **text p.66 Pascal recursion**, p.66 [CO-036]: C(n,k)=C(n-1,k-1)+C(n-1,k) for 0<k<n, with C(n,0)=C(n,n)=1 (Pascal's triangle). — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.text_p66_pascal`, `Nat.choose_succ_succ'`
 - **text p.66 recursive factorial**, p.66 [CO-058]: Recursive/inductive definitions (finite sums, n!, multiplication) are legitimate: define the base case and step from smaller arguments. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.recursive_sum`, `UndergradKB.Combinatorics.Course.KellerTrotter.recursive_factorial`, `UndergradKB.Combinatorics.Course.KellerTrotter.inductive_definitions`, `Nat.factorial`
-- **Ex 3.3**, p.67 [CO-214]: n lines in general position cut the plane into r(n) regions with r(1)=2 and r(n)=n+r(n-1). — *not formalized* — `UndergradKB.Combinatorics.Recurrence.lines_regions_closed_form'`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit'`
+- **Ex 3.3**, p.67 [CO-214]: n lines in general position cut the plane into r(n) regions with r(1)=2 and r(n)=n+r(n-1). — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.lines_regions_closed_form'`, `UndergradKB.Combinatorics.Recurrence.LineRegions.lines_regions_card`, `UndergradKB.Combinatorics.Recurrence.LineRegions.lines_regions_succ`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit`
 - **Ex 3.5**, p.68 [CO-215]: The number t(n) of tilings of a 2 x n board by dominoes satisfies t(n)=t(n-1)+t(n-2). — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.Domino.boardTilingCount_add_two`, `UndergradKB.Combinatorics.Recurrence.Domino.boardTilingCount_eq_fib`, `UndergradKB.Combinatorics.Recurrence.tilingCount_one`, `UndergradKB.Combinatorics.Recurrence.tilingCount_succ_succ`
 - **Ex 3.6**, p.68 [CO-216]: Ternary strings of length n with no 2 immediately followed by 0 number g(n) with g(n)=3g(n-1)-g(n-2). — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.ternGood_card_one`, `UndergradKB.Combinatorics.Recurrence.ternGood_card_two`, `UndergradKB.Combinatorics.Recurrence.ternGood_card_succ_succ`, `UndergradKB.Combinatorics.Recurrence.ternGood_card_recurrence`
 - **Thm 3.7**, p.69 [CO-059]: For positive m,n there are unique q,r with m=qn+r and 0<=r<n. — *proved proved here* — `UndergradKB.Combinatorics.division_algorithm`
@@ -93,7 +93,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 4
 
-31 items; 30 with a Lean name; 5 proved proved here; 24 in Mathlib; 2 not formalized.
+31 items; 31 with a Lean name; 6 proved proved here; 24 in Mathlib; 1 not formalized.
 
 - **Prop 4.1**, p.83 [CO-072]: If f: X -> Y with \|X\|>\|Y\| then two distinct elements of X have the same image. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.prop_4_1`, `Fintype.exists_ne_map_eq_of_card_lt`, `Finset.exists_ne_map_eq_of_card_lt_of_maps_to`
 - **Thm 4.2**, p.83 [CO-073]: Any sequence of mn+1 distinct reals has an increasing subsequence of m+1 terms or a decreasing one of n+1 terms. — *proved proved here* — `UndergradKB.Combinatorics.erdos_szekeres`
@@ -105,7 +105,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **text p.88 pi(n)**, p.88 [CO-523]: pi(n) denotes the number of primes at most n. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.text_p88_primeCounting`, `Nat.primeCounting`
 - **text p.89 class P**, p.89 [CO-075]: Class P: yes/no problems solvable by an algorithm of running time O(n^c). — *proved proved here* — `UndergradKB.Combinatorics.Complexity.InP`
 - **text p.89 infinitude of primes**, p.89 [CO-524]: There are infinitely many primes, so pi(n) tends to infinity (Euclid's argument via 1+p1...pk). — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.text_p89_infinitude_of_primes`, `Nat.exists_infinite_primes`
-- **text p.89 Prime Number Theorem**, p.89 [CO-525]: Prime Number Theorem: pi(n) ln n / n tends to 1. — *not formalized* — –
+- **text p.89 Prime Number Theorem**, p.89 [CO-525]: Prime Number Theorem: pi(n) ln n / n tends to 1. — *proved proved here* — `UndergradKB.Combinatorics.Analytic.prime_number_theorem`
 - **text p.90 class NP**, p.90 [CO-076]: Class NP: yes/no problems whose yes answers have certificates checkable in polynomial time. — *proved proved here* — `UndergradKB.Combinatorics.Complexity.InNP`
 - **text p.90**, p.90 [CO-077]: P is contained in NP (equality is the open P versus NP question). — *not formalized* — `UndergradKB.Combinatorics.Complexity.inP_subset_inNP`
 - **def p.93 graph**, p.93 [CO-084]: A (simple) graph is a pair (V,E) with E a set of 2-element subsets of V; vertices, edges, adjacency, incidence, neighbors, neighborhood — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.def_p94_neighborSet`, `SimpleGraph`, `SimpleGraph.neighborSet`
@@ -129,7 +129,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 5
 
-55 items; 41 with a Lean name; 19 proved proved here; 22 in Mathlib; 13 not formalized; 1 not a result.
+55 items; 44 with a Lean name; 22 proved proved here; 22 in Mathlib; 10 not formalized; 1 not a result.
 
 - **Thm 5.9**, p.98 [CO-094]: Sum of degrees over all vertices equals twice the number of edges — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.thm_5_9`, `SimpleGraph.sum_degrees_eq_twice_card_edges`
 - **Cor 5.10**, p.98 [CO-095]: The number of vertices of odd degree is even (handshaking lemma) — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.cor_5_10`, `SimpleGraph.even_card_odd_degree_vertices`
@@ -139,7 +139,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **def p.99 eulerian**, p.99 [CO-097]: Eulerian graph/circuit: closed sequence of vertices traversing every edge exactly once; circuit = closed walk condition only — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.def_p99_eulerian`, `SimpleGraph.Walk.IsEulerian`, `SimpleGraph.Walk.IsCircuit`
 - **def p.100 circuit**, p.100 [CO-097]: Eulerian graph/circuit: closed sequence of vertices traversing every edge exactly once; circuit = closed walk condition only — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.def_p99_eulerian`, `SimpleGraph.Walk.IsEulerian`, `SimpleGraph.Walk.IsCircuit`
 - **Thm 5.13**, p.101 [CO-098]: A graph is eulerian iff it is connected and every vertex has even degree — *proved proved here* — `UndergradKB.Combinatorics.Euler.exists_eulerian_trail_between`, `UndergradKB.Combinatorics.Euler.exists_eulerian_circuit`, `UndergradKB.Combinatorics.Euler.isEulerianGraph_iff`, `UndergradKB.Combinatorics.Euler.exists_eulerian_isCircuit`
-- **text p.101 (proof of Thm 5.13)**, p.101 [CO-267]: Deterministic procedure splicing closed sub-circuits at the least vertex with an untraversed edge, yielding an Euler circuit or detecting disconnectedness/odd degree — *not formalized* — –
+- **text p.101 (proof of Thm 5.13)**, p.101 [CO-267]: Deterministic procedure splicing closed sub-circuits at the least vertex with an untraversed edge, yielding an Euler circuit or detecting disconnectedness/odd degree — *proved proved here* — `UndergradKB.Combinatorics.Euler.eulerCircuit`, `UndergradKB.Combinatorics.Euler.isEulerCircuit`, `UndergradKB.Combinatorics.Euler.isEulerCircuit_sound`, `UndergradKB.Combinatorics.Euler.eulerCircuit_sound`
 - **text p.102**, p.102 [CO-099]: Theorem 5.13 also holds for loopless multigraphs — *proved proved here* — `UndergradKB.Combinatorics.Multigraph.isEulerian_of_even_degree`, `UndergradKB.Combinatorics.Multigraph.even_degree_of_isEulerian`, `UndergradKB.Combinatorics.Multigraph.isEulerian_iff_even_degree`
 - **def p.103 hamiltonian**, p.103 [CO-100]: Hamiltonian graph: cyclic ordering of all vertices with consecutive vertices adjacent; hamiltonian cycle — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.def_p103_hamiltonianCycle`, `SimpleGraph.IsHamiltonian`, `SimpleGraph.Walk.IsHamiltonianCycle`
 - **def p.103 hamiltonian cycle**, p.103 [CO-100]: Hamiltonian graph: cyclic ordering of all vertices with consecutive vertices adjacent; hamiltonian cycle — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.def_p103_hamiltonianCycle`, `SimpleGraph.IsHamiltonian`, `SimpleGraph.Walk.IsHamiltonianCycle`
@@ -167,8 +167,8 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Thm 5.32**, p.114 [CO-114]: For a connected planar graph with n vertices, m edges, f faces, n - m + f = 2 — *not formalized* — –
 - **Thm 5.33**, p.116 [CO-115]: A planar graph on n>=3 vertices has at most 3n-6 edges — *not formalized* — –
 - **text p.116**, p.116 [CO-116]: K5 and K_{3,3} are not planar — *not formalized* — –
-- **def p.116 elementary subdivision**, p.116 [CO-117]: Elementary subdivision of an edge; homeomorphic graphs (obtained from a common graph by subdivisions) — *not formalized* — –
-- **def p.116 homeomorphic**, p.116 [CO-117]: Elementary subdivision of an edge; homeomorphic graphs (obtained from a common graph by subdivisions) — *not formalized* — –
+- **def p.116 elementary subdivision**, p.116 [CO-117]: Elementary subdivision of an edge; homeomorphic graphs (obtained from a common graph by subdivisions) — *proved proved here* — `UndergradKB.Combinatorics.Graph.elemSubdiv`, `UndergradKB.Combinatorics.Graph.card_elemSubdiv`, `UndergradKB.Combinatorics.Graph.ncard_edgeSet_elemSubdiv`, `UndergradKB.Combinatorics.Graph.Connected.elemSubdiv`
+- **def p.116 homeomorphic**, p.116 [CO-117]: Elementary subdivision of an edge; homeomorphic graphs (obtained from a common graph by subdivisions) — *proved proved here* — `UndergradKB.Combinatorics.Graph.elemSubdiv`, `UndergradKB.Combinatorics.Graph.card_elemSubdiv`, `UndergradKB.Combinatorics.Graph.ncard_edgeSet_elemSubdiv`, `UndergradKB.Combinatorics.Graph.Connected.elemSubdiv`
 - **Thm 5.34**, p.117 [CO-118]: A graph is planar iff it has no subgraph homeomorphic to K5 or K_{3,3} — *not formalized* — –
 - **Thm 5.37**, p.119 [CO-119]: Every planar graph has chromatic number at most 4 (Four Color Theorem) — *not formalized* — –
 - **text p.119**, p.119 [CO-120]: Every planar graph has chromatic number at most 5 (Heawood) — *not formalized* — –
@@ -232,8 +232,8 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **def p.152 representation**, p.152 [CO-167]: A poset is an interval order if each point gets a closed interval so that x<y iff the interval of x lies entirely left of that of y; such assignment is a representation. — *proved proved here* — `UndergradKB.Combinatorics.Order.IsIntervalOrder`
 - **def p.152 distinguishing representation**, p.152 [CO-168]: A representation is distinguishing if all intervals are non-degenerate with distinct endpoints, and every interval order has one. — *proved proved here* — `UndergradKB.Combinatorics.Order.IsIntervalOrder.exists_distinguishing`
 - **text p.152**, p.152 [CO-168]: A representation is distinguishing if all intervals are non-degenerate with distinct endpoints, and every interval order has one. — *proved proved here* — `UndergradKB.Combinatorics.Order.IsIntervalOrder.exists_distinguishing`
-- **def p.152 chain n**, p.152 [CO-169]: The n-point chain and the disjoint sum P+Q with no comparabilities between summands (e.g. 2+2). — *in Mathlib* — `UndergradKB.Combinatorics.Order.containsPoset_two_plus_two_iff`
-- **def p.152 P+Q**, p.152 [CO-169]: The n-point chain and the disjoint sum P+Q with no comparabilities between summands (e.g. 2+2). — *in Mathlib* — `UndergradKB.Combinatorics.Order.containsPoset_two_plus_two_iff`
+- **def p.152 chain n**, p.152 [CO-169]: The n-point chain and the disjoint sum P+Q with no comparabilities between summands (e.g. 2+2). — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.Ch06b.def_6_two_plus_two`
+- **def p.152 P+Q**, p.152 [CO-169]: The n-point chain and the disjoint sum P+Q with no comparabilities between summands (e.g. 2+2). — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.Ch06b.def_6_two_plus_two`
 - **Thm 6.29**, p.153 [CO-170]: A poset is an interval order iff it excludes 2+2. — *proved proved here* — `UndergradKB.Combinatorics.Order.IsIntervalOrder.not_containsPoset`, `UndergradKB.Combinatorics.Order.isIntervalOrder_iff_excludes_two_plus_two`
 - **text p.153-154 algorithm**, p.153 [CO-171]: Algorithm: compute the distinct down sets; if two are incomparable under inclusion output a 2+2, otherwise number down sets and up sets and assign interval [i,j] with D(x)=D_i, U(x)=U_j. — *proved proved here* — `UndergradKB.Combinatorics.Order.two_plus_two_of_incomparable_dnFins`, `UndergradKB.Combinatorics.Order.dnFins_chain_or_two_plus_two`, `UndergradKB.Combinatorics.Order.dnFin_chain`, `UndergradKB.Combinatorics.Order.upFin_chain`
 - **Thm 6.30**, p.154 [CO-172]: For a poset excluding 2+2: number of down sets equals number of up sets, intervals are well formed and represent the order, and the integer-endpoint representation with fewest points is unique. — *proved proved here* — `UndergradKB.Combinatorics.Order.dnFin_chain`, `UndergradKB.Combinatorics.Order.upFin_chain`, `UndergradKB.Combinatorics.Order.downIndex`, `UndergradKB.Combinatorics.Order.upIndex`
@@ -296,12 +296,12 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 9
 
-42 items; 42 with a Lean name; 28 proved proved here; 12 in Mathlib; 2 not formalized.
+42 items; 42 with a Lean name; 30 proved proved here; 12 in Mathlib.
 
 - **Ex 9.2**, p.209 [CO-215]: The number t(n) of tilings of a 2 x n board by dominoes satisfies t(n)=t(n-1)+t(n-2). — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.Domino.boardTilingCount_add_two`, `UndergradKB.Combinatorics.Recurrence.Domino.boardTilingCount_eq_fib`, `UndergradKB.Combinatorics.Recurrence.tilingCount_one`, `UndergradKB.Combinatorics.Recurrence.tilingCount_succ_succ`
 - **Ex 9.3**, p.209 [CO-218]: Binary strings of length n with no two consecutive 1s satisfy a_{n+2}=a_{n+1}+a_n, a_1=2, a_2=3. — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.binGood_card_one`, `UndergradKB.Combinatorics.Recurrence.binGood_card_two`, `UndergradKB.Combinatorics.Recurrence.binGood_card_succ_succ`, `UndergradKB.Combinatorics.Recurrence.binGood_card_eq_fib`
 - **Ex 9.4**, p.209 [CO-219]: Ternary strings of length n avoiding the substring 20 satisfy t_{n+2}=3t_{n+1}-t_n with t_1=3, t_2=8 (t_3=21). — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.ternGood_card_one`, `UndergradKB.Combinatorics.Recurrence.ternGood_card_two`, `UndergradKB.Combinatorics.Recurrence.ternGood_card_succ_succ`, `UndergradKB.Combinatorics.Recurrence.ternGood_card_recurrence`
-- **text p.210 lines and regions**, p.210 [CO-220]: n lines in general position cut the plane into r_n=1+C(n+1,2) regions, from r_{n+1}=r_n+n+1. — *not formalized* — `UndergradKB.Combinatorics.Recurrence.lines_regions_closed_form`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit`
+- **text p.210 lines and regions**, p.210 [CO-220]: n lines in general position cut the plane into r_n=1+C(n+1,2) regions, from r_{n+1}=r_n+n+1. — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.lines_regions_closed_form`, `UndergradKB.Combinatorics.Recurrence.LineRegions.lines_regions_card`, `UndergradKB.Combinatorics.Recurrence.LineRegions.lines_regions_succ`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit`
 - **def p.211 linear recurrence equation**, p.211 [CO-221]: A linear recurrence with constant coefficients: c_0 a_{n+k}+...+c_k a_n=g(n) with c_0,c_k nonzero; homogeneous when g=0. — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.IsLinearRecSolution`, `UndergradKB.Combinatorics.Recurrence.IsLinearRecurrence`, `UndergradKB.Combinatorics.Recurrence.charPoly`, `UndergradKB.Combinatorics.Recurrence.isLinearRecSolution_iff_aeval`
 - **def p.212 advancement operator**, p.212 [CO-222]: Advancement operator A on functions Z->C: (Af)(n)=f(n+1); a linear recurrence is p(A)f=g for a polynomial p in A. — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.advance`, `UndergradKB.Combinatorics.Recurrence.aeval_advance_apply`
 
@@ -317,7 +317,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Ex 9.13**, p.217 [CO-472]: Algorithm for homogeneous constant-coefficient advancement equations: factor p(A) over C, take c r^n (times n^j for multiplicity) for each root, then fit initial conditions by a linear system (Fibonacci-type examples). — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.solutions_alg_closed`, `UndergradKB.Combinatorics.Recurrence.pow_mul_geom_solution`
 - **Ex 9.14**, p.218 [CO-473]: Method for nonhomogeneous equations: general solution = homogeneous solution + a particular solution found by guessing a form resembling the right side, multiplied by n to avoid homogeneous solutions and including lower powers of n. — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.nonhomogeneous_general_solution`
 - **Ex 9.15**, p.219 [CO-473]: Method for nonhomogeneous equations: general solution = homogeneous solution + a particular solution found by guessing a form resembling the right side, multiplied by n to avoid homogeneous solutions and including lower powers of n. — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.nonhomogeneous_general_solution`
-- **Ex 9.16**, p.220 [CO-220]: n lines in general position cut the plane into r_n=1+C(n+1,2) regions, from r_{n+1}=r_n+n+1. — *not formalized* — `UndergradKB.Combinatorics.Recurrence.lines_regions_closed_form`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit`
+- **Ex 9.16**, p.220 [CO-220]: n lines in general position cut the plane into r_n=1+C(n+1,2) regions, from r_{n+1}=r_n+n+1. — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.lines_regions_closed_form`, `UndergradKB.Combinatorics.Recurrence.LineRegions.lines_regions_card`, `UndergradKB.Combinatorics.Recurrence.LineRegions.lines_regions_succ`, `UndergradKB.Combinatorics.Recurrence.lines_regions_explicit`
 - **Ex 9.17**, p.221 [CO-473]: Method for nonhomogeneous equations: general solution = homogeneous solution + a particular solution found by guessing a form resembling the right side, multiplied by n to avoid homogeneous solutions and including lower powers of n. — *proved proved here* — `UndergradKB.Combinatorics.Recurrence.nonhomogeneous_general_solution`
 - **text p.222 vector space**, p.222 [CO-224]: Vector space axioms over R and a linear operator V->V (additive, homogeneous); operators themselves form a vector space; V = functions Z->R. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.def_p223_linear_operator`, `Module`, `LinearMap`, `Module.End`
 - **Thm 9.18**, p.223 [CO-225]: Solutions of the homogeneous equation (c_0 A^k+...+c_k)f=0 with c_0,c_k nonzero form a k-dimensional subspace of the function space. — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.thm_9_18`, `LinearRecurrence.solSpace_rank`, `LinearRecurrence.solSpace`, `LinearRecurrence.basis`
@@ -366,14 +366,14 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 11
 
-12 items; 12 with a Lean name; 8 proved proved here; 1 in Mathlib; 1 partly; 2 not formalized.
+12 items; 12 with a Lean name; 9 proved proved here; 1 in Mathlib; 2 not formalized.
 
 - **Lem 11.1**, p.253 [CO-258]: Every graph on at least six vertices has a triangle or an independent 3-set, and C5 shows six is sharp — *proved proved here* — `UndergradKB.Combinatorics.six_vertices_triangle_or_independent`, `UndergradKB.Combinatorics.cycleGraph_five_no_triangle_no_independent`
 - **Thm 11.2**, p.254 [CO-259]: Ramsey theorem for graphs: R(m,n) exists and R(m,n) <= C(m+n-2,m-1), via R(m,n)<=R(m-1,n)+R(m,n-1) — *proved proved here* — `UndergradKB.Combinatorics.ramseyProp_choose`, `UndergradKB.Combinatorics.ramseyNumber_le`
 - **text p.254**, p.254 [CO-260]: Known values R(3,3)=6, R(4,4)=18, 43<=R(5,5)<=49 and table of bounds for 3<=m,n<=9 — *not formalized* — `UndergradKB.Combinatorics.ramseyNumber_three_three`, `UndergradKB.Combinatorics.ramseyNumber_four_four`
 - **Table 11.3 p.255**, p.255 [CO-260]: Known values R(3,3)=6, R(4,4)=18, 43<=R(5,5)<=49 and table of bounds for 3<=m,n<=9 — *not formalized* — `UndergradKB.Combinatorics.ramseyNumber_three_three`, `UndergradKB.Combinatorics.ramseyNumber_four_four`
 - **text p.255**, p.255 [CO-261]: Upper bound R(n,n) <= C(2n-2,n-1) ~ 4^n/(4 sqrt(pi n)) via Stirling — *proved proved here* — `UndergradKB.Combinatorics.choose_two_mul_sub_two_isEquivalent`, `UndergradKB.Combinatorics.ramseyProp_diagonal`, `UndergradKB.Combinatorics.ramseyNumber_diagonal_le`
-- **text p.255**, p.255 [CO-526]: Stirling approximation n! ~ sqrt(2 pi n)(n/e)^n with refined correction series — *partly* — `UndergradKB.Combinatorics.Stirling.factorial_isEquivalent`, `UndergradKB.Combinatorics.Stirling.stirling_bounds`, `Stirling.factorial_isEquivalent_stirling`
+- **text p.255**, p.255 [CO-526]: Stirling approximation n! ~ sqrt(2 pi n)(n/e)^n with refined correction series — *proved proved here* — `UndergradKB.Combinatorics.Stirling.factorial_isEquivalent`, `UndergradKB.Combinatorics.Stirling.stirling_bounds`, `UndergradKB.Combinatorics.Stirling.stirling_first_correction`, `UndergradKB.Combinatorics.Stirling.stirling_series`
 - **Thm 11.4**, p.256 [CO-262]: Erdos lower bound R(n,n) >= (n/(e sqrt 2)) 2^(n/2), by counting graphs without K_n or independent n-set (equivalently expectation <1) — *proved proved here* — `UndergradKB.Combinatorics.exists_graph_no_clique_no_independent`, `UndergradKB.Combinatorics.exists_graph_no_clique_no_independent_real`, `UndergradKB.Combinatorics.not_ramseyProp_of_counting`, `UndergradKB.Combinatorics.ramseyNumber_diag_ge`
 - **text p.257**, p.257 [CO-249]: If a random count X of bad structures has E(X)<1 then some outcome has none (first moment method) — *proved proved here* — `UndergradKB.Combinatorics.Probability.FinProbSpace.first_moment`
 - **Thm 11.6**, p.258 [CO-263]: General Ramsey theorem: for every colouring of s-subsets of [n] with r colours and n large, some colour class has a monochromatic set of prescribed size h_alpha — *proved proved here* — `UndergradKB.Combinatorics.ramsey_general`
@@ -409,7 +409,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 13
 
-9 items; 8 with a Lean name; 7 proved proved here; 1 not formalized; 1 not a result.
+9 items; 8 with a Lean name; 8 proved proved here; 1 not a result.
 
 - **Thm 13.4**, p.286 [CO-291]: Weak duality: the value of any flow is at most the capacity of any cut — *proved proved here* — `UndergradKB.Combinatorics.Flow.Network.value_le_capacity`
 - **def p.288 used, full, spare capacity, augmenting path, forward and backward edges**, p.288 [CO-292]: Augmenting path from source to sink uses forward edges with spare capacity and backward edges with positive flow; edges can be used/full/empty — *proved proved here* — `UndergradKB.Combinatorics.Flow.Network.Residual`, `UndergradKB.Combinatorics.Flow.Network.AugPath`
@@ -419,7 +419,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Alg 13.11**, p.292 [CO-295]: Ford-Fulkerson labeling algorithm: breadth-first labelling with potentials via forward and backward edges, augment when sink is labeled, restart — *proved proved here* — `UndergradKB.Combinatorics.Flow.Network.labelling_correct`, `UndergradKB.Combinatorics.Flow.Network.fordFulkerson_integral`
 - **text p.293**, p.293 [CO-297]: If the sink is labeled, backtracking gives an augmenting path with delta equal to the sink potential — *proved proved here* — `UndergradKB.Combinatorics.Flow.Network.exists_larger_of_sink_labelled`
 - **text p.293**, p.293 [CO-298]: If the labeling stops with the sink unlabeled, the labeled/unlabeled partition is a cut of capacity equal to the current flow value — *proved proved here* — `UndergradKB.Combinatorics.Flow.Network.labelled_isCut`, `UndergradKB.Combinatorics.Flow.Network.capacity_labelled_eq_value`
-- **text p.297-298**, p.297 [CO-299]: Linear programs with rational data have rational optima; flows are LPs; integer capacities give an integral maximum flow via Ford-Fulkerson — *not formalized* — `UndergradKB.Combinatorics.Flow.Network.fordFulkerson_integral`
+- **text p.297-298**, p.297 [CO-299]: Linear programs with rational data have rational optima; flows are LPs; integer capacities give an integral maximum flow via Ford-Fulkerson — *proved proved here* — `UndergradKB.Combinatorics.Flow.Network.fordFulkerson_integral`, `UndergradKB.Combinatorics.Flow.lp_rational_optimum`
 
 ## Chapter 14
 
@@ -458,7 +458,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 16
 
-63 items; 63 with a Lean name; 28 proved proved here; 34 in Mathlib; 1 not formalized.
+63 items; 63 with a Lean name; 29 proved proved here; 34 in Mathlib.
 
 - **Ex 16.1**, p.339 [CO-284]: Builder can force Assigner to use 3 colors even if the final graph is a path on 4 vertices. — *proved proved here* — `UndergradKB.Combinatorics.Online.three_colours_on_path`
 - **def p.339 on-line coloring**, p.339 [CO-283]: On-line coloring game: Builder presents vertices with adjacency to earlier ones, Assigner must immediately color properly. — *proved proved here* — `UndergradKB.Combinatorics.Online.Strategy`, `UndergradKB.Combinatorics.Online.Improper`
@@ -485,7 +485,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Thm 16.12**, p.349 [CO-334]: Gale-Ryser: a 0-1 matrix with row sums R and column sums C exists iff R^d dominates C in P(t). — *proved proved here* — `UndergradKB.Combinatorics.gale_ryser_partial_sums`, `UndergradKB.Combinatorics.gale_ryser`
 - **Thm 16.13**, p.349 [CO-265]: Van der Waerden: for r colors and length t there is n0 such that any r-coloring of [n], n >= n0, has a monochromatic t-term AP. — *proved proved here* — `UndergradKB.Combinatorics.van_der_waerden`
 - **def p.349 arithmetic progression**, p.349 [CO-264]: An arithmetic progression of length t is an increasing sequence with constant positive difference d. — *proved proved here* — `UndergradKB.Combinatorics.IsArithProg`
-- **text p.349 construction**, p.349 [CO-335]: Construction: start from the matrix with columns R^d and, along a chain of covers down to C, swap one entry per cover step. — *not formalized* — `UndergradKB.Combinatorics.GaleRyserSwap.exists_swap_step`, `UndergradKB.Combinatorics.GaleRyserSwap.exists_matrix_of_transfers`, `UndergradKB.Combinatorics.GaleRyserSwap.exists_matrix_of_chain`
+- **text p.349 construction**, p.349 [CO-335]: Construction: start from the matrix with columns R^d and, along a chain of covers down to C, swap one entry per cover step. — *proved proved here* — `UndergradKB.Combinatorics.GaleRyserSwap.reflTransGen_transfer_of_dominates`, `UndergradKB.Combinatorics.GaleRyserSwap.exists_matrix_of_dominates`, `UndergradKB.Combinatorics.GaleRyserSwap.exists_swap_step`, `UndergradKB.Combinatorics.GaleRyserSwap.exists_matrix_of_transfers`
 - **Lem 16.14**, p.350 [CO-255]: Lovasz Local Lemma (asymmetric): if P(E) <= x(E) * prod over dependency neighbors (1-x(F)) with 0<x<1, then all events fail simultaneously with positive probability, with explicit lower bound. — *proved proved here* — `UndergradKB.Combinatorics.Probability.lovasz_local_lemma`, `UndergradKB.Combinatorics.Probability.lovasz_local_lemma_pos`
 - **Lem 16.15**, p.352 [CO-256]: Symmetric Local Lemma: if P(E) <= p, each event depends on at most d others and e*p*(d+1) < 1 then with positive probability no event occurs. — *proved proved here* — `UndergradKB.Combinatorics.Probability.lovasz_local_lemma_symmetric`, `UndergradKB.Combinatorics.Probability.lovasz_local_lemma_symmetric_pos`
 - **text p.352**, p.352 [CO-257]: Variant of the symmetric Local Lemma with hypothesis 4pd < 1. — *proved proved here* — `UndergradKB.Combinatorics.Probability.lovasz_local_lemma_four_pd`

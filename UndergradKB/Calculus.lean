@@ -47,6 +47,11 @@ import UndergradKB.Calculus.StokesParam
 import UndergradKB.Calculus.InverseSquareFlux
 import UndergradKB.Calculus.DivergenceParam
 import UndergradKB.Calculus.DivergenceInvSquare
+import UndergradKB.Calculus.Chains
+import UndergradKB.Calculus.GreenGlued
+import UndergradKB.Calculus.WindingNumber
+import UndergradKB.Calculus.StokesGlued
+import UndergradKB.Calculus.DivergenceGlued
 import UndergradKB.Calculus.Surfaces
 import UndergradKB.Calculus.GaussLaw
 import UndergradKB.Calculus.LHopital
@@ -86,6 +91,7 @@ import UndergradKB.Calculus.Course.V3C4
 import UndergradKB.Calculus.Course.V3C5
 import UndergradKB.Calculus.Course.V3C6
 import UndergradKB.Calculus.Course.V3C6b
+import UndergradKB.Calculus.Course.V3C6c
 import UndergradKB.Calculus.Course.V3C7
 import UndergradKB.Calculus.Trig
 import UndergradKB.Calculus.TrigCalculus

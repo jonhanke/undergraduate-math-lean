@@ -557,7 +557,7 @@ theorem extreme_value_closed_bounded {S : Set Plane} (hc : IsClosed S)
   have hK : IsCompact S := Metric.isCompact_of_isClosed_isBounded hc hb
   exact ⟨hK.exists_isMaxOn hne hf, hK.exists_isMinOn hne hf⟩
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 section ProvedInKB
 

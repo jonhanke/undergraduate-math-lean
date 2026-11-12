@@ -312,7 +312,7 @@ theorem change_of_variables_triple {S R : Set (Fin 3 → ℝ)} {T : (Fin 3 → �
   rw [MeasureTheory.integral_image_eq_integral_abs_det_fderiv_smul volume hS hT hinj f]
   simp only [jacobian_three_variables, smul_eq_mul]
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 section ProvedInKB
 

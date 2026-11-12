@@ -1,0 +1,24 @@
+{
+  "challenge_module": "Challenge_Probability",
+  "solution_module": "Solution_Probability",
+  "theorem_names": [
+    "UndergradKB.Headlines.Probability.regular_pow_tendsto",
+    "UndergradKB.Headlines.Probability.ergodic_cesaro_tendsto",
+    "UndergradKB.Headlines.Probability.absorption_certain",
+    "UndergradKB.Headlines.Probability.hasSum_absorption_time",
+    "UndergradKB.Headlines.Probability.absorption_prob_tendsto",
+    "UndergradKB.Headlines.Probability.polya_two",
+    "UndergradKB.Headlines.Probability.polya_three",
+    "UndergradKB.Headlines.Probability.arcsine_law_lead",
+    "UndergradKB.Headlines.Probability.riffle_shuffle_composition",
+    "UndergradKB.Headlines.Probability.card_riffle_shuffles",
+    "UndergradKB.Headlines.Probability.local_limit_theorem"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

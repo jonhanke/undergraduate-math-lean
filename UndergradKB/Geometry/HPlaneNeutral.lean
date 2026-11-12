@@ -389,6 +389,26 @@ theorem hneutral_axiomHV : ∀ ℓ : Set HPoint, IsLine ℓ → ∀ Q : HPoint, 
 
 /-! ### The neutral plane -/
 
+/-- The h-angle at `O` depends only on the h-half-lines (Axiom III, the measure of an angle). -/
+theorem hneutral_axiomIII_halfLine (O A A' B : HPoint) (hA : A ≠ O) (hA' : A' ∈ metricHalfLine O A)
+    (hA'O : A' ≠ O) (_hB : B ≠ O) : hoangle A'.z O.z B.z = hoangle A.z O.z B.z := by
+  rw [HPoint.mem_metricHalfLine_iff hA] at hA'
+  obtain ⟨-, s, hs, e⟩ := hA'
+  have hne : mobius O.z A'.z ≠ 0 := by
+    intro h0
+    exact hA'O (HPoint.ext ((mobius_eq_zero_iff O.norm_lt A'.norm_lt).1 h0))
+  have hs0 : 0 < s := by
+    rcases hs.lt_or_eq with h | h
+    · exact h
+    · subst h; simp at e; exact absurd e hne
+  unfold hoangle
+  rw [e]
+  have hsc : (s : ℂ) ≠ 0 := by exact_mod_cast hs0.ne'
+  have : mobius O.z B.z / ((s : ℂ) * mobius O.z A.z) =
+      ((s⁻¹ : ℝ) : ℂ) * (mobius O.z B.z / mobius O.z A.z) := by
+    push_cast; field_simp
+  rw [this, Complex.arg_real_mul _ (inv_pos.2 hs0)]
+
 /-- **Beltrami's model (Theorem 11.17, 'if' part, p. 89).**  The h-plane (the conformal disc model, built
 inside the Euclidean plane `ℂ`) is a neutral plane: it satisfies Axioms I-IV, with the angle measure
 `hoangle`.  By `hyperbolicNeutralPlane_axiomHV` it also satisfies Axiom h-V, so it is a hyperbolic plane, and by
@@ -402,6 +422,7 @@ noncomputable def hyperbolicNeutralPlane : NeutralPlane HPoint where
     simp [HPoint.center] at this⟩
   axiomII := hneutral_axiomII
   axiomIIIa := hneutral_axiomIIIa
+  axiomIII_halfLine := hneutral_axiomIII_halfLine
   axiomIIIb := hneutral_axiomIIIb
   axiomIIIc := fun A O B hA hB _ => hneutral_axiomIIIc A O B hA hB
   axiomIV := hneutral_axiomIV

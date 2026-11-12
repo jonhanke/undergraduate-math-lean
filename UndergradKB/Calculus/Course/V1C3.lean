@@ -271,7 +271,7 @@ theorem power_rule_real (r x : ℝ) (hx : 0 < x) :
     HasDerivAt (fun y : ℝ => y ^ r) (r * x ^ (r - 1)) x :=
   Real.hasDerivAt_rpow_const (Or.inl hx.ne')
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 1:Theorem 3.9 (CA-108). `d/dx cot x = -csc² x` where `sin x ≠ 0`. -/
 @[kb "openstaxcalculus2016" "1:Theorem 3.9, p. 254"]

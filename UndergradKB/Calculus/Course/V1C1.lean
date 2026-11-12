@@ -179,7 +179,7 @@ theorem logarithm_properties (b x y r : ℝ) (hx : 0 < x) (hy : 0 < y) :
   rw [Real.logb, Real.logb, Real.log_rpow hx]
   ring
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 1:§1.1 Rule: Vertical Line Test (CA-003). A set in the plane is the graph of a
 function on its projection exactly when each vertical line meets it in at most one point. -/

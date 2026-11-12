@@ -11,3 +11,9 @@ import Solution_Combinatorics
 #print axioms UndergradKB.Headlines.Combinatorics.gosper_algorithm
 #print axioms UndergradKB.Headlines.Combinatorics.sister_celine
 #print axioms UndergradKB.Headlines.Combinatorics.hyper_complete
+#print axioms UndergradKB.Headlines.Combinatorics.euler_circuit_iff
+#print axioms UndergradKB.Headlines.Combinatorics.dirac
+#print axioms UndergradKB.Headlines.Combinatorics.lovasz_local_lemma
+#print axioms UndergradKB.Headlines.Combinatorics.gauss_hypergeometric_sum
+#print axioms UndergradKB.Headlines.Combinatorics.dougall_sum
+#print axioms UndergradKB.Headlines.Combinatorics.dixon_sum

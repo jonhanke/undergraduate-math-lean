@@ -264,7 +264,7 @@ theorem intermediate_value_theorem (f : ℝ → ℝ) (a b : ℝ) (hab : a ≤ b)
   · exact intermediate_value_Icc hab hf ⟨hy.1, hy.2⟩
   · exact intermediate_value_Icc' hab hf ⟨hy.1, hy.2⟩
 
-/-! ## Results proved in undergrad-kb -/
+/-! ## Results proved in this library -/
 
 /-- OpenStax Calculus 1:Theorem 2.3 (CA-054). For a positive integer `n`, `1/(x-a)^n → +∞` as
 `x → a` when `n` is even, and for odd `n` it tends to `+∞` from the right and `-∞` from the left. -/

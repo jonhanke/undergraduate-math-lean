@@ -128,7 +128,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        topic: [LinearAlgebra, AbstractAlgebra, Combinatorics, Calculus, Trigonometry, Geometry]
+        topic: [LinearAlgebra, AbstractAlgebra, Combinatorics, Calculus, Trigonometry, Geometry, Precalculus,
+                Statistics, Probability, DifferentialEquations, ComplexAnalysis, RepresentationTheory,
+                Topology]
     steps:
       - name: Free disk space (the comparator exports need it)
         run: |

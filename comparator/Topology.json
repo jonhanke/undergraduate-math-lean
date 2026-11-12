@@ -1,0 +1,22 @@
+{
+  "challenge_module": "Challenge_Topology",
+  "solution_module": "Solution_Topology",
+  "theorem_names": [
+    "UndergradKB.Headlines.Topology.period_three",
+    "UndergradKB.Headlines.Topology.peano_curve",
+    "UndergradKB.Headlines.Topology.banach_mazur",
+    "UndergradKB.Headlines.Topology.closed_subgroup_equiv",
+    "UndergradKB.Headlines.Topology.quotient_closed_subgroup_equiv",
+    "UndergradKB.Headlines.Topology.closed_subgroup_torus_equiv",
+    "UndergradKB.Headlines.Topology.wallman_compactification",
+    "UndergradKB.Headlines.Topology.normalSpace_iff_wallman_eq_stoneCech",
+    "UndergradKB.Headlines.Topology.pontryagin_duality_real_circle_int"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
