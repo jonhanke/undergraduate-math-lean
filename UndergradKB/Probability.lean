@@ -29,6 +29,21 @@ import UndergradKB.Probability.PolyaRecurrence
 import UndergradKB.Probability.PolyaThree
 import UndergradKB.Probability.LocalLimitLattice
 import UndergradKB.Probability.GeneratingFunctions
+import UndergradKB.Probability.Equalizations
+import UndergradKB.Probability.IndepDensity
+import UndergradKB.Probability.FirstMaximum
+import UndergradKB.Probability.ExamplesDiscrete
+import UndergradKB.Probability.ExamplesExpectation
+import UndergradKB.Probability.ExamplesContinuous
+import UndergradKB.Probability.ExamplesBranching
+import UndergradKB.Probability.ExamplesMarkov
+import UndergradKB.Probability.ExamplesMarkovB
+import UndergradKB.Probability.MarkovVariance
+import UndergradKB.Probability.ExamplesSchool
+import UndergradKB.Probability.ExamplesGeometric
+import UndergradKB.Probability.ExamplesLimits
+import UndergradKB.Probability.ExamplesMarkovC
+import UndergradKB.Probability.MarkovClt
 import UndergradKB.Probability.Course.Ch01
 import UndergradKB.Probability.Course.Ch02
 import UndergradKB.Probability.Course.Ch03
@@ -40,6 +55,7 @@ import UndergradKB.Probability.Course.Ch08
 import UndergradKB.Probability.Course.Ch09
 import UndergradKB.Probability.Course.Ch10
 import UndergradKB.Probability.Course.Ch11
+import UndergradKB.Probability.Course.Ch12
 
 /-! # Probability
 Topic root. Import every file of the topic here; a topic imports Mathlib modules

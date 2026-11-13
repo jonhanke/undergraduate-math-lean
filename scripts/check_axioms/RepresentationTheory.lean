@@ -4,3 +4,8 @@ import Solution_RepresentationTheory
 
 #print axioms UndergradKB.Headlines.RepresentationTheory.groupDeterminant_factorization
 #print axioms UndergradKB.Headlines.RepresentationTheory.dixmier_lemma
+#print axioms UndergradKB.Headlines.RepresentationTheory.peter_weyl_gl
+#print axioms UndergradKB.Headlines.RepresentationTheory.rational_irrep_is_glIrrep
+#print axioms UndergradKB.Headlines.RepresentationTheory.glIrrep_iso_iff
+#print axioms UndergradKB.Headlines.RepresentationTheory.rational_rep_decomposition
+#print axioms UndergradKB.Headlines.RepresentationTheory.mckay_affine_classification

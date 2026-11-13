@@ -1,0 +1,14 @@
+{
+  "challenge_module": "Challenge_RealAnalysis",
+  "solution_module": "Solution_RealAnalysis",
+  "theorem_names": [
+    "UndergradKB.Headlines.RealAnalysis.riemann_integral_eq_lebesgue"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

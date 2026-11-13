@@ -634,4 +634,36 @@ theorem squeeze_theorem (a b c : ℕ → ℝ) (L : ℝ) (hab : ∀ n, a n ≤ b 
     (ha : Tendsto a atTop (𝓝 L)) (hc : Tendsto c atTop (𝓝 L)) : Tendsto b atTop (𝓝 L) :=
   tendsto_of_tendsto_of_tendsto_of_le_of_le ha hc hab hbc
 
+/-- Beck Definition 7.1.5 (CX-093). A real sequence is monotone increasing (decreasing) if each
+term is at most (at least) its successor. -/
+@[kb "beck2025" "Definition 7.1.5, p. 112"]
+theorem monotone_iff_succ (a : ℕ → ℝ) :
+    (Monotone a ↔ ∀ n, a n ≤ a (n + 1)) ∧ (Antitone a ↔ ∀ n, a (n + 1) ≤ a n) :=
+  ⟨⟨fun h n => h (Nat.le_succ n), monotone_nat_of_le_succ⟩,
+    ⟨fun h n => h (Nat.le_succ n), antitone_nat_of_succ_le⟩⟩
+
+/-- Beck Definition 7.2.15 (CX-103). A series converges absolutely when the series of the
+moduli converges (to some real sum). -/
+@[kb "beck2025" "Definition 7.2.15, p. 116"]
+theorem absolutely_convergent_iff (a : ℕ → ℂ) :
+    Summable (fun k => ‖a k‖) ↔ ∃ S : ℝ, HasSum (fun k => ‖a k‖) S :=
+  ⟨fun h => ⟨_, h.hasSum⟩, fun ⟨_, h⟩ => h.summable⟩
+
+/-- Beck Definition 7.4.1 (CX-111). The power series with coefficients c_k centred at z0, evaluated
+at z, is the sum of c_k (z - z0)^k. -/
+@[kb "beck2025" "Definition 7.4.1, p. 121"]
+theorem power_series_centred_sum (c : ℕ → ℂ) (z₀ z : ℂ) :
+    (FormalMultilinearSeries.ofScalars ℂ c).sum (z - z₀) = ∑' k, c k * (z - z₀) ^ k := by
+  simp only [FormalMultilinearSeries.sum, FormalMultilinearSeries.ofScalars_apply_eq]
+  simp
+
+/-- Beck Definition 7.4.4 (CX-112). The radius of convergence R: the series of moduli converges
+at every r < R and fails to converge at every r > R. -/
+@[kb "beck2025" "Definition 7.4.4, p. 121"]
+theorem radius_summable_iff (p : FormalMultilinearSeries ℂ ℂ ℂ) :
+    (∀ r : NNReal, (r : ENNReal) < p.radius → Summable (fun n => ‖p n‖ * (r : ℝ) ^ n)) ∧
+    (∀ r : NNReal, p.radius < (r : ENNReal) → ¬ Summable (fun n => ‖p n‖ * (r : ℝ) ^ n)) :=
+  ⟨fun _ h => p.summable_norm_mul_pow h,
+    fun _ h hs => absurd (p.le_radius_of_summable hs) (not_le.mpr h)⟩
+
 end UndergradKB.ComplexAnalysis.Course.Beck7

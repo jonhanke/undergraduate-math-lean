@@ -3,7 +3,12 @@
   "solution_module": "Solution_RepresentationTheory",
   "theorem_names": [
     "UndergradKB.Headlines.RepresentationTheory.groupDeterminant_factorization",
-    "UndergradKB.Headlines.RepresentationTheory.dixmier_lemma"
+    "UndergradKB.Headlines.RepresentationTheory.dixmier_lemma",
+    "UndergradKB.Headlines.RepresentationTheory.peter_weyl_gl",
+    "UndergradKB.Headlines.RepresentationTheory.rational_irrep_is_glIrrep",
+    "UndergradKB.Headlines.RepresentationTheory.glIrrep_iso_iff",
+    "UndergradKB.Headlines.RepresentationTheory.rational_rep_decomposition",
+    "UndergradKB.Headlines.RepresentationTheory.mckay_affine_classification"
   ],
   "definition_names": [],
   "permitted_axioms": [

@@ -2,6 +2,10 @@ import Mathlib.Probability.ProbabilityMassFunction.Constructions
 import Mathlib.MeasureTheory.Measure.Typeclasses.Probability
 import Mathlib.Probability.Distributions.Uniform
 import UndergradKB.Common.Attr
+import UndergradKB.Probability.ExamplesDiscrete
+import UndergradKB.Probability.ExamplesSchool
+import UndergradKB.Probability.Basic
+import UndergradKB.Probability.DiscreteDistributions
 
 /-!
 # Course layer, Chapter 1 (Grinstead–Snell, Discrete Probability Distributions)
@@ -62,5 +66,37 @@ theorem gs_definition_1_3 {Ω : Type*} [Fintype Ω] [MeasurableSpace Ω] [Measur
     (ω : Ω) :
     Measure.uniformOfFinset (Finset.univ : Finset Ω) {ω} = (Fintype.card Ω : ENNReal)⁻¹ := by
   simp
+
+/-- Grinstead–Snell Theorem 1.3 (PR-005). If the events `A i` partition the sample space then
+`P(E) = ∑ P(E ∩ A i)`. -/
+@[kb "grinsteadsnell2006" "Theorem 1.3, p. 31"]
+theorem gs_theorem_1_3 : type_of% @UndergradKB.Probability.measure_eq_sum_inter_partition :=
+  @UndergradKB.Probability.measure_eq_sum_inter_partition
+
+/-- Grinstead–Snell Corollary 1.1 (PR-005). `P(A) = P(A ∩ B) + P(A ∩ Bᶜ)`. -/
+@[kb "grinsteadsnell2006" "Corollary 1.1, p. 32"]
+theorem gs_corollary_1_1 : type_of% @UndergradKB.Probability.measure_eq_inter_add_inter_compl :=
+  @UndergradKB.Probability.measure_eq_inter_add_inter_compl
+
+/-- Grinstead–Snell Definition 1.4 (PR-008). Odds `r : s` in favour of an event of probability `p`
+(`r/s = p/(1-p)`) recover `p = r/(r+s)`. -/
+@[kb "grinsteadsnell2006" "Definition 1.4, p. 36"]
+theorem gs_definition_1_4 : type_of% @UndergradKB.Probability.prob_eq_of_odds :=
+  @UndergradKB.Probability.prob_eq_of_odds
+
+/-- Grinstead–Snell Example 1.9 (PR-148). The election with `A`, `B` equally likely and `C` half as likely has a determined distribution. -/
+@[kb "grinsteadsnell2006" "Example 1.9, p. 28"]
+theorem gs_example_1_9 : type_of% @UndergradKB.Probability.election_distribution :=
+  @UndergradKB.Probability.election_distribution
+
+/-- Grinstead–Snell Example 1.10 (PR-130). Probabilities of events for three tosses of a fair coin. -/
+@[kb "grinsteadsnell2006" "Example 1.10, p. 32"]
+theorem gs_example_1_10 : type_of% @UndergradKB.Probability.threeTosses_prob :=
+  @UndergradKB.Probability.threeTosses_prob
+
+/-- Grinstead–Snell Example 1.11 (PR-131). Probabilities of events for a pair of dice. -/
+@[kb "grinsteadsnell2006" "Example 1.11, p. 34"]
+theorem gs_example_1_11 : type_of% @UndergradKB.Probability.twoDice_prob :=
+  @UndergradKB.Probability.twoDice_prob
 
 end UndergradKB.Probability.Course

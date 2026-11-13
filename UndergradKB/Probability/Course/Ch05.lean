@@ -4,6 +4,8 @@ import Mathlib.Probability.Distributions.Gamma
 import Mathlib.Probability.Distributions.Exponential
 import Mathlib.Probability.Distributions.Gaussian.Real
 import UndergradKB.Common.Attr
+import UndergradKB.Probability.ExamplesSchool
+import UndergradKB.Probability.Transforms
 
 /-!
 # Course layer, Chapter 5 (Grinstead–Snell, Important Distributions and Densities)
@@ -65,5 +67,48 @@ theorem gs_section_5_2_normal_density (μ : ℝ) {s : ℝ≥0} (_hs : s ≠ 0) (
       Real.sqrt_sq (NNReal.coe_nonneg s)]
   rw [gaussianPDFReal_def, h, NNReal.coe_pow]
   ring
+
+/-- Grinstead–Snell Theorem 5.1 (PR-062). For a strictly increasing `φ`, `Y = φ(X)` has cdf
+`F_Y(y) = F_X(φ⁻¹(y))`. -/
+@[kb "grinsteadsnell2006" "Theorem 5.1, p. 218"]
+theorem gs_theorem_5_1 : type_of% @UndergradKB.Probability.cdf_map_strictMono :=
+  @UndergradKB.Probability.cdf_map_strictMono
+
+/-- Grinstead–Snell Theorem 5.1 (PR-062), probability form `P(φ(X) ≤ y) = P(X ≤ φ⁻¹(y))`. -/
+@[kb "grinsteadsnell2006" "Theorem 5.1, p. 218"]
+theorem gs_theorem_5_1_prob : type_of% @UndergradKB.Probability.measure_comp_le_strictMono :=
+  @UndergradKB.Probability.measure_comp_le_strictMono
+
+/-- Grinstead–Snell Corollary 5.1 (PR-062). The density of `φ(X)` is `f_X(φ⁻¹(y))` times the
+derivative of `φ⁻¹`. -/
+@[kb "grinsteadsnell2006" "Corollary 5.1, p. 218"]
+theorem gs_corollary_5_1 : type_of% @UndergradKB.Probability.map_withDensity_strictMono :=
+  @UndergradKB.Probability.map_withDensity_strictMono
+
+/-- Grinstead–Snell Corollary 5.2 (PR-063). Inverse transform sampling: if `U` is uniform on `[0,1]`
+and `F` a strictly increasing cdf then `F⁻¹(U)` has cdf `F`. -/
+@[kb "grinsteadsnell2006" "Corollary 5.2, p. 220"]
+theorem gs_corollary_5_2 : type_of% @UndergradKB.Probability.cdf_inverse_transform :=
+  @UndergradKB.Probability.cdf_inverse_transform
+
+/-- Grinstead–Snell Corollary 5.2 (PR-063), probability form `P(F⁻¹(U) ≤ y) = F(y)`. -/
+@[kb "grinsteadsnell2006" "Corollary 5.2, p. 220"]
+theorem gs_corollary_5_2_prob : type_of% @UndergradKB.Probability.measure_inverse_transform_le :=
+  @UndergradKB.Probability.measure_inverse_transform_le
+
+/-- Grinstead–Snell Example 5.1 (PR-150). The probability of no arrival in the first `k` time units. -/
+@[kb "grinsteadsnell2006" "Example 5.1, p. 194"]
+theorem gs_example_5_1 : type_of% @UndergradKB.Probability.queue_no_arrival :=
+  @UndergradKB.Probability.queue_no_arrival
+
+/-- Grinstead–Snell Example 5.1 (PR-150). The probability of no arrival, in random-variable form. -/
+@[kb "grinsteadsnell2006" "Example 5.1, p. 194"]
+theorem gs_example_5_1_b : type_of% @UndergradKB.Probability.queue_no_arrival_rv :=
+  @UndergradKB.Probability.queue_no_arrival_rv
+
+/-- Grinstead–Snell Example 5.1 (PR-150). The memoryless property of the geometric waiting time. -/
+@[kb "grinsteadsnell2006" "Example 5.1, p. 194"]
+theorem gs_example_5_1_c : type_of% @UndergradKB.Probability.queue_memoryless :=
+  @UndergradKB.Probability.queue_memoryless
 
 end UndergradKB.Probability.Course

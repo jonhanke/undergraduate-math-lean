@@ -193,4 +193,10 @@ theorem const_of_deriv_zero_region (G : Set ℂ) (hG : IsOpen G) (hC : IsConnect
     (fun z hz => (hf z hz).differentiableAt.differentiableWithinAt)
     (fun z hz => (hf z hz).deriv)
 
+/-- Beck Definition 2.1.7 (CX-024). f is continuous at z0 iff the limit of f at z0 is f(z0). -/
+@[kb "beck2025" "Definition 2.1.7, p. 34"]
+theorem continuousAt_iff_limit_eq_value (f : ℂ → ℂ) (z₀ : ℂ) :
+    ContinuousAt f z₀ ↔ Tendsto f (𝓝 z₀) (𝓝 (f z₀)) :=
+  Iff.rfl
+
 end UndergradKB.ComplexAnalysis.Course.Beck2

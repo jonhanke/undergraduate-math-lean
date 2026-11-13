@@ -6,6 +6,9 @@ Authors: Jonathan Hanke
 import UndergradKB.DifferentialEquations.LaplaceUniqueness
 import UndergradKB.DifferentialEquations.NthOrderLinear
 import UndergradKB.DifferentialEquations.BoundaryValue
+import UndergradKB.DifferentialEquations.FrobeniusAnalytic
+import UndergradKB.DifferentialEquations.FourierDirichlet
+import UndergradKB.DifferentialEquations.Gibbs
 
 /-!
 # Proofs of the differential equations headline statements
@@ -16,7 +19,7 @@ statement here is exactly the one in `Challenge_DifferentialEquations.lean`.
 
 namespace UndergradKB.Headlines.DifferentialEquations
 
-open Real Set Filter Topology MeasureTheory UndergradKB.DifferentialEquations
+open Real Set Filter Topology MeasureTheory intervalIntegral UndergradKB.DifferentialEquations
 
 theorem laplace_unique {f g : ℝ → ℝ} {M N c d : ℝ} (hfc : ContinuousOn f (Ici 0))
     (hgc : ContinuousOn g (Ici 0)) (hf : ExpOrder f M c) (hg : ExpOrder g N d)
@@ -35,5 +38,36 @@ theorem wave_general_solution {a : ℝ} (ha : a ≠ 0) {y : ℝ → ℝ → ℝ}
     ∃ F G : ℝ → ℝ, ContDiff ℝ 2 F ∧ ContDiff ℝ 2 G ∧
       ∀ x t, y x t = F (x + a * t) + G (x - a * t) :=
   UndergradKB.DifferentialEquations.wave_general_solution_converse ha hy hwave
+
+theorem frobenius_analytic (P Q : ℕ → ℝ) {ρ : ℝ} (hρ : 0 < ρ)
+    (hP : ∀ x : ℝ, |x| < ρ → Summable fun k => P k * x ^ k)
+    (hQ : ∀ x : ℝ, |x| < ρ → Summable fun k => Q k * x ^ k) {r : ℝ}
+    (hr : r * (r - 1) + P 0 * r + Q 0 = 0)
+    (hF : ∀ k : ℕ, 1 ≤ k → (r + k) * (r + k - 1) + P 0 * (r + k) + Q 0 ≠ 0) :
+    ∃ a : ℕ → ℝ, a 0 = 1 ∧ (∀ x : ℝ, |x| < ρ → Summable fun k => a k * x ^ k) ∧
+      (∀ k : ℕ, 1 ≤ k → a k * ((r + k) * (r + k - 1) + P 0 * (r + k) + Q 0) =
+        -∑ j ∈ Finset.range k, a j * ((r + (j : ℝ)) * P (k - j) + Q (k - j))) ∧
+      (∀ x : ℝ, 0 < x → x < ρ →
+        x ^ 2 * deriv (deriv (fun t : ℝ => t ^ r * ∑' k, a k * t ^ k)) x +
+          x * (∑' k, P k * x ^ k) * deriv (fun t : ℝ => t ^ r * ∑' k, a k * t ^ k) x +
+          (∑' k, Q k * x ^ k) * (x ^ r * ∑' k, a k * x ^ k) = 0) ∧
+      ∃ x : ℝ, 0 < x ∧ x < ρ ∧ x ^ r * ∑' k, a k * x ^ k ≠ 0 :=
+  UndergradKB.DifferentialEquations.frobenius_analytic P Q hρ hP hQ hr hF
+
+theorem fourier_series_piecewise_smooth {f : ℝ → ℝ} {L : ℝ} (hL : 0 < L)
+    (hper : Function.Periodic f (2 * L)) (hpw : PiecewiseSmoothOn f (-L) L) (t : ℝ) :
+    ∃ l₁ l₂, Tendsto f (𝓝[>] t) (𝓝 l₁) ∧ Tendsto f (𝓝[<] t) (𝓝 l₂) ∧
+      Tendsto (fun N : ℕ => trigPoly L (fourierA f L) (fourierB f L) N t) atTop (𝓝 ((l₁ + l₂) / 2)) :=
+  UndergradKB.DifferentialEquations.fourier_series_piecewise_smooth hL hper hpw t
+
+theorem gibbs_phenomenon :
+    Tendsto (fun M : ℕ =>
+        trigPoly π (fourierA squareWave π) (fourierB squareWave π) (2 * M) (π / (2 * M)))
+      atTop (𝓝 ((2 / π) * ∫ t in (0:ℝ)..π, sinc t)) ∧
+    1.17 < (2 / π) * ∫ t in (0:ℝ)..π, sinc t ∧
+    ∀ᶠ M : ℕ in atTop,
+      1.17 < trigPoly π (fourierA squareWave π) (fourierB squareWave π) (2 * M) (π / (2 * M)) ∧
+      squareWave (π / (2 * M)) = 1 :=
+  UndergradKB.DifferentialEquations.gibbs_phenomenon
 
 end UndergradKB.Headlines.DifferentialEquations

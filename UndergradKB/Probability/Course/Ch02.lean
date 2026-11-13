@@ -4,6 +4,9 @@ import Mathlib.Probability.HasLaw
 import Mathlib.Probability.Distributions.Uniform
 import Mathlib.Probability.Distributions.Exponential
 import UndergradKB.Common.Attr
+import UndergradKB.Probability.ExamplesContinuous
+import UndergradKB.Probability.ExamplesGeometric
+import UndergradKB.Probability.ContinuousDistributions
 
 /-!
 # Course layer, Chapter 2 (Grinstead–Snell, Continuous Probability Densities)
@@ -56,5 +59,56 @@ theorem gs_example_2_17 {r : ℝ} (hr : 0 < r) :
       ∀ x : ℝ, cdf (expMeasure r) x = if 0 ≤ x then 1 - Real.exp (-(r * x)) else 0 :=
   have := isProbabilityMeasure_expMeasure hr
   ⟨this, lintegral_exponentialPDF_eq_one hr, cdf_expMeasure_eq hr⟩
+
+/-- Grinstead–Snell Theorem 2.1 (PR-013). If `X` has density `f` then its cdf is the integral of `f`
+up to `x`. -/
+@[kb "grinsteadsnell2006" "Theorem 2.1, p. 69"]
+theorem gs_theorem_2_1 : type_of% @UndergradKB.Probability.cdf_withDensity_eq_integral :=
+  @UndergradKB.Probability.cdf_withDensity_eq_integral
+
+/-- Grinstead–Snell Theorem 2.1 (PR-013), derivative form: `F'(x) = f(x)` where `f` is continuous. -/
+@[kb "grinsteadsnell2006" "Theorem 2.1, p. 69"]
+theorem gs_theorem_2_1_deriv : type_of% @UndergradKB.Probability.hasDerivAt_cdf_withDensity :=
+  @UndergradKB.Probability.hasDerivAt_cdf_withDensity
+
+/-- Grinstead–Snell Example 2.6 (PR-156). Bertrand's paradox, endpoint-angle model. -/
+@[kb "grinsteadsnell2006" "Example 2.6, p. 55"]
+theorem gs_example_2_6 : type_of% @UndergradKB.Probability.bertrand_angle :=
+  @UndergradKB.Probability.bertrand_angle
+
+/-- Grinstead–Snell Example 2.6 (PR-156). Bertrand's paradox, midpoint-distance model. -/
+@[kb "grinsteadsnell2006" "Example 2.6, p. 55"]
+theorem gs_example_2_6_b : type_of% @UndergradKB.Probability.bertrand_distance :=
+  @UndergradKB.Probability.bertrand_distance
+
+/-- Grinstead–Snell Example 2.6 (PR-156). Bertrand's paradox, midpoint-distance model on `[0, 1]`. -/
+@[kb "grinsteadsnell2006" "Example 2.6, p. 55"]
+theorem gs_example_2_6_c : type_of% @UndergradKB.Probability.bertrand_distance_unit :=
+  @UndergradKB.Probability.bertrand_distance_unit
+
+/-- Grinstead–Snell Example 2.6 (PR-156). Bertrand's paradox, uniform midpoint in the disk. -/
+@[kb "grinsteadsnell2006" "Example 2.6, p. 55"]
+theorem gs_example_2_6_d : type_of% @UndergradKB.Probability.bertrand_midpoint :=
+  @UndergradKB.Probability.bertrand_midpoint
+
+/-- Grinstead–Snell Example 2.13 (PR-135). The distribution function of the square of a uniform point. -/
+@[kb "grinsteadsnell2006" "Example 2.13, p. 70"]
+theorem gs_example_2_13 : type_of% @UndergradKB.Probability.uniform_sq_cdf :=
+  @UndergradKB.Probability.uniform_sq_cdf
+
+/-- Grinstead–Snell Example 2.13 (PR-135). The density of the square of a uniform point. -/
+@[kb "grinsteadsnell2006" "Example 2.13, p. 70"]
+theorem gs_example_2_13_b : type_of% @UndergradKB.Probability.uniform_sq_density :=
+  @UndergradKB.Probability.uniform_sq_density
+
+/-- Grinstead–Snell Example 2.16 (PR-153). The distribution function of the waiting time `|X - Y|`. -/
+@[kb "grinsteadsnell2006" "Example 2.16, p. 73"]
+theorem gs_example_2_16 : type_of% @UndergradKB.Probability.unitSquare_abs_sub_cdf :=
+  @UndergradKB.Probability.unitSquare_abs_sub_cdf
+
+/-- Grinstead–Snell Example 2.16 (PR-153). The density of the waiting time `|X - Y|`. -/
+@[kb "grinsteadsnell2006" "Example 2.16, p. 73"]
+theorem gs_example_2_16_b : type_of% @UndergradKB.Probability.unitSquare_abs_sub_cdf_eq_integral :=
+  @UndergradKB.Probability.unitSquare_abs_sub_cdf_eq_integral
 
 end UndergradKB.Probability.Course

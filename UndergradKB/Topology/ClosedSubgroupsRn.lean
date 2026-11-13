@@ -291,10 +291,11 @@ theorem quotient_equiv {E T : Type*} [AddCommGroup E] [TopologicalSpace E] [IsTo
 
 /-- Morris, Topology Without Tears, Theorem A5.5.13 (TP-547), second half. For a closed subgroup `G`
 of a finite-dimensional real normed space `E` (in particular `ℝⁿ`), the quotient group `E ⧸ G` is
-topologically isomorphic to `ℝ^c × T^d`. -/
+topologically isomorphic to `ℝ^c × T^d`, with `c + d` at most the dimension of `E`. -/
 @[kb "morris2024" "Theorem A5.5.13, p. 544"]
 theorem quotient_closed_subgroup_equiv (G : AddSubgroup E) (hG : IsClosed (G : Set E)) :
-    ∃ c d : ℕ, Nonempty ((E ⧸ G) ≃ₜ+ ((Fin c → ℝ) × (Fin d → AddCircle (1 : ℝ)))) := by
+    ∃ c d : ℕ, c + d ≤ Module.finrank ℝ E ∧
+      Nonempty ((E ⧸ G) ≃ₜ+ ((Fin c → ℝ) × (Fin d → AddCircle (1 : ℝ)))) := by
   classical
   obtain ⟨V, L, hL, hdec, hind, -⟩ := exists_splitting G hG
   obtain ⟨q, b, hb, hLmem⟩ := exists_lattice_basis L
@@ -375,7 +376,11 @@ theorem quotient_closed_subgroup_equiv (G : AddSubgroup E) (hG : IsClosed (G : S
   let Ψ : (Module.Basis.sumExtendIndex hf → ℝ) ≃ₜ+ (Fin c → ℝ) :=
     mkCAE eS.toAddEquiv (LinearMap.continuous_of_finiteDimensional eS.toLinearMap)
       (LinearMap.continuous_of_finiteDimensional eS.symm.toLinearMap)
-  exact ⟨c, q, ⟨Φ.trans (prodCAE Ψ (ContinuousAddEquiv.refl _))⟩⟩
+  have hdim : c + q ≤ Module.finrank ℝ E := by
+    rw [Module.finrank_eq_card_basis B, Fintype.card_sum, Fintype.card_sum, Fintype.card_fin,
+      Fintype.card_fin]
+    omega
+  exact ⟨c, q, hdim, ⟨Φ.trans (prodCAE Ψ (ContinuousAddEquiv.refl _))⟩⟩
 
 end ClosedSubgroupsRn
 

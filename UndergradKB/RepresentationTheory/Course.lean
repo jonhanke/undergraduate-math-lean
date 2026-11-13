@@ -4,3 +4,14 @@ import UndergradKB.RepresentationTheory.Course.Etingof3
 import UndergradKB.RepresentationTheory.Course.Etingof4
 import UndergradKB.RepresentationTheory.Course.Etingof6
 import UndergradKB.RepresentationTheory.Course.Etingof7
+import UndergradKB.RepresentationTheory.Course.Etingof1KB
+import UndergradKB.RepresentationTheory.Course.Etingof2KB
+import UndergradKB.RepresentationTheory.Course.Etingof3KB
+import UndergradKB.RepresentationTheory.Course.Etingof4KB
+import UndergradKB.RepresentationTheory.Course.Etingof4KBx
+import UndergradKB.RepresentationTheory.Course.Etingof5KB
+import UndergradKB.RepresentationTheory.Course.Etingof6KB
+import UndergradKB.RepresentationTheory.Course.Etingof7KB
+import UndergradKB.RepresentationTheory.Course.Etingof4KBw3
+import UndergradKB.RepresentationTheory.Course.EtingofProblemsW3
+import UndergradKB.RepresentationTheory.Course.EtingofProblemsW3b

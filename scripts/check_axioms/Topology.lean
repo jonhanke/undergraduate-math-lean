@@ -11,3 +11,8 @@ import Solution_Topology
 #print axioms UndergradKB.Headlines.Topology.wallman_compactification
 #print axioms UndergradKB.Headlines.Topology.normalSpace_iff_wallman_eq_stoneCech
 #print axioms UndergradKB.Headlines.Topology.pontryagin_duality_real_circle_int
+#print axioms UndergradKB.Headlines.Topology.pontryagin_van_kampen
+#print axioms UndergradKB.Headlines.Topology.sharkovskii
+#print axioms UndergradKB.Headlines.Topology.converse_sharkovskii
+#print axioms UndergradKB.Headlines.Topology.lca_principal_structure
+#print axioms UndergradKB.Headlines.Topology.lca_connected_structure

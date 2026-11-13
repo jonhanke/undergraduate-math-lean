@@ -46,6 +46,13 @@ theorem lebl_standard_basis_unique {n : ℕ} (v : Fin n → ℝ) :
     have := congrFun hc j
     simpa [Finset.sum_apply, Pi.single_apply] using this
 
+/-- Lebl §A.1 Matrices (DE-243). An `m × n` matrix is a rectangular array of entries: it is determined by its
+entries, and any array of entries is a matrix (`Matrix.of`). -/
+@[kb "lebldiffyqs2026" "§A.1 Matrices, p. 390"]
+theorem lebl_matrix_entries {m n : ℕ} (A B : Matrix (Fin m) (Fin n) ℝ) :
+    (A = B ↔ ∀ i j, A i j = B i j) ∧ ∀ e : Fin m → Fin n → ℝ, ∀ i j, Matrix.of e i j = e i j :=
+  ⟨⟨fun h _ _ => h ▸ rfl, fun h => Matrix.ext h⟩, fun _ _ _ => rfl⟩
+
 /-- Lebl §A.2 Matrix product (DE-245). The `(i,j)` entry of `AB` is the dot product of row `i` of
 `A` with column `j` of `B`. -/
 @[kb "lebldiffyqs2026" "§A.2 Matrix product, p. 399"]

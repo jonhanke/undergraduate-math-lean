@@ -4,7 +4,10 @@
   "theorem_names": [
     "UndergradKB.Headlines.DifferentialEquations.laplace_unique",
     "UndergradKB.Headlines.DifferentialEquations.linN_general_solution",
-    "UndergradKB.Headlines.DifferentialEquations.wave_general_solution"
+    "UndergradKB.Headlines.DifferentialEquations.wave_general_solution",
+    "UndergradKB.Headlines.DifferentialEquations.frobenius_analytic",
+    "UndergradKB.Headlines.DifferentialEquations.fourier_series_piecewise_smooth",
+    "UndergradKB.Headlines.DifferentialEquations.gibbs_phenomenon"
   ],
   "definition_names": [],
   "permitted_axioms": [

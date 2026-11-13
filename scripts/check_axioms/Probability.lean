@@ -13,3 +13,5 @@ import Solution_Probability
 #print axioms UndergradKB.Headlines.Probability.riffle_shuffle_composition
 #print axioms UndergradKB.Headlines.Probability.card_riffle_shuffles
 #print axioms UndergradKB.Headlines.Probability.local_limit_theorem
+#print axioms UndergradKB.Headlines.Probability.markov_clt
+#print axioms UndergradKB.Headlines.Probability.firstMaxIndex_tendsto

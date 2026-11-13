@@ -48,28 +48,35 @@
       "config": "comparator/Precalculus.json",
       "challenge_module": "Challenge_Precalculus",
       "solution_module": "Solution_Precalculus",
-      "theorems": 2
+      "theorems": 3
     },
     {
       "topic": "Statistics",
       "config": "comparator/Statistics.json",
       "challenge_module": "Challenge_Statistics",
       "solution_module": "Solution_Statistics",
-      "theorems": 5
+      "theorems": 8
     },
     {
       "topic": "Probability",
       "config": "comparator/Probability.json",
       "challenge_module": "Challenge_Probability",
       "solution_module": "Solution_Probability",
-      "theorems": 11
+      "theorems": 13
+    },
+    {
+      "topic": "Foundations",
+      "config": "comparator/Foundations.json",
+      "challenge_module": "Challenge_Foundations",
+      "solution_module": "Solution_Foundations",
+      "theorems": 1
     },
     {
       "topic": "DifferentialEquations",
       "config": "comparator/DifferentialEquations.json",
       "challenge_module": "Challenge_DifferentialEquations",
       "solution_module": "Solution_DifferentialEquations",
-      "theorems": 3
+      "theorems": 6
     },
     {
       "topic": "ComplexAnalysis",
@@ -83,14 +90,21 @@
       "config": "comparator/RepresentationTheory.json",
       "challenge_module": "Challenge_RepresentationTheory",
       "solution_module": "Solution_RepresentationTheory",
-      "theorems": 2
+      "theorems": 7
     },
     {
       "topic": "Topology",
       "config": "comparator/Topology.json",
       "challenge_module": "Challenge_Topology",
       "solution_module": "Solution_Topology",
-      "theorems": 9
+      "theorems": 14
+    },
+    {
+      "topic": "RealAnalysis",
+      "config": "comparator/RealAnalysis.json",
+      "challenge_module": "Challenge_RealAnalysis",
+      "solution_module": "Solution_RealAnalysis",
+      "theorems": 1
     }
   ],
   "permitted_axioms": [

@@ -5,8 +5,8 @@ This product is licensed under the Apache License, Version 2.0 (see LICENSE).
 It depends on Mathlib (https://github.com/leanprover-community/mathlib4), licensed under the Apache License,
 Version 2.0, as a Lake dependency.
 
-Three Lean files contain code copied or adapted from other projects under the Apache License, Version 2.0; each file says so
-in its header:
+Some Lean files contain code copied or adapted from other projects under the Apache License, Version 2.0; each file
+says so in its header:
 - UndergradKB/Foundations/PerfectNumbers.lean: from Archive/Wiedijk100Theorems/PerfectNumbers.lean of the Mathlib
   repository (Aaron Anderson), https://github.com/leanprover-community/mathlib4;
 - UndergradKB/Topology/SineCurve.lean: from Counterexamples/TopologistsSineCurve.lean of the Mathlib repository
@@ -14,7 +14,22 @@ in its header:
 - UndergradKB/Combinatorics/Analytic/WienerIkehara.lean: the Wiener–Ikehara theorem, copied from a newer Mathlib
   (commit df6966d) than the one this library depends on, where it came from the PrimeNumberTheoremAnd project
   (https://github.com/AlexKontorovich/PrimeNumberTheoremAnd); copyright the PrimeNumberTheoremAnd contributors
-  (authors listed in the file header).
+  (authors listed in the file header);
+- the Darboux sums and the Riemann integral of the real analysis topic (Lebl, Basic Analysis I, sections 5.1 and
+  5.2), ported from ReasBook (https://github.com/optpku/ReasBook), commit 35bcb693144a4cb67108bac1793b5ffbfea0acd9,
+  a formalization of J. Lebl, Introduction to Real Analysis, Volume I, by Zichen Wang and Zaiwen Wen; licensed under
+  the Apache License, Version 2.0 (copy in LICENSES/Apache-2.0-ReasBook.txt). Modified: specific Mathlib imports,
+  namespace UndergradKB.RealAnalysis, citation tags, repairs for Lean v4.36 / Mathlib 1b1ccf4. Files:
+    UndergradKB/RealAnalysis/Darboux.lean            from Chap05/section01.lean
+    UndergradKB/RealAnalysis/DarbouxSplit.lean       from Chap05/section02_part1.lean
+    UndergradKB/RealAnalysis/DarbouxAdditivity.lean  from Chap05/section02_part2.lean
+    UndergradKB/RealAnalysis/DarbouxLinearity.lean   from Chap05/section02_part3.lean
+    UndergradKB/RealAnalysis/DarbouxPrereq.lean      from Chap02/section01.lean, Chap02/section02.lean,
+                                                     Chap02/section03.lean, Chap03/section03.lean
+    UndergradKB/RealAnalysis/DarbouxContinuous.lean  from Chap05/section02_part4.lean
+    UndergradKB/RealAnalysis/DarbouxFinite.lean      from Chap05/section02_part5.lean, Chap05/section02_part6.lean
+  The paths after "from" are relative to ReasBook/Books/IntroductiontoRealAnalysisVolumeI_JiriLebl_2025/. Further
+  ReasBook results are cited by name, not copied (docs/reasbook.md).
 No other code is copied or adapted from other projects. The scripts scripts/verify-comparator.sh and
 .github/workflows/build.yml are adapted from elementary-number-theory-lean v0.1.0 by the same author, whose
 comparator script is itself adapted from PalomarRegistry/PalomarTemplate (Apache License 2.0).

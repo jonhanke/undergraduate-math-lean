@@ -7,6 +7,8 @@ import Mathlib.Probability.Distributions.Geometric
 import Mathlib.Probability.Distributions.Poisson.Basic
 import Mathlib.Probability.Distributions.Poisson.PoissonLimitThm
 import UndergradKB.Common.Attr
+import UndergradKB.Statistics.Rules
+import UndergradKB.Statistics.DistributionLimits
 
 /-!
 # Course layer, chapter 4 (OpenStax *Introductory Statistics 2e*): discrete distributions
@@ -106,5 +108,33 @@ theorem binomial_mean {Ω : Type*} {mΩ : MeasurableSpace Ω} {P : Measure Ω} {
     (hX : HasLaw X ((binomial n p).map (Nat.cast : ℕ → ℝ)) P) :
     ∫ ω, X ω ∂P = (n : ℝ) * p := by
   rw [integral_of_hasLaw_binomial hX]; ring
+
+/-- OpenStax Introductory Statistics 2e §4.2 (ST-037). Expected value of a game: if the gains of
+successive plays are independent, identically distributed and take values in a finite set `S`,
+then almost surely the average gain over the first `n` plays converges to the expected value
+`∑ x ∈ S, x · P(X 0 = x)`. -/
+@[kb "openstaxintrostats2e" "§4.2, p. 241"]
+theorem long_run_average_gain_eq_expected_value {Ω : Type*} {mΩ : MeasurableSpace Ω}
+    (P : Measure Ω) [IsProbabilityMeasure P] (S : Finset ℝ) (X : ℕ → Ω → ℝ)
+    (hmeas : ∀ i, Measurable (X i)) (hS : ∀ i ω, X i ω ∈ S)
+    (hindep : iIndepFun X P) (hident : ∀ i, IdentDistrib (X i) (X 0) P P) :
+    ∀ᵐ ω ∂P, Filter.Tendsto (fun n : ℕ => (n : ℝ)⁻¹ * ∑ k ∈ Finset.range n, X k ω)
+      Filter.atTop (nhds (∑ x ∈ S, x * P.real (X 0 ⁻¹' {x}))) :=
+  UndergradKB.Statistics.long_run_average_gain P S X hmeas hS hindep hident
+
+/-- OpenStax Introductory Statistics 2e §4.5 (ST-044). The binomial approximates the hypergeometric
+for a large population: if the numbers of successes `A k` and failures `B k` both tend to infinity
+with success fraction `A k / (A k + B k) → p`, then for a fixed sample size `n` and `x ≤ n` the
+hypergeometric probability of `x` successes tends to the binomial probability
+`C(n, x) p^x (1 - p)^(n - x)`. -/
+@[kb "openstaxintrostats2e" "§4.5, p. 258"]
+theorem hypergeometric_probability_tends_to_binomial {A B : ℕ → ℕ} {p : ℝ}
+    (hA : Filter.Tendsto A Filter.atTop Filter.atTop)
+    (hB : Filter.Tendsto B Filter.atTop Filter.atTop)
+    (hp : Filter.Tendsto (fun k ↦ (A k : ℝ) / ((A k : ℝ) + B k)) Filter.atTop (nhds p))
+    (n x : ℕ) (hx : x ≤ n) :
+    Filter.Tendsto (fun k ↦ UndergradKB.Statistics.hypergeometricPMF (A k) (B k) n x)
+      Filter.atTop (nhds ((n.choose x : ℝ) * p ^ x * (1 - p) ^ (n - x))) :=
+  UndergradKB.Statistics.tendsto_hypergeometricPMF_binomial hA hB hp n x hx
 
 end UndergradKB.Statistics.Course.C4

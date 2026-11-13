@@ -6,7 +6,10 @@
     "UndergradKB.Headlines.Statistics.hasLaw_sampleVariance_chiSquared",
     "UndergradKB.Headlines.Statistics.hasLaw_tStatistic",
     "UndergradKB.Headlines.Statistics.hasLaw_fStatistic",
-    "UndergradKB.Headlines.Statistics.hasLaw_correlation_tStatistic"
+    "UndergradKB.Headlines.Statistics.hasLaw_correlation_tStatistic",
+    "UndergradKB.Headlines.Statistics.tendstoInDistribution_pearsonStatistic",
+    "UndergradKB.Headlines.Statistics.tendstoInDistribution_independenceStatistic",
+    "UndergradKB.Headlines.Statistics.tendstoInDistribution_homogeneityStatistic"
   ],
   "definition_names": [],
   "permitted_axioms": [

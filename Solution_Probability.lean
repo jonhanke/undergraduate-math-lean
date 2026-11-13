@@ -10,6 +10,8 @@ import UndergradKB.Probability.PolyaThree
 import UndergradKB.Probability.ArcSine
 import UndergradKB.Probability.Shuffles
 import UndergradKB.Probability.LocalLimitLattice
+import UndergradKB.Probability.MarkovClt
+import UndergradKB.Probability.FirstMaximum
 
 /-!
 # Proofs of the probability headline statements
@@ -83,5 +85,28 @@ theorem local_limit_theorem {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} [
       |σ * √(n : ℝ) * P.real {ω | ∑ i ∈ Finset.range n, X i ω = j} -
         Real.exp (-(((j - n * μ) / (σ * √(n : ℝ))) ^ 2) / 2) / √(2 * π)| ≤ ε n :=
   UndergradKB.Probability.local_limit_lattice hXm hindep hident hL2 hσ hμ hv hgcd
+
+theorem markov_clt [Nonempty S] {P : Matrix S S ℝ} (hP : IsErgodicChain P) {u : S → ℝ} (hu0 : ∀ i, 0 ≤ u i)
+    (hu : ∑ i, u i = 1) :
+    ∃ w : S → ℝ, (∀ j, 0 < w j) ∧ ∑ j, w j = 1 ∧ IsFixedRow P w ∧ IsUnit (1 - P + rowsMatrix w) ∧
+      ∀ j : S, 0 < 2 * w j * (1 - P + rowsMatrix w)⁻¹ j j - w j - w j ^ 2 →
+        ∀ r s : ℝ, r < s →
+          Tendsto (fun n : ℕ => ∑ x : Fin (n + 1) → S with
+              r < (((univ.filter fun k : Fin (n + 1) => x k = j).card : ℝ) - n * w j) /
+                  √(n * (2 * w j * (1 - P + rowsMatrix w)⁻¹ j j - w j - w j ^ 2)) ∧
+                (((univ.filter fun k : Fin (n + 1) => x k = j).card : ℝ) - n * w j) /
+                  √(n * (2 * w j * (1 - P + rowsMatrix w)⁻¹ j j - w j - w j ^ 2)) < s,
+              pathProb u P n x)
+            atTop (𝓝 (∫ x in r..s, gaussianPDFReal 0 1 x)) :=
+  UndergradKB.Probability.markov_clt hP hu0 hu
+
+open UndergradKB.Probability.FirstMax in
+theorem firstMaxIndex_tendsto {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {X : ℕ → Ω → ℝ} {μ : Measure ℝ} (hX : ∀ i, Measurable (X i)) (hind : iIndepFun X P)
+    (hlaw : ∀ i, P.map (X i) = μ) (hcont : ∀ x, μ {x} = 0) (hsymm : μ.map (fun x => -x) = μ)
+    (α : ℝ) (h0 : 0 < α) (h1 : α < 1) :
+    Tendsto (fun n : ℕ => (P {ω | (firstMaxIndex X n ω : ℝ) < n * α}).toReal) atTop
+      (𝓝 ((2 / π) * Real.arcsin (√α))) :=
+  UndergradKB.Probability.firstMaxIndex_tendsto hX hind hlaw hcont hsymm α h0 h1
 
 end UndergradKB.Headlines.Probability

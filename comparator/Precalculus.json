@@ -3,7 +3,8 @@
   "solution_module": "Solution_Precalculus",
   "theorem_names": [
     "UndergradKB.Headlines.Precalculus.descartes_rule_of_signs",
-    "UndergradKB.Headlines.Precalculus.descartes_rule_of_signs_neg"
+    "UndergradKB.Headlines.Precalculus.descartes_rule_of_signs_neg",
+    "UndergradKB.Headlines.Precalculus.discriminant_test"
   ],
   "definition_names": [],
   "permitted_axioms": [

@@ -187,7 +187,9 @@ private lemma pf_term_degree_lt {ι : Type*} [DecidableEq ι] {s : Finset ι} {g
     have hj : j.1 + 1 ≤ e i := j.2
     nlinarith
 
-private lemma pf_poly_identity {ι : Type*} [DecidableEq ι] {s : Finset ι} {g : ι → ℝ[X]}
+/-- Polynomial form of the partial fraction identity for monic pairwise coprime factors (used for
+Theorem 8.10). -/
+theorem pf_poly_identity {ι : Type*} [DecidableEq ι] {s : Finset ι} {g : ι → ℝ[X]}
     (hg : ∀ i ∈ s, (g i).Monic) (hgg : Set.Pairwise (↑s) fun i j => IsCoprime (g i) (g j))
     (e : ι → ℕ) (N : ℝ[X]) (hN : N.degree < (∏ k ∈ s, g k ^ e k).degree) :
     ∃ r : (i : ι) → Fin (e i) → ℝ[X], (∀ i ∈ s, ∀ j, (r i j).degree < (g i).degree) ∧
