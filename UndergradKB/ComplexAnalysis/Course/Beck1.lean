@@ -178,4 +178,63 @@ theorem closure_frontier_disk (a : ℂ) (r : ℝ) (hr : 0 < r) :
   rw [h1, h2, h3]
   exact ⟨closure_ball a hr.ne', frontier_ball a hr.ne'⟩
 
+/-- Beck Definition 1.1.1 (CX-001). Complex numbers are pairs of reals with the product
+(x,y)(a,b) = (xa - yb, xb + ya). -/
+@[kb "beck2025" "Definition 1.1.1, p. 12"]
+theorem mul_pairs (x y a b : ℝ) :
+    (⟨x, y⟩ : ℂ) * ⟨a, b⟩ = ⟨x * a - y * b, x * b + y * a⟩ := by
+  apply Complex.ext <;> simp
+
+/-- Beck Definition 1.1.3 (CX-003). Every complex number is x + iy with x its real part and y
+its imaginary part. -/
+@[kb "beck2025" "Definition 1.1.3, p. 14"]
+theorem eq_re_add_im_mul_I (z : ℂ) : z = (z.re : ℂ) + (z.im : ℂ) * I :=
+  (Complex.re_add_im z).symm
+
+/-- Beck Definition 1.3.1 (CX-009). The conjugate of x + iy is x - iy. -/
+@[kb "beck2025" "Definition 1.3.1, p. 19"]
+theorem conj_add_mul_I (x y : ℝ) : conj ((x : ℂ) + (y : ℂ) * I) = (x : ℂ) - (y : ℂ) * I := by
+  apply Complex.ext <;> simp
+
+/-- Beck Definition 1.4.2 (CX-013). Interior point: some open disc about it lies in the set;
+boundary point: every open disc about it meets the set and its complement. -/
+@[kb "beck2025" "Definition 1.4.2, p. 22"]
+theorem interior_frontier_via_discs (S : Set ℂ) (a : ℂ) :
+    (a ∈ interior S ↔ ∃ r > 0, Metric.ball a r ⊆ S) ∧
+    (a ∈ frontier S ↔
+      ∀ r > 0, (Metric.ball a r ∩ S).Nonempty ∧ (Metric.ball a r ∩ Sᶜ).Nonempty) := by
+  refine ⟨?_, ?_⟩
+  · rw [mem_interior_iff_mem_nhds, Metric.mem_nhds_iff]
+  · rw [frontier_eq_closure_inter_closure, Set.mem_inter_iff, Metric.mem_closure_iff,
+      Metric.mem_closure_iff]
+    constructor
+    · rintro ⟨h1, h2⟩ r hr
+      obtain ⟨b, hb, hbd⟩ := h1 r hr
+      obtain ⟨c, hc, hcd⟩ := h2 r hr
+      exact ⟨⟨b, by simpa [dist_comm] using hbd, hb⟩, ⟨c, by simpa [dist_comm] using hcd, hc⟩⟩
+    · intro h
+      refine ⟨fun r hr => ?_, fun r hr => ?_⟩
+      · obtain ⟨b, hbd, hb⟩ := (h r hr).1
+        exact ⟨b, hb, by simpa [dist_comm] using hbd⟩
+      · obtain ⟨c, hcd, hc⟩ := (h r hr).2
+        exact ⟨c, hc, by simpa [dist_comm] using hcd⟩
+
+/-- Beck Definition 1.4.3 (CX-014). A set is open iff each point has a disc inside it; closed iff
+it contains its boundary. -/
+@[kb "beck2025" "Definition 1.4.3, p. 23"]
+theorem open_closed_via_interior_frontier (S : Set ℂ) :
+    (IsOpen S ↔ ∀ a ∈ S, ∃ r > 0, Metric.ball a r ⊆ S) ∧ (IsClosed S ↔ frontier S ⊆ S) :=
+  ⟨Metric.isOpen_iff, frontier_subset_iff_isClosed.symm⟩
+
+/-- Beck Definition 1.4.5 (CX-015). The closure of a set is the set together with its boundary. -/
+@[kb "beck2025" "Definition 1.4.5, p. 23"]
+theorem closure_eq_union_frontier (S : Set ℂ) : closure S = S ∪ frontier S :=
+  closure_eq_self_union_frontier S
+
+/-- Beck Definition 1.4.7 (CX-016). A set is bounded iff it lies in some disc about 0. -/
+@[kb "beck2025" "Definition 1.4.7, p. 23"]
+theorem bounded_iff_subset_disc (S : Set ℂ) :
+    Bornology.IsBounded S ↔ ∃ R : ℝ, S ⊆ Metric.ball 0 R :=
+  Metric.isBounded_iff_subset_ball 0
+
 end UndergradKB.ComplexAnalysis.Course.Beck1

@@ -10,6 +10,10 @@ import UndergradKB.Topology.ClosedSubgroupsRn
 import UndergradKB.Topology.ClosedSubgroupsRn2
 import UndergradKB.Topology.Wallman
 import UndergradKB.Topology.ClassicalDuals
+import UndergradKB.Topology.DualityTheorem
+import UndergradKB.Topology.StructureTheorems
+import UndergradKB.Topology.SharkovskiiOdd4
+import UndergradKB.Topology.SharkovskiiOdd7
 
 /-!
 # Proofs of the topology headline statements
@@ -19,6 +23,8 @@ statement here is exactly the one in `Challenge_Topology.lean`.
 -/
 
 namespace UndergradKB.Headlines.Topology
+
+universe u
 
 open Function Set Topology UndergradKB.Topology
 
@@ -42,7 +48,7 @@ theorem closed_subgroup_equiv {E : Type*} [NormedAddCommGroup E] [NormedSpace �
 theorem quotient_closed_subgroup_equiv {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     [FiniteDimensional ℝ E] (G : AddSubgroup E) (hG : IsClosed (G : Set E)) :
     ∃ c d : ℕ, Nonempty ((E ⧸ G) ≃ₜ+ ((Fin c → ℝ) × (Fin d → AddCircle (1 : ℝ)))) :=
-  UndergradKB.Topology.ClosedSubgroupsRn.quotient_closed_subgroup_equiv G hG
+  (UndergradKB.Topology.ClosedSubgroupsRn.quotient_closed_subgroup_equiv G hG).imp fun _ ⟨d, _, h⟩ => ⟨d, h⟩
 
 theorem closed_subgroup_torus_equiv {n : ℕ} (H : AddSubgroup (Fin n → AddCircle (1 : ℝ)))
     (hH : IsClosed (H : Set (Fin n → AddCircle (1 : ℝ)))) :
@@ -64,5 +70,34 @@ theorem normalSpace_iff_wallman_eq_stoneCech {X : Type*} [TopologicalSpace X] [T
 theorem pontryagin_duality_real_circle_int (a b c : ℕ) :
     DualityHolds (((Fin a → Multiplicative ℝ) × (Fin b → Circle)) × (Fin c → Multiplicative ℤ)) :=
   UndergradKB.Topology.dualityHolds_real_circle_int_pow a b c
+
+theorem pontryagin_van_kampen {G : Type u} [CommGroup G] [TopologicalSpace G] [IsTopologicalGroup G]
+    [T2Space G] [LocallyCompactSpace G] : DualityHolds G :=
+  UndergradKB.Topology.LCA.dualityHolds_of_LCA
+
+theorem sharkovskii {f : ℝ → ℝ} (hf : Continuous f) {n : ℕ} (hn : 0 < n)
+    (hper : ∃ x, minimalPeriod f x = n) {k : ℕ} (hk : 0 < k) (hlt : SharkovskiiLT n k) :
+    ∃ y, minimalPeriod f y = k :=
+  UndergradKB.Topology.sharkovskii_theorem hf hn hper hk hlt
+
+theorem converse_sharkovskii {n : ℕ} (hn : 0 < n) :
+    ∃ f : ℝ → ℝ, Continuous f ∧ (∃ x, minimalPeriod f x = n) ∧
+      ∀ l, 0 < l → SharkovskiiLT l n → ¬ ∃ x, minimalPeriod f x = l :=
+  UndergradKB.Topology.converse_sharkovskii hn
+
+theorem lca_principal_structure {G : Type u} [CommGroup G] [TopologicalSpace G] [IsTopologicalGroup G]
+    [T2Space G] [LocallyCompactSpace G] :
+    ∃ S : Subgroup G, IsOpen (S : Set G) ∧
+      ∃ (a : ℕ) (K : Type u) (_ : CommGroup K) (_ : TopologicalSpace K),
+        IsTopologicalGroup K ∧ CompactSpace K ∧ T2Space K ∧
+          Nonempty (S ≃ₜ* (Fin a → Multiplicative ℝ) × K) :=
+  UndergradKB.Topology.exists_open_subgroup_equiv_real_compact
+
+theorem lca_connected_structure {G : Type u} [CommGroup G] [TopologicalSpace G] [IsTopologicalGroup G]
+    [T2Space G] [LocallyCompactSpace G] [ConnectedSpace G] :
+    ∃ (a : ℕ) (K : Type u) (_ : CommGroup K) (_ : TopologicalSpace K),
+      IsTopologicalGroup K ∧ CompactSpace K ∧ T2Space K ∧ ConnectedSpace K ∧
+        Nonempty (G ≃ₜ* (Fin a → Multiplicative ℝ) × K) :=
+  UndergradKB.Topology.exists_equiv_real_compact_of_connectedSpace
 
 end UndergradKB.Headlines.Topology

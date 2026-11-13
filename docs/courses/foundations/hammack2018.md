@@ -3,11 +3,11 @@
 Generated from [`docs/coverage/foundations/checklist.md`](../../coverage/foundations/checklist.md); do not edit by hand.
 Items are in the book's order. Statements are our own paraphrases, not book text. Cite the Lean name; `lake build Foundations` builds this topic.
 
-276 items in 14 chapters; 240 with a Lean name (87.0%).
+346 items in 14 chapters; 310 with a Lean name (89.6%).
 
 ## Chapter 1
 
-33 items; 27 with a Lean name; 11 proved proved here; 16 in Mathlib; 6 not a result.
+39 items; 33 with a Lean name; 17 proved proved here; 16 in Mathlib; 6 not a result.
 
 
 #### Section 1.1
@@ -20,10 +20,12 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Def §1.1**, p.17 [FO-003]: Set-builder notation {expr : rule} describes a set by a membership condition — *not a result* — –
 - **Example 1.1**, p.17 [FO-003]: Set-builder notation {expr : rule} describes a set by a membership condition — *not a result* — –
 - **Def §1.1**, p.18 [FO-004]: Standard number-system sets N, Z, Q, R and conventions (Hammack N starts at 1, Levin N starts at 0) — *not a result* — –
+- **Example 1.2**, p.18 [FO-364]: The set {7a + 3b : a, b integers} equals all of Z. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_1_2_seven_three_integers`
 - **Def §1.1**, p.19 [FO-007]: Interval notation: closed, open, half-open and infinite intervals of R — *proved proved here* — `UndergradKB.Foundations.interval_notation`
 - **Def 1.1**, p.20 [FO-008]: An ordered pair (x,y) is a list of two things; (a,b)=(c,d) iff componentwise equal — *proved proved here* — `UndergradKB.Foundations.ordered_pair_eq_iff`
 - **Def 1.2**, p.20 [FO-009]: Cartesian product A x B = set of pairs (a,b) with a in A, b in B — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_1_2_mem_prod`, `Set.prod`, `Set.mem_prod`
 - **Fact 1.1**, p.21 [FO-010]: Fact 1.1: for finite sets, \\|A x B\\| = \\|A\\| \\|B\\| — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_1_1_card_prod`, `Finset.card_product`, `Set.ncard_prod`, `Fintype.card_prod`
+- **Example 1.3**, p.21 [FO-443]: The set of outcomes of two rolls of a six-sided die has 36 elements. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_1_3_dice_pairs`
 
 #### Section 1.2
 
@@ -35,8 +37,10 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Fact 1.3**, p.25 [FO-015]: Fact 1.3 and Fact 1.4: a finite set with n elements has 2^n subsets, i.e. \\|P(A)\\| = 2^\\|A\\| — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_1_4_card_powerset`, `Finset.card_powerset`, `Set.ncard_powerset`
 - **Fact 1.4**, p.27 [FO-015]: Fact 1.3 and Fact 1.4: a finite set with n elements has 2^n subsets, i.e. \\|P(A)\\| = 2^\\|A\\| — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_1_4_card_powerset`, `Finset.card_powerset`, `Set.ncard_powerset`
 - **Def 1.4**, p.27 [FO-016]: Power set P(A) is the set of all subsets of A — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_1_4_mem_powerset`, `Set.powerset`, `Set.mem_powerset_iff`
+- **Example 1.7**, p.28 [FO-444]: The power set of {0,1,3} is the list of its eight subsets. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_1_7_powerset_three`, `UndergradKB.Foundations.Course.hammack_ex_1_7_powerset_two`, `UndergradKB.Foundations.Course.hammack_ex_1_7_powerset_small`, `UndergradKB.Foundations.Course.hammack_ex_1_7_card_powerset`
 - **Def 1.5**, p.30 [FO-017]: Union, intersection and difference of two sets — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_1_5_union_inter_diff`, `Set.union`, `Set.inter`, `Set.diff`
 - **Def 1.5**, p.30 [FO-018]: Union and intersection are commutative; difference is not — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_1_5_comm`, `Set.union_comm`, `Set.inter_comm`
+- **Example 1.8**, p.30 [FO-445]: Union, intersection, differences and symmetric difference of {a..e} and {d,e,f}. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_1_8_set_operations`, `UndergradKB.Foundations.Course.hammack_ex_1_8_with_numbers`, `UndergradKB.Foundations.Course.hammack_ex_1_8_products`
 - **Def 1.6**, p.32 [FO-021]: Universal set U and complement of A defined as U - A — *proved proved here* — `UndergradKB.Foundations.complement_in_universe`
 
 #### Section 1.7
@@ -45,7 +49,9 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Sec 1.7**, p.35 [FO-019]: Union and intersection are associative, so parentheses may be dropped in iterated unions or intersections — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s1_7_assoc`, `Set.union_assoc`, `Set.inter_assoc`
 - **Sec 1.7**, p.36 [FO-020]: Mixed union and intersection need parentheses: (A∪B)∩C and A∪(B∩C) differ in general — *not a result* — –
 - **Def 1.7**, p.37 [FO-024]: Union and intersection of finitely many indexed sets A_1,...,A_n (sigma-style notation) — *proved proved here* — `UndergradKB.Foundations.mem_finite_indexed_union_inter`
+- **Example 1.12**, p.37 [FO-446]: Indexed union of {0,2,5},{1,2,5},{2,5,7} is {0,1,2,5,7} and the intersection is {2,5}. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_1_12_indexed_union_inter`
 - **Def 1.8**, p.38 [FO-025]: Union and intersection of an arbitrary family A_alpha, alpha in an index set I (I nonempty) — *proved proved here* — `UndergradKB.Foundations.mem_indexed_union_inter`
+- **Example 1.13**, p.38 [FO-447]: For A_i={-i,0,i}, the union over i>=1 is Z and the intersection is {0}. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_1_13_union_inter_integers`
 - **Fact 1.5**, p.42 [FO-027]: Fact 1.5, Division algorithm: for integers a, b with b > 0 there are unique integers q, r with a = qb + r and 0 <= r < b (proved from well-ordering) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_1_5_division_algorithm`, `Int.ediv_emod_unique''`
 - **Sec 1.9**, p.42 [FO-026]: Well-ordering principle: every nonempty subset of {b, b+1, ...} has a least element (false for positive rationals/reals) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s1_9_well_ordering`, `Nat.find`, `Nat.find_spec`, `Nat.find_min`
 - **Sec 1.9**, p.43 [FO-028]: Every natural number can be viewed as a set: 0 = empty set, n = {0,...,n-1} — *proved proved here* — `UndergradKB.Foundations.mem_vonNeumann`
@@ -106,25 +112,34 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 3
 
-32 items; 31 with a Lean name; 2 proved proved here; 29 in Mathlib; 1 not a result.
+54 items; 53 with a Lean name; 24 proved proved here; 29 in Mathlib; 1 not a result.
 
 
 #### Section 3.1
 
 - **Def §3.1**, p.77 [FO-213]: A list is an ordered finite sequence of entries (repetition allowed, order matters, length = number of entries, equal iff same entries in same positions); the empty list has length 0; a list of symbols without punctuation is a string. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s3_1_list_ext`, `UndergradKB.Foundations.Course.hammack_s3_1_list_length_zero`, `List`
 - **Fact 3.1**, p.81 [FO-214]: Multiplication (product) principle: if a list/outcome is built in n steps with a_i choices at step i (number of choices independent of earlier choices), the total is a_1 a_2 ... a_n; for two sets, the size of a product set is the product of sizes. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_1_card_prod`, `UndergradKB.Foundations.Course.hammack_fact_3_1_card_pi`, `Finset.card_product`, `Fintype.card_prod`
+- **Example 3.1**, p.81 [FO-496]: License plates of three letters and four digits number 26^3*10^4. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_1_license_plates`
+- **Example 3.2**, p.81 [FO-497]: A drink order with 3, 3 and 2 options has 18 outcomes. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_2_latte_choices`
 - **Ex 3.3**, p.82 [FO-217]: The number of length-n lists with entries from a k-element set, repetition allowed, is k^n; equivalently the number of functions from an n-set to a k-set is k^n. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_ex_3_3_card_fun`, `Fintype.card_fun`, `Fintype.card_pi`
 - **Ex 3.3**, p.82 [FO-228]: k-permutations: the number P(n,k) of non-repetitive length-k lists from an n-set (= injective functions from a k-set to an n-set) is n(n-1)...(n-k+1), which is n!/(n-k)! for k <= n and 0 for k > n; P(n,n)=n!, P(n,0)=1. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_4_card_embedding`, `UndergradKB.Foundations.Course.hammack_fact_3_4_descFactorial_div`, `Fintype.card_embedding_eq`, `Nat.descFactorial`
+- **Example 3.4**, p.84 [FO-498]: Repetition-free 5-lists from A..G with first entry B/C/D and last entry a vowel number 360. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_4_restricted_lists`
 - **Fact 3.2**, p.86 [FO-215]: Addition (sum) principle: for pairwise disjoint finite sets the cardinality of the union is the sum of the cardinalities; for two sets the condition is disjointness. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_2_card_union`, `UndergradKB.Foundations.Course.hammack_fact_3_2_card_biUnion`, `Finset.card_union_eq_card_add_card`, `Finset.card_disjUnion`
+- **Example 3.5**, p.86 [FO-499]: Repetition-free 4-lists from A..G containing an E number 480. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_5_lists_with_E`
+- **Example 3.6**, p.87 [FO-500]: Even five-digit numbers with no zero digit and exactly one 6 number 10240. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_6_even_numbers_one_six`
 - **Fact 3.3**, p.88 [FO-216]: Subtraction (complement) principle: if X is a subset of a finite U then the cardinality of U minus X is card U minus card X (count the complement). — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_3_card_sdiff`, `Finset.card_sdiff_of_subset`, `Finset.card_compl`, `Finset.card_add_card_compl`
+- **Example 3.7**, p.88 [FO-501]: 4-lists from A..G (repetition allowed) with at least one E number 7^4-6^4. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_7_lists_at_least_one_E`
 - **Def 3.1**, p.90 [FO-226]: Definition of factorial: n! is the number of non-repetitive length-n lists from n symbols, 0! = 1, 1! = 1, n! = n (n-1)! = n(n-1)...1. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_3_1_factorial`, `Nat.factorial`, `Nat.factorial_zero`, `Nat.factorial_succ`
 - **Eq 3.1**, p.91 [FO-226]: Definition of factorial: n! is the number of non-repetitive length-n lists from n symbols, 0! = 1, 1! = 1, n! = n (n-1)! = n(n-1)...1. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_3_1_factorial`, `Nat.factorial`, `Nat.factorial_zero`, `Nat.factorial_succ`
+- **Example 3.8**, p.91 [FO-394]: Repetition-free lists of length 7 from 7 letters number 7! = 5040. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_8_injective_lists`, `UndergradKB.Foundations.Course.hammack_ex_3_8_repeated_lists`
 
 #### Section 3.4
 
 - **text §3.4**, p.92 [FO-227]: A permutation of a set X is a non-repetitive list using every element of X (equivalently, bijection X to X); an n-element set has n! permutations. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s3_4_card_perm`, `Fintype.card_perm`, `Fintype.card_equiv`, `List.length_permutations`
 - **text §3.4**, p.93 [FO-228]: k-permutations: the number P(n,k) of non-repetitive length-k lists from an n-set (= injective functions from a k-set to an n-set) is n(n-1)...(n-k+1), which is n!/(n-k)! for k <= n and 0 for k > n; P(n,n)=n!, P(n,0)=1. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_4_card_embedding`, `UndergradKB.Foundations.Course.hammack_fact_3_4_descFactorial_div`, `Fintype.card_embedding_eq`, `Nat.descFactorial`
 - **Fact 3.4**, p.95 [FO-228]: k-permutations: the number P(n,k) of non-repetitive length-k lists from an n-set (= injective functions from a k-set to an n-set) is n(n-1)...(n-k+1), which is n!/(n-k)! for k <= n and 0 for k > n; P(n,n)=n!, P(n,0)=1. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_4_card_embedding`, `UndergradKB.Foundations.Course.hammack_fact_3_4_descFactorial_div`, `Fintype.card_embedding_eq`, `Nat.descFactorial`
+- **Example 3.9**, p.95 [FO-395]: First-second-third rankings among 10 runners: P(10,3) = 720. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_9_rankings`
+- **Example 3.10**, p.95 [FO-396]: Five-card lineups all red or all clubs: P(26,5) + P(13,5) = 8048040. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_10_red_or_clubs`
 - **Def 3.2**, p.97 [FO-224]: Binomial coefficient: C(n,k) is the number of k-element subsets of an n-element set (0 when k<0 or k>n); also the entry in row n, column k of Pascal's triangle; read "n choose k". — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_3_2_card_powersetCard`, `Nat.choose`, `Finset.card_powersetCard`, `Nat.choose_eq_zero_of_lt`
 
 #### Section 3.5
@@ -132,6 +147,12 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **text §3.5**, p.98 [FO-229]: P(n,k) = C(n,k) k!: choose the k-subset, then arrange it (equivalently C(n,k) = P(n,k)/k!). — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s3_5_descFactorial_eq_choose_mul`, `Nat.descFactorial_eq_factorial_mul_choose`, `Nat.choose_eq_descFactorial_div_factorial`
 - **text §3.5**, p.98 [FO-233]: Boundary values C(n,0) = C(n,n) = 1. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s3_5_choose_boundary`, `Nat.choose_zero_right`, `Nat.choose_self`
 - **Fact 3.5**, p.99 [FO-225]: Closed formula: C(n,k) = n!/(k!(n-k)!) for 0 <= k <= n. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_5_choose_formula`, `Nat.choose_eq_factorial_div_factorial`, `Nat.choose_mul_factorial_mul_factorial`
+- **Example 3.11**, p.99 [FO-397]: The set {1..9} has 126 four-element subsets. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_11_four_subsets`
+- **Example 3.12**, p.99 [FO-398]: 60 five-element subsets of {1..9} have exactly two even elements. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_12_two_even`
+- **Example 3.13**, p.99 [FO-399]: C(52,5) = 2598960 five-card hands. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_13_five_card_hands`
+- **Example 3.14**, p.100 [FO-400]: Hands with two clubs and three hearts: C(13,2) C(13,3) = 22308. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_14_clubs_hearts`
+- **Example 3.15**, p.100 [FO-401]: Lottery: C(36,6) = 1947792 tickets. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_15_lottery`
+- **Example 3.16**, p.100 [FO-402]: 64 binary strings of length 7 have an odd number of 1's. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_16_odd_weight`
 - **Eq 3.3**, p.102 [FO-231]: Pascal's rule C(n+1,k) = C(n,k-1) + C(n,k) (1 <= k <= n); every Pascal-triangle entry is the sum of the two above it, with 1s on the boundary; triangle rows are numbered from 0. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_eq_3_3_pascal`, `Nat.choose_succ_succ`, `Nat.choose_succ_succ'`
 - **Eq 3.4**, p.103 [FO-232]: Symmetry: C(n,k) = C(n,n-k) for 0 <= k <= n. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_eq_3_4_choose_symm`, `Nat.choose_symm`
 
@@ -140,7 +161,9 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **text §3.6**, p.103 [FO-231]: Pascal's rule C(n+1,k) = C(n,k-1) + C(n,k) (1 <= k <= n); every Pascal-triangle entry is the sum of the two above it, with 1s on the boundary; triangle rows are numbered from 0. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_eq_3_3_pascal`, `Nat.choose_succ_succ`, `Nat.choose_succ_succ'`
 - **Thm 3.1**, p.104 [FO-234]: Binomial theorem: (x+y)^n = sum over k of C(n,k) x^k y^(n-k) for n >= 0 (coefficients are Pascal's row n). — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_3_1_binomial`, `add_pow`, `Commute.add_pow`
 - **Fact 3.6**, p.105 [FO-239]: Inclusion-exclusion for two sets: for finite A, B, card(A union B) = card A + card B - card(A inter B). — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_6_inclusion_exclusion`, `Finset.card_union_add_card_inter`
+- **Example 3.17**, p.105 [FO-403]: Three-card hands all red or all face: C(26,3)+C(12,3)-C(6,3) = 2800. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_17_red_or_face`
 - **Eq 3.5**, p.106 [FO-240]: Inclusion-exclusion for three sets: card(A union B union C) = sum of single cards - sum of pairwise intersections + triple intersection. — *proved proved here* — `UndergradKB.Foundations.hammack_eq_3_5_inclusion_exclusion_three`, `UndergradKB.Foundations.hammack_eq_3_5_inclusion_exclusion_three_int`
+- **Example 3.18**, p.106 [FO-404]: Complement of Example 3.17: C(52,3) - 2800 = 19300. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_18_complement`
 
 #### Section 3.8
 
@@ -150,8 +173,13 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Ex 3.20**, p.112 [FO-244]: The number of non-negative integer solutions of x_1 + ... + x_n = k is C(k+n-1,n-1) (distributing k identical objects to n kids). — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_ex_3_20_nonneg_solutions`, `Finset.card_finsuppAntidiag_nat_eq_choose`
 - **Ex 3.21**, p.112 [FO-243]: Stars and bars: the number of k-element multisets from an n-element set is C(k+n-1,k) = C(k+n-1,n-1) (encode as k stars and n-1 bars); equivalently weakly increasing lists / non-decreasing functions of bounded range. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_7_multisets`, `Sym.card_sym_eq_choose`, `Sym.card_sym_eq_multichoose`, `Nat.multichoose_eq`
 - **Fact 3.8**, p.114 [FO-246]: Permutations of a multiset with n elements and multiplicities p_1..p_k number n!/(p_1! ... p_k!) (multinomial); same count for words with given letter multiplicities. — *proved proved here* — `UndergradKB.Combinatorics.card_arrangements`, `UndergradKB.Combinatorics.card_words_with_multiplicities`
+- **Example 3.22**, p.114 [FO-405]: Permutations of a multiset with multiplicities 1,4,4,2 (MISSISSIPPI): 34650. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_22_mississippi`
+- **Example 3.23**, p.114 [FO-406]: Permutations of the multiset with multiplicities 4,2,1,2: 3780. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_23_coin_multiset`
 - **Fact 3.9**, p.116 [FO-247]: Division (strong pigeonhole) principle: n objects in k boxes give a box with at least ceil(n/k) objects and a box with at most floor(n/k). — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_9_pigeonhole_strong`, `Fintype.exists_lt_card_fiber_of_mul_lt_card`, `Fintype.exists_le_card_fiber_of_mul_le_card`, `Fintype.exists_card_fiber_lt_of_card_lt_mul`
 - **Fact 3.10**, p.116 [FO-248]: Pigeonhole principle: n objects in k boxes; if n > k some box has two objects, if n < k some box is empty. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_10_pigeonhole`, `UndergradKB.Foundations.Course.hammack_fact_3_10_empty_box`, `Fintype.exists_ne_map_eq_of_card_lt`, `Finset.exists_ne_map_eq_of_card_lt_of_maps_to`
+- **Example 3.24**, p.117 [FO-502]: Any six distinct integers from 0..9 contain two summing to 9. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_24_six_integers_sum_nine`, `UndergradKB.Foundations.Course.hammack_ex_3_24_five_integers_no_pair`
+- **Example 3.25**, p.118 [FO-503]: Among 49 gumballs of four colours some colour occurs at least 13 times. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_25_forty_nine_gumballs`, `UndergradKB.Foundations.Course.hammack_ex_3_25_forty_eight_not_enough`
+- **Example 3.26**, p.119 [FO-504]: Nine points each placed in one of four regions: some three share a region (pigeonhole step). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_3_26_nine_points_four_regions`
 
 #### Section 3.10
 
@@ -191,13 +219,14 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 5
 
-6 items; 6 with a Lean name; 1 proved proved here; 5 in Mathlib.
+7 items; 7 with a Lean name; 2 proved proved here; 5 in Mathlib.
 
 
 #### Section 5.1
 
 - **Outline §5.1**, p.141 [FO-139]: Contrapositive: P ⇒ Q is equivalent to ∼Q ⇒ ∼P; so prove the latter — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_o5_1_contrapositive`, `not_imp_not`, `mt`
 - **Definition 5.1**, p.143 [FO-118]: Definition of congruence mod n (Hammack: n ∣ a−b; Levin: same remainder) with notation a ≡ b (mod n) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_5_1_modEq_iff_dvd`, `Int.ModEq`, `Int.modEq_iff_dvd`
+- **Example 5.1**, p.143 [FO-483]: Sample congruences 9=1, 6=10, 14!=8 (mod 4), 20=4 (mod 8), 17=-4 (mod 3). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_5_1_sample_congruences`, `UndergradKB.Foundations.Course.hammack_ex_5_1_divisibility_form`, `UndergradKB.Foundations.Course.hammack_ex_5_1_remainders`
 
 #### Section 5.2
 
@@ -257,16 +286,22 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 8
 
-18 items; 17 with a Lean name; 4 proved proved here; 13 in Mathlib; 1 not a result.
+24 items; 23 with a Lean name; 10 proved proved here; 13 in Mathlib; 1 not a result.
 
 
 #### Section 8.1
 
 - **Prop §8.1**, p.170 [FO-150]: How to show a ∈ {x : P(x)} and a ∈ {x ∈ S : P(x)} (unfold the set-builder condition) — *not a result* — –
+- **Example 8.1**, p.170 [FO-484]: 7,14,21,28,35 lie in {x in N : 7 \| x} and 8 does not. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_1_multiples_of_seven`
+- **Example 8.2**, p.170 [FO-485]: {4,13,45}, {1,2,3}, {10,854,3} have three elements; {1,2,3,4} does not. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_2_three_element_sets`
 
 #### Section 8.2
 
 - **Prop §8.2 @171 (restates Definition 1.3)**, p.171 [FO-145]: Definition of subset A ⊆ B (and proper subset) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s8_2_subset_def`, `Set.Subset`
+- **Example 8.4**, p.171 [FO-486]: -22, -1, 5 lie in {3x^3+2 : x in Z}; 0 and 12 do not. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_4_three_cubed_plus_two`
+- **Example 8.5**, p.172 [FO-386]: Integers divisible by 18 are a subset of integers divisible by 6. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_5_dvd_18_subset_dvd_6`
+- **Example 8.6**, p.172 [FO-387]: Integers divisible by both 2 and 9 are divisible by 6. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_6_dvd_2_inter_dvd_9`
+- **Example 8.7**, p.172 [FO-388]: Pairs congruent mod 6 are congruent mod 3. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_7_modeq_six_subset_three`
 - **Prop §8.2 @173 (listed among "obvious" facts)**, p.173 [FO-146]: Subset is transitive: A ⊆ B and B ⊆ C imply A ⊆ C — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s8_2_subset_trans`, `Set.Subset.trans`
 - **Prop §8.2**, p.173 [FO-147]: Basic subset facts: A∩B ⊆ A, A ⊆ A∪B, A−B ⊆ A, X ⊆ A implies X ⊆ A∪B — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s8_2_basic_subsets`, `Set.inter_subset_left`, `Set.subset_union_left`, `Set.sdiff_subset`
 - **Example 8.8**, p.173 [FO-151]: P(A) ∪ P(B) ⊆ P(A ∪ B) — *proved proved here* — `UndergradKB.Foundations.powerset_union_subset`, `UndergradKB.Foundations.powerset_union_ne`
@@ -292,17 +327,20 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 9
 
-4 items; 4 with a Lean name; 4 proved proved here.
+7 items; 7 with a Lean name; 7 proved proved here.
 
 
 #### Section 9.1
 
 - **Prop §9.1**, p.187 [FO-144]: Disproof: to disprove P prove ∼P; negation of ∀ is ∃∼, of ∃ is ∀∼, of P⇒Q is P ∧ ∼Q; counterexample — *proved proved here* — `UndergradKB.Foundations.negation_rules`
+- **Example 9.1**, p.187 [FO-389]: Not every integer n gives a prime n^2 - n + 11 (n = 11 fails). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_9_1_not_always_prime`
+- **Example 9.2**, p.188 [FO-365]: A - (B cap C) = (A - B) cap (A - C) fails for sets of naturals. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_9_2_set_diff_counterexample`
 
 #### Section 9.2
 
 - **Prop §9.2**, p.188 [FO-144]: Disproof: to disprove P prove ∼P; negation of ∀ is ∃∼, of ∃ is ∀∼, of P⇒Q is P ∧ ∼Q; counterexample — *proved proved here* — `UndergradKB.Foundations.negation_rules`
 - **Example 9.3**, p.188 [FO-137]: There is no real x with x^4 < x < x^2 — *proved proved here* — `UndergradKB.Foundations.no_real_x4_lt_x_lt_x2`
+- **Example 9.4**, p.189 [FO-390]: Three distinct integers above 1 exist with x^y = y^z (2, 16, 4). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_9_4_exists_pow_triple`
 - **Example 9.5**, p.190 [FO-137]: There is no real x with x^4 < x < x^2 — *proved proved here* — `UndergradKB.Foundations.no_real_x4_lt_x_lt_x2`
 
 ## Chapter 10
@@ -353,19 +391,32 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 11
 
-12 items; 12 with a Lean name; 1 proved proved here; 11 in Mathlib.
+25 items; 25 with a Lean name; 14 proved proved here; 11 in Mathlib.
 
 - **Def 11.1**, p.214 [FO-062]: A (binary) relation on A, or from A to B, is a subset of A x A (resp. A x B) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_11_1_relation_is_subset`, `SetRel`
+- **Example 11.1**, p.214 [FO-457]: The ten listed pairs on {1,2,3,4} form the relation >=, and (3,4) is not in it. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_1_geq_relation`
+- **Example 11.2**, p.214 [FO-458]: The eight listed pairs on {1,2,3,4} form the relation same parity. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_2_same_parity`
+- **Example 11.3**, p.214 [FO-459]: The intersection of >= and same parity on {1,2,3,4} is six listed pairs. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_3_intersection`
+- **Example 11.4**, p.215 [FO-460]: An arbitrary subset of B x B is a relation; alphabetical order on four letters is six pairs. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_4_arbitrary_relation`
+- **Example 11.5**, p.215 [FO-461]: {(x,y) in Z x Z : x-y positive} is the relation > on Z. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_5_greater_than_on_int`
+- **Example 11.6**, p.215 [FO-462]: {(x,x) : x real} is the relation = on R. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_6_equality_relation`
 - **Def 11.2**, p.217 [FO-063]: Reflexive, symmetric, transitive properties of a relation (Levin adds irreflexive and antisymmetric in running text) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_11_2_refl_symm_trans`, `IsTrans`, `SetRel.IsSymm`
+- **Example 11.7**, p.218 [FO-371]: The concrete relation on {b,c,d,e} is not reflexive but is symmetric and transitive. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_7_relation_properties`
 
 #### Section 11.2
 
 - **Prop §11.2 @220 (Example 11.8)**, p.220 [FO-064]: Congruence mod n is reflexive, symmetric and transitive on Z (Levin: the mod-2 case, "difference is even") — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s11_2_modEq_equivalence`, `Int.ModEq.refl`, `Int.ModEq.symm`, `Int.ModEq.trans`
 - **Def 11.3**, p.222 [FO-065]: Definition of equivalence relation (reflexive, symmetric, transitive) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_11_3_equivalence`, `Equivalence`, `Setoid`, `IsEquiv`
 - **Def 11.4**, p.223 [FO-066]: Equivalence class of a under an equivalence relation: [a] = set of x related to a — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_11_4_class_mem`, `Setoid.classes`, `Setoid.mem_classes`
+- **Example 11.9**, p.223 [FO-463]: Equality on {-1,1,2,3,4} has five singleton classes. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_9_equality_classes`
+- **Example 11.10**, p.223 [FO-464]: Same parity on {-1,1,2,3,4} has exactly the classes {2,4} and {-1,1,3}. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_10_parity_classes`
+- **Example 11.12**, p.224 [FO-465]: Same degree is an equivalence relation on real polynomials; the class of 3x^2+2 is the degree-2 polynomials. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_12_same_degree`
+- **Example 11.13**, p.224 [FO-466]: Classes of congruence mod 3: [0] is the multiples of 3, [1] and [2] by remainder. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_13_classes_mod_three`, `UndergradKB.Foundations.Course.hammack_ex_11_13_class_names`
 - **Thm 11.1**, p.227 [FO-068]: For an equivalence relation, [a] = [b] iff aRb — *proved proved here* — `UndergradKB.Foundations.eqvClass_eq_iff`, `UndergradKB.Foundations.relClass_eq_iff`
 - **Thm 11.2**, p.228 [FO-070]: The equivalence classes of an equivalence relation on A form a partition of A — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_11_2_classes_partition`, `Setoid.isPartition_classes`, `Setoid.classes_eqv_classes`
 - **Def 11.5**, p.228 [FO-069]: Definition of partition of a set (nonempty blocks, cover, pairwise disjoint) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_11_5_partition`, `Setoid.IsPartition`
+- **Example 11.14**, p.228 [FO-467]: Five listed families of subsets of a 4-element set are partitions. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_14_partitions_of_four`
+- **Example 11.16**, p.228 [FO-468]: The classes of congruence mod 3 are the three remainder sets and form a partition of Z. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_16_mod_three_partition`
 
 #### Section 11.4
 
@@ -379,27 +430,39 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 12
 
-23 items; 22 with a Lean name; 2 proved proved here; 20 in Mathlib; 1 not a result.
+35 items; 34 with a Lean name; 14 proved proved here; 20 in Mathlib; 1 not a result.
 
 - **Def 12.1**, p.236 [FO-078]: A function f : A -> B assigns to each element of A exactly one element of B (Hammack: a relation from A to B in which each x has a unique y; f(x) is the image of x) — *not a result* — –
+- **Example 12.1**, p.236 [FO-469]: {(n,\|n\|+2)} in Z x N is the graph of a function containing (1,3) and (-3,5). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_1_abs_plus_two_graph`
 - **Def 12.2**, p.237 [FO-079]: Domain, codomain and range of a function; range is a subset of the codomain — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_2_range`, `Set.range`, `Set.mem_range`
+- **Example 12.2**, p.237 [FO-470]: {(p,0),(q,1),(r,2),(s,2)} is a function A to B with range all of B. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_2_small_function`
 - **Def 12.3**, p.239 [FO-080]: Two functions are equal iff they agree at every point of the domain — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_3_function_ext`, `funext`, `funext_iff`
+- **Example 12.3**, p.239 [FO-372]: The range of (m,n) -> 6m - 9n on Z x Z is the multiples of 3. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_3_range_multiples_of_three`
 - **Def 12.4**, p.240 [FO-081]: Injective (one-to-one): distinct inputs have distinct outputs — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_4_injective`
 - **Def 12.4**, p.240 [FO-082]: Surjective (onto): every element of the codomain is an output — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_4_surjective`
 - **Def 12.4**, p.240 [FO-083]: Bijective = injective and surjective — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_4_bijective`, `Function.Bijective`
+- **Example 12.4**, p.243 [FO-373]: x -> 1/x + 1 on nonzero reals is injective but not surjective onto R. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_4_injective_not_surjective`
+- **Example 12.5**, p.243 [FO-374]: x -> 1/x + 1 is a bijection from nonzero reals onto reals other than 1. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_5_bijective`
+- **Example 12.6**, p.243 [FO-375]: (m,n) -> (m+n, m+2n) is a bijection of Z x Z. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_6_bijective`
+- **Example 12.7**, p.243 [FO-376]: (m,n) -> m/(\|n\|+1) into Q is not injective but surjective. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_7_not_injective_surjective`
 
 #### Section 12.3
 
 - **Prop §12.3**, p.245 [FO-084]: Pigeonhole principle (function version): if \\|A\\|>\\|B\\| a function A->B is not injective; if \\|A\\|<\\|B\\| it is not surjective — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s12_3_pigeonhole`, `Fintype.exists_ne_map_eq_of_card_lt`, `Function.Embedding.isEmpty_of_card_lt`, `Fintype.card_le_of_surjective`
 - **Prop §12.3**, p.246 [FO-085]: Any 10 integers in [1,100] have two different subsets with equal sum (pigeonhole application) — *proved proved here* — `UndergradKB.Foundations.exists_subsets_eq_sum`
 - **Def 12.5**, p.247 [FO-086]: Composition g∘f of f : A->B and g : B->C — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_5_comp`
+- **Example 12.8**, p.248 [FO-377]: The composition g o f of two small finite functions is (a,3),(b,1),(c,3). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_8_composition`
+- **Example 12.10**, p.248 [FO-378]: g o f = x^2+x+1, f o g = x^2+3x+2 and they differ (composition is not commutative). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_10_composition_not_commutative`
 - **Thm 12.1**, p.249 [FO-087]: Function composition is associative — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_12_1_comp_assoc`, `Function.comp_assoc`
 - **Thm 12.2**, p.249 [FO-088]: Composites of injective (resp. surjective) functions are injective (resp. surjective) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_12_2_comp`, `Function.Bijective.comp`
 - **Def 12.6**, p.250 [FO-089]: Identity function i_A is bijective — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_6_id_bijective`, `id`, `Function.bijective_id`
 - **Def 12.7**, p.251 [FO-076]: Inverse relation R^{-1} = {(y,x) : (x,y) in R} — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_7_inverse_relation`, `SetRel.inv`
 - **Thm 12.3**, p.252 [FO-090]: f : A->B is bijective iff the inverse relation f^{-1} is a function B->A — *proved proved here* — `UndergradKB.Foundations.bijective_iff_inverseRelation_function`
 - **Def 12.8**, p.252 [FO-091]: Inverse function f^{-1} of a bijection, with f^{-1}∘f = i_A and f∘f^{-1} = i_B — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_8_inverse`, `Equiv.ofBijective`, `Function.leftInverse_surjInv`, `Function.rightInverse_surjInv`
+- **Example 12.11**, p.252 [FO-379]: x -> x^3 + 1 on R is bijective: every y has a unique real preimage. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_11_cube_plus_one_bijective`
+- **Example 12.12**, p.253 [FO-380]: The inverse of (m,n) -> (m+n, m+2n) is (m,n) -> (2m-n, n-m) (left and right inverse). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_12_inverse`
 - **Def 12.9**, p.254 [FO-092]: Image f(X) and preimage (inverse image) f^{-1}(Y) of subsets under a function — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_9_image_preimage`, `Set.image`, `Set.preimage`
+- **Example 12.13**, p.254 [FO-381]: Image and preimage computations for an 8-element function (preimage of {4}, image, empty preimage of 9). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_13_image_preimage`
 - **Example 12.14**, p.254 [FO-095]: X ⊆ f^{-1}(f(X)), with proper inclusion in general — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_12_4_3`, `Set.subset_preimage_image`, `Set.preimage_image_eq`
 - **Thm 12.4(1)**, p.255 [FO-093]: f(W ∩ X) ⊆ f(W) ∩ f(X) (equality can fail) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_12_4_1`, `Set.image_inter_subset`
 - **Thm 12.4(2)**, p.255 [FO-094]: f(W ∪ X) = f(W) ∪ f(X) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_12_4_2`, `Set.image_union`
@@ -410,7 +473,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 13
 
-30 items; 26 with a Lean name; 7 proved proved here; 19 in Mathlib; 4 not a result.
+35 items; 31 with a Lean name; 12 proved proved here; 19 in Mathlib; 4 not a result.
 
 - **Theorem 13.1**, p.257 [FO-259]: Triangle inequality for reals: $\lvert x-y\rvert \le \lvert x-z\rvert+\lvert z-y\rvert$ — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_13_1_triangle`, `dist_triangle`
 
@@ -419,6 +482,8 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Eq (13.1)-(13.3) §13.1**, p.257 [FO-260]: Consequences of the triangle inequality: $\lvert x+y\rvert\le\lvert x\rvert+\lvert y\rvert$ and $\lvert x\rvert-\lvert y\rvert\le\lvert x+y\rvert$ (and $\lvert x-y\rvert\le\lvert x\rvert+\lvert y\rvert$) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s13_1_triangle_consequences`
 - **Definition 13.1**, p.258 [FO-261]: Informal definition of limit (f(x) arbitrarily close to L for x sufficiently close to c) — *not a result* — –
 - **Definition 13.2**, p.259 [FO-262]: Epsilon-delta definition of $\lim_{x\to c}f(x)=L$ (with $0<\lvert x-c\rvert<\delta$, f defined on a punctured neighbourhood) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_13_2_limit_eps_delta`, `Metric.tendsto_nhdsWithin_nhds`, `Filter.Tendsto`
+- **Example 13.1**, p.260 [FO-415]: Epsilon-delta: lim_{x->2} (3x+4) = 10. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_13_1_limit_linear`
+- **Example 13.2**, p.260 [FO-416]: Epsilon-delta: lim_{x->2} 5x^2 = 20. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_13_2_limit_quadratic`
 
 #### Section 13.3
 
@@ -433,6 +498,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Theorem 13.6**, p.264 [FO-271]: Difference rule for limits — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_13_6_limit_sub`
 - **Theorem 13.7**, p.265 [FO-272]: Multiplication rule for limits — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_13_7_limit_mul`, `Filter.Tendsto.mul`
 - **Theorem 13.8**, p.265 [FO-273]: Division rule for limits (denominator limit nonzero) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_13_8_limit_div`, `Filter.Tendsto.div`
+- **Example 13.6**, p.267 [FO-417]: lim_{x->1} (1/x - 1)/(1 - x) = 1 (punctured neighbourhood). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_13_6_rational_limit`
 - **Definition 13.3**, p.268 [FO-274]: Definition of continuity at c: $\lim_{x\to c}f(x)=f(c)$ (three conditions); continuous = continuous at every point of the domain — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_13_3_continuousAt_eps_delta`, `ContinuousAt`, `Continuous`, `Metric.continuousAt_iff`
 
 #### Section 13.5
@@ -452,6 +518,8 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 - **§13.7 @273 (unnumbered)**, p.273 [FO-282]: Sequences: infinite list $a_1,a_2,\dots$, general term, a sequence as a function $\mathbb N\to\mathbb R$ — *not a result* — –
 - **Definition 13.5**, p.274 [FO-283]: Definition: sequence converges to L ($\forall\varepsilon\exists N\,n>N\Rightarrow\lvert a_n-L\rvert<\varepsilon$); otherwise diverges — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_13_5_seq_converges`, `Metric.tendsto_atTop'`, `Filter.Tendsto`
+- **Example 13.8**, p.274 [FO-418]: The sequence 1 - 1/n converges to 1 (epsilon-N form). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_13_8_one_minus_inv`
+- **Example 13.9**, p.275 [FO-419]: The sequence (-1)^(n+1)(n+1)/n has no limit. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_13_9_alternating_diverges`
 - **Definition 13.6**, p.276 [FO-284]: Divergence to $\pm\infty$ of a sequence — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_13_6_seq_diverges_to_infinity`, `Filter.tendsto_atTop_atTop`
 - **Definition 13.7**, p.278 [FO-285]: Definition: infinite series converges to S iff sequence of partial sums converges to S — *proved proved here* — `UndergradKB.Foundations.SeriesConvergesTo`, `UndergradKB.Foundations.seriesConvergesTo_of_hasSum`
 - **Example 13.10**, p.278 [FO-286]: $\sum_{k\ge1}1/2^k=1$ — *proved proved here* — `UndergradKB.Foundations.hammack_ex_13_10_geometric_half`
@@ -460,13 +528,14 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 14
 
-23 items; 22 with a Lean name; 4 proved proved here; 17 in Mathlib; 1 not formalized; 1 not a result.
+25 items; 24 with a Lean name; 6 proved proved here; 17 in Mathlib; 1 not formalized; 1 not a result.
 
 - **Definition 14.1**, p.281 [FO-289]: Same cardinality: $\lvert A\rvert=\lvert B\rvert$ iff there is a bijection $A\to B$ — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_14_1_card_eq_iff`, `Cardinal.eq`, `Cardinal.mk_congr`, `Equiv`
 
 #### Section 14.1
 
 - **§14.1 @282 (unnumbered)**, p.282 [FO-290]: Terminology: bijection, injection, surjection — *not a result* — –
+- **Example 14.1**, p.282 [FO-420]: Negation is a bijection from {0..5} onto {-5..0}. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_14_1_negation_bijection`
 - **Example 14.2**, p.282 [FO-291]: There is a bijection $\mathbb N\to\mathbb Z$, so $\lvert\mathbb N\rvert=\lvert\mathbb Z\rvert$ — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_14_1_nat_int`, `Equiv.intEquivNat`, `Cardinal.mk_int`, `Cardinal.mk_nat`
 - **Theorem 14.1**, p.283 [FO-291]: There is a bijection $\mathbb N\to\mathbb Z$, so $\lvert\mathbb N\rvert=\lvert\mathbb Z\rvert$ — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_14_1_nat_int`, `Equiv.intEquivNat`, `Cardinal.mk_int`, `Cardinal.mk_nat`
 - **Theorem 14.2**, p.284 [FO-292]: No surjection (hence bijection) $\mathbb N\to\mathbb R$; $\lvert\mathbb N\rvert\ne\lvert\mathbb R\rvert$ (Cantor's diagonal argument) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_14_2_nat_not_real`, `Cardinal.not_countable_real`, `Cardinal.aleph0_lt_continuum`, `Cardinal.mk_real`
@@ -475,6 +544,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Example 14.4**, p.285 [FO-293]: $\lvert(0,\infty)\rvert=\lvert(0,1)\rvert=\lvert\mathbb R\rvert$ (all intervals have the cardinality of $\mathbb R$) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_ex_14_3_interval_cards`, `Cardinal.mk_Ioi_real`, `Cardinal.mk_Ioo_real`, `Cardinal.mk_real`
 - **Definition 14.2**, p.287 [FO-295]: Definitions: countably infinite ($\lvert\mathbb N\rvert=\lvert A\rvert$), countable (finite or countably infinite), uncountable — *proved proved here* — `UndergradKB.Foundations.hammack_def_14_2_countably_infinite_iff`, `UndergradKB.Foundations.hammack_def_14_2_countable_iff`, `UndergradKB.Foundations.hammack_def_14_2_uncountable_iff`
 - **Definition 14.3**, p.287 [FO-296]: Definition: $\aleph_0=\lvert\mathbb N\rvert$ — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_14_3_aleph0`, `Cardinal.aleph0`, `Cardinal.mk_nat`
+- **Example 14.5**, p.287 [FO-421]: The even integers have cardinality aleph_0 (via n -> 2n from Z). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_14_5_even_integers_countable`
 - **Theorem 14.3**, p.288 [FO-297]: A set is countably infinite iff its elements can be listed in an infinite list $a_1,a_2,\dots$ — *proved proved here* — `UndergradKB.Foundations.hammack_thm_14_3_list`, `UndergradKB.Foundations.hammack_thm_14_3_list_with_repeats`
 - **Theorem 14.4**, p.288 [FO-298]: $\mathbb Q$ is countably infinite — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_14_4_rat_countably_infinite`, `Cardinal.mkRat`
 - **Theorem 14.5**, p.290 [FO-299]: Product of two countably infinite sets is countably infinite — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_14_5_prod_countably_infinite`, `Set.Countable.prod`, `Cardinal.mk_prod`

@@ -5,3 +5,6 @@ import Solution_DifferentialEquations
 #print axioms UndergradKB.Headlines.DifferentialEquations.laplace_unique
 #print axioms UndergradKB.Headlines.DifferentialEquations.linN_general_solution
 #print axioms UndergradKB.Headlines.DifferentialEquations.wave_general_solution
+#print axioms UndergradKB.Headlines.DifferentialEquations.frobenius_analytic
+#print axioms UndergradKB.Headlines.DifferentialEquations.fourier_series_piecewise_smooth
+#print axioms UndergradKB.Headlines.DifferentialEquations.gibbs_phenomenon

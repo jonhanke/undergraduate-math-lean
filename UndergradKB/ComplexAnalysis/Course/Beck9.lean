@@ -149,4 +149,11 @@ theorem pole_order_eq_neg_meromorphicOrderAt (f g : ℂ → ℂ) (z₀ : ℂ) (R
   rw [hfg z hzb hz]
   simp [zpow_neg, div_eq_mul_inv, mul_comm]
 
+/-- Beck Definition 9.3.1 (CX-143). f is meromorphic on U iff near each point z of U, some power
+(w - z)^n times f is analytic at z (so f is holomorphic except at poles). -/
+@[kb "beck2025" "Definition 9.3.1, p. 158"]
+theorem meromorphicOn_iff_mul_pow_analytic (f : ℂ → ℂ) (U : Set ℂ) :
+    MeromorphicOn f U ↔ ∀ z ∈ U, ∃ n : ℕ, AnalyticAt ℂ (fun w => (w - z) ^ n * f w) z :=
+  Iff.rfl
+
 end UndergradKB.ComplexAnalysis.Course.Beck9

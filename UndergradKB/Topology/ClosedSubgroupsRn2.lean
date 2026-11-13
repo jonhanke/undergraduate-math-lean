@@ -234,7 +234,7 @@ theorem closed_subgroup_torus_equiv {n : ℕ} (H : AddSubgroup (Fin n → AddCir
     rw [this]
     exact isClosed_singleton.preimage hφcont
   obtain ⟨Q⟩ := quotient_equiv Λ φ hφcont hφopen hφsurj (fun x => AddMonoidHom.mem_ker)
-  obtain ⟨c, d, ⟨R⟩⟩ := quotient_closed_subgroup_equiv Λ hΛ
+  obtain ⟨c, d, -, ⟨R⟩⟩ := quotient_closed_subgroup_equiv Λ hΛ
   let S : A ≃ₜ+ ((Fin c → ℝ) × (Fin d → AddCircle (1 : ℝ))) := Q.symm.trans R
   have : CompactSpace AH := isCompact_iff_compactSpace.1 hAHclosed.isCompact
   have : CompactSpace A := Function.Surjective.compactSpace Aeq.continuous Aeq.surjective

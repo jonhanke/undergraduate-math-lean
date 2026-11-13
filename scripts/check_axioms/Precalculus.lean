@@ -4,3 +4,4 @@ import Solution_Precalculus
 
 #print axioms UndergradKB.Headlines.Precalculus.descartes_rule_of_signs
 #print axioms UndergradKB.Headlines.Precalculus.descartes_rule_of_signs_neg
+#print axioms UndergradKB.Headlines.Precalculus.discriminant_test

@@ -10,16 +10,22 @@ import UndergradKB.Topology.ClosedSubgroupsRn
 import UndergradKB.Topology.ClosedSubgroupsRn2
 import UndergradKB.Topology.Wallman
 import UndergradKB.Topology.ClassicalDuals
+import UndergradKB.Topology.DualityTheorem
+import UndergradKB.Topology.StructureTheorems
+import UndergradKB.Topology.SharkovskiiOdd4
+import UndergradKB.Topology.SharkovskiiOdd7
 
 /-!
-# Headline statements of undergraduate-math-lean 0.2.0: topology (Morris, *Topology Without Tears*)
+# Headline statements of undergraduate-math-lean 0.2.1: topology (Morris, *Topology Without Tears*)
 
 The main results of this topic that Mathlib and Tau Ceti lack, one theorem each, with every proof a deliberate
 `sorry`: the period three theorem; Peano's space-filling curve onto the `n`-cube; the Banach–Mazur theorem (every
 separable normed space embeds isometrically in `C([0, 1])`); the structure of closed subgroups of `ℝⁿ`, of the
 quotients of `ℝⁿ` and of closed subgroups of the torus; the Wallman compactification and its coincidence with the
 Stone–Čech compactification exactly for normal spaces; and Pontryagin–van Kampen duality for the groups
-`ℝᵃ × 𝕋ᵇ × ℤᶜ`. To check what is claimed, read this file. `Solution_Topology.lean` proves the same statements from
+`ℝᵃ × 𝕋ᵇ × ℤᶜ`; and, added in 0.2.1: Pontryagin–van Kampen duality for every locally compact Hausdorff abelian
+group; Sharkovskii's theorem on the periods of continuous maps of the real line and its converse; and the principal
+structure theorem for locally compact abelian groups, with its form for connected groups. To check what is claimed, read this file. `Solution_Topology.lean` proves the same statements from
 the library, and `lake comparator` (configured by `comparator/Topology.json`) checks that each proved statement is
 exactly the one here and uses only the standard axioms `propext`, `Classical.choice` and `Quot.sound`.
 
@@ -36,9 +42,14 @@ should check these too:
   `Wallman.pt x` is the ultrafilter of the closed sets containing `x` (for `X` a T1 space).
 * `DualityHolds G`: there is an isomorphism of topological groups `e : G ≃ₜ* PontryaginDual (PontryaginDual G)` with
   `e g χ = χ g` for all `g` and `χ`, i.e. the canonical map to the double dual is an isomorphism.
+* `SharkovskiiLT n k`: `k` comes after `n` in the Sharkovskii order `3 ▹ 5 ▹ 7 ▹ ⋯ ▹ 2·3 ▹ 2·5 ▹ ⋯ ▹ 2²·3 ▹ ⋯ ▹ 2³ ▹
+  2² ▹ 2 ▹ 1`. Writing `n = 2ᵃ·m` and `k = 2ᵇ·l` with `m`, `l` odd, it holds when `m > 1`, `l > 1` and either `a < b`
+  or (`a = b` and `m < l`); or when `m > 1` and `l = 1`; or when `m = l = 1` and `b < a`. (Meant for positive `n`, `k`.)
 -/
 
 namespace UndergradKB.Headlines.Topology
+
+universe u
 
 open Function Set Topology UndergradKB.Topology
 
@@ -111,6 +122,55 @@ Mathlib has the Pontryagin dual and duality for finite abelian groups; Tau Ceti 
 characters of tori; neither has the double-dual isomorphism for these groups. -/
 theorem pontryagin_duality_real_circle_int (a b c : ℕ) :
     DualityHolds (((Fin a → Multiplicative ℝ) × (Fin b → Circle)) × (Fin c → Multiplicative ℤ)) := by
+  sorry
+
+/-- **Pontryagin–van Kampen duality** (Morris Theorem A5.13.6): for every locally compact Hausdorff abelian group
+`G`, the canonical map from `G` to its double dual is an isomorphism of topological groups (the group is written
+multiplicatively, as Mathlib's `PontryaginDual` requires; the dual carries the compact-open topology). Related:
+Mathlib has the Pontryagin dual and duality for finite abelian groups only; Tau Ceti identifies the dual of `ℤ` with
+the circle but has no double-dual isomorphism. This strengthens
+`pontryagin_duality_real_circle_int`. -/
+theorem pontryagin_van_kampen {G : Type u} [CommGroup G] [TopologicalSpace G] [IsTopologicalGroup G]
+    [T2Space G] [LocallyCompactSpace G] : DualityHolds G := by
+  sorry
+
+/-- **Sharkovskii's theorem** (Morris Theorem A3.6.4): if a continuous map `f : ℝ → ℝ` has a point of least period
+`n` and `k` comes after `n` in the Sharkovskii order, then `f` has a point of least period `k`. Related: neither
+Mathlib nor Tau Ceti has it; the period three theorem `period_three` is the case `n = 3`. -/
+theorem sharkovskii {f : ℝ → ℝ} (hf : Continuous f) {n : ℕ} (hn : 0 < n)
+    (hper : ∃ x, minimalPeriod f x = n) {k : ℕ} (hk : 0 < k) (hlt : SharkovskiiLT n k) :
+    ∃ y, minimalPeriod f y = k := by
+  sorry
+
+/-- **The converse of Sharkovskii's theorem** (Morris Theorem A3.6.6): for every `n ≥ 1` there is a continuous map
+`f : ℝ → ℝ` with a point of least period `n` and no point of least period `l` for any `l` that precedes `n` in the
+Sharkovskii order. Related: as above. -/
+theorem converse_sharkovskii {n : ℕ} (hn : 0 < n) :
+    ∃ f : ℝ → ℝ, Continuous f ∧ (∃ x, minimalPeriod f x = n) ∧
+      ∀ l, 0 < l → SharkovskiiLT l n → ¬ ∃ x, minimalPeriod f x = l := by
+  sorry
+
+/-- **The principal structure theorem for locally compact abelian groups** (Morris Theorem A5.13.8): every locally
+compact Hausdorff abelian group `G` has an open subgroup which is isomorphic, as a topological group, to `ℝᵃ × K`
+for some `a` and some compact Hausdorff abelian group `K` (the group is written multiplicatively; `K` lives in the
+same universe as `G`). Related: Mathlib has Haar measure on locally compact groups but no structure theory of
+locally compact abelian groups; Tau Ceti has none either. -/
+theorem lca_principal_structure {G : Type u} [CommGroup G] [TopologicalSpace G] [IsTopologicalGroup G]
+    [T2Space G] [LocallyCompactSpace G] :
+    ∃ S : Subgroup G, IsOpen (S : Set G) ∧
+      ∃ (a : ℕ) (K : Type u) (_ : CommGroup K) (_ : TopologicalSpace K),
+        IsTopologicalGroup K ∧ CompactSpace K ∧ T2Space K ∧
+          Nonempty (S ≃ₜ* (Fin a → Multiplicative ℝ) × K) := by
+  sorry
+
+/-- **Structure of connected locally compact abelian groups** (Morris Theorems A5.13.9 and A5.0.20): a connected
+locally compact Hausdorff abelian group `G` is isomorphic, as a topological group, to `ℝᵃ × K` for some `a` and some
+compact connected Hausdorff abelian group `K`. Related: as above. -/
+theorem lca_connected_structure {G : Type u} [CommGroup G] [TopologicalSpace G] [IsTopologicalGroup G]
+    [T2Space G] [LocallyCompactSpace G] [ConnectedSpace G] :
+    ∃ (a : ℕ) (K : Type u) (_ : CommGroup K) (_ : TopologicalSpace K),
+      IsTopologicalGroup K ∧ CompactSpace K ∧ T2Space K ∧ ConnectedSpace K ∧
+        Nonempty (G ≃ₜ* (Fin a → Multiplicative ℝ) × K) := by
   sorry
 
 end UndergradKB.Headlines.Topology

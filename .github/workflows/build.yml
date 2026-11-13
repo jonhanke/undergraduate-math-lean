@@ -130,7 +130,7 @@ jobs:
       matrix:
         topic: [LinearAlgebra, AbstractAlgebra, Combinatorics, Calculus, Trigonometry, Geometry, Precalculus,
                 Statistics, Probability, DifferentialEquations, ComplexAnalysis, RepresentationTheory,
-                Topology]
+                Topology, Foundations, RealAnalysis]
     steps:
       - name: Free disk space (the comparator exports need it)
         run: |

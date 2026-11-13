@@ -1,15 +1,16 @@
 name = "undergraduate_math_lean"
-version = "0.2.0"
+version = "0.2.1"
 defaultTargets = ["Common", "LinearAlgebra", "AbstractAlgebra", "Combinatorics", "Calculus", "Trigonometry",
   "Geometry", "Precalculus", "Statistics", "Probability", "Foundations", "DifferentialEquations", "ComplexAnalysis",
-  "RepresentationTheory", "Topology", "Challenge_LinearAlgebra", "Solution_LinearAlgebra",
+  "RepresentationTheory", "Topology", "RealAnalysis", "Challenge_LinearAlgebra", "Solution_LinearAlgebra",
   "Challenge_AbstractAlgebra", "Solution_AbstractAlgebra", "Challenge_Combinatorics", "Solution_Combinatorics",
   "Challenge_Calculus", "Solution_Calculus", "Challenge_Trigonometry", "Solution_Trigonometry", "Challenge_Geometry",
   "Solution_Geometry", "Challenge_Precalculus", "Solution_Precalculus", "Challenge_Statistics",
   "Solution_Statistics", "Challenge_Probability", "Solution_Probability",
   "Challenge_DifferentialEquations", "Solution_DifferentialEquations",
   "Challenge_ComplexAnalysis", "Solution_ComplexAnalysis", "Challenge_RepresentationTheory",
-  "Solution_RepresentationTheory", "Challenge_Topology", "Solution_Topology"]
+  "Solution_RepresentationTheory", "Challenge_Topology", "Solution_Topology", "Challenge_Foundations",
+  "Solution_Foundations", "Challenge_RealAnalysis", "Solution_RealAnalysis"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -98,6 +99,11 @@ globs = ["UndergradKB.RepresentationTheory.*"]
 name = "Topology"
 roots = ["UndergradKB.Topology"]
 globs = ["UndergradKB.Topology.*"]
+
+[[lean_lib]]
+name = "RealAnalysis"
+roots = ["UndergradKB.RealAnalysis"]
+globs = ["UndergradKB.RealAnalysis.*"]
 
 # One headline check per topic: Challenge_<Topic> states the headline results (proofs: deliberate sorry),
 # Solution_<Topic> proves them from the library; each imports only the modules of its own topic it needs.
@@ -204,3 +210,19 @@ roots = ["Challenge_Topology"]
 [[lean_lib]]
 name = "Solution_Topology"
 roots = ["Solution_Topology"]
+
+[[lean_lib]]
+name = "Challenge_Foundations"
+roots = ["Challenge_Foundations"]
+
+[[lean_lib]]
+name = "Solution_Foundations"
+roots = ["Solution_Foundations"]
+
+[[lean_lib]]
+name = "Challenge_RealAnalysis"
+roots = ["Challenge_RealAnalysis"]
+
+[[lean_lib]]
+name = "Solution_RealAnalysis"
+roots = ["Solution_RealAnalysis"]

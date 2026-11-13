@@ -9,6 +9,10 @@ import UndergradKB.Common.Attr
 Morris, *Topology Without Tears*, Remark 5.2.12: a continuous self-map of a closed `n`-cube has a fixed
 point.  Mathlib has neither degree theory, homology, Sperner's lemma, nor the KKM lemma, so the whole
 theorem must be built.  Status of the attempt (see also `docs/coverage/topology/parts/lean-b2z.tsv`).
+Wave 2: the theorem is now proved (`hasFixedPointProp_cube`, `hasFixedPointProp_cell`,
+`brouwer_closedBall` in `BrouwerSmooth.lean`) by a variant of the plan below that avoids the Piola
+identity: the volume argument of `BrouwerVolume.lean` (change of variables for `id + t (r - id)` and
+Lagrange interpolation in `t`).
 
 ## Plan (analytic route, Milnor-Rogers/Lax)
 

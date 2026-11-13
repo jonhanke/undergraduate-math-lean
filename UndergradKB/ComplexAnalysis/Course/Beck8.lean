@@ -415,4 +415,35 @@ theorem weierstrass_convergence (G : Set ℂ) (hG : IsOpen G) (F : ℕ → ℂ �
   refine ⟨hl.differentiableOn (Eventually.of_forall hF) hG, fun k z hz => ?_⟩
   exact (key k F f hF hl).tendsto_at hz
 
+/-- Beck Definition 8.1.9 (CX-123). For an open proper region G and z0 in G, the distance from z0
+to the boundary is positive and the disc of that radius about z0 lies in G. -/
+@[kb "beck2025" "Definition 8.1.9, p. 134"]
+theorem disc_of_distance_to_boundary (G : Set ℂ) (hG : IsOpen G) (z₀ : ℂ) (hz : z₀ ∈ G)
+    (hne : Gᶜ.Nonempty) :
+    0 < Metric.infDist z₀ Gᶜ ∧ Metric.ball z₀ (Metric.infDist z₀ Gᶜ) ⊆ G := by
+  refine ⟨?_, fun z hzb => ?_⟩
+  · exact (hG.isClosed_compl.notMem_iff_infDist_pos hne).mp (by simpa using hz)
+  · by_contra hzG
+    have := Metric.infDist_le_dist_of_mem (x := z₀) (show z ∈ Gᶜ from hzG)
+    rw [Metric.mem_ball] at hzb
+    rw [dist_comm] at hzb
+    linarith
+
+/-- Beck Definition 8.1.14 (CX-124). f is analytic at z0 iff it has a power series expansion on
+some disc of positive radius about z0. -/
+@[kb "beck2025" "Definition 8.1.14, p. 135"]
+theorem analyticAt_iff_power_series_on_disc (f : ℂ → ℂ) (z₀ : ℂ) :
+    AnalyticAt ℂ f z₀ ↔
+      ∃ (p : FormalMultilinearSeries ℂ ℂ ℂ) (r : ENNReal),
+        0 < r ∧ HasFPowerSeriesOnBall f p z₀ r :=
+  ⟨fun ⟨_, _, h⟩ => ⟨_, _, h.r_pos, h⟩, fun ⟨_, _, _, h⟩ => ⟨_, _, h⟩⟩
+
+/-- Beck Multiplicity of a zero, §8.2 (CX-125). An analytic f has a zero of multiplicity m at a iff
+near a, f = (z - a)^m g with g analytic and g(a) nonzero. -/
+@[kb "beck2025" "Multiplicity of a zero §8.2, p. 135"]
+theorem zero_multiplicity_iff (f : ℂ → ℂ) (a : ℂ) (hf : AnalyticAt ℂ f a) (m : ℕ) :
+    analyticOrderAt f a = (m : ℕ∞) ↔
+      ∃ g : ℂ → ℂ, AnalyticAt ℂ g a ∧ g a ≠ 0 ∧ ∀ᶠ z in 𝓝 a, f z = (z - a) ^ m • g z :=
+  hf.analyticOrderAt_eq_natCast
+
 end UndergradKB.ComplexAnalysis.Course.Beck8

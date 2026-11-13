@@ -6,15 +6,21 @@ Authors: Jonathan Hanke
 import UndergradKB.Statistics.NormalSample
 import UndergradKB.Statistics.AnovaTest
 import UndergradKB.Statistics.CorrelationTest
+import UndergradKB.Statistics.Pearson
+import UndergradKB.Statistics.IndependenceTest
+import UndergradKB.Statistics.Homogeneity
 
 /-!
-# Headline statements of undergraduate-math-lean 0.2.0: statistics (OpenStax *Introductory Statistics*)
+# Headline statements of undergraduate-math-lean 0.2.1: statistics (OpenStax *Introductory Statistics*)
 
 The main results of this topic that Mathlib and Tau Ceti lack, one theorem each, with every proof a deliberate
 `sorry`: the exact sampling distributions behind the textbook tests for normal samples. For a sample of independent
 normal observations, the sample mean and the sample variance are independent and the scaled sample variance is
 chi-square (Student's theorem); the t statistic has the Student t law; the F statistic of one-way analysis of
-variance has the F law; and the t statistic of the sample correlation coefficient has the Student t law. To check
+variance has the F law; and the t statistic of the sample correlation coefficient has the Student t law. Also the
+asymptotic laws of the chi-square tests for categorical data: Pearson's goodness-of-fit statistic converges in
+distribution to the chi-square law with `k - 1` degrees of freedom, and the statistics of the tests of independence
+and of homogeneity of an `r × c` table converge to chi-square with `(r - 1)(c - 1)` degrees of freedom. To check
 what is claimed, read this file. `Solution_Statistics.lean` proves the same statements from the library, and
 `lake comparator` (configured by `comparator/Statistics.json`) checks that each proved statement is exactly the one
 here and uses only the standard axioms `propext`, `Classical.choice` and `Quot.sound`.
@@ -42,6 +48,17 @@ too:
   the size of group `j`, `groupMean x g j` its mean; `ssBetween x g = ∑ j, groupSize g j * (groupMean x g j -
   mean x) ^ 2`, `ssWithin x g = ∑ i, (x i - groupMean x g (g i)) ^ 2`; `msBetween = ssBetween / (k - 1)`,
   `msWithin = ssWithin / (n - k)`, and `fStatistic x g = msBetween x g / msWithin x g`.
+* For the chi-square tests, observations are random variables `C m : Ω → ι` with values in a finite set of
+  categories (`Fin k`, or the cells `Fin r × Fin c` of a table). `observedCount C n i ω` is the number of the first `n`
+  observations `C 0 ω, …, C (n-1) ω` equal to `i`. `pearsonStatistic p C n = ∑ i, (Oᵢ - n pᵢ)² / (n pᵢ)` with
+  `Oᵢ = observedCount C n i`.
+* `rowTotal C n i = ∑ j, O(i,j)` and `colTotal C n j = ∑ i, O(i,j)` are the row and column totals of the observed
+  counts of a table; `expectedCount C n i j = rowTotal C n i * colTotal C n j / n`; and
+  `independenceStatistic C n = ∑ i, ∑ j, (O(i,j) - E(i,j))² / E(i,j)`.
+* For homogeneity, `Y i m : Ω → Fin c` is the `m`-th observation from sample `i` (`i : Fin r`), and sample `i` has
+  size `sz i * n`; `homCount Y sz n i j` is the number of observations of sample `i` that fall in category `j`,
+  `homColTotal Y sz n j = ∑ i, homCount Y sz n i j`, `homExpected Y sz n i j = (sz i * n) * homColTotal Y sz n j /
+  ∑ i', sz i' * n`, and `homogeneityStatistic Y sz n = ∑ i, ∑ j, (O(i,j) - E(i,j))² / E(i,j)`.
 -/
 
 namespace UndergradKB.Headlines.Statistics
@@ -94,6 +111,54 @@ theorem hasLaw_correlation_tStatistic [IsProbabilityMeasure P] (x : Fin n → �
     (hn : 3 ≤ n) {Y : Fin n → Ω → ℝ} {μ σ : ℝ} (hσ : 0 < σ) (hY : IsNormalSample Y μ σ P) :
     HasLaw (fun ω ↦ correlation x (fun i ↦ Y i ω) * √((n : ℝ) - 2) /
       √(1 - correlation x (fun i ↦ Y i ω) ^ 2)) (studentT ((n : ℝ) - 2)) P := by
+  sorry
+
+/-- **Pearson's theorem: the goodness-of-fit statistic is asymptotically chi-square** (OpenStax *Introductory
+Statistics* § 11.2): for independent identically distributed observations falling in category `i` of `k ≥ 2`
+categories with probability `pᵢ > 0`, the statistic `∑ᵢ (Oᵢ - Eᵢ)² / Eᵢ` with expected counts `Eᵢ = n pᵢ` converges in
+distribution, as the number `n` of observations tends to infinity, to the chi-square law with `k - 1` degrees of
+freedom (given as the law of any real random variable `W` on any probability space). Beyond the book, which says
+that the statistic is approximately chi-square, this is a limit theorem. Related: Tau Ceti has the chi-square law,
+Gaussian projections and the multinomial distribution, but not this statement; Mathlib has none of them, only the
+central limit theorem and the Cramér–Wold device used in the proof. -/
+theorem tendstoInDistribution_pearsonStatistic [IsProbabilityMeasure P] {Ω' : Type*} [MeasurableSpace Ω']
+    {P' : Measure Ω'} [IsProbabilityMeasure P'] {p : Fin k → ℝ} (hk : 2 ≤ k) (hp : ∀ i, 0 < p i)
+    (hsum : ∑ i, p i = 1) {C : ℕ → Ω → Fin k} (hmeas : ∀ m, Measurable (C m)) (hind : iIndepFun C P)
+    (hident : ∀ m, IdentDistrib (C m) (C 0) P P) (hprob : ∀ i, P.real {ω | C 0 ω = i} = p i)
+    {W : Ω' → ℝ} (hW : HasLaw W (chiSquared ((k : ℝ) - 1)) P') :
+    TendstoInDistribution (pearsonStatistic p C) Filter.atTop W (fun _ ↦ P) P' := by
+  sorry
+
+/-- **The chi-square test of independence** (OpenStax *Introductory Statistics* § 11.3): for independent
+identically distributed individuals falling in cell `(i, j)` of an `r × c` table (`r, c ≥ 2`) with probability
+`aᵢ bⱼ`, `aᵢ, bⱼ > 0` (the null hypothesis that row and column variables are independent), the statistic
+`∑ (O - E)² / E` with expected counts `E(i,j) = (row total)(column total)/n` converges in distribution to the
+chi-square law with `(r - 1)(c - 1)` degrees of freedom. Related: as above; not a corollary of Pearson's theorem,
+since the margins are estimated from the data. -/
+theorem tendstoInDistribution_independenceStatistic {r c : ℕ} [IsProbabilityMeasure P] {Ω' : Type*}
+    [MeasurableSpace Ω'] {P' : Measure Ω'} [IsProbabilityMeasure P'] (hr : 2 ≤ r) (hc : 2 ≤ c)
+    {a : Fin r → ℝ} {b : Fin c → ℝ} (ha : ∀ i, 0 < a i) (hb : ∀ j, 0 < b j) (hasum : ∑ i, a i = 1)
+    (hbsum : ∑ j, b j = 1) {C : ℕ → Ω → Fin r × Fin c} (hmeas : ∀ m, Measurable (C m))
+    (hind : iIndepFun C P) (hident : ∀ m, IdentDistrib (C m) (C 0) P P)
+    (hprob : ∀ i j, P.real {ω | C 0 ω = (i, j)} = a i * b j)
+    {W : Ω' → ℝ} (hW : HasLaw W (chiSquared (((r : ℝ) - 1) * ((c : ℝ) - 1))) P') :
+    TendstoInDistribution (independenceStatistic C) Filter.atTop W (fun _ ↦ P) P' := by
+  sorry
+
+/-- **The chi-square test of homogeneity** (OpenStax *Introductory Statistics* § 11.4): `r ≥ 2` samples are drawn
+independently from populations, sample `i` having size `sz i * n` (sizes in a fixed ratio, `sz i > 0`), each
+individual falling in one of `c ≥ 2` categories. Under the null hypothesis that all populations have the same category
+probabilities `bⱼ > 0`, the statistic `∑ (O - E)² / E` with expected counts `E(i,j) = (row total)(column total)/(grand
+total)` converges in distribution, as `n → ∞`, to the chi-square law with `(r - 1)(c - 1)` degrees of freedom.
+Related: as above. -/
+theorem tendstoInDistribution_homogeneityStatistic {r c : ℕ} [IsProbabilityMeasure P] {Ω' : Type*}
+    [MeasurableSpace Ω'] {P' : Measure Ω'} [IsProbabilityMeasure P'] (hr : 2 ≤ r) (hc : 2 ≤ c)
+    {sz : Fin r → ℕ} (hsz : ∀ i, 0 < sz i) {b : Fin c → ℝ} (hb : ∀ j, 0 < b j) (hbsum : ∑ j, b j = 1)
+    {Y : Fin r → ℕ → Ω → Fin c} (hmeas : ∀ i m, Measurable (Y i m))
+    (hind : iIndepFun (fun x : Fin r × ℕ ↦ Y x.1 x.2) P) (hident : ∀ i m, IdentDistrib (Y i m) (Y i 0) P P)
+    (hprob : ∀ i j, P.real {ω | Y i 0 ω = j} = b j)
+    {W : Ω' → ℝ} (hW : HasLaw W (chiSquared (((r : ℝ) - 1) * ((c : ℝ) - 1))) P') :
+    TendstoInDistribution (homogeneityStatistic Y sz) Filter.atTop W (fun _ ↦ P) P' := by
   sorry
 
 end UndergradKB.Headlines.Statistics

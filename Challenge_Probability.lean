@@ -10,16 +10,19 @@ import UndergradKB.Probability.PolyaThree
 import UndergradKB.Probability.ArcSine
 import UndergradKB.Probability.Shuffles
 import UndergradKB.Probability.LocalLimitLattice
+import UndergradKB.Probability.MarkovClt
+import UndergradKB.Probability.FirstMaximum
 
 /-!
-# Headline statements of undergraduate-math-lean 0.2.0: probability (Grinstead–Snell)
+# Headline statements of undergraduate-math-lean 0.2.1: probability (Grinstead–Snell)
 
 The main results of this topic that Mathlib and Tau Ceti lack, with every proof a deliberate `sorry`: the
 convergence theorems for regular and ergodic finite Markov chains; the theory of absorbing chains (absorption is
 certain; the fundamental matrix gives the absorption times and probabilities); Pólya's theorem on the recurrence of
 the simple random walk in dimension 2 and its transience in dimension 3; the arc sine law for the time in the lead;
-the composition law and the counting formula for riffle shuffles; and the local limit theorem for integer-valued
-sums. To check what is claimed, read this file. `Solution_Probability.lean` proves the same statements from the
+the composition law and the counting formula for riffle shuffles; the local limit theorem for integer-valued
+sums; the central limit theorem for the number of visits of an ergodic Markov chain to a state; and the arc sine
+law for the time of the first maximum of a symmetric random walk with continuous step law. To check what is claimed, read this file. `Solution_Probability.lean` proves the same statements from the
 library, and `lake comparator` (configured by `comparator/Probability.json`) checks that each proved statement is
 exactly the one here and uses only the standard axioms `propext`, `Classical.choice` and `Quot.sound`.
 
@@ -48,6 +51,12 @@ should check these too:
 * A riffle shuffle of a deck of `n` cards with `a` packets is recorded by its packet labels `g : Fin n → Fin a`
   (`a ^ n` shuffles, equally likely); `shuffleOrdering g = (Tuple.sort g).symm` is the resulting order of the deck;
   `risingSequences σ` is the number of rising sequences of the order `σ`.
+* `pathProb u P n x = u (x 0) * ∏ k < n, P (x k) (x (k+1))`: the probability that the Markov chain with transition
+  matrix `P` and initial distribution `u` follows the path `x : Fin (n + 1) → S`. `rowsMatrix w` is the matrix all of
+  whose rows equal `w`, so `(1 - P + rowsMatrix w)⁻¹` is the fundamental matrix `Z` of an ergodic chain with fixed
+  vector `w`.
+* `firstMaxIndex X n ω` is the index `k ≤ n` of the first maximum of the partial sums `S₀, …, Sₙ` of the walk
+  `Sₖ = X 0 ω + ⋯ + X (k-1) ω`, that is, the least `k` with `Sₖ = max (S₀, …, Sₙ)`.
 -/
 
 namespace UndergradKB.Headlines.Probability
@@ -150,6 +159,42 @@ theorem local_limit_theorem {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} [
     ∃ ε : ℕ → ℝ, Tendsto ε atTop (𝓝 0) ∧ ∀ n : ℕ, 0 < n → ∀ j : ℤ,
       |σ * √(n : ℝ) * P.real {ω | ∑ i ∈ Finset.range n, X i ω = j} -
         Real.exp (-(((j - n * μ) / (σ * √(n : ℝ))) ^ 2) / 2) / √(2 * π)| ≤ ε n := by
+  sorry
+
+/-- **The central limit theorem for ergodic Markov chains** (Grinstead–Snell Theorem 11.17): for an irreducible
+chain with fixed probability vector `w` and fundamental matrix `Z = (1 - P + W)⁻¹`, and any initial distribution
+`u`, the number `S_j` of visits to state `j` in the first `n + 1` steps is asymptotically normal: the probability
+that `r < (S_j - n w_j) / √(n σ_j²) < s` tends to `∫_r^s φ`, where `σ_j² = 2 w_j Z_jj - w_j - w_j²` and `φ` is the
+standard normal density. Beyond the book: the statement assumes `σ_j² > 0`, which the book tacitly takes for granted;
+it is necessary, since `σ_j² = 0` for instance for the two-state chain that always switches. Related: Mathlib proves
+the central limit theorem for independent identically distributed variables only; Tau Ceti has no central limit
+theorem for Markov chains (only an almost-sure law of large numbers). -/
+theorem markov_clt [Nonempty S] {P : Matrix S S ℝ} (hP : IsErgodicChain P) {u : S → ℝ} (hu0 : ∀ i, 0 ≤ u i)
+    (hu : ∑ i, u i = 1) :
+    ∃ w : S → ℝ, (∀ j, 0 < w j) ∧ ∑ j, w j = 1 ∧ IsFixedRow P w ∧ IsUnit (1 - P + rowsMatrix w) ∧
+      ∀ j : S, 0 < 2 * w j * (1 - P + rowsMatrix w)⁻¹ j j - w j - w j ^ 2 →
+        ∀ r s : ℝ, r < s →
+          Tendsto (fun n : ℕ => ∑ x : Fin (n + 1) → S with
+              r < (((univ.filter fun k : Fin (n + 1) => x k = j).card : ℝ) - n * w j) /
+                  √(n * (2 * w j * (1 - P + rowsMatrix w)⁻¹ j j - w j - w j ^ 2)) ∧
+                (((univ.filter fun k : Fin (n + 1) => x k = j).card : ℝ) - n * w j) /
+                  √(n * (2 * w j * (1 - P + rowsMatrix w)⁻¹ j j - w j - w j ^ 2)) < s,
+              pathProb u P n x)
+            atTop (𝓝 (∫ x in r..s, gaussianPDFReal 0 1 x)) := by
+  sorry
+
+open UndergradKB.Probability.FirstMax in
+/-- **The arc sine law for the first maximum of a random walk** (Grinstead–Snell Theorem 12.6): for a random walk
+whose independent steps have a common continuous (no atoms) symmetric law, the probability that the first maximum of
+`S₀, …, Sₙ` occurs before time `n α` tends to `(2/π) arcsin √α`, for `0 < α < 1`. Related: this extends the arc sine
+law above from the simple walk to every continuous symmetric step law; neither Mathlib nor Tau Ceti has the
+fluctuation theory of random walks. -/
+theorem firstMaxIndex_tendsto {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {X : ℕ → Ω → ℝ} {μ : Measure ℝ} (hX : ∀ i, Measurable (X i)) (hind : iIndepFun X P)
+    (hlaw : ∀ i, P.map (X i) = μ) (hcont : ∀ x, μ {x} = 0) (hsymm : μ.map (fun x => -x) = μ)
+    (α : ℝ) (h0 : 0 < α) (h1 : α < 1) :
+    Tendsto (fun n : ℕ => (P {ω | (firstMaxIndex X n ω : ℝ) < n * α}).toReal) atTop
+      (𝓝 ((2 / π) * Real.arcsin (√α))) := by
   sorry
 
 end UndergradKB.Headlines.Probability

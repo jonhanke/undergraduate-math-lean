@@ -2,6 +2,7 @@ import Mathlib.Probability.CentralLimitTheorem
 import Mathlib.Probability.StrongLaw
 import Mathlib.Probability.Moments.Variance
 import UndergradKB.Common.Attr
+import UndergradKB.Statistics.SampleMoments
 
 /-!
 # Course layer, chapter 7 (OpenStax *Introductory Statistics 2e*): the central limit theorem
@@ -113,5 +114,16 @@ theorem sample_mean_tendsto_population_mean {Ω : Type*} {mΩ : MeasurableSpace 
     ∀ᵐ ω ∂P, Filter.Tendsto (fun n : ℕ => (n : ℝ)⁻¹ • ∑ i ∈ Finset.range n, X i ω)
       Filter.atTop (nhds (∫ x, X 0 x ∂P)) :=
   strong_law_ae X hint hind hid
+
+/-- OpenStax Introductory Statistics 2e §7.1 (ST-063). Sampling without replacement: for a simple
+random sample of size `n` (`1 ≤ n ≤ N`, `N ≥ 2`) from a population `x` of `N` members, the sample
+mean has variance `(σ²/n) · (N - n)/(N - 1)`, where `σ²` is the population variance (the finite
+population correction factor). -/
+@[kb "openstaxintrostats2e" "§7.1, p. 378"]
+theorem variance_sample_mean_without_replacement {N n : ℕ} (hn : 1 ≤ n) (hnN : n ≤ N)
+    (hN : 2 ≤ N) (x : Fin N → ℝ) :
+    Var[fun S : Finset (Fin N) ↦ (∑ i ∈ S, x i) / n; UndergradKB.Statistics.srsLaw N n] =
+      UndergradKB.Statistics.populationVariance x / n * (((N : ℝ) - n) / ((N : ℝ) - 1)) :=
+  UndergradKB.Statistics.variance_srsLaw_sampleMean hn hnN hN x
 
 end UndergradKB.Statistics.Course.C7

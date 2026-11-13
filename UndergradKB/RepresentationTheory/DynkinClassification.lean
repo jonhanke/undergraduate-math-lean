@@ -65,12 +65,28 @@ theorem affineCycle_adj {k : ℕ} {s t : Fin (k + 3)} (h : (affineCycle k).Adj s
   split_ifs at h1
   omega
 
+/-- **No forbidden subgraph.** `G` contains none of the forbidden diagrams of Problem 5.3: no cycle, no copy of
+`D̃_{d+4}` (an injective path `c 0, ..., c d`, possibly of length zero, with two further neighbours of `c 0` and
+two of `c d`, all distinct and off the path), and no copy of `Ẽ_6`, `Ẽ_7`, `Ẽ_8`. A positive definite graph has
+this property (`PosDefinite.noForb`), and the classification below only uses it. -/
+structure NoForb {n : ℕ} (G : SimpleGraph (Fin n)) : Prop where
+  cyc : ∀ (k : ℕ) (f : Fin (k + 3) → Fin n), Function.Injective f →
+    (∀ i j, (affineCycle k).Adj i j → G.Adj (f i) (f j)) → False
+  dt : ∀ {c : ℕ → Fin n} {d : ℕ}, IsPS G c d → ∀ {u1 u2 v1 v2 : Fin n}, G.Adj (c 0) u1 → G.Adj (c 0) u2 →
+    G.Adj (c d) v1 → G.Adj (c d) v2 → (∀ i, i ≤ d → c i ≠ u1) → (∀ i, i ≤ d → c i ≠ u2) →
+    (∀ i, i ≤ d → c i ≠ v1) → (∀ i, i ≤ d → c i ≠ v2) → u1 ≠ u2 → u1 ≠ v1 → u1 ≠ v2 → u2 ≠ v1 → u2 ≠ v2 →
+    v1 ≠ v2 → False
+  e6 : ∀ f : Fin 7 → Fin n, Function.Injective f → (∀ i j, affineE6.Adj i j → G.Adj (f i) (f j)) → False
+  e7 : ∀ f : Fin 8 → Fin n, Function.Injective f → (∀ i j, affineE7.Adj i j → G.Adj (f i) (f j)) → False
+  e8 : ∀ f : Fin 9 → Fin n, Function.Injective f →
+    (∀ i j, (graphOfCartan (CartanMatrix.E 9)).Adj i j → G.Adj (f i) (f j)) → False
+
 /-- No cycle through an injective sequence closed up by an edge. -/
-theorem PosDefinite.no_cycle_seq {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] (hG : PosDefinite G)
+theorem NoForb.no_cycle_seq {n : ℕ} {G : SimpleGraph (Fin n)} (hG : NoForb G)
     (q : ℕ → Fin n) (K : ℕ) (hK : 2 ≤ K) (hinj : ∀ i j, i ≤ K → j ≤ K → q i = q j → i = j)
     (hadj : ∀ i, i < K → G.Adj (q i) (q (i + 1))) (hclose : G.Adj (q K) (q 0)) : False := by
   obtain ⟨k, rfl⟩ : ∃ k, K = k + 2 := ⟨K - 2, by omega⟩
-  refine hG.not_embed_cycle k (fun t => q t.val) (fun s t hst => Fin.ext (hinj _ _ (by omega) (by omega) hst))
+  refine hG.cyc k (fun t => q t.val) (fun s t hst => Fin.ext (hinj _ _ (by omega) (by omega) hst))
     (fun s t h => ?_)
   rcases affineCycle_adj h with h1 | h1 | ⟨h1, h2⟩ | ⟨h1, h2⟩
   · have := hadj s.val (by omega)
@@ -84,8 +100,8 @@ theorem PosDefinite.no_cycle_seq {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableR
     rw [h1, h2]
     exact hclose
 
-/-- A graph with positive definite form is acyclic. -/
-theorem PosDefinite.isAcyclic {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] (hG : PosDefinite G) :
+/-- A graph without forbidden subgraphs is acyclic. -/
+theorem NoForb.isAcyclic {n : ℕ} {G : SimpleGraph (Fin n)} (hG : NoForb G) :
     G.IsAcyclic := by
   intro v c hc
   have h3 := hc.three_le_length
@@ -186,8 +202,8 @@ theorem exists_max_PS {n : ℕ} [NeZero n] (G : SimpleGraph (Fin n)) :
   obtain ⟨p, hp⟩ := Nat.sSup_mem hne hbdd
   exact ⟨p, sSup S, hp, fun p' L' h' => le_csSup hbdd ⟨p', h'⟩⟩
 
-/-- A chord of a path in a positive definite graph is impossible. -/
-theorem PosDefinite.noChord {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] (hG : PosDefinite G)
+/-- A chord of a path in a graph without forbidden subgraphs is impossible. -/
+theorem NoForb.noChord {n : ℕ} {G : SimpleGraph (Fin n)} (hG : NoForb G)
     {p : ℕ → Fin n} {L : ℕ} (hp : IsPS G p L) {i j : ℕ} (hij : i < j) (hj : j ≤ L)
     (hadj : G.Adj (p i) (p j)) : j = i + 1 := by
   by_contra hne
@@ -330,6 +346,27 @@ theorem PosDefinite.no_dtilde (hG : PosDefinite G) {c : ℕ → Fin n} {d : ℕ}
 
 end dtilde
 
+/-- A graph with positive definite form has no forbidden subgraph. -/
+theorem PosDefinite.noForb {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] (hG : PosDefinite G) :
+    NoForb G where
+  cyc k f hf h := hG.not_embed_cycle k f hf h
+  dt hc _ _ _ _ hu1 hu2 hv1 hv2 n1 n2 n3 n4 h12 h13 h14 h23 h24 h34 :=
+    hG.no_dtilde hc hu1 hu2 hv1 hv2 n1 n2 n3 n4 h12 h13 h14 h23 h24 h34
+  e6 f hf h := hG.not_embed_affine affine_E6 f hf h
+  e7 f hf h := hG.not_embed_affine affine_E7 f hf h
+  e8 f hf h := hG.not_embed_affine affine_E8 f hf h
+
+/-- No cycle through an injective sequence closed up by an edge, in a positive definite graph. -/
+theorem PosDefinite.no_cycle_seq {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] (hG : PosDefinite G)
+    (q : ℕ → Fin n) (K : ℕ) (hK : 2 ≤ K) (hinj : ∀ i j, i ≤ K → j ≤ K → q i = q j → i = j)
+    (hadj : ∀ i, i < K → G.Adj (q i) (q (i + 1))) (hclose : G.Adj (q K) (q 0)) : False :=
+  hG.noForb.no_cycle_seq q K hK hinj hadj hclose
+
+/-- A graph with positive definite form is acyclic. -/
+theorem PosDefinite.isAcyclic {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] (hG : PosDefinite G) :
+    G.IsAcyclic :=
+  hG.noForb.isAcyclic
+
 
 /-! ### Arm data -/
 
@@ -370,8 +407,8 @@ theorem av_ne_ctr {i : Fin 3} {s : ℕ} (hs : 1 ≤ s) (hs' : s ≤ l i) : A.av 
 
 
 include A in
-theorem no_E6 [DecidableRel G.Adj] (hG : PosDefinite G) (h0 : 2 ≤ l 0) (h1 : 2 ≤ l 1) (h2 : 2 ≤ l 2) : False := by
-  refine hG.not_embed_affine affine_E6
+theorem no_E6 (hG : NoForb G) (h0 : 2 ≤ l 0) (h1 : 2 ≤ l 1) (h2 : 2 ≤ l 2) : False := by
+  refine hG.e6
     ![A.av 0 2, A.av 0 1, A.av 1 2, A.av 1 1, A.av 2 2, A.av 2 1, A.ctr] ?_ ?_
   · intro x y hxy
     fin_cases x <;> fin_cases y <;> simp at hxy ⊢ <;>
@@ -389,12 +426,12 @@ theorem no_E6 [DecidableRel G.Adj] (hG : PosDefinite G) (h0 : 2 ≤ l 0) (h1 : 2
 
 
 include A in
-theorem no_E7 [DecidableRel G.Adj] (hG : PosDefinite G) {i j k : Fin 3} (hij : i ≠ j) (hjk : j ≠ k)
+theorem no_E7 (hG : NoForb G) {i j k : Fin 3} (hij : i ≠ j) (hjk : j ≠ k)
     (hik : i ≠ k) (hi : 1 ≤ l i) (hj : 3 ≤ l j) (hk : 3 ≤ l k) : False := by
   have hji := hij.symm
   have hkj := hjk.symm
   have hki := hik.symm
-  refine hG.not_embed_affine affine_E7
+  refine hG.e7
     ![A.av j 3, A.av j 2, A.av j 1, A.av k 3, A.av k 2, A.av k 1, A.av i 1, A.ctr] ?_ ?_
   · intro x y hxy
     fin_cases x <;> fin_cases y <;> simp at hxy ⊢ <;>
@@ -411,12 +448,12 @@ theorem no_E7 [DecidableRel G.Adj] (hG : PosDefinite G) {i j k : Fin 3} (hij : i
         | exact (A.adjs _ _ (by omega)).symm
 
 include A in
-theorem no_E8 [DecidableRel G.Adj] (hG : PosDefinite G) {i j k : Fin 3} (hij : i ≠ j) (hjk : j ≠ k)
+theorem no_E8 (hG : NoForb G) {i j k : Fin 3} (hij : i ≠ j) (hjk : j ≠ k)
     (hik : i ≠ k) (hi : 1 ≤ l i) (hj : 2 ≤ l j) (hk : 5 ≤ l k) : False := by
   have hji := hij.symm
   have hkj := hjk.symm
   have hki := hik.symm
-  refine hG.not_embed_affine affine_E8
+  refine hG.e8
     ![A.av j 2, A.av i 1, A.av j 1, A.ctr, A.av k 1, A.av k 2, A.av k 3, A.av k 4, A.av k 5] ?_ ?_
   · intro x y hxy
     fin_cases x <;> fin_cases y <;> simp at hxy ⊢ <;>
@@ -571,8 +608,8 @@ def ArmData.ofBranch {n : ℕ} {G : SimpleGraph (Fin n)} {p q : ℕ → Fin n} {
 
 /-- A connected graph with positive definite form is covered by three arms from a common centre (the third arm
 possibly of length zero, in which case the graph is a path). -/
-theorem exists_armData {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] (hconn : G.Connected)
-    (hG : PosDefinite G) :
+theorem exists_armData {n : ℕ} {G : SimpleGraph (Fin n)} (hconn : G.Connected)
+    (hG : NoForb G) :
     ∃ (l : Fin 3 → ℕ) (A : ArmData G l), ∀ v, ∃ i s, s ≤ l i ∧ A.av i s = v := by
   have : NeZero n := ⟨by
     obtain ⟨v⟩ := hconn.nonempty
@@ -652,7 +689,7 @@ theorem exists_armData {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] 
         rcases Nat.lt_trichotomy j m with hjm | hjm | hjm
         · have hc : IsPS G (fun i => p (m - i)) (m - j) := hp.shiftDown m (m - j) (by omega) hmL
           have e : m - (m - j) = j := by omega
-          refine hG.no_dtilde hc (u1 := p (m + 1)) (u2 := q 1) (v1 := p (j - 1)) (v2 := z) ?_ ?_ ?_ ?_
+          refine hG.dt hc (u1 := p (m + 1)) (u2 := q 1) (v1 := p (j - 1)) (v2 := z) ?_ ?_ ?_ ?_
             ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_
           · show G.Adj (p (m - 0)) (p (m + 1))
             simpa using hp.2 m (by omega)
@@ -676,7 +713,7 @@ theorem exists_armData {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] 
           · exact hzp _ (by omega)
         · obtain rfl := hjm
           have hc : IsPS G (fun _ => p j) 0 := ⟨fun i j' hi hj' _ => by omega, fun i hi => by omega⟩
-          refine hG.no_dtilde hc (u1 := p (j - 1)) (u2 := p (j + 1)) (v1 := q 1) (v2 := z) ?_ ?_ ?_ ?_
+          refine hG.dt hc (u1 := p (j - 1)) (u2 := p (j + 1)) (v1 := q 1) (v2 := z) ?_ ?_ ?_ ?_
             ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_
           · show G.Adj (p j) (p (j - 1))
             have := (hp.2 (j - 1) (by omega)).symm
@@ -696,7 +733,7 @@ theorem exists_armData {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] 
           · exact hzq 1 le_rfl ha1
         · have hc : IsPS G (fun i => p (m + i)) (j - m) := hp.shift m (j - m) (by omega)
           have e : m + (j - m) = j := by omega
-          refine hG.no_dtilde hc (u1 := p (m - 1)) (u2 := q 1) (v1 := p (j + 1)) (v2 := z) ?_ ?_ ?_ ?_
+          refine hG.dt hc (u1 := p (m - 1)) (u2 := q 1) (v1 := p (j + 1)) (v2 := z) ?_ ?_ ?_ ?_
             ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_
           · show G.Adj (p (m + 0)) (p (m - 1))
             have := (hp.2 (m - 1) (by omega)).symm
@@ -735,7 +772,7 @@ theorem exists_armData {n : ℕ} {G : SimpleGraph (Fin n)} [DecidableRel G.Adj] 
               exact (hzp i hi).symm
         · have hsa2 : s < a := by omega
           have hc : IsPS G q s := hq.mono (by omega)
-          refine hG.no_dtilde hc (u1 := p (m - 1)) (u2 := p (m + 1)) (v1 := q (s + 1)) (v2 := z) ?_ ?_ ?_ ?_
+          refine hG.dt hc (u1 := p (m - 1)) (u2 := p (m + 1)) (v1 := q (s + 1)) (v2 := z) ?_ ?_ ?_ ?_
             ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_
           · rw [hq0]
             have := (hp.2 (m - 1) (by omega)).symm
@@ -1056,13 +1093,12 @@ of simply laced Dynkin diagrams.  The proof follows the book: forbidden subgraph
 `(1, 1, r)`, `(1, 2, 2)`, `(1, 2, 3)` or `(1, 2, 4)`; the isomorphisms with the standard diagrams come from
 a bijective homomorphism onto a tree. -/
 @[kb "etingof2011" "Problem 5.3, p. 78"]
-theorem classification_dynkin {n : ℕ} (G : SimpleGraph (Fin n)) [DecidableRel G.Adj] (h : IsDynkin G) :
+theorem classification_noForb {n : ℕ} (G : SimpleGraph (Fin n)) (hconn : G.Connected) (hG : NoForb G) :
     Nonempty (SimpleGraph.pathGraph n ≃g G) ∨
     (3 ≤ n ∧ Nonempty (graphOfCartan (CartanMatrix.D n) ≃g G)) ∨
     (n = 6 ∧ Nonempty (graphOfCartan (CartanMatrix.E 6) ≃g G)) ∨
     (n = 7 ∧ Nonempty (graphOfCartan (CartanMatrix.E 7) ≃g G)) ∨
     (n = 8 ∧ Nonempty (graphOfCartan (CartanMatrix.E 8) ≃g G)) := by
-  obtain ⟨hconn, hG⟩ := h
   have hT : G.IsTree := ⟨hconn, hG.isAcyclic⟩
   obtain ⟨l, A, hcov⟩ := exists_armData hconn hG
   obtain ⟨i, j, k, hij, hjk, hik, hij', hjk'⟩ := exists_sorted l
@@ -1104,5 +1140,18 @@ theorem classification_dynkin {n : ℕ} (G : SimpleGraph (Fin n)) [DecidableRel 
         obtain ⟨e⟩ := A.iso_E' hcov hT hij hjk hik hi hj2 4 hk connected_E8
         obtain rfl := card_eq_of_iso e
         exact ⟨rfl, ⟨e⟩⟩
+
+/-- **Problem 5.3 (classification, converse half).**  A connected graph on `Fin n` whose form `2 I - adjacency`
+is positive definite is isomorphic to the path graph `A_n`, to the graph of `CartanMatrix.D n` (`n ≥ 3`), or to
+the graph of `CartanMatrix.E 6`, `E 7` or `E 8` (via `classification_noForb`: a positive definite graph has no
+forbidden subgraph). -/
+@[kb "etingof2011" "Problem 5.3, p. 78"]
+theorem classification_dynkin {n : ℕ} (G : SimpleGraph (Fin n)) [DecidableRel G.Adj] (h : IsDynkin G) :
+    Nonempty (SimpleGraph.pathGraph n ≃g G) ∨
+    (3 ≤ n ∧ Nonempty (graphOfCartan (CartanMatrix.D n) ≃g G)) ∨
+    (n = 6 ∧ Nonempty (graphOfCartan (CartanMatrix.E 6) ≃g G)) ∨
+    (n = 7 ∧ Nonempty (graphOfCartan (CartanMatrix.E 7) ≃g G)) ∨
+    (n = 8 ∧ Nonempty (graphOfCartan (CartanMatrix.E 8) ≃g G)) :=
+  classification_noForb G h.1 h.2.noForb
 
 end UndergradKB.RepresentationTheory.Roots

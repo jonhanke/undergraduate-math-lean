@@ -18,12 +18,35 @@ import UndergradKB.Statistics.Sampling
 import UndergradKB.Statistics.Limits
 import UndergradKB.Statistics.Waiting
 import UndergradKB.Statistics.Percentile
+import UndergradKB.Statistics.Rules
+import UndergradKB.Statistics.NormalCdf
+import UndergradKB.Statistics.EmpiricalRule
+import UndergradKB.Statistics.Pearson
+import UndergradKB.Statistics.Welch
+import UndergradKB.Statistics.TwoProportions
+import UndergradKB.Statistics.TableProjection
+import UndergradKB.Statistics.IndependenceTest
+import UndergradKB.Statistics.HomogeneityCLT
+import UndergradKB.Statistics.Homogeneity
+import UndergradKB.Statistics.TwoSample
+import UndergradKB.Statistics.CriticalValues
+import UndergradKB.Statistics.Remarks
+import UndergradKB.Statistics.DistributionLimits
+import UndergradKB.Statistics.SampleMoments
+import UndergradKB.Statistics.Course.C1
 import UndergradKB.Statistics.Course.C2
 import UndergradKB.Statistics.Course.C3
 import UndergradKB.Statistics.Course.C4
 import UndergradKB.Statistics.Course.C5
 import UndergradKB.Statistics.Course.C6
+import UndergradKB.Statistics.Course.C6Cdf
 import UndergradKB.Statistics.Course.C7
+import UndergradKB.Statistics.Course.C8
+import UndergradKB.Statistics.Course.C9
+import UndergradKB.Statistics.Course.C10
+import UndergradKB.Statistics.Course.C11
+import UndergradKB.Statistics.Course.C12
+import UndergradKB.Statistics.Course.C13
 
 /-! # Statistics
 Topic root. Import every file of the topic here; a topic imports Mathlib modules

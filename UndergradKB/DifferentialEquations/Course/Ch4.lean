@@ -1,6 +1,8 @@
 import Mathlib.LinearAlgebra.Matrix.Symmetric
 import Mathlib.Algebra.Ring.Periodic
 import Mathlib.Analysis.InnerProductSpace.PiL2
+import Mathlib.Analysis.Fourier.AddCircle
+import Mathlib.Analysis.InnerProductSpace.Harmonic.Constructions
 import UndergradKB.Common.Attr
 
 /-!
@@ -39,5 +41,35 @@ theorem lebl_orthonormal_decomposition {n : ℕ} (w : OrthonormalBasis (Fin n) �
     (v : EuclideanSpace ℝ (Fin n)) :
     ∑ i, ⟪w i, v⟫ • w i = v :=
   w.sum_repr' v
+
+/-- Lebl Theorem 4.3.1 (DE-129), Mathlib's mean-square form: for a square-integrable function on the circle
+`ℝ/Tℤ` the Fourier series converges to `f` in `L²`. (Pointwise convergence for `C¹` functions:
+`UndergradKB.DifferentialEquations.fourier_series_C1`.) -/
+@[kb "lebldiffyqs2026" "Theorem 4.3.1, p. 211"]
+theorem lebl_fourier_series_L2 {T : ℝ} [Fact (0 < T)] (f : MeasureTheory.Lp ℂ 2 (@AddCircle.haarAddCircle T _)) :
+    HasSum (fun i => fourierCoeff f i • fourierLp 2 i) f :=
+  hasSum_fourier_series_L2 f
+
+/-- Lebl Theorem 4.3.1 (DE-129), Mathlib's pointwise form: if the Fourier coefficients of a continuous function
+on the circle are summable, its Fourier series converges to it at every point. -/
+@[kb "lebldiffyqs2026" "Theorem 4.3.1, p. 211"]
+theorem lebl_fourier_series_of_summable {T : ℝ} [Fact (0 < T)] {f : C(AddCircle T, ℂ)}
+    (h : Summable (fourierCoeff f)) (x : AddCircle T) :
+    HasSum (fun i => fourierCoeff f i • fourier i x) (f x) :=
+  has_pointwise_sum_fourier_series_of_summable h x
+
+/-- Lebl Theorem 5.1.4 (DE-158), the Fourier case of eigenfunction expansions: Parseval's identity
+`∑ |cₙ|² = ∫ |f|²` for the orthonormal basis `e^{2π i n x / T}`. -/
+@[kb "lebldiffyqs2026" "Theorem 5.1.4, p. 279"]
+theorem lebl_parseval {T : ℝ} [Fact (0 < T)] (f : MeasureTheory.Lp ℂ 2 (@AddCircle.haarAddCircle T _)) :
+    ∑' i : ℤ, ‖fourierCoeff f i‖ ^ 2 = ∫ t : AddCircle T, ‖f t‖ ^ 2 ∂AddCircle.haarAddCircle :=
+  tsum_sq_fourierCoeff f
+
+/-- Lebl §4.9 harmonic functions (DE-148): the real part of a complex-analytic function is harmonic
+(`u_xx + u_yy = 0`). -/
+@[kb "lebldiffyqs2026" "§4.9 Laplacian, Laplace equation, harmonic function, p. 258"]
+theorem lebl_harmonic_re {f : ℂ → ℂ} {z : ℂ} (h : AnalyticAt ℂ f z) :
+    InnerProductSpace.HarmonicAt (fun w => (f w).re) z :=
+  h.harmonicAt_re
 
 end UndergradKB.DifferentialEquations.Course.Ch4

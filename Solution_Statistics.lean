@@ -6,6 +6,9 @@ Authors: Jonathan Hanke
 import UndergradKB.Statistics.NormalSample
 import UndergradKB.Statistics.AnovaTest
 import UndergradKB.Statistics.CorrelationTest
+import UndergradKB.Statistics.Pearson
+import UndergradKB.Statistics.IndependenceTest
+import UndergradKB.Statistics.Homogeneity
 
 /-!
 # Proofs of the statistics headline statements
@@ -47,5 +50,33 @@ theorem hasLaw_correlation_tStatistic [IsProbabilityMeasure P] (x : Fin n → �
     HasLaw (fun ω ↦ correlation x (fun i ↦ Y i ω) * √((n : ℝ) - 2) /
       √(1 - correlation x (fun i ↦ Y i ω) ^ 2)) (studentT ((n : ℝ) - 2)) P :=
   UndergradKB.Statistics.hasLaw_correlation_tStatistic x hx hn hσ hY
+
+theorem tendstoInDistribution_pearsonStatistic [IsProbabilityMeasure P] {Ω' : Type*} [MeasurableSpace Ω']
+    {P' : Measure Ω'} [IsProbabilityMeasure P'] {p : Fin k → ℝ} (hk : 2 ≤ k) (hp : ∀ i, 0 < p i)
+    (hsum : ∑ i, p i = 1) {C : ℕ → Ω → Fin k} (hmeas : ∀ m, Measurable (C m)) (hind : iIndepFun C P)
+    (hident : ∀ m, IdentDistrib (C m) (C 0) P P) (hprob : ∀ i, P.real {ω | C 0 ω = i} = p i)
+    {W : Ω' → ℝ} (hW : HasLaw W (chiSquared ((k : ℝ) - 1)) P') :
+    TendstoInDistribution (pearsonStatistic p C) Filter.atTop W (fun _ ↦ P) P' :=
+  UndergradKB.Statistics.tendstoInDistribution_pearsonStatistic hk hp hsum hmeas hind hident hprob hW
+
+theorem tendstoInDistribution_independenceStatistic {r c : ℕ} [IsProbabilityMeasure P] {Ω' : Type*}
+    [MeasurableSpace Ω'] {P' : Measure Ω'} [IsProbabilityMeasure P'] (hr : 2 ≤ r) (hc : 2 ≤ c)
+    {a : Fin r → ℝ} {b : Fin c → ℝ} (ha : ∀ i, 0 < a i) (hb : ∀ j, 0 < b j) (hasum : ∑ i, a i = 1)
+    (hbsum : ∑ j, b j = 1) {C : ℕ → Ω → Fin r × Fin c} (hmeas : ∀ m, Measurable (C m))
+    (hind : iIndepFun C P) (hident : ∀ m, IdentDistrib (C m) (C 0) P P)
+    (hprob : ∀ i j, P.real {ω | C 0 ω = (i, j)} = a i * b j)
+    {W : Ω' → ℝ} (hW : HasLaw W (chiSquared (((r : ℝ) - 1) * ((c : ℝ) - 1))) P') :
+    TendstoInDistribution (independenceStatistic C) Filter.atTop W (fun _ ↦ P) P' :=
+  UndergradKB.Statistics.tendstoInDistribution_independenceStatistic hr hc ha hb hasum hbsum hmeas hind hident hprob hW
+
+theorem tendstoInDistribution_homogeneityStatistic {r c : ℕ} [IsProbabilityMeasure P] {Ω' : Type*}
+    [MeasurableSpace Ω'] {P' : Measure Ω'} [IsProbabilityMeasure P'] (hr : 2 ≤ r) (hc : 2 ≤ c)
+    {sz : Fin r → ℕ} (hsz : ∀ i, 0 < sz i) {b : Fin c → ℝ} (hb : ∀ j, 0 < b j) (hbsum : ∑ j, b j = 1)
+    {Y : Fin r → ℕ → Ω → Fin c} (hmeas : ∀ i m, Measurable (Y i m))
+    (hind : iIndepFun (fun x : Fin r × ℕ ↦ Y x.1 x.2) P) (hident : ∀ i m, IdentDistrib (Y i m) (Y i 0) P P)
+    (hprob : ∀ i j, P.real {ω | Y i 0 ω = j} = b j)
+    {W : Ω' → ℝ} (hW : HasLaw W (chiSquared (((r : ℝ) - 1) * ((c : ℝ) - 1))) P') :
+    TendstoInDistribution (homogeneityStatistic Y sz) Filter.atTop W (fun _ ↦ P) P' :=
+  UndergradKB.Statistics.tendstoInDistribution_homogeneityStatistic hr hc hsz hb hbsum hmeas hind hident hprob hW
 
 end UndergradKB.Headlines.Statistics

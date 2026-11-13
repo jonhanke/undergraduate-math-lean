@@ -1,6 +1,7 @@
 import Mathlib.Probability.Distributions.Gaussian.Real
 import Mathlib.Probability.Moments.Variance
 import UndergradKB.Common.Attr
+import UndergradKB.Statistics.EmpiricalRule
 
 /-!
 # Course layer, chapter 6 (OpenStax *Introductory Statistics 2e*): the normal distribution
@@ -74,5 +75,17 @@ theorem linear_transformation_mean_variance {Ω : Type*} {mΩ : MeasurableSpace 
     have h2 : (fun ω => a * X ω + b) = fun ω => (a • X) ω + b := by
       funext ω; simp
     rw [h2, h1, variance_smul]
+
+/-- OpenStax Introductory Statistics 2e §6.1 (ST-060). Empirical rule for the normal distribution:
+if `X ~ N(μ, σ²)` with `σ > 0`, the probability of lying within one, two, three standard
+deviations of the mean is about 0.68, 0.95, 0.997 (exactly in `(0.68, 0.69)`, `(0.95, 0.96)`,
+`(0.997, 0.998)`). -/
+@[kb "openstaxintrostats2e" "§6.1, p. 347"]
+theorem empirical_rule_normal_distribution {Ω : Type*} {mΩ : MeasurableSpace Ω} {P : Measure Ω}
+    {X : Ω → ℝ} {μ σ : ℝ} (hσ : 0 < σ) (hX : HasLaw X (gaussianReal μ (σ ^ 2).toNNReal) P) :
+    ((0.68 : ℝ) < P.real {ω | |X ω - μ| < 1 * σ} ∧ P.real {ω | |X ω - μ| < 1 * σ} < 0.69) ∧
+    ((0.95 : ℝ) < P.real {ω | |X ω - μ| < 2 * σ} ∧ P.real {ω | |X ω - μ| < 2 * σ} < 0.96) ∧
+    ((0.997 : ℝ) < P.real {ω | |X ω - μ| < 3 * σ} ∧ P.real {ω | |X ω - μ| < 3 * σ} < 0.998) :=
+  UndergradKB.Statistics.empirical_rule_normal hσ hX
 
 end UndergradKB.Statistics.Course.C6

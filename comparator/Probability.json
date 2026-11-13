@@ -12,7 +12,9 @@
     "UndergradKB.Headlines.Probability.arcsine_law_lead",
     "UndergradKB.Headlines.Probability.riffle_shuffle_composition",
     "UndergradKB.Headlines.Probability.card_riffle_shuffles",
-    "UndergradKB.Headlines.Probability.local_limit_theorem"
+    "UndergradKB.Headlines.Probability.local_limit_theorem",
+    "UndergradKB.Headlines.Probability.markov_clt",
+    "UndergradKB.Headlines.Probability.firstMaxIndex_tendsto"
   ],
   "definition_names": [],
   "permitted_axioms": [

@@ -171,6 +171,39 @@ theorem zTest_power_eq {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} [IsPro
   rw [e]
   constructor <;> intro h <;> linarith
 
+/-- OpenStax Introductory Statistics 2e §9.2 (ST-082). If the true mean is `μ₁`, the right-tailed
+z test fails to reject `H₀ : μ = μ₀` (a Type II error when `μ₁ ≠ μ₀`) with probability
+`β = Φ(c - (μ₁ - μ₀) √n / σ)`, so `β = 1 - power`. -/
+@[kb "openstaxintrostats2e" "§9.2, p. 475"]
+theorem zTest_typeII_eq {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {n : ℕ} {X : Fin n → Ω → ℝ} {μ₁ σ : ℝ} (hn : 1 ≤ n) (hσ : 0 < σ)
+    (hX : IsNormalSample X μ₁ σ P) (μ₀ c : ℝ) :
+    P {ω | (mean (fun i ↦ X i ω) - μ₀) / (σ / √(n : ℝ)) ≤ c} =
+      ENNReal.ofReal (zTestTypeII μ₀ μ₁ σ n c) := by
+  have hn' : (0 : ℝ) < n := by exact_mod_cast hn
+  have hs : 0 < √(n : ℝ) := sqrt_pos.2 hn'
+  have h := prob_mem_of_hasLaw (hasLaw_zStatistic hn hσ hX)
+    (measurableSet_Iic (a := c - (μ₁ - μ₀) * √(n : ℝ) / σ))
+  unfold zTestTypeII
+  rw [ofReal_cdf, ← h]
+  congr 1
+  ext ω
+  have e : (mean (fun i ↦ X i ω) - μ₀) / (σ / √(n : ℝ)) =
+      (mean (fun i ↦ X i ω) - μ₁) / (σ / √(n : ℝ)) + (μ₁ - μ₀) * √(n : ℝ) / σ := by
+    field_simp
+    ring
+  simp only [mem_setOf_eq, mem_Iic]
+  rw [e]
+  constructor <;> intro h <;> linarith
+
+/-- OpenStax Introductory Statistics 2e §9.2 (ST-082). The Type II error probability and the power
+add up to one. -/
+@[kb "openstaxintrostats2e" "§9.2, p. 475"]
+theorem zTestTypeII_add_zTestPower (μ₀ μ₁ σ : ℝ) (n : ℕ) (c : ℝ) :
+    zTestTypeII μ₀ μ₁ σ n c + zTestPower μ₀ μ₁ σ n c = 1 := by
+  unfold zTestTypeII zTestPower
+  ring
+
 /-- OpenStax Introductory Statistics 2e §9.2 (ST-083). A larger critical value (smaller `α`)
 gives smaller power (strictly) and larger `β`. -/
 @[kb "openstaxintrostats2e" "§9.2, p. 475"]

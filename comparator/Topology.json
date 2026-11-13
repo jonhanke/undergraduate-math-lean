@@ -10,7 +10,12 @@
     "UndergradKB.Headlines.Topology.closed_subgroup_torus_equiv",
     "UndergradKB.Headlines.Topology.wallman_compactification",
     "UndergradKB.Headlines.Topology.normalSpace_iff_wallman_eq_stoneCech",
-    "UndergradKB.Headlines.Topology.pontryagin_duality_real_circle_int"
+    "UndergradKB.Headlines.Topology.pontryagin_duality_real_circle_int",
+    "UndergradKB.Headlines.Topology.pontryagin_van_kampen",
+    "UndergradKB.Headlines.Topology.sharkovskii",
+    "UndergradKB.Headlines.Topology.converse_sharkovskii",
+    "UndergradKB.Headlines.Topology.lca_principal_structure",
+    "UndergradKB.Headlines.Topology.lca_connected_structure"
   ],
   "definition_names": [],
   "permitted_axioms": [
