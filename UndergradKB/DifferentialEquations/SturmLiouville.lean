@@ -299,7 +299,8 @@ lemma eq_zero_of_initial {l : ℝ} {y : ℝ → ℝ} (hy : ContDiff ℝ 2 y)
 /-- **Eigenfunctions are unique up to a scalar multiple (DE-154, uniqueness part of Theorem 5.1.1).**
 If `y₁` is an eigenfunction for `λ` and `y₂` is any solution of the homogeneous problem for the same `λ`
 then `y₂ = c y₁` on `[a, b]` for some constant `c`: the eigenspace of each eigenvalue is
-one-dimensional.  (The existence of infinitely many eigenvalues tending to `+∞` is not formalized.) -/
+one-dimensional.  (The existence of infinitely many eigenvalues tending to `+∞`: `sturm_liouville_eigenvalues` in
+`SturmLiouvilleSpectrum.lean`.) -/
 @[kb "lebldiffyqs2026" "Theorem 5.1.1, p. 275"]
 theorem eigenfunction_unique {l : ℝ} {y₁ y₂ : ℝ → ℝ} (h₁ : S.IsEigenfunction l y₁)
     (h₂ : S.IsSolution l 0 y₂) : ∃ c : ℝ, ∀ t ∈ Icc S.a S.b, y₂ t = c * y₁ t := by
@@ -454,7 +455,8 @@ lemma IsSolution.sub {l : ℝ} {f g y z : ℝ → ℝ} (hy : S.IsSolution l f y)
 /-- **Fredholm alternative, uniqueness half (DE-157).**  If `λ` is not an eigenvalue of the regular
 Sturm-Liouville problem, the nonhomogeneous problem `(p y')' - q y + λ r y = f` with the same boundary
 conditions has at most one solution.  (Existence of a solution for every continuous `f` needs the Green's
-function and is not formalized.) -/
+function: `fredholm_alternative` in `SturmLiouvilleFredholm.lean`, `green_solution` in
+`SturmLiouvilleGreen.lean`.) -/
 @[kb "lebldiffyqs2026" "Theorem 5.1.3, p. 278"]
 theorem solution_unique_of_not_eigenvalue {l : ℝ} (hl : ¬ S.IsEigenvalue l) {f y z : ℝ → ℝ}
     (hy : S.IsSolution l f y) (hz : S.IsSolution l f z) : ∀ t ∈ Icc S.a S.b, y t = z t := by

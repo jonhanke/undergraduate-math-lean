@@ -31,7 +31,42 @@ Tears*) and **real analysis** (Lebl, *Basic Analysis I*). The Lean library is ca
 - **Course layer**: for the central results Mathlib already proves, a theorem of this library states the result in
   the book's terms and proves it from Mathlib, so every central item of every book has a Lean name a course can cite.
 
-## What's new in 0.2.1
+## What's new in 0.2.2
+
+- **More in the eight topics new in 0.2.0** (no new topic or book):
+  - *Proofs, logic and sets*: the theorem of Davis, Putnam, Robinson and Matiyasevich (every recursively enumerable
+    set is Diophantine), so the negative answer to Hilbert's tenth problem is now proved, not assumed; the
+    non-planarity of $`K_5`$ and $`K_{3,3}`$ and the lists of planar complete and complete bipartite graphs, for
+    straight-line drawings (see Known restrictions); 44 more worked examples and exercises of Hammack and Levin.
+  - *Topology*: the Hahn–Mazurkiewicz theorem in both directions; Brouwer's characterization of the Cantor set;
+    infinite totally disconnected compact groups are Cantor cubes; a compact group is homeomorphic to its identity
+    component times the quotient by it; part of the theorem on compact groups without small subgroups; about 200
+    exercises in the course layer.
+  - *Differential equations*: the second solution of the method of Frobenius (with a logarithm), Bessel functions of
+    the second kind of integer order and the oscillation of every solution of Bessel's equation; the spectral theory
+    of regular Sturm–Liouville problems (eigenvalues, eigenfunction expansions, Green's function); the
+    Bendixson–Dulac theorem for star-shaped closed trajectories; the fourth order of the classical Runge–Kutta method.
+  - *Complex analysis*: the Jordan curve theorem and Green's theorem for star-shaped paths, so the residue theorem,
+    Cauchy's formula, the argument principle and Rouché's theorem hold there with no assumed input; the separation
+    half of the Jordan curve theorem for every piecewise smooth simple closed path; every numbered item of the book now
+    has a Lean name.
+  - *Representation theory*: Hilbert's third problem (the cube and the regular tetrahedron of equal volume are not
+    scissors congruent, for cuts that avoid edges; see Known restrictions); the regular icosahedron, its rotation group
+    as the alternating group on five letters, and Problem 3.21 for it; the module behind Problem 4.34 is split, so it
+    no longer needs 22 GB to build.
+  - *Probability*: 52 more worked examples; the zero-variance case of the central limit theorem for Markov chains;
+    the queue of Examples 5.7 and 6.29 (its equilibrium law, convergence to it, the forward equations, the Poisson
+    clock) and Little's law; exponential gaps give gamma-distributed arrival times and a Poisson count.
+  - *Statistics*: the chi-square test of homogeneity for sample sizes growing in any manner; the moments of the F law
+    and the normal limit of the F statistic; the continuity correction; about 870 worked examples and exercises.
+  - *Precalculus*: the book's worked examples and about 2,800 of its 3,031 end-of-section exercises with printed
+    answers, as course-layer theorems; errors found in printed answers are recorded.
+- **108 headline theorems** (97 in 0.2.1), new ones marked *(new in 0.2.2)* below.
+- **Book maps and course outlines** regenerated: Stitz–Zeager 332 → 551 items, Grinstead–Snell 277 → 354, Hammack
+  346 → 360, Levin 418 → 447, Etingof et al. 305 → 306 (the other books' item counts are unchanged; their row
+  classifications changed where results were proved).
+
+## What was new in 0.2.1
 
 - **Real analysis, a new topic**: Lebl, *Basic Analysis I*, with its master checklist, book map and course outline.
   Much of the book is already formalized in [ReasBook](https://github.com/optpku/ReasBook) (by Zichen Wang and
@@ -49,8 +84,8 @@ Tears*) and **real analysis** (Lebl, *Basic Analysis I*). The Lean library is ca
   rational representations and the McKay graphs (representation theory); the classification of conics by the
   discriminant (precalculus); the general residue theorem, argument principle and Rouché's theorem (complex
   analysis; see Known restrictions).
-- **97 headline theorems** (76 in 0.2.0), new ones marked *(new in 0.2.1)* below; the topic proofs,
-  logic and sets has its first headline, so `lake comparator` now runs for fifteen topics.
+- **97 headline theorems** (76 in 0.2.0), marked *(new in 0.2.1)* below; the topic proofs, logic and sets has its
+  first headline, so `lake comparator` now runs for fifteen topics.
 - **Known restrictions** are listed in their own section, generated from the register of loose ends.
 
 ## What was new in 0.2.0
@@ -63,7 +98,7 @@ Tears*) and **real analysis** (Lebl, *Basic Analysis I*). The Lean library is ca
   regions, winding numbers), combinatorics (graph theory, the Lovász local lemma, the hypergeometric summation
   theorems of Gauss, Dougall and Dixon, more of *A=B*'s algorithms), abstract algebra and geometry (the neutral
   plane: Petrunin's theorems are now derived from the axioms of a neutral plane, not only checked in its models).
-- **97 headline theorems** (29 in 0.1.0), with one `Challenge_<Topic>.lean` / `Solution_<Topic>.lean`
+- **76 headline theorems** (29 in 0.1.0), with one `Challenge_<Topic>.lean` / `Solution_<Topic>.lean`
   pair and one `lake comparator` check per topic; new highlights below are marked *(new)*.
 
 ## Known restrictions
@@ -71,12 +106,21 @@ Tears*) and **real analysis** (Lebl, *Basic Analysis I*). The Lean library is ca
 Where a headline statement is narrower than its source, or a result near the headlines rests on an input that is
 assumed rather than proved:
 
-- **Wallace–Bolyai–Gerwien: equal-area polygonal sets are equidecomposable (plane only)** (proved in part). Missing: Dehn's three-dimensional counterexample (Hilbert's third problem) is not formalized; the plane theorem is proved.
+- **Wallace–Bolyai–Gerwien: equal-area polygonal sets are equidecomposable (plane only)** (proved in part). Missing: Dehn's three-dimensional counterexample (Hilbert's third problem) is not formalized; the plane theorem is proved. Update (ug-release-022-prep, 2026-11-14): the counterexample is now proved for cuts whose plane contains no edge of the piece (UndergradKB.RepresentationTheory.not_scissorsCongruent_cube_tetrahedron; restriction a recorded loose end).
 - **Uniqueness of the Laplace transform for continuous functions only** (a hypothesis beyond the source's statement). Missing: the book allows piecewise continuous functions of exponential order; the Lean statement assumes continuity on the real line.
-- **Cauchy's integral formula, the residue theorem, the argument principle and Rouché's theorem for general simple closed paths assume the Jordan curve and annulus theorems** (an input assumed, not proved). Missing: the book assumes the Jordan curve theorem and the annulus theorem; they are the named fields inside_nonempty and annulus of the structure IsPositivelyOrientedSimpleClosed. This release proves both fields for every rectangle (isPositivelyOrientedSimpleClosed_rectPath) (and for circles), so the results are unconditional for circles and rectangles; for a general piecewise smooth simple closed path the fields remain hypotheses.
+- **Cauchy's integral formula, the residue theorem, the argument principle and Rouché's theorem for general simple closed paths assume the Jordan curve and annulus theorems** (an input assumed, not proved). Missing: the book assumes the Jordan curve theorem and the annulus theorem; they are the named fields inside_nonempty and annulus of the structure IsPositivelyOrientedSimpleClosed. This release proves both fields for every rectangle (isPositivelyOrientedSimpleClosed_rectPath) (and for circles), so the results are unconditional for circles and rectangles; for a general piecewise smooth simple closed path the fields remain hypotheses. Update (ug-release-022-prep, 2026-11-14): both fields are now proved for every star-shaped path (UndergradKB.ComplexAnalysis.isPositivelyOrientedSimpleClosed_star), and inside_nonempty for every piecewise smooth simple closed path (UndergradKB.ComplexAnalysis.insideOf_nonempty); the annulus field remains a hypothesis in general (a recorded loose end).
 - **Highest weights of GL_N: the indexing is proved, the torus weight decomposition is not** (proved in part). Missing: the weight spaces of L_lambda under the diagonal torus and the fact that lambda is the largest weight (the book uses the word as a name only).
 - **Classification of rational representations of GL_N stated for representation spaces in Type** (a technical restriction). Missing: universe polymorphism: the space W is in Type (the universe of the Schur algebra modules used in the density argument); complete reducibility is universe polymorphic.
-- **Central limit theorem for ergodic Markov chains assumes a positive asymptotic variance** (a hypothesis beyond the source's statement). Missing: the case of zero asymptotic variance, which the book does not exclude; there the normalized count is undefined and the statement fails (the two-state chain that always switches), so the hypothesis is needed and the book's statement is tacitly restricted.
+- **Dehn invariant of polyhedra in space: additivity proved only for cuts whose plane contains no edge of the piece** (a hypothesis beyond the source's statement). Missing: the case of a cutting plane through an edge of the piece (the edge's dihedral angle is split between the two pieces, and a face may then touch a piece only along that edge); the scissors relation ScissorsStep allows only cuts satisfying the hypothesis hnull of polyDehn_cut.
+- **Lebl, method of Frobenius: complex indicial roots (case (vi)) not formalized** (proved in part). Missing: cases (iii) to (v) are proved for real roots (two Frobenius series, the double root and roots differing by an integer with the logarithmic second solution); case (vi), complex roots with real and imaginary parts of a complex Frobenius solution, is not.
+- **Lebl, Bessel functions of the second kind Y_n for n ≥ 1: a second solution with the book's properties, not the standard normalization** (proved in part). Missing: for integer n ≥ 1 a solution Y of Bessel's equation of order n on (0, ∞) with Y → -∞ at 0⁺ and general solution A J_n + B Y is proved (from the logarithmic Frobenius solution); the book's Y_n, defined as the limit as p → n of (J_p cos pπ - J_{-p})/sin pπ, and its normalization are not.
+- **Lebl, Theorem 5.1.1: infinitely many eigenvalues tending to infinity proved for regular problems only** (a hypothesis beyond the source's statement). Missing: the book's first statement (eigenvalues λ₁ < λ₂ < ⋯ → ∞, one-dimensional eigenspaces) assumes only p, p', q, r continuous with p > 0, r > 0 on [a, b]; the proof here uses the regular hypotheses of the structure RegularSL (q ≥ 0 and α₁, α₂, β₁, β₂ ≥ 0, which the book adds for its 'moreover' part and calls regular), to know that λ = -1 is not an eigenvalue; RegularSL also asks p to be C¹ on all of ℝ (convention).
+- **Lebl, Theorem 5.1.4: eigenfunction expansions proved in mean square and uniformly for C² functions with the boundary conditions, not for piecewise smooth functions** (proved in part). Missing: the normalized eigenfunctions of a regular problem form a Hilbert basis of L²([a, b], r dx), so the series of every f continuous on [a, b] (indeed of every L² function) converges to f in mean square, and for f of class C² satisfying both boundary conditions it converges uniformly on [a, b]; the book's pointwise convergence for piecewise smooth continuous f ('as for Fourier series', without the boundary conditions) is not proved, nor the steady periodic solutions of DE-160 built from it.
+- **Beck 2025, Green's theorem A.0.10: proved for star-shaped paths and rectangles only** (proved in part). Missing: Green's theorem for a general piecewise smooth simple closed path; proved for every star-shaped path, convex or not, when f and g are C^1 on an open set containing the closed inside; supersedes the convex case of a recorded loose end.
+- **Beck 2025, Jordan curve theorem (Section 4.4): for a general piecewise smooth simple closed path only the separation half is proved** (proved in part). Missing: proved for every piecewise smooth simple closed path: the complement is not connected and the inside is not empty (so the field inside_nonempty of Definition 4.4.4 holds for every such path); missing: the complement has at most two components (the inside and the outside are connected, with the path as their common frontier), and the annulus field of Definition 4.4.4; the full theorem is proved only for star-shaped paths (a recorded loose end).
+- **Levin, K5 and K3,3 are not planar (Theorems 2.3.3, 2.3.4) and which K_n, K_m,n are planar: proved for straight-line drawings only** (a hypothesis beyond the source's statement). Missing: the book's planarity allows edges drawn as arbitrary curves; StraightLineDrawing requires straight segments. Unconditional for straight edges (no named input). Removing the restriction needs either Fary's theorem (every finite simple planar graph has a straight-line drawing) or a direct proof for drawings by arcs, both resting on the Jordan curve theorem, which Mathlib lacks.
+- **Lebl, Table 8.1: node and spiral types only for solutions tending to the point and for distinct or complex eigenvalues** (proved in part). Missing: stability is proved for every row of the table and the behavior as follows: complex eigenvalues, a solution tending to the point (as t → ∞ for sinks, as t → -∞ for sources) and never equal to it crosses every line through the point at arbitrarily large (negative) times; distinct real eigenvalues, it eventually stays on one side of a line; for a repeated real eigenvalue the node behavior is false in general (a recorded loose end); existence of solutions is assumed (solutions are hypotheses).
+- **Lebl, Theorem 8.4.2 (Bendixson-Dulac): proved for closed trajectories star-shaped about a point, not for every closed trajectory in a simply connected region** (a hypothesis beyond the source's statement). Missing: the book's region R is simply connected and the closed trajectory is arbitrary; the proof here needs a point c such that the segments from c to the trajectory lie in R and the trajectory is never tangent to a ray from c (its angle about c is strictly monotone), which holds for instance on a convex region for trajectories winding monotonically around a point of the region; the 'small set' where the divergence vanishes is taken to be a set with empty interior.
 
 ## The topics
 
@@ -88,16 +132,16 @@ assumed rather than proved:
 | Calculus | 1 | 1327 | 98 | 30,434 | 2 |
 | Trigonometry | 2 | 375 | 42 | 7,458 | 4 |
 | Geometry | 1 | 354 | 81 | 44,037 | 9 |
-| Precalculus | 1 | 332 | 36 | 9,126 | 3 |
-| Statistics | 1 | 118 | 49 | 10,773 | 8 |
-| Probability | 1 | 277 | 58 | 17,635 | 13 |
-| Proofs, logic and sets | 2 | 764 | 67 | 7,854 | 1 |
-| Differential equations | 1 | 415 | 54 | 18,030 | 6 |
-| Complex analysis | 1 | 265 | 51 | 12,906 | 2 |
-| Representation theory | 1 | 305 | 186 | 67,130 | 7 |
-| Topology | 1 | 814 | 135 | 34,337 | 14 |
+| Precalculus | 1 | 551 | 226 | 68,907 | 3 |
+| Statistics | 1 | 118 | 98 | 33,283 | 9 |
+| Probability | 1 | 354 | 89 | 27,251 | 14 |
+| Proofs, logic and sets | 2 | 807 | 91 | 11,661 | 3 |
+| Differential equations | 1 | 415 | 79 | 25,355 | 9 |
+| Complex analysis | 1 | 265 | 63 | 17,287 | 2 |
+| Representation theory | 1 | 306 | 202 | 69,569 | 7 |
+| Topology | 1 | 814 | 151 | 38,701 | 18 |
 | Real analysis | 1 | 451 | 13 | 7,879 | 1 |
-| **total** | 19 | 7802 | 1188 | 351,054 | 97 |
+| **total** | 19 | 8142 | 1551 | 465,277 | 108 |
 
 *Items*: the item entries of the books in their maps. *Lean modules* and *lines* count the files under
 `UndergradKB/<Topic>/` and the topic's root file. *Headline theorems*: the theorems of `Challenge_<Topic>.lean`.
@@ -115,15 +159,15 @@ assumed rather than proved:
 | Trigonometry | [M. Corral, *Trigonometry*](docs/books/corraltrig.md) | GNU FDL 1.3 or later | 170 | 156 | 88 | – | 64 | 0 | 0 | 4 | 164 (96.5%) | [outline](docs/courses/trigonometry/corraltrig.md) |
 | Trigonometry | [J. Abramson et al., *Algebra and Trigonometry*, 2nd ed., OpenStax](docs/books/openstaxalgtrig2e.md) | CC BY-NC-SA 4.0 | 205 | 129 | 81 | – | 43 | 0 | 0 | 5 | 198 (96.6%) | [outline](docs/courses/trigonometry/openstaxalgtrig2e.md) |
 | Geometry | [A. Petrunin, *Euclidean Plane and its Relatives: a minimalist introduction*, 3rd ed. (arXiv:1302.1630v25, 2025)](docs/books/petrunin2025.md) | CC BY-SA 4.0 | 354 | 352 | 228 | – | 100 | 0 | 6 | 18 | 342 (96.6%) | [outline](docs/courses/geometry/petrunin2025.md) |
-| Precalculus | [C. Stitz and J. Zeager, *Precalculus*, corrected edition, 2013](docs/books/stitzzeager2013.md) | CC BY-NC-SA 3.0 | 332 | 297 | 178 | – | 109 | 0 | 0 | 10 | 321 (96.7%) | [outline](docs/courses/precalculus/stitzzeager2013.md) |
+| Precalculus | [C. Stitz and J. Zeager, *Precalculus*, corrected edition, 2013](docs/books/stitzzeager2013.md) | CC BY-NC-SA 3.0 | 551 | 516 | 397 | – | 109 | 0 | 0 | 10 | 540 (98.0%) | [outline](docs/courses/precalculus/stitzzeager2013.md) |
 | Statistics | [B. Illowsky, S. Dean et al., *Introductory Statistics*, 2nd ed., OpenStax, 2023](docs/books/openstaxintrostats2e.md) | CC BY-NC-SA 4.0 | 118 | 117 | 73 | – | 29 | 0 | 0 | 15 | 103 (87.3%) | [outline](docs/courses/statistics/openstaxintrostats2e.md) |
-| Probability | [C. M. Grinstead and J. L. Snell, *Introduction to Probability*, 2nd ed., American Mathematical Society (version of 4 July 2006)](docs/books/grinsteadsnell2006.md) | GNU FDL | 277 | 162 | 111 | – | 51 | 0 | 0 | 0 | 277 (100.0%) | [outline](docs/courses/probability/grinsteadsnell2006.md) |
-| Proofs, logic and sets | [R. Hammack, *Book of Proof*, 3rd ed. (edition 3.4), 2018](docs/books/hammack2018.md) | CC BY-NC-ND 4.0 | 346 | 310 | 120 | – | 163 | 0 | 1 | 26 | 310 (89.6%) | [outline](docs/courses/foundations/hammack2018.md) |
-| Proofs, logic and sets | [O. Levin, *Discrete Mathematics: An Open Introduction*, 4th ed.](docs/books/levin2025.md) | CC BY-NC-SA 4.0 | 418 | 326 | 146 | – | 144 | 0 | 9 | 27 | 379 (90.7%) | [outline](docs/courses/foundations/levin2025.md) |
-| Differential equations | [J. Lebl, *Notes on Diffy Qs: Differential Equations for Engineers*, version 6.11, 2026](docs/books/lebldiffyqs2026.md) | CC BY-NC-SA 4.0 or CC BY-SA 4.0, at the reader's choice | 415 | 260 | 179 | – | 50 | 3 | 13 | 15 | 384 (92.5%) | [outline](docs/courses/differential-equations/lebldiffyqs2026.md) |
-| Complex analysis | [M. Beck, G. Marchesi, D. Pixton and L. Sabalka, *A First Course in Complex Analysis*, edition 1.6, 2025](docs/books/beck2025.md) | CC BY 4.0 | 265 | 161 | 67 | – | 89 | 1 | 1 | 3 | 261 (98.5%) | [outline](docs/courses/complex-analysis/beck2025.md) |
-| Representation theory | [P. Etingof, O. Golberg, S. Hensel, T. Liu, A. Schwendner, D. Vaintrob and E. Yudovina, *Introduction to Representation Theory*, American Mathematical Society, 2011 (arXiv:0901.0827v5)](docs/books/etingof2011.md) | arXiv non-exclusive distribution licence | 305 | 300 | 226 | – | 73 | 0 | 1 | 0 | 305 (100.0%) | [outline](docs/courses/representation-theory/etingof2011.md) |
-| Topology | [S. A. Morris, *Topology Without Tears*, version of 6 August 2024](docs/books/morris2024.md) | © S. A. Morris, free download from the author | 814 | 703 | 297 | – | 384 | 5 | 13 | 4 | 789 (96.9%) | [outline](docs/courses/topology/morris2024.md) |
+| Probability | [C. M. Grinstead and J. L. Snell, *Introduction to Probability*, 2nd ed., American Mathematical Society (version of 4 July 2006)](docs/books/grinsteadsnell2006.md) | GNU FDL | 354 | 215 | 164 | – | 51 | 0 | 0 | 0 | 354 (100.0%) | [outline](docs/courses/probability/grinsteadsnell2006.md) |
+| Proofs, logic and sets | [R. Hammack, *Book of Proof*, 3rd ed. (edition 3.4), 2018](docs/books/hammack2018.md) | CC BY-NC-ND 4.0 | 360 | 324 | 134 | – | 163 | 0 | 1 | 26 | 324 (90.0%) | [outline](docs/courses/foundations/hammack2018.md) |
+| Proofs, logic and sets | [O. Levin, *Discrete Mathematics: An Open Introduction*, 4th ed.](docs/books/levin2025.md) | CC BY-NC-SA 4.0 | 447 | 355 | 176 | – | 144 | 0 | 8 | 27 | 409 (91.5%) | [outline](docs/courses/foundations/levin2025.md) |
+| Differential equations | [J. Lebl, *Notes on Diffy Qs: Differential Equations for Engineers*, version 6.11, 2026](docs/books/lebldiffyqs2026.md) | CC BY-NC-SA 4.0 or CC BY-SA 4.0, at the reader's choice | 415 | 260 | 191 | – | 50 | 0 | 4 | 15 | 390 (94.0%) | [outline](docs/courses/differential-equations/lebldiffyqs2026.md) |
+| Complex analysis | [M. Beck, G. Marchesi, D. Pixton and L. Sabalka, *A First Course in Complex Analysis*, edition 1.6, 2025](docs/books/beck2025.md) | CC BY 4.0 | 265 | 161 | 68 | – | 91 | 2 | 0 | 0 | 265 (100.0%) | [outline](docs/courses/complex-analysis/beck2025.md) |
+| Representation theory | [P. Etingof, O. Golberg, S. Hensel, T. Liu, A. Schwendner, D. Vaintrob and E. Yudovina, *Introduction to Representation Theory*, American Mathematical Society, 2011 (arXiv:0901.0827v5)](docs/books/etingof2011.md) | arXiv non-exclusive distribution licence | 306 | 301 | 228 | – | 73 | 0 | 0 | 0 | 306 (100.0%) | [outline](docs/courses/representation-theory/etingof2011.md) |
+| Topology | [S. A. Morris, *Topology Without Tears*, version of 6 August 2024](docs/books/morris2024.md) | © S. A. Morris, free download from the author | 814 | 703 | 301 | – | 383 | 5 | 10 | 4 | 792 (97.3%) | [outline](docs/courses/topology/morris2024.md) |
 | Real analysis | [J. Lebl, *Basic Analysis I: Introduction to Real Analysis, Volume I*, version 6.3, 2026](docs/books/lebl2026.md) | CC BY-NC-SA 4.0 or CC BY-SA 4.0, at the reader's choice | 451 | 433 | 14 | 21 / 86 | 273 | 35 | 3 | 1 | 348 (77.2%) | [outline](docs/courses/real-analysis/lebl2026.md) |
 
 *Items*: the item entries of the book in its map. The other counts are checklist rows (one row per result; a
@@ -151,7 +195,7 @@ available.
 Every result listed here is a headline theorem of a `Challenge_<Topic>.lean` file: it is checked by the Lean kernel
 with only the standard axioms and depends on no unproved input. Headlines are only results that are in neither
 Mathlib nor [Tau Ceti](https://github.com/TauCetiProject/TauCeti) (main, 2026-11-07 for the headlines of 0.2.0,
-2026-11-13 for the new ones), read statement by statement;
+2026-11-13 for those of 0.2.1, 2026-11-14 for the new ones), read statement by statement;
 related results of those libraries are cited next to each headline in the challenge files. The statements have
 **not yet been reviewed by a human** (see Provenance).
 
@@ -178,7 +222,7 @@ related results of those libraries are cited next to each headline in the challe
   explicit polynomial.
 - *(new)* **The crystallographic restriction:** a linear map of finite order of the plane preserving a lattice has
   order 1, 2, 3, 4 or 6 (`crystallographic_restriction`, Theorem 12.2.9); **the finite subgroups of $`O(2)`$ are
-  cyclic or dihedral** (`finite_subgroup_orthogonal_two`, Theorem 12.2.4); **the BCH bound** for cyclic codes
+  cyclic or dihedral** (`finite_subgroup_orthogonal_two`, Theorem 12.2.4); **the Bose–Chaudhuri–Hocquenghem (BCH) bound** for cyclic codes
   (`bch_bound`, Theorem 22.2.8).
 
 **Combinatorics** ([`Challenge_Combinatorics.lean`](Challenge_Combinatorics.lean))
@@ -261,6 +305,8 @@ related results of those libraries are cited next to each headline in the challe
   the statistics of the tests of independence and of homogeneity of an $`r \times c`$ table converge to chi-square
   with $`(r-1)(c-1)`$ degrees of freedom (`tendstoInDistribution_independenceStatistic`,
   `tendstoInDistribution_homogeneityStatistic`, §§ 11.3–11.4).
+- *(new in 0.2.2)* **The test of homogeneity for any sample sizes:** the same limit when the sample sizes tend to
+  infinity in any manner, not only proportionally (`tendstoInDistribution_homogeneityStatisticN`, § 11.4).
 
 **Probability** *(new)* ([`Challenge_Probability.lean`](Challenge_Probability.lean))
 
@@ -278,16 +324,22 @@ related results of those libraries are cited next to each headline in the challe
 - **The local limit theorem** for sums of independent integer-valued variables (`local_limit_theorem`,
   Theorem 9.3).
 - *(new in 0.2.1)* **The central limit theorem for Markov chains:** the number of visits of an ergodic chain to a
-  state is asymptotically normal, with the variance given by the fundamental matrix (`markov_clt`, Theorem 11.17;
-  assuming that variance is positive, see Known restrictions). **The arc sine law for the first maximum** of a
+  state is asymptotically normal, with the variance given by the fundamental matrix (`markov_clt`, Theorem 11.17,
+  for a positive variance; when the variance is zero, the library proves that the number of visits stays within a
+  bounded distance of its mean, `markov_clt_degenerate`). **The arc sine law for the first maximum** of a
   random walk with a continuous symmetric step law (`firstMaxIndex_tendsto`, Theorem 12.6).
+- *(new in 0.2.2)* **Little's law** $`L = \lambda W`$ in its sample-path form (Stidham's theorem): if arrivals have a
+  positive rate $`\lambda`$ and the mean time in the system $`W`$ exists, the time-average number in the system is
+  $`\lambda W`$ (`little_law_sample_path`; used without proof in Example 6.29). Related: neither Mathlib nor Tau Ceti
+  has queues.
 
 **Differential equations** *(new)* ([`Challenge_DifferentialEquations.lean`](Challenge_DifferentialEquations.lean))
 
 - **Uniqueness of the Laplace transform** (Lerch's theorem, `laplace_unique`, Lebl Theorem 6.1.3).
 - **The general solution of a linear equation of order $`n`$:** $`n`$ independent solutions span all solutions
   (`linN_general_solution`, Theorem 2.3.3).
-- **The general solution of the wave equation:** $`y = F(x + at) + G(x - at)`$ (`wave_general_solution`, § 4.8).
+- **The general solution of the wave equation:** $`y = F(x + at) + G(x - at)`$ (`wave_general_solution`, § 4.8;
+  since this headline was chosen, Tau Ceti has added d'Alembert's formula, from which it follows).
 - *(new in 0.2.1)* **The method of Frobenius:** at a regular singular point with analytic coefficients, a root of
   the indicial equation (with no other root at an integer distance above it) gives a convergent series solution
   (`frobenius_analytic`, Theorem 7.3.1). **Convergence of
@@ -295,11 +347,19 @@ related results of those libraries are cited next to each headline in the challe
   average of the one-sided limits (`fourier_series_piecewise_smooth`, Theorem 4.3.1); **the Gibbs phenomenon** for
   the square wave (the overshoot of the partial sums near the jump tends to about 9% of the jump and does not shrink;
   `gibbs_phenomenon`, § 4.2).
+- *(new in 0.2.2)* **The second Frobenius solution:** when the roots of the indicial equation are equal or differ by
+  an integer, a second, independent solution $`x^{r_2}\sum b_k x^k + C (\ln x)\, y_1`$ (`frobenius_second_solution`,
+  § 7.3.2). **Regular Sturm–Liouville problems:** the eigenvalues form an increasing sequence tending to infinity,
+  each with a single eigenfunction up to a multiple (`sturm_liouville_eigenvalues`, Theorem 5.1.1), and the
+  eigenfunction expansion converges uniformly for $`C^2`$ functions satisfying the boundary conditions and in mean
+  square for continuous functions (`eigenfunction_expansion_uniform`, Theorem 5.1.4; see Known restrictions).
+  Related: Tau Ceti has the weak Dirichlet problem without weight.
 
 **Complex analysis** *(new)* ([`Challenge_ComplexAnalysis.lean`](Challenge_ComplexAnalysis.lean))
 
 - **The Casorati–Weierstrass theorem** (`casorati_weierstrass`, Beck et al. Theorem 9.1.9).
-- **The reciprocity law for Dedekind sums** (`dedekind_sum_reciprocity`, § 10.4).
+- **The reciprocity law for Dedekind sums** (`dedekind_sum_reciprocity`, § 10.4; since this headline was chosen,
+  Tau Ceti has added it).
 
 **Representation theory** *(new)* ([`Challenge_RepresentationTheory.lean`](Challenge_RepresentationTheory.lean))
 
@@ -336,12 +396,24 @@ related results of those libraries are cited next to each headline in the challe
   (`pontryagin_van_kampen`, Theorem A5.13.6), and **the structure theorem**: such a group has an open subgroup
   $`\mathbb R^a \times K`$ with $`K`$ compact, and is $`\mathbb R^a \times K`$ if connected
   (`lca_principal_structure`, `lca_connected_structure`, Theorems A5.13.8, A5.13.9).
+- *(new in 0.2.2)* **The Hahn–Mazurkiewicz theorem:** a Hausdorff space is a continuous image of $`[0,1]`$ if and only
+  if it is compact, connected, locally connected and metrizable (`hahn_mazurkiewicz`, Theorem 9.5.12).
+  **Brouwer's theorem:** every nonempty compact metrizable totally disconnected space without isolated points is
+  homeomorphic to the Cantor set (`brouwer_cantor_set`).
+- *(new in 0.2.2)* **Compact groups:** an infinite totally disconnected compact group is homeomorphic to a Cantor cube
+  $`\{0,1\}^\kappa`$ (`compact_totally_disconnected_group_cantor_cube`, Theorem A5.0.23), and every compact group is
+  homeomorphic to $`G_0 \times G/G_0`$, its identity component times the quotient by it
+  (`compact_group_homeomorph_identityComponent_prod`, Theorem A5.0.26).
 
 **Proofs, logic and sets** *(new in 0.2.1)* ([`Challenge_Foundations.lean`](Challenge_Foundations.lean))
 
 - **Vizing's theorem:** the edges of a finite simple graph of maximum degree $`\Delta`$ can be properly coloured
   with $`\Delta + 1`$ colours, so its chromatic index is $`\Delta`$ or $`\Delta + 1`$ (`vizing`, Levin
   Theorem 2.5.9). Related: Tau Ceti has Kőnig's theorem for bipartite graphs.
+- *(new in 0.2.2)* **Hilbert's tenth problem:** the Davis–Putnam–Robinson–Matiyasevich theorem, every recursively enumerable set of natural numbers
+  is Diophantine (`dprm`), and hence there is no algorithm deciding whether a Diophantine equation has an integer
+  solution (`hilbert_tenth`; Levin § 6.2.5, remark). Related: Mathlib proves that exponentiation is Diophantine (the
+  step due to Matiyasevich) and lists the rest as a to-do item; Tau Ceti does not have it.
 
 **Real analysis** *(new in 0.2.1)* ([`Challenge_RealAnalysis.lean`](Challenge_RealAnalysis.lean))
 
@@ -350,7 +422,7 @@ related results of those libraries are cited next to each headline in the challe
   (`riemann_integral_eq_lebesgue`, Lebl § 5.1). Related: Mathlib, Tau Ceti and ReasBook do not relate the two.
 
 **Main statements.** To check what is claimed, read the fifteen files `Challenge_<Topic>.lean`: they state the
-results above (97 theorems), with a docstring for each and a list of the library definitions the
+results above (108 theorems), with a docstring for each and a list of the library definitions the
 statements use; every proof there is a deliberate `sorry`. The matching `Solution_<Topic>.lean` files prove the same
 statements by appeal to the library theorems, and `lake comparator`, configured per topic by
 `comparator/<Topic>.json` (the topics are listed in [`comparator.json`](comparator.json)), checks that each proved
@@ -365,7 +437,8 @@ of a hyperbolic triangle as its angle defect (Tau Ceti); Green's theorem on para
 theorem on parametrized surfaces and the divergence theorem on images of boxes (Tau Ceti and Mathlib have more
 general forms); Kepler's orbit equation (Tau Ceti); the theorems of Sylow, Lagrange and Jordan–Hölder, max-flow
 min-cut, Hall's and Menger's theorems (Mathlib or Tau Ceti); the residue theorem, the argument principle, Rouché's
-theorem and Laurent series (Tau Ceti); Burnside's $`p^aq^b`$ theorem, Frobenius reciprocity, Gabriel's theorem and
+theorem and Laurent series (Tau Ceti; proved here with no assumed input for star-shaped paths); the gamma law of
+sums of exponential variables and the Poisson count (Tau Ceti); Burnside's $`p^aq^b`$ theorem, Frobenius reciprocity, Gabriel's theorem and
 Schur–Weyl duality, Gabriel's theorem in both directions
 and the affine Dynkin diagrams (Tau Ceti); Brouwer's fixed point theorem (Tau Ceti); the separation form of the
 Peter–Weyl theorem for compact groups (Tau Ceti); the prime number theorem (Tau Ceti, as a case of the theorem for arithmetic
@@ -373,9 +446,10 @@ progressions); Euclid's and Euler's theorems on perfect numbers (Mathlib's Archi
 
 **Not formalized, or formalized only in part**, among others: Zeilberger's algorithm and the WZ method are
 formalized as the soundness of supplied certificates (no existence or completeness theorem); the classification of
-the 17 wallpaper groups; the non-planarity of $`K_5`$ and $`K_{3,3}`$ (only from an assumed Euler formula); the
+the 17 wallpaper groups; the non-planarity of $`K_5`$ and $`K_{3,3}`$ (proved for straight-line drawings; for curved
+edges only from an assumed Euler formula); Hilbert's third problem (proved for cuts avoiding edges); the
 general Cauchy formula, residue theorem and argument principle (only from assumed Jordan curve and annulus theorems
-for the path, proved for circles and rectangles); the general Riemann rearrangement theorem in real analysis is the
+for the path, proved for star-shaped paths and rectangles); the general Riemann rearrangement theorem in real analysis is the
 calculus headline, the real analysis topic proves the book's example. The *not formalized* rows of each checklist
 list the gaps.
 
@@ -430,20 +504,18 @@ lake env lean scripts/check_axioms/Geometry.lean   # axioms of the geometry head
                                                    # (Linux; needs bubblewrap); likewise the other topics
 ```
 
-Mathlib comes prebuilt from its cache; this library is built from source (1,190 Lean files, about 351,000 lines; no
-file imports all of Mathlib, so only the Mathlib modules it needs are loaded). On 8 cores (2026-11-13), with Mathlib's
-cache in place, `lake build` took about 24 minutes, with at most 22 GB of memory in use. Almost all of that is one
-module, `UndergradKB/RepresentationTheory/ProblemsA5Induced.lean` (about 22 GB alone; the next slowest module,
-`ProblemsE8.lean`, needs 6 GB), so on a machine with less than 24 GB of memory give the build swap space.
-Each `lake comparator` check (one topic: build, export, and the Lean, NanoDa and con-ron kernels) took 1 to 7
-minutes, with at most 3.6 GB in use and a largest single process of 3.8 GB (`leanexport`).
+Mathlib comes prebuilt from its cache; this library is built from source (1,551 Lean modules, about 465,000 lines; no
+file imports all of Mathlib, so only the Mathlib modules it needs are loaded). On 8 cores (2026-11-14), with Mathlib's
+cache in place, `lake build` took about 36 minutes; the largest single Lean process needed 7.1 GB (0.2.1 had one
+module needing 22 GB; it is now split into one module per induced subgroup). Each `lake comparator` check (one topic: build, export, and the Lean, NanoDa and con-ron kernels) took
+1 to 7 minutes, with at most 3.5 GB in use and a largest single process of 4.1 GB (`leanexport`).
 
 ## Provenance
 
 UndergradKB was written by AI, with Claude Code (Anthropic): by Claude Opus 5.5 and Claude Sonnet 5.5, in November
 2026. Jonathan Hanke designed and directed it: he chose the books, the topics, the conventions and the release. The
 proofs are checked by the Lean kernel, and CI checks that the headline theorems use only the standard axioms. The
-97 headline statements of this release in the `Challenge_<Topic>.lean` files, and the definitions they use, have
+108 headline statements of this release in the `Challenge_<Topic>.lean` files, and the definitions they use, have
 **not yet been reviewed** by a human; that review is planned for a later release. `lake comparator` checks that each
 `Solution_<Topic>.lean` proves exactly the statements of its `Challenge_<Topic>.lean`. The rest of the library (its
 other definitions and results, the book maps, the course outlines and the paraphrases in them) has not been reviewed
@@ -454,6 +526,7 @@ Corrections and reports of mis-formalizations are very welcome.
 
 Releases are tagged with semantic versions; `main` continues to develop. The DOI [10.5281/zenodo.24119531](https://doi.org/10.5281/zenodo.24119531) always resolves to the latest release. To cite a specific version, use its release page or the "Cite this repository" button.
 
+- **[v0.2.2](https://github.com/jonhanke/undergraduate-math-lean/releases/tag/v0.2.2)** (Lean v4.36.0-rc2, Mathlib `1b1ccf4`), archived on Zenodo as [doi:ZENODO-DOI-v0.2.2](https://doi.org/ZENODO-DOI-v0.2.2): more work in the eight topics new in 0.2.0 (among it the Davis–Putnam–Robinson–Matiyasevich theorem and Hilbert's tenth problem, the Hahn–Mazurkiewicz theorem, regular Sturm–Liouville problems and Little's law), regenerated book maps and course outlines, and 108 headline statements in fifteen topics.
 - **[v0.2.1](https://github.com/jonhanke/undergraduate-math-lean/releases/tag/v0.2.1)** (Lean v4.36.0-rc2, Mathlib `1b1ccf4`), archived on Zenodo as [doi:10.5281/zenodo.24191768](https://doi.org/10.5281/zenodo.24191768): real analysis as a new topic (Lebl, *Basic Analysis I*, with results ported from and cited from ReasBook), more work in the eight topics new in 0.2.0, and 97 headline statements in fifteen topics.
 - **[v0.2.0](https://github.com/jonhanke/undergraduate-math-lean/releases/tag/v0.2.0)** (Lean v4.36.0-rc2, Mathlib `1b1ccf4`), archived on Zenodo as [doi:10.5281/zenodo.24166717](https://doi.org/10.5281/zenodo.24166717): eight new topics (precalculus, statistics, probability, proofs, logic and sets, differential equations, complex analysis, representation theory, topology) with the maps and course outlines of their nine books, new work in the six topics of 0.1.0, and 76 headline statements in thirteen topics.
 - **[v0.1.0](https://github.com/jonhanke/undergraduate-math-lean/releases/tag/v0.1.0)** (Lean v4.36.0-rc2, Mathlib `1b1ccf4`), archived on Zenodo as [doi:10.5281/zenodo.24119532](https://doi.org/10.5281/zenodo.24119532): the first release: the six topics, the maps and course outlines

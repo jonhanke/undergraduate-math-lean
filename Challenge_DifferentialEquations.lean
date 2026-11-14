@@ -9,9 +9,12 @@ import UndergradKB.DifferentialEquations.BoundaryValue
 import UndergradKB.DifferentialEquations.FrobeniusAnalytic
 import UndergradKB.DifferentialEquations.FourierDirichlet
 import UndergradKB.DifferentialEquations.Gibbs
+import UndergradKB.DifferentialEquations.FrobeniusSecond
+import UndergradKB.DifferentialEquations.SturmLiouvilleSpectrum
+import UndergradKB.DifferentialEquations.SturmLiouvilleUniform
 
 /-!
-# Headline statements of undergraduate-math-lean 0.2.1: differential equations (Lebl, *Notes on Diffy Qs*)
+# Headline statements of undergraduate-math-lean 0.2.2: differential equations (Lebl, *Notes on Diffy Qs*)
 
 The main results of this topic that Mathlib and Tau Ceti lack, one theorem each, with every proof a deliberate
 `sorry`: the uniqueness of the Laplace transform (Lerch's theorem), the general solution of a homogeneous linear
@@ -19,7 +22,11 @@ equation of order `n` (`n` independent solutions span all solutions), and the ge
 one-dimensional wave equation as a sum of two travelling waves. Version 0.2.1 adds three more: the method of
 Frobenius with analytic coefficients (a series solution at a regular singular point), the pointwise convergence of the
 Fourier series of a piecewise smooth function to the average of the one-sided limits, and the Gibbs phenomenon for the
-square wave. To check what is claimed, read this file.
+square wave. Version 0.2.2 adds three more: the second solution of the method of Frobenius (with a logarithm when the
+roots of the indicial equation are equal or differ by an integer), and the spectral theorem of regular
+Sturm–Liouville problems (the eigenvalues form an increasing sequence tending to infinity, each with one eigenfunction
+up to a multiple; the eigenfunction expansion converges uniformly and in mean square). To check what is claimed, read
+this file.
 `Solution_DifferentialEquations.lean` proves the same statements from the library, and `lake comparator`
 (configured by `comparator/DifferentialEquations.json`) checks that each proved statement is exactly the one here
 and uses only the standard axioms `propext`, `Classical.choice` and `Quot.sound`.
@@ -50,6 +57,15 @@ a reader checking a statement should check these too:
 * `squareWave t = if t ≤ 0 then -1 else 1`: the square wave (`-1` on `[-π, 0]`, `1` on `(0, π]`); only its values on
   `[-π, π]` enter the Fourier coefficients `fourierA squareWave π`, `fourierB squareWave π`.
 * `sinc` is Mathlib's `Real.sinc` (`sin t / t`, with value `1` at `0`).
+* `RegularSL`: the data of a regular Sturm–Liouville problem `(p y')' - q y + λ r y = 0` on `[a, b]` with
+  `α₁ y(a) - α₂ y'(a) = 0` and `β₁ y(b) + β₂ y'(b) = 0`: numbers `a < b`, functions `p`, `q`, `r` and numbers
+  `α₁, α₂, β₁, β₂`, with `p` of class `C¹` on the line, `q` and `r` continuous on `[a, b]`, `p > 0`, `r > 0` and
+  `q ≥ 0` on `[a, b]`, `α₁, α₂, β₁, β₂ ≥ 0`, and neither `(α₁, α₂)` nor `(β₁, β₂)` zero (the book's conditions for a
+  regular problem).
+* `S.IsSolution λ f y`: `y` is of class `C²` on the line, `(p y')' - q y + λ r y = f` at every point of `[a, b]`, and
+  `y` satisfies both boundary conditions. `S.IsEigenfunction λ y`: `S.IsSolution λ 0 y` and `y` is not zero at some
+  point of `[a, b]`. `S.IsEigenvalue λ`: `λ` has an eigenfunction.
+* `S.wInner f g = ∫ t in a..b, f t * g t * r t`, the inner product with weight `r`.
 -/
 
 namespace UndergradKB.Headlines.DifferentialEquations
@@ -80,8 +96,9 @@ theorem linN_general_solution {n : ℕ} {a : Fin n → ℝ → ℝ} {I : Set ℝ
 
 /-- **The general solution of the wave equation** (Lebl § 4.8, characteristic coordinates): every twice
 continuously differentiable solution of `y_tt = a² y_xx` on the plane (`a ≠ 0`) is `F(x + at) + G(x - at)` for two
-twice continuously differentiable functions `F` and `G` of one variable. Related: neither Mathlib nor Tau Ceti has
-the wave equation. -/
+twice continuously differentiable functions `F` and `G` of one variable. Related: Mathlib has no wave equation; Tau
+Ceti (main of 2026-11-14, after this headline was chosen for 0.2.0) proves d'Alembert's formula for speed `1`
+(`TauCeti.PDE.eq_dAlembert_of_deriv_deriv_eq`), from which this statement follows by rescaling time. -/
 theorem wave_general_solution {a : ℝ} (ha : a ≠ 0) {y : ℝ → ℝ → ℝ}
     (hy : ContDiff ℝ 2 (fun p : ℝ × ℝ => y p.1 p.2)) (hwave : WaveEq a y) :
     ∃ F G : ℝ → ℝ, ContDiff ℝ 2 F ∧ ContDiff ℝ 2 G ∧
@@ -137,6 +154,72 @@ theorem gibbs_phenomenon :
     ∀ᶠ M : ℕ in atTop,
       1.17 < trigPoly π (fourierA squareWave π) (fourierB squareWave π) (2 * M) (π / (2 * M)) ∧
       squareWave (π / (2 * M)) = 1 := by
+  sorry
+
+/-- **The second solution of the method of Frobenius** (Lebl § 7.3.2, cases (iv) and (v)): for
+`x² y'' + x p(x) y' + q(x) y = 0` with `p = ∑ Pₖ xᵏ` and `q = ∑ Qₖ xᵏ` convergent for `|x| < ρ`, let `r₁`, `r₂` be the
+roots of the indicial equation `r (r - 1) + P₀ r + Q₀ = 0` (so `r₁ + r₂ = 1 - P₀` and `r₁ r₂ = Q₀`), with `r₁ - r₂ = N`
+a natural number. Then there are series `∑ aₖ xᵏ` (`a₀ = 1`) and `∑ bₖ xᵏ`, convergent for `|x| < ρ`, and a constant `C`
+such that `y₁ = x^{r₁} ∑ aₖ xᵏ` and `y₂ = x^{r₂} ∑ bₖ xᵏ + C (ln x) y₁` are linearly independent solutions on `(0, ρ)`;
+for a double root (`N = 0`) `C = 1` and `b₀ = 0`, otherwise `b₀ = 1` (and `C` may vanish). Hypotheses beyond the book:
+none for real roots; the complex case (vi) is not claimed. Related: neither Mathlib nor Tau Ceti has the indicial
+equation or Frobenius series. -/
+theorem frobenius_second_solution (P Q : ℕ → ℝ) {ρ : ℝ} (hρ : 0 < ρ)
+    (hP : ∀ x : ℝ, |x| < ρ → Summable fun k => P k * x ^ k)
+    (hQ : ∀ x : ℝ, |x| < ρ → Summable fun k => Q k * x ^ k) {r₁ r₂ : ℝ} {N : ℕ}
+    (hsum : r₁ + r₂ = 1 - P 0) (hprod : r₁ * r₂ = Q 0) (hN : r₁ - r₂ = N) :
+    ∃ (a b : ℕ → ℝ) (C : ℝ), a 0 = 1 ∧ (N = 0 → b 0 = 0 ∧ C = 1) ∧ (N ≠ 0 → b 0 = 1) ∧
+      (∀ x : ℝ, |x| < ρ → Summable fun k => a k * x ^ k) ∧
+      (∀ x : ℝ, |x| < ρ → Summable fun k => b k * x ^ k) ∧
+      (∀ x : ℝ, 0 < x → x < ρ →
+        x ^ 2 * deriv (deriv (fun t : ℝ => t ^ r₁ * ∑' k, a k * t ^ k)) x +
+          x * (∑' k, P k * x ^ k) * deriv (fun t : ℝ => t ^ r₁ * ∑' k, a k * t ^ k) x +
+          (∑' k, Q k * x ^ k) * (x ^ r₁ * ∑' k, a k * x ^ k) = 0) ∧
+      (∀ x : ℝ, 0 < x → x < ρ →
+        x ^ 2 * deriv (deriv (fun t : ℝ => t ^ r₂ * ∑' k, b k * t ^ k +
+            C * (Real.log t * (t ^ r₁ * ∑' k, a k * t ^ k)))) x +
+          x * (∑' k, P k * x ^ k) * deriv (fun t : ℝ => t ^ r₂ * ∑' k, b k * t ^ k +
+            C * (Real.log t * (t ^ r₁ * ∑' k, a k * t ^ k))) x +
+          (∑' k, Q k * x ^ k) * (x ^ r₂ * ∑' k, b k * x ^ k + C * (Real.log x * (x ^ r₁ * ∑' k, a k * x ^ k)))
+            = 0) ∧
+      (∀ α β : ℝ, (∀ x : ℝ, 0 < x → x < ρ → α * (x ^ r₁ * ∑' k, a k * x ^ k) +
+        β * (x ^ r₂ * ∑' k, b k * x ^ k + C * (Real.log x * (x ^ r₁ * ∑' k, a k * x ^ k))) = 0) →
+        α = 0 ∧ β = 0) := by
+  sorry
+
+/-- **The eigenvalues of a regular Sturm–Liouville problem** (Lebl Theorem 5.1.1): they form a sequence
+`λ₀ < λ₁ < λ₂ < ⋯` tending to `+∞` (every eigenvalue is some `λₙ`), each `λₙ ≥ 0`, and every solution of the problem
+for `λₙ` is a constant multiple of any eigenfunction for `λₙ` on `[a, b]`. Hypotheses beyond the book: the book's first
+statement (infinitely many eigenvalues tending to infinity) is for any `p, r > 0`; it is proved here for regular
+problems (`q ≥ 0` and nonnegative boundary coefficients), the setting of the book's "moreover" part. Related: Mathlib
+has no Sturm–Liouville theory; Tau Ceti proves the analogous statement for the Dirichlet problem of a symmetric
+divergence-form operator in weak form, without weight (`exists_hilbertBasis_nat_isDirichletEigenvalue_monotone`), not
+for these classical problems with weight and separated boundary conditions. -/
+theorem sturm_liouville_eigenvalues (S : RegularSL) :
+    ∃ ev : ℕ → ℝ, StrictMono ev ∧ Tendsto ev atTop atTop ∧
+      (∀ l, S.IsEigenvalue l ↔ ∃ n, ev n = l) ∧ (∀ n, 0 ≤ ev n) ∧
+      ∀ n {y₁ y₂ : ℝ → ℝ}, S.IsEigenfunction (ev n) y₁ → S.IsSolution (ev n) 0 y₂ →
+        ∃ c : ℝ, ∀ t ∈ Icc S.a S.b, y₂ t = c * y₁ t := by
+  sorry
+
+/-- **The eigenfunction expansion of a regular Sturm–Liouville problem** (Lebl Theorem 5.1.4): there are eigenvalues
+`λ₀ < λ₁ < ⋯` (all of them) with eigenfunctions `yₙ`, orthonormal for the weight `r`, such that, with
+`cₙ = ∫_a^b f yₙ r`, the series `∑ cₙ yₙ` converges to `f` uniformly on `[a, b]` when `f` is of class `C²` and
+satisfies both boundary conditions, and `∫_a^b r (f - ∑_{n<N} cₙ yₙ)² → 0` when `f` is continuous on `[a, b]`.
+Hypotheses beyond the book: the book states pointwise convergence for piecewise smooth `f`, which is not claimed here;
+the problem is regular (as above). Related: Tau Ceti has the `L²` eigenfunction expansion of the weak Dirichlet
+problem without weight; neither library has uniform convergence of eigenfunction expansions. -/
+theorem eigenfunction_expansion_uniform (S : RegularSL) :
+    ∃ ev : ℕ → ℝ, ∃ y : ℕ → ℝ → ℝ, StrictMono ev ∧ (∀ l, S.IsEigenvalue l ↔ ∃ n, ev n = l) ∧
+      (∀ n, S.IsEigenfunction (ev n) (y n)) ∧
+      (∀ m n, S.wInner (y m) (y n) = if m = n then 1 else 0) ∧
+      (∀ f : ℝ → ℝ, ContDiff ℝ 2 f → S.α₁ * f S.a - S.α₂ * deriv f S.a = 0 →
+        S.β₁ * f S.b + S.β₂ * deriv f S.b = 0 →
+        TendstoUniformlyOn (fun N x => ∑ n ∈ Finset.range N, S.wInner f (y n) * y n x) f atTop
+          (Icc S.a S.b)) ∧
+      ∀ f : ℝ → ℝ, ContinuousOn f (Icc S.a S.b) →
+        Tendsto (fun N => ∫ t in S.a..S.b,
+          S.r t * (f t - ∑ n ∈ Finset.range N, S.wInner f (y n) * y n t) ^ 2) atTop (𝓝 0) := by
   sorry
 
 end UndergradKB.Headlines.DifferentialEquations

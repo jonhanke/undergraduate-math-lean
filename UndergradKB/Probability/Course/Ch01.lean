@@ -2,10 +2,14 @@ import Mathlib.Probability.ProbabilityMassFunction.Constructions
 import Mathlib.MeasureTheory.Measure.Typeclasses.Probability
 import Mathlib.Probability.Distributions.Uniform
 import UndergradKB.Common.Attr
+import UndergradKB.Probability.ExamplesSchoolC
+import UndergradKB.Probability.ExamplesSchoolB
 import UndergradKB.Probability.ExamplesDiscrete
 import UndergradKB.Probability.ExamplesSchool
 import UndergradKB.Probability.Basic
 import UndergradKB.Probability.DiscreteDistributions
+import UndergradKB.Probability.ExamplesQueueStock
+import UndergradKB.Probability.ExamplesSchoolD
 
 /-!
 # Course layer, Chapter 1 (Grinstead–Snell, Discrete Probability Distributions)
@@ -98,5 +102,70 @@ theorem gs_example_1_10 : type_of% @UndergradKB.Probability.threeTosses_prob :=
 @[kb "grinsteadsnell2006" "Example 1.11, p. 34"]
 theorem gs_example_1_11 : type_of% @UndergradKB.Probability.twoDice_prob :=
   @UndergradKB.Probability.twoDice_prob
+
+/-! ## Worked examples (wave 4) -/
+
+/-- Grinstead–Snell Example 1.6 (PR-187). For one roll of a fair die (faces `i + 1`, `i : Fin 6`, uniform measure) every face has weight `1/6`, and the event that the outcome is even has probability... -/
+@[kb "grinsteadsnell2006" "Example 1.6, p. 26"]
+theorem gs_example_1_6 : type_of% @UndergradKB.Probability.die_even_half :=
+  @UndergradKB.Probability.die_even_half
+
+/-- Grinstead–Snell Example 1.7 (PR-188). Two tosses of a fair coin recorded in order are the uniform measure on `Bool × Bool` (weight `1/4` each); at least one head has probability `3/4`, heads on... -/
+@[kb "grinsteadsnell2006" "Example 1.7, p. 27"]
+theorem gs_example_1_7 : type_of% @UndergradKB.Probability.two_tosses_law :=
+  @UndergradKB.Probability.two_tosses_law
+
+/-- Grinstead–Snell Example 1.8 (PR-187). For one roll of a fair die (faces `i + 1`, `i : Fin 6`, uniform measure) every face has weight `1/6`, and the event that the outcome is even has probability... -/
+@[kb "grinsteadsnell2006" "Example 1.8, p. 28"]
+theorem gs_example_1_8 : type_of% @UndergradKB.Probability.die_even_half :=
+  @UndergradKB.Probability.die_even_half
+
+/-- Grinstead–Snell Example 1.12 (PR-163). If candidate `C` wins with probability `1/5` then the odds in favour of `C` are `1 : 4` (that is `(1/5)/(4/5) = 1/4`, and conversely odds `1 : 4` give... -/
+@[kb "grinsteadsnell2006" "Example 1.12, p. 36"]
+theorem gs_example_1_12 : type_of% @UndergradKB.Probability.election_odds_fair :=
+  @UndergradKB.Probability.election_odds_fair
+
+
+/-! ## Wave 5 course layer (this library) -/
+
+/-- Grinstead–Snell Example 1.13 (PR-009). A fair coin is tossed until the first head: the first head occurs at toss `n ≥ 1` with probability `2⁻ⁿ`. -/
+@[kb "grinsteadsnell2006" "Example 1.13, p. 37"]
+theorem gs_example_1_13 : type_of% @UndergradKB.Probability.firstHead_real_singleton :=
+  @UndergradKB.Probability.firstHead_real_singleton
+
+/-- Grinstead–Snell Example 1.13 (PR-009): the masses `2⁻ⁿ`, `n ≥ 1`, sum to `1`. -/
+@[kb "grinsteadsnell2006" "Example 1.13, p. 37"]
+theorem gs_example_1_13_b : type_of% @UndergradKB.Probability.firstHead_hasSum :=
+  @UndergradKB.Probability.firstHead_hasSum
+
+/-- Grinstead–Snell Example 1.4 (PR-207), final winnings. In `2n` fair tosses (`n = 20` for the book's 40 tosses) Peter's final winnings `2k - 2n` have probability `C(2n,k)/2^{2n}`; this is largest for winnings `0` (`k = n`) and smallest for the extreme winnings `±2n` (`k = 0` and `k = 2n`, which have equal probability `1/2^{2n}`). -/
+@[kb "grinsteadsnell2006" "Example 1.4, p. 13"]
+theorem gs_example_1_4 : type_of% @UndergradKB.Probability.heads_tails_final_winnings :=
+  @UndergradKB.Probability.heads_tails_final_winnings
+
+/-- Grinstead–Snell Example 1.4 (PR-207), times in the lead. In `2n` fair tosses (`n = 20` for the book's 40 tosses) Peter is in the lead exactly `2k` times with probability `u_{2k} u_{2n-2k}` (the repo's Theorem 12.4, `leadCount_prob`); this is largest for `k = 0` and `k = n` (which have equal probability `u_{2n}`) and, when `n` is even, smallest for `k = n/2`. -/
+@[kb "grinsteadsnell2006" "Example 1.4, p. 13"]
+theorem gs_example_1_4_b : type_of% @UndergradKB.Probability.heads_tails_lead_times :=
+  @UndergradKB.Probability.heads_tails_lead_times
+
+/-- Grinstead–Snell Example 1.3 (PR-193), first game. `n` independent rolls of one die are the uniform measure on `Fin n → Fin 6` (face `5` is the six). The probability of at least one six in `n` rolls is `1 - (5/6)^n`; for `n = 4` it is `1 - (5/6)^4 = 671/1296`, which exceeds `1/2` and rounds to the book's `.518` (it lies in `[.5175, .5185)`). -/
+@[kb "grinsteadsnell2006" "Example 1.3, p. 12"]
+theorem gs_example_1_3 : type_of% @UndergradKB.Probability.demere_one_die :=
+  @UndergradKB.Probability.demere_one_die
+
+/-- Grinstead–Snell Example 1.3 (PR-193), second game. `n` independent rolls of a pair of dice are the uniform measure on `Fin n → Fin 6 × Fin 6` (the pair `(5, 5)` is a double six). -/
+@[kb "grinsteadsnell2006" "Example 1.3, p. 12"]
+theorem gs_example_1_3_b : type_of% @UndergradKB.Probability.demere_two_dice :=
+  @UndergradKB.Probability.demere_two_dice
+
+/-- Grinstead–Snell Example 1.5 (PR-194), the four horses. For `x` uniform on `[0,1)` the intervals `[0,.3)`, `[.3,.7)`, `[.7,.9)`, `[.9,1)` have probabilities `.3, .4, .2, .1`. -/
+@[kb "grinsteadsnell2006" "Example 1.5, p. 14"]
+theorem gs_example_1_5 : type_of% @UndergradKB.Probability.horse_race_intervals :=
+  @UndergradKB.Probability.horse_race_intervals
+
+/-- Grinstead–Snell Example 1.5 (PR-194), general form. For nonnegative weights `w : Fin k → ℝ` with sum `1`, the interval `[∑_{j<i} wⱼ, ∑_{j≤i} wⱼ)` of `[0,1)` has uniform probability `wᵢ` (so these intervals realize any given win probabilities). -/
+@[kb "grinsteadsnell2006" "Example 1.5, p. 14"]
+theorem gs_example_1_5_b : type_of% @UndergradKB.Probability.horse_race_general :=
+  @UndergradKB.Probability.horse_race_general
 
 end UndergradKB.Probability.Course

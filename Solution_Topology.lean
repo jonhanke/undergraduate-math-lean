@@ -14,6 +14,10 @@ import UndergradKB.Topology.DualityTheorem
 import UndergradKB.Topology.StructureTheorems
 import UndergradKB.Topology.SharkovskiiOdd4
 import UndergradKB.Topology.SharkovskiiOdd7
+import UndergradKB.Topology.HahnMazurkiewicz
+import UndergradKB.Topology.CantorBrouwer
+import UndergradKB.Topology.CantorCube
+import UndergradKB.Topology.CompactSection
 
 /-!
 # Proofs of the topology headline statements
@@ -99,5 +103,28 @@ theorem lca_connected_structure {G : Type u} [CommGroup G] [TopologicalSpace G] 
       IsTopologicalGroup K ∧ CompactSpace K ∧ T2Space K ∧ ConnectedSpace K ∧
         Nonempty (G ≃ₜ* (Fin a → Multiplicative ℝ) × K) :=
   UndergradKB.Topology.exists_equiv_real_compact_of_connectedSpace
+
+theorem hahn_mazurkiewicz {X : Type*} [TopologicalSpace X] [T2Space X] :
+    (∃ f : unitInterval → X, Continuous f ∧ Function.Surjective f) ↔
+      CompactSpace X ∧ ConnectedSpace X ∧ LocallyConnectedSpace X ∧
+        TopologicalSpace.MetrizableSpace X :=
+  UndergradKB.Topology.exists_continuous_surjective_unitInterval_iff
+
+theorem brouwer_cantor_set {X : Type*} [TopologicalSpace X] [CompactSpace X]
+    [TopologicalSpace.MetrizableSpace X] [TotallyDisconnectedSpace X] [Nonempty X]
+    (hper : ∀ x : X, ¬ IsOpen ({x} : Set X)) : Nonempty (X ≃ₜ cantorSet) :=
+  UndergradKB.Topology.nonempty_homeomorph_cantorSet_of_perfect hper
+
+theorem compact_totally_disconnected_group_cantor_cube {G : Type u} [Group G] [TopologicalSpace G]
+    [IsTopologicalGroup G] [CompactSpace G] [T2Space G] [TotallyDisconnectedSpace G] [Infinite G] :
+    ∃ κ : Type u, Infinite κ ∧ Nonempty (G ≃ₜ (κ → Bool)) :=
+  UndergradKB.Topology.nonempty_homeomorph_cantorCube_of_group
+
+theorem compact_group_homeomorph_identityComponent_prod (G : Type*) [Group G] [TopologicalSpace G]
+    [IsTopologicalGroup G] [CompactSpace G] [T2Space G] :
+    have := normal_connectedComponentOfOne G
+    Nonempty (G ≃ₜ (Subgroup.connectedComponentOfOne G) ×
+      (G ⧸ Subgroup.connectedComponentOfOne G)) :=
+  UndergradKB.Topology.nonempty_homeomorph_identityComponent_prod_of_compact G
 
 end UndergradKB.Headlines.Topology

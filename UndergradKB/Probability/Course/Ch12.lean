@@ -85,4 +85,26 @@ theorem gs_example_12_3_b : type_of% @UndergradKB.Probability.equalTotal_two_mul
 theorem gs_example_12_3_c : type_of% @UndergradKB.Probability.expectedEqualizations_asymptotic :=
   @UndergradKB.Probability.expectedEqualizations_asymptotic
 
+/-! ## Wave 5 course layer (this library) -/
+
+/-- Grinstead–Snell §12.2 gambler's ruin (PR-128), fair game, existence: `h(k) = k/M` is the harmonic function on `0..M` with `h(0) = 0`, `h(M) = 1`. -/
+@[kb "grinsteadsnell2006" "§12.2 gambler's ruin, p. 494"]
+theorem gs_section_12_2_gamblers_ruin : type_of% @UndergradKB.Probability.gamblersRuin_fair_exists :=
+  @UndergradKB.Probability.gamblersRuin_fair_exists
+
+/-- Grinstead–Snell §12.2 gambler's ruin (PR-128), fair game, uniqueness: a function on `0..M` with `h(0) = 0`, `h(M) = 1` and `h(k) = (h(k-1) + h(k+1))/2` for `0 < k < M` equals `k/M`. -/
+@[kb "grinsteadsnell2006" "§12.2 gambler's ruin, p. 494"]
+theorem gs_section_12_2_gamblers_ruin_b : type_of% @UndergradKB.Probability.gamblersRuin_fair_unique :=
+  @UndergradKB.Probability.gamblersRuin_fair_unique
+
+/-- Grinstead–Snell §12.2 gambler's ruin (PR-128), unfair game with win probability `p`, loss probability `q = 1 - p` and `r = q/p ≠ 1`, existence: `h(k) = (r^k - 1)/(r^M - 1)` is the probability of reaching `M` before `0` from `k`; it satisfies `h(k) = p h(k+1) + q h(k-1)` with `h(0) = 0`, `h(M) = 1`. -/
+@[kb "grinsteadsnell2006" "§12.2 gambler's ruin, p. 494"]
+theorem gs_section_12_2_gamblers_ruin_c : type_of% @UndergradKB.Probability.gamblersRuin_unfair_exists :=
+  @UndergradKB.Probability.gamblersRuin_unfair_exists
+
+/-- Grinstead–Snell §12.2 gambler's ruin (PR-128), unfair game, uniqueness: any `h` on `0..M` with `h(0) = 0`, `h(M) = 1` and `h(k) = p h(k+1) + q h(k-1)` for `0 < k < M` equals `(r^k - 1)/(r^M - 1)`. -/
+@[kb "grinsteadsnell2006" "§12.2 gambler's ruin, p. 494"]
+theorem gs_section_12_2_gamblers_ruin_d : type_of% @UndergradKB.Probability.gamblersRuin_unfair_unique :=
+  @UndergradKB.Probability.gamblersRuin_unfair_unique
+
 end UndergradKB.Probability.Course

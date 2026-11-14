@@ -15,3 +15,6 @@ import UndergradKB.RepresentationTheory.Course.Etingof7KB
 import UndergradKB.RepresentationTheory.Course.Etingof4KBw3
 import UndergradKB.RepresentationTheory.Course.EtingofProblemsW3
 import UndergradKB.RepresentationTheory.Course.EtingofProblemsW3b
+import UndergradKB.RepresentationTheory.Course.EtingofW4
+import UndergradKB.RepresentationTheory.Course.EtingofDefsW5
+import UndergradKB.RepresentationTheory.Course.EtingofW6

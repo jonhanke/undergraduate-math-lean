@@ -1,5 +1,6 @@
 import Mathlib.Probability.Kernel.Invariance
 import UndergradKB.Common.Attr
+import UndergradKB.Probability.ExamplesMarkovD
 import UndergradKB.Probability.ExamplesMarkov
 import UndergradKB.Probability.ExamplesMarkovB
 import UndergradKB.Probability.ExamplesMarkovC
@@ -9,6 +10,9 @@ import UndergradKB.Probability.MarkovRegular
 import UndergradKB.Probability.MarkovLLN
 import UndergradKB.Probability.MarkovPassage
 import UndergradKB.Probability.MarkovClt
+import UndergradKB.Probability.ExamplesSteppingStone
+import UndergradKB.Probability.MarkovCltDegenerate
+import UndergradKB.Probability.MarkovVariance
 
 /-!
 # Course layer, Chapter 11 (Grinstead–Snell, Markov Chains)
@@ -368,5 +372,152 @@ theorem gs_example_11_28 : type_of% @UndergradKB.Probability.ehrenfest_meanRecur
 @[kb "grinsteadsnell2006" "Example 11.28, p. 469"]
 theorem gs_example_11_28_b : type_of% @UndergradKB.Probability.ehrenfest_two_mul_meanRecurrence :=
   @UndergradKB.Probability.ehrenfest_two_mul_meanRecurrence
+
+/-! ## Worked examples (wave 4) -/
+
+/-- Grinstead–Snell Example 11.4 (PR-181). For `a + b ≠ 0` the powers of the two-state matrix are `P^n = (1/(a+b)) [[b, a], [b, a]] + ((1-a-b)^n/(a+b)) [[a, -a], [-b, b]]`. -/
+@[kb "grinsteadsnell2006" "Example 11.4, p. 417"]
+theorem gs_example_11_4 : type_of% @UndergradKB.Probability.twoStateP_pow :=
+  @UndergradKB.Probability.twoStateP_pow
+
+/-- Grinstead–Snell Example 11.4 (PR-181). For `0 ≤ a, b ≤ 1` and `0 < a + b < 2` the powers `P^n` of the two-state chain converge to the matrix both of whose rows are `(b, a)/(a+b)`, and this row is... -/
+@[kb "grinsteadsnell2006" "Example 11.4, p. 417"]
+theorem gs_example_11_4_b : type_of% @UndergradKB.Probability.twoStateP_pow_tendsto :=
+  @UndergradKB.Probability.twoStateP_pow_tendsto
+
+/-- Grinstead–Snell Example 11.5 (PR-182). For the horse race matrix with three equal rows `(1/2, 1/4, 1/4)` one has `P^n = P` for every `n ≥ 1`. -/
+@[kb "grinsteadsnell2006" "Example 11.5, p. 417"]
+theorem gs_example_11_5 : type_of% @UndergradKB.Probability.horseMatrix_pow :=
+  @UndergradKB.Probability.horseMatrix_pow
+
+/-- Grinstead–Snell Example 11.5 (PR-182). The horse race chain is regular (already `P^1` is positive), and its unique fixed probability vector is `(1/2, 1/4, 1/4)`. -/
+@[kb "grinsteadsnell2006" "Example 11.5, p. 417"]
+theorem gs_example_11_5_b : type_of% @UndergradKB.Probability.horseMatrix_regular_fixed :=
+  @UndergradKB.Probability.horseMatrix_regular_fixed
+
+/-- Grinstead–Snell Example 11.6 (PR-183). The Harvard–Yale–Dartmouth chain is regular (`P^2` is positive) and its unique fixed probability vector is `(5/9, 2/9, 2/9)`. -/
+@[kb "grinsteadsnell2006" "Example 11.6, p. 418"]
+theorem gs_example_11_6 : type_of% @UndergradKB.Probability.hydMatrix_regular_fixed :=
+  @UndergradKB.Probability.hydMatrix_regular_fixed
+
+/-- Grinstead–Snell Example 11.7 (PR-183). The modified chain is absorbing, with Harvard (state `0`) the only absorbing state. -/
+@[kb "grinsteadsnell2006" "Example 11.7, p. 418"]
+theorem gs_example_11_7 : type_of% @UndergradKB.Probability.hydAbsMatrix_absorbing :=
+  @UndergradKB.Probability.hydAbsMatrix_absorbing
+
+/-- Grinstead–Snell Example 11.7 (PR-183). With the repository's fundamental matrix `N = (I - Q)⁻¹`, where `Q = [[.4, .3], [.1, .7]]` on the transient states Yale, Dartmouth (`1, 2`), one has `N =... -/
+@[kb "grinsteadsnell2006" "Example 11.7, p. 418"]
+theorem gs_example_11_7_b : type_of% @UndergradKB.Probability.hydAbs_fundamental :=
+  @UndergradKB.Probability.hydAbs_fundamental
+
+/-- Grinstead–Snell Example 11.7 (PR-183). The expected number of generations before the family enters Harvard, `t = N c`, is `4` from Yale and `14/3` from Dartmouth. -/
+@[kb "grinsteadsnell2006" "Example 11.7, p. 418"]
+theorem gs_example_11_7_c : type_of% @UndergradKB.Probability.hydAbs_time :=
+  @UndergradKB.Probability.hydAbs_time
+
+/-- Grinstead–Snell Example 11.9 (PR-184). The gene chain mated with a hybrid is regular (`P^2` is positive); its unique fixed probability vector is `(1/4, 1/2, 1/4)`. -/
+@[kb "grinsteadsnell2006" "Example 11.9, p. 419"]
+theorem gs_example_11_9 : type_of% @UndergradKB.Probability.geneHybrid_regular_fixed :=
+  @UndergradKB.Probability.geneHybrid_regular_fixed
+
+/-- Grinstead–Snell Example 11.10 (PR-184). The gene chain mated with a dominant is absorbing (`GG` is the only absorbing state; `Gg` reaches it in one step and `gg` in two). -/
+@[kb "grinsteadsnell2006" "Example 11.10, p. 419"]
+theorem gs_example_11_10 : type_of% @UndergradKB.Probability.geneDomMatrix_absorbing :=
+  @UndergradKB.Probability.geneDomMatrix_absorbing
+
+/-- Grinstead–Snell Example 11.10 (PR-184). The fundamental matrix of the dominant-mating chain, with `Q = [[1/2, 0], [1, 0]]` on the transient states `Gg, gg`, is `N = [[2, 0], [2, 1]]`. -/
+@[kb "grinsteadsnell2006" "Example 11.10, p. 419"]
+theorem gs_example_11_10_b : type_of% @UndergradKB.Probability.geneDom_fundamental :=
+  @UndergradKB.Probability.geneDom_fundamental
+
+/-- Grinstead–Snell Example 11.10 (PR-184). The expected number of generations until a dominant offspring is reached is `2` from a hybrid `Gg` and `3` from a recessive `gg`. -/
+@[kb "grinsteadsnell2006" "Example 11.10, p. 419"]
+theorem gs_example_11_10_c : type_of% @UndergradKB.Probability.geneDom_time :=
+  @UndergradKB.Probability.geneDom_time
+
+/-- Grinstead–Snell Example 11.11 (PR-185). The inbreeding chain is absorbing: the states `(GG,GG)` and `(gg,gg)` (states `0` and `5`) are absorbing and every state reaches one of them. -/
+@[kb "grinsteadsnell2006" "Example 11.11, p. 420"]
+theorem gs_example_11_11 : type_of% @UndergradKB.Probability.inbreedMatrix_absorbing :=
+  @UndergradKB.Probability.inbreedMatrix_absorbing
+
+/-- Grinstead–Snell Example 11.11 (PR-185). The fundamental matrix of the inbreeding chain (transient states `(GG,Gg), (GG,gg), (Gg,Gg), (Gg,gg)`) is `N = [[8/3, 1/6, 4/3, 2/3], [4/3, 4/3, 8/3, 4/3],... -/
+@[kb "grinsteadsnell2006" "Example 11.11, p. 420"]
+theorem gs_example_11_11_b : type_of% @UndergradKB.Probability.inbreed_fundamental :=
+  @UndergradKB.Probability.inbreed_fundamental
+
+/-- Grinstead–Snell Example 11.11 (PR-185). The expected numbers of generations before one of the two absorbing states is reached are `t = N c = (29/6, 20/3, 17/3, 29/6)` from the four transient states. -/
+@[kb "grinsteadsnell2006" "Example 11.11, p. 420"]
+theorem gs_example_11_11_c : type_of% @UndergradKB.Probability.inbreed_time :=
+  @UndergradKB.Probability.inbreed_time
+
+/-- Grinstead–Snell Example 11.11 (PR-185). The probabilities of eventual absorption in `(GG,GG)` and `(gg,gg)` are `B = N R`, namely `(3/4, 1/4), (1/2, 1/2), (1/2, 1/2), (1/4, 3/4)` from the four... -/
+@[kb "grinsteadsnell2006" "Example 11.11, p. 420"]
+theorem gs_example_11_11_d : type_of% @UndergradKB.Probability.inbreed_absorption_prob :=
+  @UndergradKB.Probability.inbreed_absorption_prob
+
+/-- Grinstead–Snell Example 11.26 (PR-186). For the Land of Oz chain, `I - P + W` (with `W` the matrix all of whose rows are the fixed vector `(2/5, 1/5, 2/5)`) equals `[[9/10, -1/20, 3/20], [-1/10,... -/
+@[kb "grinsteadsnell2006" "Example 11.26, p. 466"]
+theorem gs_example_11_26 : type_of% @UndergradKB.Probability.ozMatrix_fundamentalZ :=
+  @UndergradKB.Probability.ozMatrix_fundamentalZ
+
+/-- Grinstead–Snell Example 11.26 (PR-186). The repository's `Z` of the ergodic Oz chain, built from the unique fixed probability vector given by `meanFirstPassage_eq_fundamental`, is the matrix... -/
+@[kb "grinsteadsnell2006" "Example 11.26, p. 466"]
+theorem gs_example_11_26_b : type_of% @UndergradKB.Probability.ozMatrix_meanFirstPassage_Z :=
+  @UndergradKB.Probability.ozMatrix_meanFirstPassage_Z
+
+
+/-! ## Wave 5 course layer (this library) -/
+
+/-- Grinstead–Snell §11.2 harmonic function (PR-123): in an absorbing chain a function `f` on the states with `P f = f` (a harmonic function) is determined by its values on the absorbing states: `f i = ∑_a B i a f a` for every transient state `i`, with `B = N R` the absorption probabilities. -/
+@[kb "grinsteadsnell2006" "§11.2 harmonic function, p. 436"]
+theorem gs_section_11_2_harmonic_function : type_of% @UndergradKB.Probability.harmonic_eq_absorption :=
+  @UndergradKB.Probability.harmonic_eq_absorption
+
+/-- Grinstead–Snell §11.1 Markov chain and transition matrix (PR-110): the Markov property for the path weights. Extending a path by one step to the state `s` multiplies its probability by the transition probability from the present state to `s`; so given the whole past, the next state depends only on the present state. -/
+@[kb "grinsteadsnell2006" "§11.1 Markov chain and transition matrix, p. 413"]
+theorem gs_section_11_1_markov_chain_and_transition_matrix : type_of% @UndergradKB.Probability.pathProb_snoc :=
+  @UndergradKB.Probability.pathProb_snoc
+
+/-- Grinstead–Snell §11.1 (PR-110): the path weights of a Markov chain form a probability distribution on the paths of length `n` (they are nonnegative, `pathProb_nonneg`, and sum to one). -/
+@[kb "grinsteadsnell2006" "§11.1 Markov chain and transition matrix, p. 413"]
+theorem gs_section_11_1_markov_chain_and_transition_matrix_b : type_of% @UndergradKB.Probability.sum_pathProb :=
+  @UndergradKB.Probability.sum_pathProb
+
+/-- Grinstead–Snell Example 11.12 (PR-213): the stepping stone matrix is a transition matrix (row stochastic). -/
+@[kb "grinsteadsnell2006" "Example 11.12, p. 420"]
+theorem gs_example_11_12 : type_of% @UndergradKB.Probability.steppingStone_mem :=
+  @UndergradKB.Probability.steppingStone_mem
+
+/-- Grinstead–Snell Example 11.12 (PR-213): the absorbing states of the stepping stone chain are exactly the one-color colorings. -/
+@[kb "grinsteadsnell2006" "Example 11.12, p. 420"]
+theorem gs_example_11_12_b : type_of% @UndergradKB.Probability.steppingStone_absorbing_iff :=
+  @UndergradKB.Probability.steppingStone_absorbing_iff
+
+/-- Grinstead–Snell Example 11.12 (PR-213): the stepping stone chain is an absorbing chain (the absorbing states are the one-color colorings, and from every coloring a one-color coloring is reachable). -/
+@[kb "grinsteadsnell2006" "Example 11.12, p. 420"]
+theorem gs_example_11_12_c : type_of% @UndergradKB.Probability.steppingStone_isAbsorbingChain :=
+  @UndergradKB.Probability.steppingStone_isAbsorbingChain
+
+/-- Grinstead–Snell Example 11.12 (PR-213), the book's statement (Exercise 11.2.32): starting from the non-absorbing coloring `σ`, the probability that the chain is absorbed in the one-color coloring of color `c` (the entry of `B = N R` of the absorbing chain) equals the initial proportion `#{s : σ s = c} / n²` of sites of color `c`. -/
+@[kb "grinsteadsnell2006" "Example 11.12, p. 420"]
+theorem gs_example_11_12_d : type_of% @UndergradKB.Probability.steppingStone_absorption_prob :=
+  @UndergradKB.Probability.steppingStone_absorption_prob
+
+/-- Grinstead–Snell Example 11.21 (PR-214): in the Land of Oz, whatever the weather on the first day (any initial distribution `u`), the proportion of rainy, nice and snowy days among the first `n + 1` days converges in probability to the long-run proportions `2/5, 1/5, 2/5`; so the expected counts in a year of 525 days are `525 · (2/5, 1/5, 2/5) = (210, 105, 210)`. -/
+@[kb "grinsteadsnell2006" "Example 11.21, p. 447"]
+theorem gs_example_11_21 : type_of% @UndergradKB.Probability.oz_year_lln :=
+  @UndergradKB.Probability.oz_year_lln
+
+/-! ## Wave 6 course layer (this library) -/
+
+/-- Grinstead–Snell Theorem 11.17 (PR-121), the degenerate case. Let `P` be an ergodic chain with fixed probability vector `w` and fundamental matrix `Z = (I - P + W)⁻¹`. -/
+@[kb "grinsteadsnell2006" "Theorem 11.17, p. 472"]
+theorem gs_theorem_11_17_b : type_of% @UndergradKB.Probability.markov_clt_degenerate :=
+  @UndergradKB.Probability.markov_clt_degenerate
+
+/-- Grinstead–Snell Theorem 11.17 (PR-121), the asymptotic variance (equation 11.10): for a regular chain with fixed probability vector `w`, fundamental matrix `Z = (I - P + W)⁻¹` and any initial probability vector `u`, the variance of the number `S_j^(n)` of visits to `j` among the times `0, …, n`, computed about `(n+1) w_j` and divided by `n + 1`, tends to `σ_j² = 2 w_j z_jj - w_j - w_j²`. -/
+@[kb "grinsteadsnell2006" "Theorem 11.17, p. 472"]
+theorem gs_theorem_11_17_c : type_of% @UndergradKB.Probability.markov_asymptotic_variance :=
+  @UndergradKB.Probability.markov_asymptotic_variance
 
 end UndergradKB.Probability.Course

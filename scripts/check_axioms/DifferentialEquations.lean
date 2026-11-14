@@ -8,3 +8,6 @@ import Solution_DifferentialEquations
 #print axioms UndergradKB.Headlines.DifferentialEquations.frobenius_analytic
 #print axioms UndergradKB.Headlines.DifferentialEquations.fourier_series_piecewise_smooth
 #print axioms UndergradKB.Headlines.DifferentialEquations.gibbs_phenomenon
+#print axioms UndergradKB.Headlines.DifferentialEquations.frobenius_second_solution
+#print axioms UndergradKB.Headlines.DifferentialEquations.sturm_liouville_eigenvalues
+#print axioms UndergradKB.Headlines.DifferentialEquations.eigenfunction_expansion_uniform

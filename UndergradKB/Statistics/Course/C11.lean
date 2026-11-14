@@ -4,6 +4,7 @@ import UndergradKB.Statistics.Pearson
 import UndergradKB.Statistics.IndependenceTest
 import UndergradKB.Statistics.Homogeneity
 import UndergradKB.Statistics.DistributionLimits
+import UndergradKB.Statistics.Shape
 import UndergradKB.Common.Attr
 
 /-!
@@ -107,5 +108,18 @@ theorem chi_square_approx_normal_for_large_degrees_of_freedom {Ω' : Type*} [Mea
       (fun (k : ℕ) ω ↦ (∑ i ∈ Finset.range k, Z i ω ^ 2 - k) / √(2 * k)) Filter.atTop W
       (fun _ ↦ P) P' :=
   chiSquared_approx_normal hW hmeas hind hZ
+
+/-- OpenStax Introductory Statistics 2e §11.1 (ST-096). The chi-square curve is skewed to the right: the
+third central moment of the chi-square law with `k > 0` degrees of freedom is `8k > 0`; the skewness
+`E[(X - k)³]/σ³ = 4/√(2k)` tends to `0` as the degrees of freedom grow. -/
+@[kb "openstaxintrostats2e" "§11.1, p. 575"]
+theorem chi_square_skewed_right {k : ℝ} (hk : 0 < k) :
+    ProbabilityTheory.centralMoment id 3 (UndergradKB.Statistics.chiSquared k) = 8 * k ∧
+      0 < ProbabilityTheory.centralMoment id 3 (UndergradKB.Statistics.chiSquared k) ∧
+      ProbabilityTheory.centralMoment id 3 (UndergradKB.Statistics.chiSquared k) /
+          √(ProbabilityTheory.variance id (UndergradKB.Statistics.chiSquared k)) ^ 3 = 4 / √(2 * k) ∧
+      Filter.Tendsto (fun k : ℝ ↦ 4 / √(2 * k)) Filter.atTop (nhds 0) :=
+  ⟨UndergradKB.Statistics.centralMoment_three_chiSquared hk,
+    UndergradKB.Statistics.chiSquared_right_skewed hk⟩
 
 end UndergradKB.Statistics.Course.C11

@@ -18,6 +18,7 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.Course.C11.chi_square_approx_normal_for_large_degrees_of_freedom
 #check @UndergradKB.Statistics.Course.C11.chi_square_is_sum_of_squared_standard_normals
 #check @UndergradKB.Statistics.Course.C11.chi_square_mean
+#check @UndergradKB.Statistics.Course.C11.chi_square_skewed_right
 #check @UndergradKB.Statistics.Course.C11.chi_square_variance
 #check @UndergradKB.Statistics.Course.C11.goodness_of_fit_statistic_approx_chi_square
 #check @UndergradKB.Statistics.Course.C11.homogeneity_test_statistic_approx_chi_square
@@ -39,7 +40,11 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.Course.C12.total_variation_explained_plus_unexplained
 #check @UndergradKB.Statistics.Course.C13.anova_f_statistic_law
 #check @UndergradKB.Statistics.Course.C13.f_distribution_is_ratio_of_chi_squares
+#check @UndergradKB.Statistics.Course.C13.f_distribution_mean
+#check @UndergradKB.Statistics.Course.C13.f_distribution_mean_tends_to_one
 #check @UndergradKB.Statistics.Course.C13.f_distribution_nonnegative
+#check @UndergradKB.Statistics.Course.C13.f_distribution_skewed_right
+#check @UndergradKB.Statistics.Course.C13.f_distribution_variance
 #check @UndergradKB.Statistics.Course.C13.reciprocal_of_f_statistic_law
 #check @UndergradKB.Statistics.Course.C13.sum_of_squares_total_eq_between_plus_within
 #check @UndergradKB.Statistics.Course.C13.two_variances_f_statistic_law
@@ -103,6 +108,8 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.Course.C6Cdf.normal_probability_between
 #check @UndergradKB.Statistics.Course.C6Cdf.z_table_properties
 #check @UndergradKB.Statistics.Course.C6Cdf.z_table_symmetry
+#check @UndergradKB.Statistics.Course.C7.binomial_le_iff_le_add_half
+#check @UndergradKB.Statistics.Course.C7.binomial_normal_approximation_continuity_correction
 #check @UndergradKB.Statistics.Course.C7.central_limit_theorem_mean
 #check @UndergradKB.Statistics.Course.C7.central_limit_theorem_sum
 #check @UndergradKB.Statistics.Course.C7.expected_sample_mean
@@ -143,10 +150,16 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.Course.C9.z_test_statistic_law
 #check @UndergradKB.Statistics.abs_correlation_eq_one_iff
 #check @UndergradKB.Statistics.abs_mean_sub_mean_midpoints_le
+#check @UndergradKB.Statistics.binomial_continuity_correction
+#check @UndergradKB.Statistics.binomial_half_median_continuity_correction
+#check @UndergradKB.Statistics.binomial_le_eq_le_add_half
+#check @UndergradKB.Statistics.binomial_normal_approx_uniform
+#check @UndergradKB.Statistics.centralMoment_three_chiSquared
 #check @UndergradKB.Statistics.chebyshev_data
 #check @UndergradKB.Statistics.chebyshev_data_within
 #check @UndergradKB.Statistics.chiSquared
 #check @UndergradKB.Statistics.chiSquared_approx_normal
+#check @UndergradKB.Statistics.chiSquared_right_skewed
 #check @UndergradKB.Statistics.colTotal
 #check @UndergradKB.Statistics.contingency_cell_prob
 #check @UndergradKB.Statistics.contingency_cond_prob
@@ -175,6 +188,10 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.expectedCount
 #check @UndergradKB.Statistics.fDistribution
 #check @UndergradKB.Statistics.fDistribution_Iic_zero
+#check @UndergradKB.Statistics.fDistribution_mode_lt_mean
+#check @UndergradKB.Statistics.fDistribution_right_skewed
+#check @UndergradKB.Statistics.fPDFReal_antitoneOn
+#check @UndergradKB.Statistics.fPDFReal_le_fMode
 #check @UndergradKB.Statistics.fStatistic
 #check @UndergradKB.Statistics.fair_game_average_gain
 #check @UndergradKB.Statistics.half_le_card_ge_median
@@ -183,6 +200,7 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.hasLaw_diffMeans
 #check @UndergradKB.Statistics.hasLaw_expMeasure_of_poisson_counts
 #check @UndergradKB.Statistics.hasLaw_fDistribution
+#check @UndergradKB.Statistics.hasLaw_fRatio_normalSamples
 #check @UndergradKB.Statistics.hasLaw_fStatistic
 #check @UndergradKB.Statistics.hasLaw_inv_fDistribution
 #check @UndergradKB.Statistics.hasLaw_pairedTStatistic
@@ -213,6 +231,7 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.integral_geometricMeasure_id
 #check @UndergradKB.Statistics.integral_geometricMeasure_trials
 #check @UndergradKB.Statistics.integral_id_chiSquared
+#check @UndergradKB.Statistics.integral_id_fDistribution
 #check @UndergradKB.Statistics.integral_poissonMeasure_id
 #check @UndergradKB.Statistics.integral_populationVariance
 #check @UndergradKB.Statistics.integral_sampleVariance
@@ -222,6 +241,7 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.line_change
 #check @UndergradKB.Statistics.line_intercept
 #check @UndergradKB.Statistics.line_unit_change
+#check @UndergradKB.Statistics.lintegral_rpow_fDistribution
 #check @UndergradKB.Statistics.long_run_average_gain
 #check @UndergradKB.Statistics.margin_le_of_sampleSize
 #check @UndergradKB.Statistics.mean_affine
@@ -278,8 +298,11 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.tTest_accepts_iff_mem_interval
 #check @UndergradKB.Statistics.tTest_typeI_error
 #check @UndergradKB.Statistics.tendstoInDistribution_binomial_count
+#check @UndergradKB.Statistics.tendstoInDistribution_fStatistic
 #check @UndergradKB.Statistics.tendstoInDistribution_homVector
+#check @UndergradKB.Statistics.tendstoInDistribution_homVectorN
 #check @UndergradKB.Statistics.tendstoInDistribution_homogeneityStatistic
+#check @UndergradKB.Statistics.tendstoInDistribution_homogeneityStatisticN
 #check @UndergradKB.Statistics.tendstoInDistribution_independenceStatistic
 #check @UndergradKB.Statistics.tendstoInDistribution_pearsonStatistic
 #check @UndergradKB.Statistics.tendstoInDistribution_pooled_two_proportions
@@ -288,12 +311,14 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.tendstoInDistribution_two_proportions_sizes
 #check @UndergradKB.Statistics.tendstoInDistribution_two_sample_means
 #check @UndergradKB.Statistics.tendsto_hypergeometricPMF_binomial
+#check @UndergradKB.Statistics.tendsto_integral_id_fDistribution
 #check @UndergradKB.Statistics.tendsto_studentTPDFReal_div_gaussianPDFReal
 #check @UndergradKB.Statistics.tendsto_studentTPDFReal_gaussianPDFReal
 #check @UndergradKB.Statistics.total_probability
 #check @UndergradKB.Statistics.total_probability_fintype
 #check @UndergradKB.Statistics.tree_path_three
 #check @UndergradKB.Statistics.tree_path_two
+#check @UndergradKB.Statistics.uniform_cdf_of_tendstoInDistribution
 #check @UndergradKB.Statistics.uniform_cond_Ioi
 #check @UndergradKB.Statistics.uniform_mean
 #check @UndergradKB.Statistics.uniform_variance
@@ -302,6 +327,7 @@ import UndergradKB.Statistics
 #check @UndergradKB.Statistics.variance_geometricMeasure
 #check @UndergradKB.Statistics.variance_geometricMeasure_trials
 #check @UndergradKB.Statistics.variance_id_chiSquared
+#check @UndergradKB.Statistics.variance_id_fDistribution
 #check @UndergradKB.Statistics.variance_of_hasLaw_binomial
 #check @UndergradKB.Statistics.variance_poissonMeasure
 #check @UndergradKB.Statistics.variance_srsLaw_sampleMean

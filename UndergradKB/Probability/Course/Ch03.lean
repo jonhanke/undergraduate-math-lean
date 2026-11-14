@@ -6,12 +6,15 @@ import Mathlib.Analysis.SpecialFunctions.Stirling
 import Mathlib.Probability.Distributions.Binomial
 import Mathlib.Combinatorics.Derangements.Exponential
 import UndergradKB.Common.Attr
+import UndergradKB.Probability.ExamplesSchoolC
+import UndergradKB.Probability.ExamplesSchoolB
 import UndergradKB.Probability.ExamplesDiscrete
 import UndergradKB.Probability.ExamplesSchool
 import UndergradKB.Probability.Basic
 import UndergradKB.Probability.Combinatorial
 import UndergradKB.Probability.GeneratingFunctions
 import UndergradKB.Probability.Shuffles
+import UndergradKB.Probability.ExamplesSchoolD
 
 /-!
 # Course layer, Chapter 3 (Grinstead–Snell, Combinatorics)
@@ -179,5 +182,55 @@ theorem gs_example_3_8 : type_of% @UndergradKB.Probability.six_tosses_three_head
 @[kb "grinsteadsnell2006" "Example 3.9, p. 106"]
 theorem gs_example_3_9 : type_of% @UndergradKB.Probability.four_rolls_one_six :=
   @UndergradKB.Probability.four_rolls_one_six
+
+/-! ## Worked examples (wave 4) -/
+
+/-- Grinstead–Snell Example 3.1 (PR-164). A menu is a choice of one of 2 appetizers, one of 3 main courses and one of 2 desserts; there are `2 * 3 * 2 = 12` menus. -/
+@[kb "grinsteadsnell2006" "Example 3.1, p. 83"]
+theorem gs_example_3_1 : type_of% @UndergradKB.Probability.menus_count :=
+  @UndergradKB.Probability.menus_count
+
+/-- Grinstead–Snell Example 3.2 (PR-164). There are `26^3 = 17576` triples of initials, and in a group of more than that many people (a finset `S`, with any assignment `f` of initials) there are two... -/
+@[kb "grinsteadsnell2006" "Example 3.2, p. 85"]
+theorem gs_example_3_2 : type_of% @UndergradKB.Probability.initials_pigeonhole :=
+  @UndergradKB.Probability.initials_pigeonhole
+
+/-- Grinstead–Snell Example 3.5 (PR-164). The three-element set `U = {a, b, c}` has `2^3 = 8` subsets. -/
+@[kb "grinsteadsnell2006" "Example 3.5, p. 101"]
+theorem gs_example_3_5 : type_of% @UndergradKB.Probability.three_element_subsets :=
+  @UndergradKB.Probability.three_element_subsets
+
+/-- Grinstead–Snell Example 3.11 (PR-190). For `n = 100` patients, the type 1 error `α_m(.6)` (rejecting `p = .6` although it is true) is `< .05` exactly when `m ≥ 69`, and the type 2 error `1 -... -/
+@[kb "grinsteadsnell2006" "Example 3.11, p. 109"]
+theorem gs_example_3_11 : type_of% @UndergradKB.Probability.binomial_test_critical_values :=
+  @UndergradKB.Probability.binomial_test_critical_values
+
+/-- Grinstead–Snell Example 3.14 (PR-188). Two tosses of a fair coin recorded in order are the uniform measure on `Bool × Bool` (weight `1/4` each); at least one head has probability `3/4`, heads on... -/
+@[kb "grinsteadsnell2006" "Example 3.14, p. 115"]
+theorem gs_example_3_14 : type_of% @UndergradKB.Probability.two_tosses_law :=
+  @UndergradKB.Probability.two_tosses_law
+
+
+/-! ## Wave 5 course layer (this library) -/
+
+/-- Grinstead–Snell Example 3.3 (PR-024). Among the `365^23` equally likely assignments of birthdays to 23 people, fewer than half have all birthdays different. -/
+@[kb "grinsteadsnell2006" "Example 3.3, p. 85"]
+theorem gs_example_3_3 : type_of% @UndergradKB.Probability.birthday_distinct_lt_half :=
+  @UndergradKB.Probability.birthday_distinct_lt_half
+
+/-- Grinstead–Snell Example 3.3 (PR-024). The probability that two of 23 people share a birthday (among 365 equally likely days) exceeds `1/2`. -/
+@[kb "grinsteadsnell2006" "Example 3.3, p. 85"]
+theorem gs_example_3_3_b : type_of% @UndergradKB.Probability.birthday_shared_gt_half :=
+  @UndergradKB.Probability.birthday_shared_gt_half
+
+/-- Grinstead–Snell Example 3.4 (PR-196). `n + √n` is asymptotically equal to `n` in the sense of Definition 3.3 (`Asymptotics.IsEquivalent`, equivalently the ratio `(n + √n)/n` tends to `1`). -/
+@[kb "grinsteadsnell2006" "Example 3.4, p. 89"]
+theorem gs_example_3_4 : type_of% @UndergradKB.Probability.add_sqrt_isEquivalent :=
+  @UndergradKB.Probability.add_sqrt_isEquivalent
+
+/-- Grinstead–Snell Example 3.10 (PR-197). A Galton board with `n` rows is a Bernoulli trials process (the product of `n` coins, a right deflection being a success with probability `p`, each row independent of the others); the final slot is the number of right deflections, and it is `k` with probability `C(n,k) p^k (1-p)^(n-k)`. -/
+@[kb "grinsteadsnell2006" "Example 3.10, p. 107"]
+theorem gs_example_3_10 : type_of% @UndergradKB.Probability.galton_board_slot :=
+  @UndergradKB.Probability.galton_board_slot
 
 end UndergradKB.Probability.Course

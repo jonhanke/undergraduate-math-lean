@@ -15,7 +15,11 @@
     "UndergradKB.Headlines.Topology.sharkovskii",
     "UndergradKB.Headlines.Topology.converse_sharkovskii",
     "UndergradKB.Headlines.Topology.lca_principal_structure",
-    "UndergradKB.Headlines.Topology.lca_connected_structure"
+    "UndergradKB.Headlines.Topology.lca_connected_structure",
+    "UndergradKB.Headlines.Topology.hahn_mazurkiewicz",
+    "UndergradKB.Headlines.Topology.brouwer_cantor_set",
+    "UndergradKB.Headlines.Topology.compact_totally_disconnected_group_cantor_cube",
+    "UndergradKB.Headlines.Topology.compact_group_homeomorph_identityComponent_prod"
   ],
   "definition_names": [],
   "permitted_axioms": [

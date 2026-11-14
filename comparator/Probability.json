@@ -14,7 +14,8 @@
     "UndergradKB.Headlines.Probability.card_riffle_shuffles",
     "UndergradKB.Headlines.Probability.local_limit_theorem",
     "UndergradKB.Headlines.Probability.markov_clt",
-    "UndergradKB.Headlines.Probability.firstMaxIndex_tendsto"
+    "UndergradKB.Headlines.Probability.firstMaxIndex_tendsto",
+    "UndergradKB.Headlines.Probability.little_law_sample_path"
   ],
   "definition_names": [],
   "permitted_axioms": [

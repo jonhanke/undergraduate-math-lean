@@ -33,7 +33,15 @@ import UndergradKB.Statistics.CriticalValues
 import UndergradKB.Statistics.Remarks
 import UndergradKB.Statistics.DistributionLimits
 import UndergradKB.Statistics.SampleMoments
+import UndergradKB.Statistics.Shape
+import UndergradKB.Statistics.ContinuityCorrection
+import UndergradKB.Statistics.HomogeneitySizesCLT
+import UndergradKB.Statistics.HomogeneitySizes
+import UndergradKB.Statistics.FShape
+import UndergradKB.Statistics.FNormal
+import UndergradKB.Statistics.ContinuityCorrectionMedian
 import UndergradKB.Statistics.Course.C1
+import UndergradKB.Statistics.Course.ExamplesC1
 import UndergradKB.Statistics.Course.C2
 import UndergradKB.Statistics.Course.C3
 import UndergradKB.Statistics.Course.C4
@@ -47,6 +55,47 @@ import UndergradKB.Statistics.Course.C10
 import UndergradKB.Statistics.Course.C11
 import UndergradKB.Statistics.Course.C12
 import UndergradKB.Statistics.Course.C13
+import UndergradKB.Statistics.Course.ExamplesC2
+import UndergradKB.Statistics.Course.ExamplesC3
+import UndergradKB.Statistics.Course.ExamplesC4
+import UndergradKB.Statistics.Course.ExamplesC5
+import UndergradKB.Statistics.Course.ExamplesC11C13
+import UndergradKB.Statistics.Course.ExamplesC12
+import UndergradKB.Statistics.Course.ExamplesC6
+import UndergradKB.Statistics.Course.ExamplesC8
+import UndergradKB.Statistics.Course.ExamplesC9
+import UndergradKB.Statistics.Course.ExamplesC9b
+import UndergradKB.Statistics.Course.ExamplesC10
+import UndergradKB.Statistics.Course.ExamplesC11C13b
+import UndergradKB.Statistics.Course.ExamplesC7
+import UndergradKB.Statistics.Course.ExamplesC2C5
+import UndergradKB.Statistics.Course.ExamplesC2C5b
+import UndergradKB.Statistics.Course.TryItC1
+import UndergradKB.Statistics.Course.TryItC2
+import UndergradKB.Statistics.Course.TryItC3
+import UndergradKB.Statistics.Course.TryItC4
+import UndergradKB.Statistics.Course.TryItC5
+import UndergradKB.Statistics.Course.TryItC6
+import UndergradKB.Statistics.Course.TryItC7
+import UndergradKB.Statistics.Course.TryItC8
+import UndergradKB.Statistics.Course.TryItC9
+import UndergradKB.Statistics.Course.TryItC10
+import UndergradKB.Statistics.Course.TryItC11
+import UndergradKB.Statistics.Course.TryItC12
+import UndergradKB.Statistics.Course.TryItC13
+import UndergradKB.Statistics.Course.PracticeC1
+import UndergradKB.Statistics.Course.PracticeC2
+import UndergradKB.Statistics.Course.PracticeC3
+import UndergradKB.Statistics.Course.PracticeC4
+import UndergradKB.Statistics.Course.PracticeC5
+import UndergradKB.Statistics.Course.PracticeC6
+import UndergradKB.Statistics.Course.PracticeC7
+import UndergradKB.Statistics.Course.PracticeC8
+import UndergradKB.Statistics.Course.PracticeC9
+import UndergradKB.Statistics.Course.PracticeC10
+import UndergradKB.Statistics.Course.PracticeC11
+import UndergradKB.Statistics.Course.PracticeC12
+import UndergradKB.Statistics.Course.PracticeC13
 
 /-! # Statistics
 Topic root. Import every file of the topic here; a topic imports Mathlib modules
@@ -54,4 +103,4 @@ and `UndergradKB.Common` only (docs/ARCHITECTURE.md). Coverage: docs/coverage/.
 
 Book: OpenStax *Introductory Statistics 2e* (`openstaxintrostats2e`). Headlines: the chi-square law
 (`ChiSquared`), the Student t and F laws (`StudentT`, `FDistribution`), the sampling distributions of a normal
-sample (`NormalSample`), least squares and correlation (`Regression`); course layer in `Course/`. -/
+sample (`NormalSample`), least squares and correlation (`Regression`); course layer in `Course/` (chapter wrappers `C1` .. `C13`, worked examples `Examples*`, Try It exercises `TryItC*`, end-of-chapter Practice exercises `PracticeC*`). -/

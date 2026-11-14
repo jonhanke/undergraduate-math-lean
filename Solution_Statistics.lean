@@ -9,6 +9,7 @@ import UndergradKB.Statistics.CorrelationTest
 import UndergradKB.Statistics.Pearson
 import UndergradKB.Statistics.IndependenceTest
 import UndergradKB.Statistics.Homogeneity
+import UndergradKB.Statistics.HomogeneitySizes
 
 /-!
 # Proofs of the statistics headline statements
@@ -78,5 +79,16 @@ theorem tendstoInDistribution_homogeneityStatistic {r c : ℕ} [IsProbabilityMea
     {W : Ω' → ℝ} (hW : HasLaw W (chiSquared (((r : ℝ) - 1) * ((c : ℝ) - 1))) P') :
     TendstoInDistribution (homogeneityStatistic Y sz) Filter.atTop W (fun _ ↦ P) P' :=
   UndergradKB.Statistics.tendstoInDistribution_homogeneityStatistic hr hc hsz hb hbsum hmeas hind hident hprob hW
+
+theorem tendstoInDistribution_homogeneityStatisticN {r c : ℕ} [IsProbabilityMeasure P] {Ω' : Type*}
+    [MeasurableSpace Ω'] {P' : Measure Ω'} [IsProbabilityMeasure P'] (hr : 2 ≤ r) (hc : 2 ≤ c)
+    {N : Fin r → ℕ → ℕ} (hN : ∀ i, Filter.Tendsto (N i) Filter.atTop Filter.atTop)
+    {b : Fin c → ℝ} (hb : ∀ j, 0 < b j) (hbsum : ∑ j, b j = 1)
+    {Y : Fin r → ℕ → Ω → Fin c} (hmeas : ∀ i m, Measurable (Y i m))
+    (hind : iIndepFun (fun x : Fin r × ℕ ↦ Y x.1 x.2) P) (hident : ∀ i m, IdentDistrib (Y i m) (Y i 0) P P)
+    (hprob : ∀ i j, P.real {ω | Y i 0 ω = j} = b j)
+    {W : Ω' → ℝ} (hW : HasLaw W (chiSquared (((r : ℝ) - 1) * ((c : ℝ) - 1))) P') :
+    TendstoInDistribution (homogeneityStatisticN Y N) Filter.atTop W (fun _ ↦ P) P' :=
+  UndergradKB.Statistics.tendstoInDistribution_homogeneityStatisticN hr hc hN hb hbsum hmeas hind hident hprob hW
 
 end UndergradKB.Headlines.Statistics

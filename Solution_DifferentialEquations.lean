@@ -9,6 +9,9 @@ import UndergradKB.DifferentialEquations.BoundaryValue
 import UndergradKB.DifferentialEquations.FrobeniusAnalytic
 import UndergradKB.DifferentialEquations.FourierDirichlet
 import UndergradKB.DifferentialEquations.Gibbs
+import UndergradKB.DifferentialEquations.FrobeniusSecond
+import UndergradKB.DifferentialEquations.SturmLiouvilleSpectrum
+import UndergradKB.DifferentialEquations.SturmLiouvilleUniform
 
 /-!
 # Proofs of the differential equations headline statements
@@ -69,5 +72,48 @@ theorem gibbs_phenomenon :
       1.17 < trigPoly π (fourierA squareWave π) (fourierB squareWave π) (2 * M) (π / (2 * M)) ∧
       squareWave (π / (2 * M)) = 1 :=
   UndergradKB.DifferentialEquations.gibbs_phenomenon
+
+theorem frobenius_second_solution (P Q : ℕ → ℝ) {ρ : ℝ} (hρ : 0 < ρ)
+    (hP : ∀ x : ℝ, |x| < ρ → Summable fun k => P k * x ^ k)
+    (hQ : ∀ x : ℝ, |x| < ρ → Summable fun k => Q k * x ^ k) {r₁ r₂ : ℝ} {N : ℕ}
+    (hsum : r₁ + r₂ = 1 - P 0) (hprod : r₁ * r₂ = Q 0) (hN : r₁ - r₂ = N) :
+    ∃ (a b : ℕ → ℝ) (C : ℝ), a 0 = 1 ∧ (N = 0 → b 0 = 0 ∧ C = 1) ∧ (N ≠ 0 → b 0 = 1) ∧
+      (∀ x : ℝ, |x| < ρ → Summable fun k => a k * x ^ k) ∧
+      (∀ x : ℝ, |x| < ρ → Summable fun k => b k * x ^ k) ∧
+      (∀ x : ℝ, 0 < x → x < ρ →
+        x ^ 2 * deriv (deriv (fun t : ℝ => t ^ r₁ * ∑' k, a k * t ^ k)) x +
+          x * (∑' k, P k * x ^ k) * deriv (fun t : ℝ => t ^ r₁ * ∑' k, a k * t ^ k) x +
+          (∑' k, Q k * x ^ k) * (x ^ r₁ * ∑' k, a k * x ^ k) = 0) ∧
+      (∀ x : ℝ, 0 < x → x < ρ →
+        x ^ 2 * deriv (deriv (fun t : ℝ => t ^ r₂ * ∑' k, b k * t ^ k +
+            C * (Real.log t * (t ^ r₁ * ∑' k, a k * t ^ k)))) x +
+          x * (∑' k, P k * x ^ k) * deriv (fun t : ℝ => t ^ r₂ * ∑' k, b k * t ^ k +
+            C * (Real.log t * (t ^ r₁ * ∑' k, a k * t ^ k))) x +
+          (∑' k, Q k * x ^ k) * (x ^ r₂ * ∑' k, b k * x ^ k + C * (Real.log x * (x ^ r₁ * ∑' k, a k * x ^ k)))
+            = 0) ∧
+      (∀ α β : ℝ, (∀ x : ℝ, 0 < x → x < ρ → α * (x ^ r₁ * ∑' k, a k * x ^ k) +
+        β * (x ^ r₂ * ∑' k, b k * x ^ k + C * (Real.log x * (x ^ r₁ * ∑' k, a k * x ^ k))) = 0) →
+        α = 0 ∧ β = 0) :=
+  UndergradKB.DifferentialEquations.frobenius_second_solution P Q hρ hP hQ hsum hprod hN
+
+theorem sturm_liouville_eigenvalues (S : RegularSL) :
+    ∃ ev : ℕ → ℝ, StrictMono ev ∧ Tendsto ev atTop atTop ∧
+      (∀ l, S.IsEigenvalue l ↔ ∃ n, ev n = l) ∧ (∀ n, 0 ≤ ev n) ∧
+      ∀ n {y₁ y₂ : ℝ → ℝ}, S.IsEigenfunction (ev n) y₁ → S.IsSolution (ev n) 0 y₂ →
+        ∃ c : ℝ, ∀ t ∈ Icc S.a S.b, y₂ t = c * y₁ t :=
+  S.sturm_liouville_eigenvalues
+
+theorem eigenfunction_expansion_uniform (S : RegularSL) :
+    ∃ ev : ℕ → ℝ, ∃ y : ℕ → ℝ → ℝ, StrictMono ev ∧ (∀ l, S.IsEigenvalue l ↔ ∃ n, ev n = l) ∧
+      (∀ n, S.IsEigenfunction (ev n) (y n)) ∧
+      (∀ m n, S.wInner (y m) (y n) = if m = n then 1 else 0) ∧
+      (∀ f : ℝ → ℝ, ContDiff ℝ 2 f → S.α₁ * f S.a - S.α₂ * deriv f S.a = 0 →
+        S.β₁ * f S.b + S.β₂ * deriv f S.b = 0 →
+        TendstoUniformlyOn (fun N x => ∑ n ∈ Finset.range N, S.wInner f (y n) * y n x) f atTop
+          (Icc S.a S.b)) ∧
+      ∀ f : ℝ → ℝ, ContinuousOn f (Icc S.a S.b) →
+        Tendsto (fun N => ∫ t in S.a..S.b,
+          S.r t * (f t - ∑ n ∈ Finset.range N, S.wInner f (y n) * y n t) ^ 2) atTop (𝓝 0) :=
+  S.eigenfunction_expansion_uniform
 
 end UndergradKB.Headlines.DifferentialEquations

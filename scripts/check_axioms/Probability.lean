@@ -15,3 +15,4 @@ import Solution_Probability
 #print axioms UndergradKB.Headlines.Probability.local_limit_theorem
 #print axioms UndergradKB.Headlines.Probability.markov_clt
 #print axioms UndergradKB.Headlines.Probability.firstMaxIndex_tendsto
+#print axioms UndergradKB.Headlines.Probability.little_law_sample_path

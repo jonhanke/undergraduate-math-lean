@@ -3,6 +3,7 @@ import Mathlib.Probability.StrongLaw
 import Mathlib.Probability.Moments.Variance
 import UndergradKB.Common.Attr
 import UndergradKB.Statistics.SampleMoments
+import UndergradKB.Statistics.ContinuityCorrection
 
 /-!
 # Course layer, chapter 7 (OpenStax *Introductory Statistics 2e*): the central limit theorem
@@ -125,5 +126,35 @@ theorem variance_sample_mean_without_replacement {N n : ℕ} (hn : 1 ≤ n) (hnN
     Var[fun S : Finset (Fin N) ↦ (∑ i ∈ S, x i) / n; UndergradKB.Statistics.srsLaw N n] =
       UndergradKB.Statistics.populationVariance x / n * (((N : ℝ) - n) / ((N : ℝ) - 1)) :=
   UndergradKB.Statistics.variance_srsLaw_sampleMean hn hnN hN x
+
+section ContinuityCorrection
+
+open Filter
+
+variable {Ω : Type*} {mΩ : MeasurableSpace Ω} {P : Measure Ω} [IsProbabilityMeasure P] {X : ℕ → Ω → ℝ}
+
+/-- OpenStax Introductory Statistics 2e §7.3 (ST-069). Normal approximation to the binomial with the
+continuity correction: for Bernoulli trials with success probability `0 < p < 1` and any `ε > 0`, once `n` is
+large, for every integer `k` the probability `P(X ≤ k)` of the binomial count is within `ε` of the normal
+value `Φ((k + 0.5 - n p)/√(n p q))`. -/
+@[kb "openstaxintrostats2e" "§7.3, p. 384"]
+theorem binomial_normal_approximation_continuity_correction {p : ℝ} (hp0 : 0 < p) (hp1 : p < 1)
+    (hmeas : ∀ i, Measurable (X i)) (h01 : ∀ i ω, X i ω = 0 ∨ X i ω = 1)
+    (hprob : P.real {ω | X 0 ω = 1} = p) (hindep : iIndepFun X P)
+    (hident : ∀ i, IdentDistrib (X i) (X 0) P P) {ε : ℝ} (hε : 0 < ε) :
+    ∀ᶠ n : ℕ in atTop, ∀ k : ℤ,
+      |P.real {ω | ∑ i ∈ Finset.range n, X i ω ≤ (k : ℝ)} -
+        cdf (gaussianReal 0 1) (((k : ℝ) + 1 / 2 - n * p) / √(n * p * (1 - p)))| ≤ ε :=
+  UndergradKB.Statistics.binomial_continuity_correction hp0 hp1 hmeas h01 hprob hindep hident hε
+
+/-- OpenStax Introductory Statistics 2e §7.3 (ST-069). Why the correction is harmless: the binomial count is
+a whole number, so `P(X ≤ k) = P(X ≤ k + 0.5) = P(X < k + 1)` for every integer `k`. -/
+@[kb "openstaxintrostats2e" "§7.3, p. 384"]
+theorem binomial_le_iff_le_add_half (h01 : ∀ i ω, X i ω = 0 ∨ X i ω = 1) (n : ℕ) (k : ℤ) :
+    {ω | ∑ i ∈ Finset.range n, X i ω ≤ (k : ℝ)} = {ω | ∑ i ∈ Finset.range n, X i ω ≤ (k : ℝ) + 1 / 2} ∧
+      {ω | ∑ i ∈ Finset.range n, X i ω ≤ (k : ℝ)} = {ω | ∑ i ∈ Finset.range n, X i ω < (k : ℝ) + 1} :=
+  UndergradKB.Statistics.binomial_le_eq_le_add_half h01 n k
+
+end ContinuityCorrection
 
 end UndergradKB.Statistics.Course.C7

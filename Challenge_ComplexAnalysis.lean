@@ -45,8 +45,9 @@ theorem casorati_weierstrass {f : ℂ → ℂ} {z₀ : ℂ} {R : ℝ} (hR : 0 < 
 
 /-- **The reciprocity law for Dedekind sums** (Beck § 10.4, Exercise 2): for coprime positive integers `a` and
 `b`, `s(a, b) + s(b, a) = -1/4 + (a/b + 1/(ab) + b/a)/12`. The proof here is elementary (finite trigonometric sums
-and counting lattice points), not by residues as in the book. Related: neither Mathlib nor Tau Ceti has Dedekind
-sums. -/
+and counting lattice points), not by residues as in the book. Related: Mathlib has no Dedekind sums; Tau Ceti
+(main of 2026-11-14, after this headline was chosen for 0.2.0) proves the reciprocity law
+(`TauCeti.dedekindSum_add_dedekindSum`). -/
 theorem dedekind_sum_reciprocity {a b : ℕ} (ha : 0 < a) (hb : 0 < b) (hab : Nat.Coprime a b) :
     dedekindSumCot a b + dedekindSumCot b a
       = -1 / 4 + ((a : ℝ) / b + 1 / ((a : ℝ) * b) + (b : ℝ) / a) / 12 := by
