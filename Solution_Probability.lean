@@ -12,6 +12,7 @@ import UndergradKB.Probability.Shuffles
 import UndergradKB.Probability.LocalLimitLattice
 import UndergradKB.Probability.MarkovClt
 import UndergradKB.Probability.FirstMaximum
+import UndergradKB.Probability.LittleLaw
 
 /-!
 # Proofs of the probability headline statements
@@ -108,5 +109,12 @@ theorem firstMaxIndex_tendsto {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω}
     Tendsto (fun n : ℕ => (P {ω | (firstMaxIndex X n ω : ℝ) < n * α}).toReal) atTop
       (𝓝 ((2 / π) * Real.arcsin (√α))) :=
   UndergradKB.Probability.firstMaxIndex_tendsto hX hind hlaw hcont hsymm α h0 h1
+
+theorem little_law_sample_path (a w : ℕ → ℝ) (ha : Monotone a) (ha0 : 0 ≤ a 0) (hw : ∀ i, 0 ≤ w i)
+    {lam W : ℝ} (hlam : 0 < lam)
+    (hA : Tendsto (fun n : ℕ => (n : ℝ) / a n) atTop (𝓝 lam))
+    (hW : Tendsto (fun n : ℕ => (∑ i ∈ range n, w i) / n) atTop (𝓝 W)) :
+    Tendsto (fun T : ℝ => (∫ t in (0 : ℝ)..T, queueNumber a w t) / T) atTop (𝓝 (lam * W)) :=
+  UndergradKB.Probability.little_law_sample_path a w ha ha0 hw hlam hA hW
 
 end UndergradKB.Headlines.Probability

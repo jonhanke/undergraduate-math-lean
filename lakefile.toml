@@ -1,5 +1,5 @@
 name = "undergraduate_math_lean"
-version = "0.2.1"
+version = "0.2.2"
 defaultTargets = ["Common", "LinearAlgebra", "AbstractAlgebra", "Combinatorics", "Calculus", "Trigonometry",
   "Geometry", "Precalculus", "Statistics", "Probability", "Foundations", "DifferentialEquations", "ComplexAnalysis",
   "RepresentationTheory", "Topology", "RealAnalysis", "Challenge_LinearAlgebra", "Solution_LinearAlgebra",

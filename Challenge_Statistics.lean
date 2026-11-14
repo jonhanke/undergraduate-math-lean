@@ -9,9 +9,10 @@ import UndergradKB.Statistics.CorrelationTest
 import UndergradKB.Statistics.Pearson
 import UndergradKB.Statistics.IndependenceTest
 import UndergradKB.Statistics.Homogeneity
+import UndergradKB.Statistics.HomogeneitySizes
 
 /-!
-# Headline statements of undergraduate-math-lean 0.2.1: statistics (OpenStax *Introductory Statistics*)
+# Headline statements of undergraduate-math-lean 0.2.2: statistics (OpenStax *Introductory Statistics*)
 
 The main results of this topic that Mathlib and Tau Ceti lack, one theorem each, with every proof a deliberate
 `sorry`: the exact sampling distributions behind the textbook tests for normal samples. For a sample of independent
@@ -20,8 +21,9 @@ chi-square (Student's theorem); the t statistic has the Student t law; the F sta
 variance has the F law; and the t statistic of the sample correlation coefficient has the Student t law. Also the
 asymptotic laws of the chi-square tests for categorical data: Pearson's goodness-of-fit statistic converges in
 distribution to the chi-square law with `k - 1` degrees of freedom, and the statistics of the tests of independence
-and of homogeneity of an `r × c` table converge to chi-square with `(r - 1)(c - 1)` degrees of freedom. To check
-what is claimed, read this file. `Solution_Statistics.lean` proves the same statements from the library, and
+and of homogeneity of an `r × c` table converge to chi-square with `(r - 1)(c - 1)` degrees of freedom; added in
+0.2.2, the test of homogeneity also when the sample sizes grow in any manner. To check what is claimed, read this
+file. `Solution_Statistics.lean` proves the same statements from the library, and
 `lake comparator` (configured by `comparator/Statistics.json`) checks that each proved statement is exactly the one
 here and uses only the standard axioms `propext`, `Classical.choice` and `Quot.sound`.
 
@@ -59,6 +61,10 @@ too:
   size `sz i * n`; `homCount Y sz n i j` is the number of observations of sample `i` that fall in category `j`,
   `homColTotal Y sz n j = ∑ i, homCount Y sz n i j`, `homExpected Y sz n i j = (sz i * n) * homColTotal Y sz n j /
   ∑ i', sz i' * n`, and `homogeneityStatistic Y sz n = ∑ i, ∑ j, (O(i,j) - E(i,j))² / E(i,j)`.
+* The same with sample sizes `N i n` (any functions of `n`): `homCountN Y N n i j` is the number of the first
+  `N i n` observations of sample `i` that fall in category `j`, `homColTotalN Y N n j = ∑ i, homCountN Y N n i j`,
+  `homExpectedN Y N n i j = N i n * homColTotalN Y N n j / ∑ i', N i' n`, and `homogeneityStatisticN Y N n =
+  ∑ i, ∑ j, (O(i,j) - E(i,j))² / E(i,j)` with these counts.
 -/
 
 namespace UndergradKB.Headlines.Statistics
@@ -159,6 +165,22 @@ theorem tendstoInDistribution_homogeneityStatistic {r c : ℕ} [IsProbabilityMea
     (hprob : ∀ i j, P.real {ω | Y i 0 ω = j} = b j)
     {W : Ω' → ℝ} (hW : HasLaw W (chiSquared (((r : ℝ) - 1) * ((c : ℝ) - 1))) P') :
     TendstoInDistribution (homogeneityStatistic Y sz) Filter.atTop W (fun _ ↦ P) P' := by
+  sorry
+
+/-- **The chi-square test of homogeneity, sample sizes growing in any manner** (OpenStax § 11.4): as above, but the
+sample from population `i` has size `N i n`, and the only assumption on the sizes is that each tends to infinity (no
+relation between the populations is assumed). Then the homogeneity statistic converges in distribution to the
+chi-square law with `(r - 1)(c - 1)` degrees of freedom. This strengthens the previous statement, where the sizes are
+proportional (`sz i * n`). Related: as above, neither Mathlib nor Tau Ceti has it. -/
+theorem tendstoInDistribution_homogeneityStatisticN {r c : ℕ} [IsProbabilityMeasure P] {Ω' : Type*}
+    [MeasurableSpace Ω'] {P' : Measure Ω'} [IsProbabilityMeasure P'] (hr : 2 ≤ r) (hc : 2 ≤ c)
+    {N : Fin r → ℕ → ℕ} (hN : ∀ i, Filter.Tendsto (N i) Filter.atTop Filter.atTop)
+    {b : Fin c → ℝ} (hb : ∀ j, 0 < b j) (hbsum : ∑ j, b j = 1)
+    {Y : Fin r → ℕ → Ω → Fin c} (hmeas : ∀ i m, Measurable (Y i m))
+    (hind : iIndepFun (fun x : Fin r × ℕ ↦ Y x.1 x.2) P) (hident : ∀ i m, IdentDistrib (Y i m) (Y i 0) P P)
+    (hprob : ∀ i j, P.real {ω | Y i 0 ω = j} = b j)
+    {W : Ω' → ℝ} (hW : HasLaw W (chiSquared (((r : ℝ) - 1) * ((c : ℝ) - 1))) P') :
+    TendstoInDistribution (homogeneityStatisticN Y N) Filter.atTop W (fun _ ↦ P) P' := by
   sorry
 
 end UndergradKB.Headlines.Statistics

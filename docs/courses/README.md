@@ -10,19 +10,19 @@ One outline per book: the book's chapters in order, one line per item (item numb
 | Calculus | OpenStax Calculus | 20 | 1327 | 1233 | 92.9% | 100.0% | [openstax-calculus](calculus/openstax-calculus.md) | [checklist](../coverage/calculus/checklist.md) |
 | Combinatorics | Keller–Trotter | 17 | 419 | 404 | 96.4% | 97.1% | [kellertrotter2017](combinatorics/kellertrotter2017.md) | [checklist](../coverage/combinatorics/checklist.md) |
 | Combinatorics | A=B | 10 | 251 | 231 | 92.0% | 93.1% | [petkovsekwilfzeilberger1996](combinatorics/petkovsekwilfzeilberger1996.md) | [checklist](../coverage/combinatorics/checklist.md) |
-| Complex analysis | Beck 2025 | 10 | 265 | 261 | 98.5% | 100.0% | [beck2025](complex-analysis/beck2025.md) | [checklist](../coverage/complex-analysis/checklist.md) |
-| Differential equations | Lebl, Notes on Diffy Qs | 9 | 415 | 384 | 92.5% | 97.2% | [lebldiffyqs2026](differential-equations/lebldiffyqs2026.md) | [checklist](../coverage/differential-equations/checklist.md) |
-| Foundations | Hammack | 14 | 346 | 310 | 89.6% | 100.0% | [hammack2018](foundations/hammack2018.md) | [checklist](../coverage/foundations/checklist.md) |
-| Foundations | Levin | 7 | 418 | 379 | 90.7% | 99.2% | [levin2025](foundations/levin2025.md) | [checklist](../coverage/foundations/checklist.md) |
+| Complex analysis | Beck 2025 | 10 | 265 | 265 | 100.0% | 100.0% | [beck2025](complex-analysis/beck2025.md) | [checklist](../coverage/complex-analysis/checklist.md) |
+| Differential equations | Lebl, Notes on Diffy Qs | 9 | 415 | 390 | 94.0% | 98.7% | [lebldiffyqs2026](differential-equations/lebldiffyqs2026.md) | [checklist](../coverage/differential-equations/checklist.md) |
+| Foundations | Hammack | 14 | 360 | 324 | 90.0% | 100.0% | [hammack2018](foundations/hammack2018.md) | [checklist](../coverage/foundations/checklist.md) |
+| Foundations | Levin | 7 | 447 | 409 | 91.5% | 99.5% | [levin2025](foundations/levin2025.md) | [checklist](../coverage/foundations/checklist.md) |
 | Geometry | Petrunin2025 | 20 | 354 | 342 | 96.6% | 100.0% | [petrunin2025](geometry/petrunin2025.md) | [checklist](../coverage/geometry/checklist.md) |
 | Linear algebra | axler2024 | 9 | 465 | 464 | 99.8% | 99.8% | [axler2024](linear-algebra/axler2024.md) | [checklist](../coverage/linear-algebra/checklist.md) |
 | Linear algebra | hefferon2020 | 20 | 352 | 351 | 99.7% | 100.0% | [hefferon2020](linear-algebra/hefferon2020.md) | [checklist](../coverage/linear-algebra/checklist.md) |
-| Precalculus | Stitz-Zeager | 11 | 332 | 321 | 96.7% | 100.0% | [stitzzeager2013](precalculus/stitzzeager2013.md) | [checklist](../coverage/precalculus/checklist.md) |
-| Probability | Grinstead–Snell | 12 | 277 | 277 | 100.0% | 100.0% | [grinsteadsnell2006](probability/grinsteadsnell2006.md) | [checklist](../coverage/probability/checklist.md) |
+| Precalculus | Stitz-Zeager | 11 | 551 | 540 | 98.0% | 100.0% | [stitzzeager2013](precalculus/stitzzeager2013.md) | [checklist](../coverage/precalculus/checklist.md) |
+| Probability | Grinstead–Snell | 12 | 354 | 354 | 100.0% | 100.0% | [grinsteadsnell2006](probability/grinsteadsnell2006.md) | [checklist](../coverage/probability/checklist.md) |
 | Real analysis | Lebl, Basic Analysis I v6.3 | 8 | 451 | 348 | 77.2% | 77.3% | [lebl2026](real-analysis/lebl2026.md) | [checklist](../coverage/real-analysis/checklist.md) |
-| Representation theory | etingof2011 | 7 | 305 | 305 | 100.0% | 100.0% | [etingof2011](representation-theory/etingof2011.md) | [checklist](../coverage/representation-theory/checklist.md) |
+| Representation theory | etingof2011 | 7 | 306 | 306 | 100.0% | 100.0% | [etingof2011](representation-theory/etingof2011.md) | [checklist](../coverage/representation-theory/checklist.md) |
 | Statistics | OpenStax Introductory Statistics 2e | 13 | 118 | 103 | 87.3% | 100.0% | [openstaxintrostats2e](statistics/openstaxintrostats2e.md) | [checklist](../coverage/statistics/checklist.md) |
-| Topology | Morris | 12 | 814 | 789 | 96.9% | 97.4% | [morris2024](topology/morris2024.md) | [checklist](../coverage/topology/checklist.md) |
+| Topology | Morris | 12 | 814 | 792 | 97.3% | 97.8% | [morris2024](topology/morris2024.md) | [checklist](../coverage/topology/checklist.md) |
 | Trigonometry | Corral | 6 | 170 | 164 | 96.5% | 100.0% | [corraltrig](trigonometry/corraltrig.md) | [checklist](../coverage/trigonometry/checklist.md) |
 | Trigonometry | OpenStax | 4 | 205 | 198 | 96.6% | 100.0% | [openstaxalgtrig2e](trigonometry/openstaxalgtrig2e.md) | [checklist](../coverage/trigonometry/checklist.md) |
 

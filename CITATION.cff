@@ -10,7 +10,7 @@ authors:
     given-names: Jonathan
 license: Apache-2.0
 doi: 10.5281/zenodo.24119531
-version: "0.2.1"
+version: "0.2.2"
 repository-code: "https://github.com/jonhanke/undergraduate-math-lean"
 keywords:
   - Lean 4

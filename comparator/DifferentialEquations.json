@@ -7,7 +7,10 @@
     "UndergradKB.Headlines.DifferentialEquations.wave_general_solution",
     "UndergradKB.Headlines.DifferentialEquations.frobenius_analytic",
     "UndergradKB.Headlines.DifferentialEquations.fourier_series_piecewise_smooth",
-    "UndergradKB.Headlines.DifferentialEquations.gibbs_phenomenon"
+    "UndergradKB.Headlines.DifferentialEquations.gibbs_phenomenon",
+    "UndergradKB.Headlines.DifferentialEquations.frobenius_second_solution",
+    "UndergradKB.Headlines.DifferentialEquations.sturm_liouville_eigenvalues",
+    "UndergradKB.Headlines.DifferentialEquations.eigenfunction_expansion_uniform"
   ],
   "definition_names": [],
   "permitted_axioms": [

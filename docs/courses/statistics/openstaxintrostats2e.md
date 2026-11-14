@@ -192,7 +192,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 #### Section 7.3
 
-- **§7.3**, p.384 [ST-069]: Normal approximation to the binomial with continuity correction 0.5: P(X <= k) is about the normal cdf at k + 0.5. — *proved proved here* — `UndergradKB.Statistics.tendstoInDistribution_binomial_count`
+- **§7.3**, p.384 [ST-069]: Normal approximation to the binomial with continuity correction 0.5: P(X <= k) is about the normal cdf at k + 0.5. — *proved proved here* — `UndergradKB.Statistics.Course.C7.binomial_normal_approximation_continuity_correction`, `UndergradKB.Statistics.Course.C7.binomial_le_iff_le_add_half`, `UndergradKB.Statistics.tendstoInDistribution_binomial_count`, `UndergradKB.Statistics.binomial_continuity_correction`
 - **§7.3**, p.384 [ST-070]: Sums and means of sample size n at least about 30 may be treated as normal (rule of thumb for the central limit theorem). — *not a result* — –
 
 ## Chapter 8
@@ -350,7 +350,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 #### Section 13.3
 
-- **§13.3**, p.695 [ST-116]: The F distribution with (d1, d2) degrees of freedom is right-skewed, nonnegative, has mean about 1 for large d2, and is the law of a ratio of two independent scaled chi-square variables. — *proved proved here* — `UndergradKB.Statistics.Course.C13.f_distribution_is_ratio_of_chi_squares`, `UndergradKB.Statistics.Course.C13.f_distribution_nonnegative`, `UndergradKB.Statistics.fDistribution`, `UndergradKB.Statistics.hasLaw_fDistribution`
+- **§13.3**, p.695 [ST-116]: The F distribution with (d1, d2) degrees of freedom is right-skewed, nonnegative, has mean about 1 for large d2, and is the law of a ratio of two independent scaled chi-square variables. — *proved proved here* — `UndergradKB.Statistics.Course.C13.f_distribution_is_ratio_of_chi_squares`, `UndergradKB.Statistics.Course.C13.f_distribution_nonnegative`, `UndergradKB.Statistics.Course.C13.f_distribution_mean`, `UndergradKB.Statistics.Course.C13.f_distribution_mean_tends_to_one`
 
 #### Section 13.4
 

@@ -4,7 +4,7 @@ version: "v0.4"
 project:
   name: "undergraduate-math-lean (UndergradKB): undergraduate mathematics"
   description: >-
-    Release 0.2.1. A Lean 4 + Mathlib formalization of nineteen openly available undergraduate textbooks in fifteen
+    Release 0.2.2. A Lean 4 + Mathlib formalization of nineteen openly available undergraduate textbooks in fifteen
     topics, item by item: linear algebra (Axler, Linear Algebra Done Right, 4th edition; Hefferon, Linear Algebra, 4th edition),
     abstract algebra (Judson and Beezer, Abstract Algebra: Theory and Applications), combinatorics (Keller and
     Trotter, Applied Combinatorics; Petkovsek, Wilf and Zeilberger, A=B), calculus (OpenStax Calculus, Volumes 1 to
@@ -18,7 +18,7 @@ project:
     outline in docs/courses/. Principal results not in Mathlib: the Jordan normal form and its uniqueness; Schur's
     triangularization; the transcendence of pi; the constructible numbers and the three classical impossibilities;
     an explicit quintic not solvable by radicals; the crystallographic restriction; the finite subgroups of O(2);
-    the BCH bound; the theorems of Dilworth, Brooks, Cayley (n^(n-2) trees), Gale-Shapley, Gale-Ryser, Euler
+    the Bose-Chaudhuri-Hocquenghem bound; the theorems of Dilworth, Brooks, Cayley (n^(n-2) trees), Gale-Shapley, Gale-Ryser, Euler
     (circuits) and Dirac; the Lovasz local lemma; Gosper's algorithm, Sister Celine's theorem and Petkovsek's
     algorithm Hyper, as decision and correctness theorems; the summation theorems of Gauss, Dougall and Dixon;
     Riemann's rearrangement theorem; the error bound of Simpson's rule; Heron's formula and the law of tangents;
@@ -36,7 +36,12 @@ project:
     Pearson's chi-square theorem and the chi-square tests of independence and homogeneity, the method of
     Frobenius, pointwise convergence of Fourier series and the Gibbs phenomenon, the discriminant test for conics,
     Vizing's theorem, the rational representations of GL_N(C) and their Peter-Weyl theorem, McKay graphs of finite
-    subgroups of SU(2), and the agreement of the Riemann (Darboux) integral with the Lebesgue integral.
+    subgroups of SU(2), and the agreement of the Riemann (Darboux) integral with the Lebesgue integral; and, new in
+    0.2.2, the Davis-Putnam-Robinson-Matiyasevich theorem and the negative answer to Hilbert's tenth problem, the Hahn-Mazurkiewicz theorem,
+    Brouwer's characterization of the Cantor set, totally disconnected compact groups as Cantor cubes, compact groups
+    as their identity component times the quotient, the second Frobenius solution, the eigenvalues and eigenfunction
+    expansions of regular Sturm-Liouville problems, Little's law in sample-path form, and the chi-square test of
+    homogeneity for sample sizes growing in any manner.
   authors:
     - "Jonathan Hanke"
   license: "Apache-2.0"
@@ -49,7 +54,7 @@ classification:
   # 05 combinatorics; 33F10 symbolic computation of special functions; 26 real functions; 65D32 quadrature;
   # 51 geometry; 60J10 Markov chains; 62 statistics; 30 functions of a complex variable; 20C representations
   # of finite groups; 54 general topology; 34 ordinary differential equations; 03B35 mechanization of proofs.
-  msc2020: ["97-01", "15A21", "12F10", "11J81", "05A15", "05C15", "06A07", "33F10", "40A05", "65D32", "51M04", "51A20", "60J10", "62F03", "30D30", "26A42", "20C15", "54D35", "34A30", "03B35"]
+  msc2020: ["97-01", "15A21", "12F10", "11J81", "05A15", "05C15", "06A07", "33F10", "40A05", "65D32", "51M04", "51A20", "60J10", "62F03", "30D30", "26A42", "20C15", "54D35", "34A30", "34B24", "11U05", "54F15", "60K25", "03B35"]
 
 sources:
   - title: "Linear Algebra Done Right (4th edition)"
@@ -174,7 +179,7 @@ sources:
 related_formalizations:
   - id: "https://github.com/leanprover-community/mathlib4"
     relationship: "builds-on"
-    note: "Built on Mathlib at commit 1b1ccf4. The headline verdicts compare with Mathlib master (df6966d, 2026-11-07, for the headlines of 0.2.0; f718b578, 2026-11-13, for those new in 0.2.1); each book map names the Mathlib declaration of every item Mathlib has, and a course-layer theorem of this library states it in the book's terms."
+    note: "Built on Mathlib at commit 1b1ccf4. The headline verdicts compare with Mathlib master (df6966d, 2026-11-07, for the headlines of 0.2.0; f718b578, 2026-11-13, for those new in 0.2.1; 9a20b96f, 2026-11-14, for those new in 0.2.2); each book map names the Mathlib declaration of every item Mathlib has, and a course-layer theorem of this library states it in the book's terms."
   - id: "https://github.com/optpku/ReasBook"
     relationship: "builds-on"
     note: >-
@@ -187,13 +192,13 @@ related_formalizations:
     relationship: "related"
     note: >-
       Not a dependency, and no code is ported from it. Headlines are only results Tau Ceti main (d2083f0f for the
-      headlines of 0.2.0, 30f41378 for those new in 0.2.1) does not have; results proved here that Tau Ceti also proves (for example the singular value decomposition, the
+      headlines of 0.2.0, 30f41378 for those new in 0.2.1, 71ce0a33 for those new in 0.2.2) does not have; results proved here that Tau Ceti also proves (for example the singular value decomposition, the
       Schwarz-Pick lemma, Green's theorem, the area of a hyperbolic triangle) are not headlines. Tau Ceti proves the
       Lindemann-Weierstrass theorem, which implies the transcendence of pi, but does not state that corollary.
 
 status:
   scope: >-
-    Formalized (the 97 statements of the Challenge_<Topic>.lean files, proved in the
+    Formalized (the 108 statements of the Challenge_<Topic>.lean files, proved in the
     Solution_<Topic>.lean files), and every item of the nineteen books classified in the book maps: proved here, in
     Mathlib, partly in Mathlib, not formalized, or not a result (real analysis also: ported from or cited from
     ReasBook). No headline depends on an unproved input.
@@ -234,11 +239,15 @@ fidelity:
     bivariate normal sample. (6) Probability: random walks and shuffles are modelled by their finite paths, all
     equally likely; Markov chains by their transition matrices. (7) Some headline statements are narrower
     than their sources (README, Known restrictions): uniqueness of the Laplace transform for continuous functions;
-    the Markov chain central limit theorem assumes a positive asymptotic variance; the representations of GL_N(C)
-    are on spaces in Type and indexed by highest weights without the torus weight decomposition.
+    the Markov chain central limit theorem assumes a positive asymptotic variance (the zero-variance case is proved
+    separately: the visit counts stay within a bounded distance of their means); the representations of GL_N(C)
+    are on spaces in Type and indexed by highest weights without the torus weight decomposition; the Sturm-Liouville
+    theorems are for regular problems (q >= 0 and nonnegative boundary coefficients) and the expansion converges
+    uniformly for C^2 functions with the boundary conditions, not pointwise for piecewise smooth functions; the second
+    Frobenius solution is for real roots of the indicial equation.
 
 review:
-  status: "not yet reviewed: the 97 headline statements of the Challenge_<Topic>.lean files and the definitions they use have not yet been reviewed by a human"
+  status: "not yet reviewed: the 108 headline statements of the Challenge_<Topic>.lean files and the definitions they use have not yet been reviewed by a human"
   reviewers: []
   notes: >-
     The headline statements and the definitions they use have not yet been reviewed by a human; that review is
@@ -462,6 +471,10 @@ alignment:
       lean: "UndergradKB.Headlines.Statistics.tendstoInDistribution_homogeneityStatistic"
       module: "Challenge_Statistics / Solution_Statistics"
       status: "proved"
+    - source: "OpenStax § 11.4: The chi-square test of homogeneity, sample sizes growing in any manner"
+      lean: "UndergradKB.Headlines.Statistics.tendstoInDistribution_homogeneityStatisticN"
+      module: "Challenge_Statistics / Solution_Statistics"
+      status: "proved"
     - source: "Grinstead–Snell Theorems 11.7, 11.8: Convergence of regular Markov chains"
       lean: "UndergradKB.Headlines.Probability.regular_pow_tendsto"
       module: "Challenge_Probability / Solution_Probability"
@@ -514,8 +527,20 @@ alignment:
       lean: "UndergradKB.Headlines.Probability.firstMaxIndex_tendsto"
       module: "Challenge_Probability / Solution_Probability"
       status: "proved"
+    - source: "Stidham's theorem; Grinstead–Snell Example 6.29 uses the law without proof: Little's law, sample-path form"
+      lean: "UndergradKB.Headlines.Probability.little_law_sample_path"
+      module: "Challenge_Probability / Solution_Probability"
+      status: "proved"
     - source: "Levin Theorem 2.5.9: Vizing's theorem"
       lean: "UndergradKB.Headlines.Foundations.vizing"
+      module: "Challenge_Foundations / Solution_Foundations"
+      status: "proved"
+    - source: "behind Levin's remark in § 6.2.5: The Davis–Putnam–Robinson–Matiyasevich theorem"
+      lean: "UndergradKB.Headlines.Foundations.dprm"
+      module: "Challenge_Foundations / Solution_Foundations"
+      status: "proved"
+    - source: "Matiyasevich's theorem; Levin § 6.2.5, remark: Hilbert's tenth problem has a negative answer"
+      lean: "UndergradKB.Headlines.Foundations.hilbert_tenth"
       module: "Challenge_Foundations / Solution_Foundations"
       status: "proved"
     - source: "Lebl Theorem 6.1.3: Uniqueness of the Laplace transform (Lerch's theorem)"
@@ -540,6 +565,18 @@ alignment:
       status: "proved"
     - source: "Lebl § 4.2: The Gibbs phenomenon"
       lean: "UndergradKB.Headlines.DifferentialEquations.gibbs_phenomenon"
+      module: "Challenge_DifferentialEquations / Solution_DifferentialEquations"
+      status: "proved"
+    - source: "Lebl § 7.3.2, cases (iv: The second solution of the method of Frobenius"
+      lean: "UndergradKB.Headlines.DifferentialEquations.frobenius_second_solution"
+      module: "Challenge_DifferentialEquations / Solution_DifferentialEquations"
+      status: "proved"
+    - source: "Lebl Theorem 5.1.1: The eigenvalues of a regular Sturm–Liouville problem"
+      lean: "UndergradKB.Headlines.DifferentialEquations.sturm_liouville_eigenvalues"
+      module: "Challenge_DifferentialEquations / Solution_DifferentialEquations"
+      status: "proved"
+    - source: "Lebl Theorem 5.1.4: The eigenfunction expansion of a regular Sturm–Liouville problem"
+      lean: "UndergradKB.Headlines.DifferentialEquations.eigenfunction_expansion_uniform"
       module: "Challenge_DifferentialEquations / Solution_DifferentialEquations"
       status: "proved"
     - source: "Beck Theorem 9.1.9: The Casorati–Weierstrass theorem"
@@ -632,6 +669,22 @@ alignment:
       status: "proved"
     - source: "Morris Theorems A5.13.9 and A5.0.20: Structure of connected locally compact abelian groups"
       lean: "UndergradKB.Headlines.Topology.lca_connected_structure"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Theorem 9.5.12, both directions: The Hahn–Mazurkiewicz theorem"
+      lean: "UndergradKB.Headlines.Topology.hahn_mazurkiewicz"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Exercises 9.1 #2; used for Theorem A5.0.23: Brouwer's characterization of the Cantor set"
+      lean: "UndergradKB.Headlines.Topology.brouwer_cantor_set"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Theorem A5.0.23: Totally disconnected compact groups are Cantor cubes"
+      lean: "UndergradKB.Headlines.Topology.compact_totally_disconnected_group_cantor_cube"
+      module: "Challenge_Topology / Solution_Topology"
+      status: "proved"
+    - source: "Morris Theorem A5.0.26: A compact group is its identity component times a totally disconnected group, as a space"
+      lean: "UndergradKB.Headlines.Topology.compact_group_homeomorph_identityComponent_prod"
       module: "Challenge_Topology / Solution_Topology"
       status: "proved"
     - source: "Lebl Definition 5.1.9: The Riemann integral is the Lebesgue integral"

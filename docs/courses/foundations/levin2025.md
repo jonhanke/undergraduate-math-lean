@@ -3,7 +3,7 @@
 Generated from [`docs/coverage/foundations/checklist.md`](../../coverage/foundations/checklist.md); do not edit by hand.
 Items are in the book's order. Statements are our own paraphrases, not book text. Cite the Lean name; `lake build Foundations` builds this topic.
 
-418 items in 7 chapters; 379 with a Lean name (90.7%).
+447 items in 7 chapters; 409 with a Lean name (91.5%).
 
 ## Chapter 0
 
@@ -22,7 +22,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 1
 
-72 items; 53 with a Lean name; 25 proved proved here; 28 in Mathlib; 19 not a result.
+83 items; 64 with a Lean name; 36 proved proved here; 28 in Mathlib; 19 not a result.
 
 
 #### Section 1.1
@@ -45,13 +45,19 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Def 1.2.2**, p.51 [FO-035]: Implication P => Q (hypothesis, conclusion) is false only when P is true and Q is false — *not a result* — –
 - **Example 1.2.5**, p.53 [FO-449]: Implications with false hypothesis or true conclusion are true. — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_2_5_vacuous_implications`
 - **Def 1.2.7**, p.55 [FO-038]: Converse of P => Q is Q => P; inverse is not-P => not-Q; contrapositive is not-Q => not-P — *not a result* — –
+- **Example 1.2.8**, p.55 [FO-538]: contrapositive equivalent to implication, inverse to converse, converse not equivalent — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_2_8_converse_contrapositive_inverse`
 - **Note 1.2.9**, p.56 [FO-039]: Converse, contrapositive and inverse of a quantified implication are formed ignoring the outside quantifier — *not a result* — –
 - **Example 1.2.10**, p.56 [FO-450]: Any nine cards from a deck contain three of the same suit. — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_2_10_nine_cards_three_suit`
+- **Example 1.2.11**, p.57 [FO-539]: from P->Q: Q follows from P, not-P from not-Q; nothing from Q or not-P — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_2_11_conclusions`
 - **Sec 1.2.3**, p.58 [FO-041]: P <=> Q is equivalent to (P => Q) and (Q => P), and to (P and Q) or (not P and not Q) — *proved proved here* — `UndergradKB.Foundations.iff_iff_imp_and_imp_and_or`
+- **Example 1.2.12**, p.58 [FO-540]: biconditional is conjunction of if-part and only-if-part — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_2_12_if_only_if`
+- **Example 1.2.13**, p.58 [FO-541]: rephrasings of an implication: contrapositive, not-P or Q — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_2_13_rephrasings`
 - **Def 1.2.14**, p.59 [FO-037]: Equivalent wordings of implication and biconditional: only if, sufficient, necessary, whenever, provided that — *not a result* — –
+- **Example 1.2.15**, p.59 [FO-542]: spade implies black, black does not imply spade — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_2_15_spade_black`
 
 #### Section 1.3
 
+- **Example 1.3.3**, p.66 [FO-543]: truth table of not-P or Q and equivalence with P->Q — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_3_3_truth_table_not_or`
 - **Example 1.3.4**, p.67 [FO-451]: (P -> Q) or (Q -> R) is a tautology. — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_3_4_tautology`
 - **Sec 1.3.2**, p.68 [FO-043]: Tautology / law of logic: a statement true for all truth assignments (resp. in all interpretations) — *not a result* — –
 - **Def 1.3.5**, p.68 [FO-042]: Logical equivalence: statements with identical truth tables — *not a result* — –
@@ -75,17 +81,22 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 #### Section 1.4
 
+- **Proposition 1.4.4**, p.85 [FO-552]: in a mini sudoku solution each digit appears once per row, column, box, four times total — *proved proved here* — `UndergradKB.Foundations.Course.levin_prop_1_4_4_sudoku_solution_digits`
 - **Sec 1.4.2**, p.86 [FO-138]: Direct proof: to show P ⇒ Q assume P, deduce Q (fix an arbitrary element for universal statements) — *not a result* — –
+- **Example 1.4.6**, p.86 [FO-553]: in the given mini sudoku, a 2 at r1c1 forces a 2 at r4c4 — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_4_6_sudoku_two_corners`
+- **Example 1.4.7**, p.87 [FO-564]: a valid-or-not mini sudoku with exactly three empty squares and a solution is solvable (unique solution) — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_4_7_three_empty_solvable`
 - **Ex 1.4.8**, p.88 [FO-100]: Definitions of even (n = 2a) and odd (n = 2a+1) integers — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_4_1_even_odd`, `Even`, `Odd`, `even_iff_two_dvd`
 - **Ex 1.4.8**, p.88 [FO-104]: n is even iff n^2 is even (equivalently n odd iff n^2 odd) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s4_3_even_iff_sq_even`, `Int.even_pow'`, `Int.even_pow`, `Int.odd_mul`
 - **Ex 1.4.9**, p.88 [FO-106]: Divisibility is transitive: a ∣ b and b ∣ c imply a ∣ c — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s4_3_dvd_trans`, `dvd_trans`
 - **Sec 1.4.3**, p.89 [FO-139]: Contrapositive: P ⇒ Q is equivalent to ∼Q ⇒ ∼P; so prove the latter — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_o5_1_contrapositive`, `not_imp_not`, `mt`
+- **Example 1.4.10**, p.89 [FO-554]: a solvable mini sudoku puzzle is valid — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_4_10_sudoku_solvable_valid`
 - **Ex 1.4.11 @90 (definitions stated inline in the examples)**, p.90 [FO-100]: Definitions of even (n = 2a) and odd (n = 2a+1) integers — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_4_1_even_odd`, `Even`, `Odd`, `even_iff_two_dvd`
 - **Ex 1.4.11**, p.90 [FO-104]: n is even iff n^2 is even (equivalently n odd iff n^2 odd) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s4_3_even_iff_sq_even`, `Int.even_pow'`, `Int.even_pow`, `Int.odd_mul`
 - **Ex 1.4.12**, p.90 [FO-103]: If a+b is odd then a is odd or b is odd (contrapositive: two evens sum to even) — *in Mathlib* — `UndergradKB.Foundations.Course.levin_ex_1_4_12_odd_sum_odd_summand`, `Int.odd_add`, `Int.even_add`
 - **Sec 1.4.4**, p.91 [FO-140]: Proof by contradiction: to show P assume ∼P and derive a contradiction (P ⇔ (∼P ⇒ C ∧ ∼C)); for P ⇒ Q assume P and ∼Q — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_o6_1_contradiction`, `Classical.by_contradiction`, `imp_iff_not_or`
 - **Ex 1.4.13 @91 (prime defined inline)**, p.91 [FO-108]: Prime = exactly two positive divisors; composite = more than two; 1 is neither — *proved proved here* — `UndergradKB.Foundations.Composite`, `UndergradKB.Foundations.prime_iff_card_divisors_eq_two`, `UndergradKB.Foundations.composite_iff_two_lt_card_divisors`, `UndergradKB.Foundations.one_neither_prime_nor_composite`
 - **Ex 1.4.13**, p.91 [FO-109]: A prime is 2 or odd (the only even prime is 2) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s7_3_even_prime`, `Nat.Prime.eq_two_or_odd'`, `Nat.Prime.even_iff`
+- **Example 1.4.14**, p.92 [FO-565]: every solution of the given mini sudoku has a 3 in the top-right corner — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_1_4_14_sudoku_top_right_three`
 - **Ex 1.4.15 @92 (uses the negation of an existence statement)**, p.92 [FO-144]: Disproof: to disprove P prove ∼P; negation of ∀ is ∃∼, of ∃ is ∀∼, of P⇒Q is P ∧ ∼Q; counterexample — *proved proved here* — `UndergradKB.Foundations.negation_rules`
 - **Ex 1.4.16**, p.93 [FO-131]: √2 is irrational — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s6_1_sqrt_two_irrational`, `irrational_sqrt_two`, `Nat.Prime.irrational_sqrt`, `irrational_sqrt_natCast_iff`
 - **Ex 1.4.17**, p.93 [FO-132]: No integers a, b with a^2 − 4b = 2 (equivalently x^2 = 4y+2 has no integer solution) — *proved proved here* — `UndergradKB.Foundations.no_int_sq_sub_four_mul_eq_two`
@@ -114,7 +125,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 2
 
-101 items; 97 with a Lean name; 28 proved proved here; 62 in Mathlib; 9 not formalized; 2 not a result.
+112 items; 108 with a Lean name; 39 proved proved here; 62 in Mathlib; 9 not formalized; 2 not a result.
 
 
 #### Section 2.1
@@ -125,10 +136,14 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Intro §2.1**, p.122 [FO-326]: Tree = connected graph with no cycles; forest = graph with no cycles; leaves are degree-1 vertices — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s10_2_tree_def`, `SimpleGraph.IsTree`, `SimpleGraph.IsAcyclic`
 - **Intro §2.1**, p.122 [FO-349]: Chromatic number: least number of colours in a proper vertex colouring — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_5_chromatic_le_iff`, `SimpleGraph.chromaticNumber`
 - **Def 2.1.2**, p.122 [FO-310]: A (simple) graph is a pair of a vertex set and a set of 2-element subsets of it (edges) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s10_2_edge_two_vertices`, `SimpleGraph`
+- **Example 2.1.3**, p.123 [FO-560]: two three-vertex graphs with different edge sets are not equal — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_1_3_graphs_not_equal`
+- **Example 2.1.4**, p.124 [FO-561]: triangles on abc and uvw are unequal but related by a renaming bijection — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_1_4_equal_vs_isomorphic`
 - **Def 2.1.5**, p.124 [FO-312]: Graph isomorphism: a bijection of vertex sets preserving adjacency in both directions; isomorphic graphs — *in Mathlib* — `UndergradKB.Foundations.Course.levin_def_2_1_5_iso_adj`, `SimpleGraph.Iso`
+- **Example 2.1.6**, p.125 [FO-562]: two 4-vertex graphs unequal, cyclic shift not an isomorphism, another map is — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_1_6_equal_or_isomorphic`
 - **Def 2.1.7**, p.126 [FO-313]: Subgraph and induced subgraph — *in Mathlib* — `UndergradKB.Foundations.Course.levin_def_2_1_7_induce_adj`, `SimpleGraph.Subgraph`, `SimpleGraph.Subgraph.IsInduced`, `SimpleGraph.induce`
 - **Text §2.1**, p.127 [FO-314]: Connected graph: a path (walk) between any two vertices — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s10_2_connected_iff`, `SimpleGraph.Connected`, `SimpleGraph.Preconnected`, `SimpleGraph.Reachable`
 - **Text §2.1 @127-128**, p.127 [FO-315]: Complete graph K_n: every pair adjacent; unique up to isomorphism — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_1_complete_adj`, `completeGraph`, `SimpleGraph.top_adj`
+- **Example 2.1.8**, p.127 [FO-566]: G2 induced subgraph of G1, G3 subgraph but not induced, G4 not a subgraph — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_1_8_subgraphs`
 - **Text §2.1**, p.128 [FO-316]: K_n has n(n-1)/2 = C(n,2) edges — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_1_complete_edges`, `SimpleGraph.card_edgeFinset_top_eq_card_choose_two`
 - **Text §2.1**, p.128 [FO-317]: Degree of a vertex = number of incident edges — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_1_degree_incident_edges`, `SimpleGraph.degree`
 - **Lemma 2.1.9**, p.128 [FO-319]: Handshake Lemma: sum of degrees = twice the number of edges — *in Mathlib* — `UndergradKB.Foundations.Course.levin_lem_2_1_9_handshake`, `SimpleGraph.sum_degrees_eq_twice_card_edges`
@@ -144,7 +159,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Glossary §2.1**, p.131 [FO-323]: Walk, trail (no repeated edge), path (no repeated vertex) — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_1_trail_path`, `SimpleGraph.Walk`, `SimpleGraph.Walk.IsTrail`, `SimpleGraph.Walk.IsPath`
 - **Glossary**, p.131 [FO-314]: Connected graph: a path (walk) between any two vertices — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s10_2_connected_iff`, `SimpleGraph.Connected`, `SimpleGraph.Preconnected`, `SimpleGraph.Reachable`
 - **Glossary**, p.131 [FO-326]: Tree = connected graph with no cycles; forest = graph with no cycles; leaves are degree-1 vertices — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s10_2_tree_def`, `SimpleGraph.IsTree`, `SimpleGraph.IsAcyclic`
-- **Glossary**, p.131 [FO-337]: Planar graph (drawable in the plane without crossings) and its faces — *not formalized* — `UndergradKB.Foundations.FaceData`
+- **Glossary**, p.131 [FO-337]: Planar graph (drawable in the plane without crossings) and its faces — *not formalized* — `UndergradKB.Foundations.FaceData`, `UndergradKB.Foundations.StraightLineDrawing`, `UndergradKB.Foundations.IsStraightLinePlanar`, `UndergradKB.Foundations.StraightLineDrawing.comap`
 - **Glossary**, p.131 [FO-345]: Euler trail (walk using each edge exactly once) and Euler circuit (closed Euler trail) — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_4_euler_trail`, `UndergradKB.Foundations.Course.levin_s2_4_euler_circuit`, `SimpleGraph.Walk.IsEulerian`, `SimpleGraph.Walk.IsCircuit`
 - **Exercise 2.1.5.11 @134 (unnumbered definition)**, p.134 [FO-325]: Neighbourhood N(v) of a vertex (and closed N[v]) — *proved proved here* — `UndergradKB.Foundations.levin_ex_2_1_5_11_mem_closedNeighborSet`, `UndergradKB.Foundations.levin_ex_2_1_5_11_neighborSet_eq_diff`, `UndergradKB.Foundations.levin_ex_2_1_5_11_card_closedNeighborSet`
 
@@ -157,19 +172,21 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Prop 2.2.6**, p.141 [FO-330]: A tree with v vertices has v-1 edges (and conversely connected plus v-1 edges gives a tree) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s10_2_tree_iff_card_edges`, `SimpleGraph.IsTree.card_edgeFinset`, `SimpleGraph.IsTree.ncard_edgeSet_add_one`, `SimpleGraph.isTree_iff_connected_and_card`
 - **Def 2.2.7**, p.142 [FO-331]: Spanning tree of a connected graph: a subgraph that is a tree on all vertices — *in Mathlib* — `UndergradKB.Foundations.Course.levin_def_2_2_7_spanning_le`, `SimpleGraph.IsTree`
 - **Thm 2.2.8**, p.142 [FO-332]: Every connected graph has a spanning tree — *in Mathlib* — `UndergradKB.Foundations.Course.levin_thm_2_2_8_spanning_tree`, `SimpleGraph.Connected.exists_isTree_le`
+- **Example 2.2.9**, p.142 [FO-567]: the 7-vertex graph has two different spanning trees — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_2_9_two_spanning_trees`
 - **Text §2.2**, p.143 [FO-333]: Minimum spanning tree of a weighted graph (Prim, Kruskal algorithms mentioned in a footnote) — *proved proved here* — `UndergradKB.Combinatorics.SpanningTree.IsMinSpanningTree`, `UndergradKB.Combinatorics.SpanningTree.exists_isMinSpanningTree`
 - **Text §2.2 @143-144**, p.143 [FO-334]: Rooted-tree terminology: root, parent, child, ancestor, descendant, sibling — *not a result* — –
+- **Example 2.2.10**, p.144 [FO-568]: the figure is a tree; children, descendants and siblings relative to roots f and a — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_2_10_rooted_tree`
 - **Example 2.2.11**, p.144 [FO-336]: Every tree (indeed every forest) is bipartite, equivalently 2-colourable — *in Mathlib* — `UndergradKB.Foundations.Course.levin_ex_2_2_11_forest_bipartite`, `UndergradKB.Foundations.Course.levin_ex_2_2_11_tree_two_colorable`, `SimpleGraph.IsTree.isBipartite`, `SimpleGraph.IsAcyclic.isBipartite`
 - **Text §2.2**, p.145 [FO-335]: Breadth-first and depth-first search — *not a result* — –
 
 #### Section 2.3
 
-- **Intro §2.3 @149-150**, p.149 [FO-337]: Planar graph (drawable in the plane without crossings) and its faces — *not formalized* — `UndergradKB.Foundations.FaceData`
+- **Intro §2.3 @149-150**, p.149 [FO-337]: Planar graph (drawable in the plane without crossings) and its faces — *not formalized* — `UndergradKB.Foundations.FaceData`, `UndergradKB.Foundations.StraightLineDrawing`, `UndergradKB.Foundations.IsStraightLinePlanar`, `UndergradKB.Foundations.StraightLineDrawing.comap`
 - **Unnumbered boxed §2.3**, p.151 [FO-338]: Euler's formula: v - e + f = 2 for a connected planar graph — *not formalized* — `UndergradKB.Foundations.FaceData.euler`
 - **Thm 2.3.3**, p.153 [FO-339]: K_5 is not planar — *not formalized* — `UndergradKB.Foundations.PlaneDrawing.edges_le_three_mul_sub_six`, `UndergradKB.Foundations.not_planeDrawing_K5`, `UndergradKB.Foundations.FaceData.euler`, `UndergradKB.Foundations.not_planeFaceData_K5`
 - **Text §2.3**, p.154 [FO-341]: Girth: length of a shortest cycle — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_3_girth_top_iff_acyclic`, `UndergradKB.Foundations.Course.levin_s2_3_girth_le_cycle`, `SimpleGraph.girth`, `SimpleGraph.egirth`
 - **Text §2.3**, p.154 [FO-342]: For a planar graph with girth g, g*f <= 2e — *not formalized* — `UndergradKB.Foundations.PlaneDrawing.girth_edge_bound`, `UndergradKB.Foundations.PlaneDrawing.girth_edge_bound_div`, `UndergradKB.Foundations.PlaneFaceData.girth_edge_bound`
-- **Thm 2.3.4**, p.154 [FO-340]: K_{3,3} is not planar — *not formalized* — `UndergradKB.Foundations.not_planeDrawing_K33`, `UndergradKB.Foundations.FaceData.euler`, `UndergradKB.Foundations.not_planeFaceData_K33`
+- **Thm 2.3.4**, p.154 [FO-340]: K_{3,3} is not planar — *not formalized* — `UndergradKB.Foundations.not_planeDrawing_K33`, `UndergradKB.Foundations.FaceData.euler`, `UndergradKB.Foundations.not_planeFaceData_K33`, `UndergradKB.Foundations.not_straightLineDrawing_K33`
 - **Text §2.3**, p.155 [FO-343]: Euler's formula holds for convex polyhedra (via planar projection) — *not formalized* — –
 - **Example 2.3.6**, p.155 [FO-526]: No polyhedron with three triangles and six pentagons; none with five added heptagons either. — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_3_6_no_polyhedra`
 - **Thm 2.3.7**, p.156 [FO-344]: There are exactly five regular polyhedra (Platonic solids) — *not formalized* — `UndergradKB.Foundations.levin_thm_2_3_7_platonic_pairs`, `UndergradKB.Foundations.levin_thm_2_3_7_platonic_counts`
@@ -180,6 +197,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Text §2.4**, p.161 [FO-345]: Euler trail (walk using each edge exactly once) and Euler circuit (closed Euler trail) — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_4_euler_trail`, `UndergradKB.Foundations.Course.levin_s2_4_euler_circuit`, `SimpleGraph.Walk.IsEulerian`, `SimpleGraph.Walk.IsCircuit`
 - **Unnumbered boxed §2.4**, p.164 [FO-346]: Euler's theorem: connected graph has an Euler circuit iff all degrees are even; Euler trail iff at most two odd-degree vertices — *proved proved here* — `UndergradKB.Combinatorics.Euler.isEulerianGraph_iff`, `UndergradKB.Combinatorics.Euler.hasEulerianTrail_iff`, `SimpleGraph.Walk.IsEulerian.even_degree_iff`, `SimpleGraph.Walk.IsEulerian.card_odd_degree`
 - **Text §2.4**, p.164 [FO-347]: Hamilton path and Hamilton cycle: visit each vertex exactly once (NP-complete to decide, remark) — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_4_hamilton_path`, `UndergradKB.Foundations.Course.levin_s2_4_hamilton_cycle`, `SimpleGraph.Walk.IsHamiltonian`, `SimpleGraph.Walk.IsHamiltonianCycle`
+- **Example 2.4.2**, p.165 [FO-569]: Petersen graph has a Hamilton path; K5 with pendant vertices has none — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_4_2_hamilton_paths`
 
 #### Section 2.5
 
@@ -189,6 +207,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Example 2.5.3**, p.173 [FO-424]: The complete graph K6 has chromatic number 6. — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_5_3_k6_chromatic_number`
 - **Text §2.5**, p.174 [FO-350]: chi(K_n) = n; complete bipartite and every bipartite graph with an edge has chi = 2 — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_5_chromatic_complete`, `UndergradKB.Foundations.Course.levin_ex_2_5_3_bipartite_chromatic_two`, `UndergradKB.Foundations.Course.levin_ex_2_5_3_complete_bipartite_chromatic`, `SimpleGraph.chromaticNumber_top`
 - **Thm 2.5.4**, p.174 [FO-352]: Four Color Theorem: every planar graph has chi <= 4 — *not formalized* — –
+- **Example 2.5.5**, p.175 [FO-570]: radio interference graph is 5-colorable, not 4-colorable, chromatic number 5 — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_5_5_radio_frequencies`
 - **Text §2.5**, p.176 [FO-351]: Trivial bounds: 1 <= chi(G) <= / V / — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_5_chromatic_bounds`, `SimpleGraph.chromaticNumber_le_card`, `SimpleGraph.Colorable.chromaticNumber_pos`
 - **Text §2.5**, p.176 [FO-353]: Clique and clique number — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_5_nclique_iff`, `SimpleGraph.IsClique`, `SimpleGraph.IsNClique`, `SimpleGraph.cliqueNum`
 - **Text §2.5**, p.176 [FO-355]: Perfect graph (chi equals clique number) — *proved proved here* — `IsPerfect`
@@ -204,6 +223,8 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 - **Def 2.6.3**, p.186 [FO-062]: A (binary) relation on A, or from A to B, is a subset of A x A (resp. A x B) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_11_1_relation_is_subset`, `SetRel`
 - **Example 2.6.5**, p.187 [FO-074]: A partial order is a reflexive, antisymmetric, transitive relation (e.g. subset, "is a multiple of") — *in Mathlib* — `UndergradKB.Foundations.Course.levin_rem_2_6_15_partial_order`, `IsPartialOrder`, `PartialOrder`
+- **Example 2.6.5**, p.187 [FO-547]: 'is a multiple of' on 1..6 is the listed 14 pairs, has loops, not symmetric — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_6_5_multiple_of_relation`
+- **D057**, p.187 [FO-548]: (6,2) is in the multiple-of relation, (6,4) is not — *proved proved here* — `UndergradKB.Foundations.Course.levin_d057_multiple_of_membership`
 - **Def 2.6.6**, p.188 [FO-076]: Inverse relation R^{-1} = {(y,x) : (x,y) in R} — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_7_inverse_relation`, `SetRel.inv`
 - **Def 2.6.7**, p.188 [FO-077]: Composition of relations S∘R (apply R, then S) — *in Mathlib* — `UndergradKB.Foundations.Course.levin_def_2_6_7_comp`, `SetRel.comp`
 - **Example 2.6.8**, p.189 [FO-077]: Composition of relations S∘R (apply R, then S) — *in Mathlib* — `UndergradKB.Foundations.Course.levin_def_2_6_7_comp`, `SetRel.comp`
@@ -236,6 +257,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Text §2.7**, p.201 [FO-361]: Matching in a bipartite graph (of A: each vertex of A in exactly one edge, no vertex of B in two); perfect matching — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s2_7_matching_def`, `UndergradKB.Foundations.Course.levin_s2_7_perfect_matching_def`, `SimpleGraph.Subgraph.IsMatching`, `SimpleGraph.Subgraph.IsPerfectMatching`
 - **Matching Condition §2.7**, p.202 [FO-362]: Hall's Marriage Theorem: a bipartite graph has a matching of A iff / N(S) / >= / S / for all S subset of A (necessity of the matching condition is the easy half) — *in Mathlib* — `UndergradKB.Foundations.Course.levin_thm_2_7_2_hall`, `UndergradKB.Foundations.Course.levin_thm_2_7_2_hall_family`, `Finset.all_card_le_biUnion_card_iff_exists_injective`, `Fintype.all_card_le_rel_image_card_iff_exists_injective`
 - **Thm 2.7.2**, p.202 [FO-362]: Hall's Marriage Theorem: a bipartite graph has a matching of A iff / N(S) / >= / S / for all S subset of A (necessity of the matching condition is the easy half) — *in Mathlib* — `UndergradKB.Foundations.Course.levin_thm_2_7_2_hall`, `UndergradKB.Foundations.Course.levin_thm_2_7_2_hall_family`, `Finset.all_card_le_biUnion_card_iff_exists_injective`, `Fintype.all_card_le_rel_image_card_iff_exists_injective`
+- **Example 2.7.3**, p.203 [FO-563]: 52 cards in 13 piles of 4: one card per pile can be chosen with each value once (via Hall) — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_2_7_3_card_piles`
 - **Exercise 2.7.3 @204 (definition in exercise)**, p.204 [FO-363]: Alternating path and augmenting path for a partial matching — *proved proved here* — `UndergradKB.Foundations.levin_ex_2_7_3_augmenting_odd_length`
 
 #### Section 2.2
@@ -244,7 +266,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 3
 
-98 items; 97 with a Lean name; 51 proved proved here; 46 in Mathlib; 1 not a result.
+101 items; 100 with a Lean name; 54 proved proved here; 46 in Mathlib; 1 not a result.
 
 
 #### Section 3.1
@@ -315,6 +337,8 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 - **Def 3.5.2**, p.265 [FO-242]: A multiset is a collection where elements may repeat and order does not matter; its cardinality counts repeats, and the multiplicity of an element is the number of times it appears (sets are multisets with multiplicity 1). — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s3_8_multiset`, `Multiset`, `Multiset.card`, `Multiset.count`
 - **text §3.5.2**, p.267 [FO-244]: The number of non-negative integer solutions of x_1 + ... + x_n = k is C(k+n-1,n-1) (distributing k identical objects to n kids). — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_ex_3_20_nonneg_solutions`, `Finset.card_finsuppAntidiag_nat_eq_choose`
+- **Example 3.5.3**, p.268 [FO-557]: jelly bean multisets correspond to flavor-count strings summing to 10 — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_3_5_3_jelly_beans`
+- **Example 3.5.4**, p.268 [FO-558]: book distributions on 5 shelves as count strings summing to 12 and multisets — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_3_5_4_books_on_shelves`
 - **text §3.5.3**, p.269 [FO-243]: Stars and bars: the number of k-element multisets from an n-element set is C(k+n-1,k) = C(k+n-1,n-1) (encode as k stars and n-1 bars); equivalently weakly increasing lists / non-decreasing functions of bounded range. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_7_multisets`, `Sym.card_sym_eq_choose`, `Sym.card_sym_eq_multichoose`, `Nat.multichoose_eq`
 - **text §3.5.3**, p.270 [FO-245]: Distributions/solutions with lower bounds: first give each variable its minimum; with all x_i >= 1 the count is C(k-1,n-1); with x_i >= a_i it is C(n + (k - sum a_i) - 1, n-1). — *proved proved here* — `UndergradKB.Combinatorics.card_lowerBoundedSolutions`, `UndergradKB.Combinatorics.card_solutions_pos`, `UndergradKB.Combinatorics.card_positiveCompositions`
 - **Ex 3.5.5**, p.270 [FO-243]: Stars and bars: the number of k-element multisets from an n-element set is C(k+n-1,k) = C(k+n-1,n-1) (encode as k stars and n-1 bars); equivalently weakly increasing lists / non-decreasing functions of bounded range. — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_fact_3_7_multisets`, `Sym.card_sym_eq_choose`, `Sym.card_sym_eq_multichoose`, `Nat.multichoose_eq`
@@ -362,6 +386,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **text §3.8.3**, p.315 [FO-251]: A derangement of {1..n} is a permutation with no fixed point (3 elements: 2 derangements; 4 elements: 9). — *in Mathlib* — `UndergradKB.Foundations.Course.levin_s3_8_3_derangements`, `derangements`, `numDerangements`
 - **Ex 3.8.6**, p.315 [FO-252]: The number of derangements of n elements is n! - C(n,1)(n-1)! + C(n,2)(n-2)! - ... + (-1)^n C(n,n) 0! (inclusion-exclusion; hat-check problem). — *proved proved here* — `UndergradKB.Combinatorics.card_derangements_sum`
 - **Ex 3.8.7**, p.316 [FO-252]: The number of derangements of n elements is n! - C(n,1)(n-1)! + C(n,2)(n-2)! - ... + (-1)^n C(n,n) 0! (inclusion-exclusion; hat-check problem). — *proved proved here* — `UndergradKB.Combinatorics.card_derangements_sum`
+- **Example 3.8.9**, p.317 [FO-559]: 5^3 functions, 60 injective Fin 3 -> Fin 5, 5^8 functions Fin 8 -> Fin 5 — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_3_8_9_gifts_as_functions`
 - **Ex 3.8.10**, p.318 [FO-249]: The number of surjections from an n-set onto an m-set is the sum over k of (-1)^k C(m,k)(m-k)^n (inclusion-exclusion on the missed codomain elements); equals 2^n - 2 for m=2. — *proved proved here* — `UndergradKB.Combinatorics.card_surjections`
 - **Ex 3.8.11**, p.318 [FO-249]: The number of surjections from an n-set onto an m-set is the sum over k of (-1)^k C(m,k)(m-k)^n (inclusion-exclusion on the missed codomain elements); equals 2^n - 2 for m=2. — *proved proved here* — `UndergradKB.Combinatorics.card_surjections`
 - **Ex 3.8.12**, p.320 [FO-249]: The number of surjections from an n-set onto an m-set is the sum over k of (-1)^k C(m,k)(m-k)^n (inclusion-exclusion on the missed codomain elements); equals 2^n - 2 for m=2. — *proved proved here* — `UndergradKB.Combinatorics.card_surjections`
@@ -371,11 +396,12 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 4
 
-55 items; 53 with a Lean name; 29 proved proved here; 24 in Mathlib; 2 not a result.
+57 items; 55 with a Lean name; 31 proved proved here; 24 in Mathlib; 2 not a result.
 
 
 #### Section 4.1
 
+- **Example 4.1.3**, p.333 [FO-555]: next terms of triangular, power of 2 and Fibonacci sequences — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_4_1_3_next_terms`
 - **Def 4.1.4**, p.334 [FO-195]: Definition: closed formula for a sequence — *not a result* — –
 - **Def 4.1.5**, p.334 [FO-196]: Definition: recursive definition (recurrence relation plus initial conditions); a sequence satisfying the recurrence and initial terms is determined — *proved proved here* — `UndergradKB.Foundations.levin_def_4_1_5_recurrence_determines`, `UndergradKB.Foundations.levin_def_4_1_5_two_term_determines`
 - **Example 4.1.6**, p.335 [FO-194]: Binet's formula: F_n = (phi^n - psi^n)/sqrt 5 — *in Mathlib* — `UndergradKB.Combinatorics.Course.KellerTrotter.ex_9_9_5_binet`, `UndergradKB.Foundations.Course.hammack_ex_s10_30_binet`, `Real.coe_fib_eq`
@@ -383,6 +409,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Example 4.1.8**, p.336 [FO-196]: Definition: recursive definition (recurrence relation plus initial conditions); a sequence satisfying the recurrence and initial terms is determined — *proved proved here* — `UndergradKB.Foundations.levin_def_4_1_5_recurrence_determines`, `UndergradKB.Foundations.levin_def_4_1_5_two_term_determines`
 - **Common Sequences**, p.337 [FO-179]: Triangular numbers: 1+2+...+n = n(n+1)/2 (equivalently T_n = C(n+1,2)), proved by reverse-and-add and by induction — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s10_triangular`, `Finset.sum_range_id_mul_two`, `Finset.sum_range_id`
 - **Common Sequences**, p.337 [FO-190]: Definition of the Fibonacci sequence F_1 = F_2 = 1, F_n = F_{n-1} + F_{n-2} — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s10_5_fibonacci`, `Nat.fib`, `Nat.fib_add_two`
+- **Example 4.1.9**, p.338 [FO-556]: closed formulas reproduce the eight listed sequences — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_4_1_9_closed_formulas`, `UndergradKB.Foundations.Course.levin_ex_4_1_9_sequence_identities`
 - **Example 4.1.10**, p.340 [FO-197]: Sequence of partial sums and sequence of differences; a_{n+1} = a_n + d_n so the sequence is the partial sums of its differences — *proved proved here* — `UndergradKB.Foundations.levin_s4_1_3_differences_partial_sums`
 - **Differences §4.1.3**, p.341 [FO-197]: Sequence of partial sums and sequence of differences; a_{n+1} = a_n + d_n so the sequence is the partial sums of its differences — *proved proved here* — `UndergradKB.Foundations.levin_s4_1_3_differences_partial_sums`
 - **Example 4.1.12**, p.342 [FO-492]: Recurrence a_n = 3a_{n-1}+2, a_0 = 1 gives 1,5,17,53,161,485. — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_4_1_12_recurrence_terms`
@@ -449,7 +476,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 5
 
-47 items; 39 with a Lean name; 16 proved proved here; 23 in Mathlib; 8 not a result.
+49 items; 41 with a Lean name; 18 proved proved here; 23 in Mathlib; 8 not a result.
 
 - **Sec 5.1**, p.409 [FO-001]: A set is a collection of elements; membership relation; sets are finite or infinite — *proved proved here* — `UndergradKB.Foundations.set_membership_finite_infinite`
 - **Sec 5.1**, p.409 [FO-002]: Two sets are equal iff they have the same elements (order and repetition irrelevant) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s1_1_set_ext`, `Set.ext`
@@ -486,10 +513,12 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Text §5.2**, p.423 [FO-079]: Domain, codomain and range of a function; range is a subset of the codomain — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_2_range`, `Set.range`, `Set.mem_range`
 - **Example 5.2.1**, p.423 [FO-078]: A function f : A -> B assigns to each element of A exactly one element of B (Hammack: a relation from A to B in which each x has a unique y; f(x) is the image of x) — *not a result* — –
 - **Example 5.2.1**, p.423 [FO-480]: Range of tripling is multiples of 3; range of g is {a,c}; table function is 3x. — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_5_2_1_function_ranges`
+- **Example 5.2.3**, p.426 [FO-549]: f and g diagrams are functions, h is not (no output at 1, two at 2) — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_5_2_3_which_are_functions`
 - **Example 5.2.4**, p.427 [FO-099]: Recursive definition of a function on N (initial condition plus recurrence) — *not a result* — –
 - **Example 5.2.4**, p.427 [FO-481]: For f(0)=0, f(n+1)=f(n)+2n+1 one gets f(6)=36. — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_5_2_4_recursive_value`
 - **Box §5.2.1**, p.428 [FO-099]: Recursive definition of a function on N (initial condition plus recurrence) — *not a result* — –
 - **Example 5.2.5**, p.428 [FO-099]: Recursive definition of a function on N (initial condition plus recurrence) — *not a result* — –
+- **Example 5.2.5**, p.428 [FO-550]: recursive definitions determine 3*2^n, 7+2n and n! — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_5_2_5_recursive_definitions`
 - **Text §5.2.2**, p.429 [FO-082]: Surjective (onto): every element of the codomain is an output — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_4_surjective`
 - **Example 5.2.6**, p.429 [FO-382]: n -> 3n on Z is not surjective; its range is the multiples of 3. — *proved proved here* — `UndergradKB.Foundations.Course.levin_ex_5_2_6_triple_not_surjective`
 - **Text §5.2.2**, p.430 [FO-081]: Injective (one-to-one): distinct inputs have distinct outputs — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_4_injective`
@@ -507,7 +536,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 6
 
-38 items; 37 with a Lean name; 21 proved proved here; 16 in Mathlib; 1 not formalized.
+38 items; 38 with a Lean name; 22 proved proved here; 16 in Mathlib.
 
 - **Sec 6.1**, p.441 [FO-425]: The generating series of a sequence a_0, a_1, ... is the power series sum a_n x^n; the sequence is read off its coefficients (starting at a_0) and the series determines the sequence — *in Mathlib* — `UndergradKB.Foundations.GeneratingFunctions.levin_ex_6_1_1_coeff`, `UndergradKB.Foundations.GeneratingFunctions.levin_s6_1_genSeries_injective`, `PowerSeries.mk`, `PowerSeries.coeff_mk`
 
@@ -551,5 +580,5 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Ex 6.2.6**, p.461 [FO-127]: Linear congruences: if gcd(a,n) does not divide b then ax ≡ b (mod n) has no solution; otherwise solved by dividing out gcd — *proved proved here* — `UndergradKB.Foundations.exists_linear_congruence_iff`, `UndergradKB.Foundations.no_solution_linear_congruence`
 - **Box §6.2.4**, p.463 [FO-127]: Linear congruences: if gcd(a,n) does not divide b then ax ≡ b (mod n) has no solution; otherwise solved by dividing out gcd — *proved proved here* — `UndergradKB.Foundations.exists_linear_congruence_iff`, `UndergradKB.Foundations.no_solution_linear_congruence`
 - **Box §6.2.5**, p.463 [FO-128]: Linear Diophantine equation ax+by=c: definition, solvable iff gcd(a,b) ∣ c, solving via congruences — *proved proved here* — `UndergradKB.Foundations.exists_linear_diophantine_iff`, `UndergradKB.Foundations.linear_diophantine_solutions`
-- **Box §6.2.5 @463 (remark)**, p.463 [FO-129]: Matiyasevich: no general algorithm decides solvability of Diophantine equations (mentioned) — *not formalized* — –
+- **Box §6.2.5 @463 (remark)**, p.463 [FO-129]: Matiyasevich: no general algorithm decides solvability of Diophantine equations (mentioned) — *proved proved here* — `UndergradKB.Foundations.levin_s6_2_5_hilbert_tenth`, `UndergradKB.Foundations.hilbert_tenth_nat`, `UndergradKB.Foundations.re_dioph`, `UndergradKB.Foundations.dprm`
 - **Ex 6.2.7**, p.465 [FO-128]: Linear Diophantine equation ax+by=c: definition, solvable iff gcd(a,b) ∣ c, solving via congruences — *proved proved here* — `UndergradKB.Foundations.exists_linear_diophantine_iff`, `UndergradKB.Foundations.linear_diophantine_solutions`

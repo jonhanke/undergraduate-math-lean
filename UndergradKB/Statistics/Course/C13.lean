@@ -1,6 +1,7 @@
 import UndergradKB.Statistics.Anova
 import UndergradKB.Statistics.AnovaTest
 import UndergradKB.Statistics.FDistribution
+import UndergradKB.Statistics.Shape
 import UndergradKB.Statistics.Inference
 import UndergradKB.Common.Attr
 
@@ -71,5 +72,33 @@ theorem reciprocal_of_f_statistic_law {Ω : Type*} [MeasurableSpace Ω] {P : Mea
     (hind : IndepFun U V P) :
     HasLaw (fun ω ↦ ((U ω / d₁) / (V ω / d₂))⁻¹) (fDistribution d₂ d₁) P :=
   hasLaw_inv_fDistribution hd₁ hd₂ hU hV hind
+
+/-- OpenStax Introductory Statistics 2e §13.3 (ST-116). Mean of the F distribution: for denominator degrees
+of freedom `d₂ > 2`, the F law has mean `d₂/(d₂ - 2)`. -/
+@[kb "openstaxintrostats2e" "§13.3, p. 695"]
+theorem f_distribution_mean {d₁ d₂ : ℝ} (hd₁ : 0 < d₁) (hd₂ : 2 < d₂) :
+    ∫ x, x ∂(fDistribution d₁ d₂) = d₂ / (d₂ - 2) :=
+  (integral_id_fDistribution hd₁ hd₂).2
+
+/-- OpenStax Introductory Statistics 2e §13.3 (ST-116). The mean of the F distribution is close to one when
+the denominator degrees of freedom are large: it tends to `1` as `d₂ → ∞`. -/
+@[kb "openstaxintrostats2e" "§13.3, p. 695"]
+theorem f_distribution_mean_tends_to_one {d₁ : ℝ} (hd₁ : 0 < d₁) :
+    Filter.Tendsto (fun d₂ : ℝ ↦ ∫ x, x ∂(fDistribution d₁ d₂)) Filter.atTop (nhds 1) :=
+  tendsto_integral_id_fDistribution hd₁
+
+/-- OpenStax Introductory Statistics 2e §13.3 (ST-116). Variance of the F distribution (for `d₂ > 4`):
+`2 d₂² (d₁ + d₂ - 2) / (d₁ (d₂ - 2)² (d₂ - 4))`. -/
+@[kb "openstaxintrostats2e" "§13.3, p. 695"]
+theorem f_distribution_variance {d₁ d₂ : ℝ} (hd₁ : 0 < d₁) (hd₂ : 4 < d₂) :
+    variance id (fDistribution d₁ d₂) = 2 * d₂ ^ 2 * (d₁ + d₂ - 2) / (d₁ * (d₂ - 2) ^ 2 * (d₂ - 4)) :=
+  variance_id_fDistribution hd₁ hd₂
+
+/-- OpenStax Introductory Statistics 2e §13.3 (ST-116). The F curve is skewed to the right: for `d₂ > 6`
+its third central moment is positive. -/
+@[kb "openstaxintrostats2e" "§13.3, p. 695"]
+theorem f_distribution_skewed_right {d₁ d₂ : ℝ} (hd₁ : 0 < d₁) (hd₂ : 6 < d₂) :
+    0 < centralMoment id 3 (fDistribution d₁ d₂) :=
+  (fDistribution_right_skewed hd₁ hd₂).2
 
 end UndergradKB.Statistics.Course.C13

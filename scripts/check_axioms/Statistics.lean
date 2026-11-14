@@ -10,3 +10,4 @@ import Solution_Statistics
 #print axioms UndergradKB.Headlines.Statistics.tendstoInDistribution_pearsonStatistic
 #print axioms UndergradKB.Headlines.Statistics.tendstoInDistribution_independenceStatistic
 #print axioms UndergradKB.Headlines.Statistics.tendstoInDistribution_homogeneityStatistic
+#print axioms UndergradKB.Headlines.Statistics.tendstoInDistribution_homogeneityStatisticN

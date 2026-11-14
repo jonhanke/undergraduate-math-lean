@@ -11,6 +11,9 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.AreConjugate.refl
 #check @UndergradKB.Topology.AreConjugate.symm
 #check @UndergradKB.Topology.AreConjugate.trans
+#check @UndergradKB.Topology.CantorBrouwer.nonempty_homeomorph_cantor_of_perfect
+#check @UndergradKB.Topology.CantorCube.exists_homeomorph_cantorCube_pi
+#check @UndergradKB.Topology.CantorCube.nonempty_homeomorph_pi
 #check @UndergradKB.Topology.Cell
 #check @UndergradKB.Topology.ClosedSubgroupsRn.closed_subgroup_equiv_real_pi_prod_int_pi
 #check @UndergradKB.Topology.ClosedSubgroupsRn.exists_discrete_subgroup_equiv
@@ -473,6 +476,9 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.FilterBasisEquiv
 #check @UndergradKB.Topology.FilterBasisFiner
 #check @UndergradKB.Topology.FinsuppExpo
+#check @UndergradKB.Topology.HMExt.continuousOn_extend
+#check @UndergradKB.Topology.HMPaths.exists_path_of_dist_lt
+#check @UndergradKB.Topology.HMPaths.locallyPathConnectedSpace_of_compact_locallyConnected
 #check @UndergradKB.Topology.HasFIP
 #check @UndergradKB.Topology.HasFixedPointProp.of_homeomorph
 #check @UndergradKB.Topology.HilbertCube
@@ -647,6 +653,7 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.ProjectivePlane
 #check @UndergradKB.Topology.QuotientsOfDualHaveCharacters
 #check @UndergradKB.Topology.RestrictedProd
+#check @UndergradKB.Topology.Selection.exists_continuous_selection
 #check @UndergradKB.Topology.SharkovskiiLT
 #check @UndergradKB.Topology.SineCurve.isConnected_X
 #check @UndergradKB.Topology.SineCurve.not_isPathConnected_X
@@ -695,6 +702,7 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.Wallman.wallman_compactification
 #check @UndergradKB.Topology.WellOrderedBySubset
 #check @UndergradKB.Topology.abstractDual_compact_abelian_group
+#check @UndergradKB.Topology.actionHomeomorph
 #check @UndergradKB.Topology.addSubgroup_real_eq_bot_or_top_or_zmultiples
 #check @UndergradKB.Topology.analyticSet_iff_isSouslinSpace
 #check @UndergradKB.Topology.annihilator_realPow_iff
@@ -766,6 +774,7 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.continuousOn_gapExt
 #check @UndergradKB.Topology.continuous_cubeMap
 #check @UndergradKB.Topology.continuous_eval_of_equicontinuous
+#check @UndergradKB.Topology.continuous_mk_of_map
 #check @UndergradKB.Topology.continuous_stefanMap
 #check @UndergradKB.Topology.continuous_tychonoffEval
 #check @UndergradKB.Topology.converse_sharkovskii
@@ -843,6 +852,7 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.ediam_le_tsum_ediam_of_isConnected_isOpen
 #check @UndergradKB.Topology.ediam_le_tsum_ediam_of_isPreconnected
 #check @UndergradKB.Topology.eq_iSup_ultrafilters
+#check @UndergradKB.Topology.eq_one_of_norm_pow_sub_one_le
 #check @UndergradKB.Topology.equicontinuousAt_closure
 #check @UndergradKB.Topology.equicontinuousAt_closure_of_continuousMap
 #check @UndergradKB.Topology.evalAtPoint
@@ -883,8 +893,11 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.exists_continuousMulEquiv_of_isQuotientMap_of_ker_eq
 #check @UndergradKB.Topology.exists_continuousMulEquiv_prod_quotient
 #check @UndergradKB.Topology.exists_continuous_extension_iff
+#check @UndergradKB.Topology.exists_continuous_section_of_totallyDisconnected
 #check @UndergradKB.Topology.exists_continuous_surjective_cantorSpace_iff
 #check @UndergradKB.Topology.exists_continuous_surjective_hilbertCube
+#check @UndergradKB.Topology.exists_continuous_surjective_unitInterval_iff
+#check @UndergradKB.Topology.exists_continuous_surjective_unitInterval_of_peano
 #check @UndergradKB.Topology.exists_denseRange_bool_pow
 #check @UndergradKB.Topology.exists_denseRange_pi
 #check @UndergradKB.Topology.exists_dense_card_le_bool_pow
@@ -902,6 +915,7 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.exists_fixedPt_of_subset_image
 #check @UndergradKB.Topology.exists_hamiltonian_chain
 #check @UndergradKB.Topology.exists_homeomorph_circle_of_t2Space_quotient
+#check @UndergradKB.Topology.exists_homeomorph_identityComponent_prod_cantorCube
 #check @UndergradKB.Topology.exists_homeomorph_range_factor
 #check @UndergradKB.Topology.exists_homeomorph_stoneCech_of_compact
 #check @UndergradKB.Topology.exists_isClopen_subset_of_connectedComponent_one
@@ -1037,6 +1051,8 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.isCompactum_iff
 #check @UndergradKB.Topology.isCompactum_of_metric
 #check @UndergradKB.Topology.isCompactum_pi
+#check @UndergradKB.Topology.isConnected_closure_of_isPreconnected
+#check @UndergradKB.Topology.isConnected_commutator
 #check @UndergradKB.Topology.isConnected_euclideanSpace_two_compl_origin
 #check @UndergradKB.Topology.isConnected_fiber_quotient_connectedComponentOfOne
 #check @UndergradKB.Topology.isContinuum_fin_pi_iff
@@ -1086,7 +1102,11 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.isMonothetic_iff_exists_injective_dual_circle
 #check @UndergradKB.Topology.isMonothetic_multiplicative_int
 #check @UndergradKB.Topology.isNSS_circle
+#check @UndergradKB.Topology.isNSS_iff_exists_isClosedEmbedding_unitary
 #check @UndergradKB.Topology.isNSS_of_discreteTopology
+#check @UndergradKB.Topology.isNSS_of_injective_normedRing
+#check @UndergradKB.Topology.isNSS_of_injective_unitary_pi
+#check @UndergradKB.Topology.isNSS_unitary_pi
 #check @UndergradKB.Topology.isNeutralFixedPt_iff
 #check @UndergradKB.Topology.isNeutralFixedPt_quadMap_quarter
 #check @UndergradKB.Topology.isOfFinOrder_of_trivial_on_connectedComponent
@@ -1143,6 +1163,7 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.isTopologicalBasis_open_boxes
 #check @UndergradKB.Topology.isTopologicalBasis_open_rectangles
 #check @UndergradKB.Topology.isTopologicalGroup_pi
+#check @UndergradKB.Topology.isTopologicalGroup_semidirectProduct
 #check @UndergradKB.Topology.isTopologicalGroup_totallyDisconnected_quotient_connectedComponentOfOne
 #check @UndergradKB.Topology.isTopologicallySimple_iff_of_discreteTopology
 #check @UndergradKB.Topology.isTopologicallySimple_of_isSimpleGroup
@@ -1161,7 +1182,6 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.le_productTopology_of_continuous_proj
 #check @UndergradKB.Topology.locallyCompactSpace_pi_iff
 #check @UndergradKB.Topology.locallyCompact_t2_restrictedProd_iff
-#check @UndergradKB.Topology.locallyConnectedSpace_unitInterval
 #check @UndergradKB.Topology.locallyIsomorphic_of_lift
 #check @UndergradKB.Topology.locallyIsomorphic_quotient_of_discrete
 #check @UndergradKB.Topology.locallyIsomorphic_real_pow_of_discrete_quotient_torus
@@ -1212,9 +1232,14 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.nonempty_equiv_real_prod_real
 #check @UndergradKB.Topology.nonempty_homeo_hilbertCube
 #check @UndergradKB.Topology.nonempty_homeo_nCube
+#check @UndergradKB.Topology.nonempty_homeomorph_cantorCube_of_group
+#check @UndergradKB.Topology.nonempty_homeomorph_cantor_of_group
 #check @UndergradKB.Topology.nonempty_homeomorph_cell_prod_cell
 #check @UndergradKB.Topology.nonempty_homeomorph_cone_unitSphere_cell
 #check @UndergradKB.Topology.nonempty_homeomorph_cube_cell
+#check @UndergradKB.Topology.nonempty_homeomorph_identityComponent_prod
+#check @UndergradKB.Topology.nonempty_homeomorph_identityComponent_prod_cantor
+#check @UndergradKB.Topology.nonempty_homeomorph_identityComponent_prod_of_compact
 #check @UndergradKB.Topology.nonempty_homeomorph_range_eval
 #check @UndergradKB.Topology.nonempty_homeomorph_suspension_unitSphere
 #check @UndergradKB.Topology.nonempty_relIso_Iio_type
@@ -1306,6 +1331,8 @@ import UndergradKB.Topology
 #check @UndergradKB.Topology.semiconj_minimalPeriod_homeomorph
 #check @UndergradKB.Topology.semiconj_periodicPts_homeomorph
 #check @UndergradKB.Topology.semiconj_symm_homeomorph
+#check @UndergradKB.Topology.semidirectHomeomorphProd
+#check @UndergradKB.Topology.semidirectProductTopology
 #check @UndergradKB.Topology.separableSpace_continuousMap_hilbertCube
 #check @UndergradKB.Topology.separableSpace_iff_densityCharacter_le
 #check @UndergradKB.Topology.separableSpace_pi_of_card_le_continuum

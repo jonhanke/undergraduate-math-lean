@@ -3,6 +3,12 @@ import UndergradKB.ComplexAnalysis.Basics
 import UndergradKB.ComplexAnalysis.Series
 import UndergradKB.ComplexAnalysis.Derivative
 import UndergradKB.ComplexAnalysis.SmallFacts
+import UndergradKB.ComplexAnalysis.StarExamples
+import UndergradKB.ComplexAnalysis.ExamplesWave4a
+import UndergradKB.ComplexAnalysis.ExamplesWave4b
+import UndergradKB.ComplexAnalysis.GreenRadial
+import UndergradKB.ComplexAnalysis.GreenStar
+import UndergradKB.ComplexAnalysis.StarPath
 import UndergradKB.ComplexAnalysis.CauchyRiemann
 import UndergradKB.ComplexAnalysis.Mobius
 import UndergradKB.ComplexAnalysis.RiemannSphere
@@ -39,6 +45,11 @@ import UndergradKB.ComplexAnalysis.ExamplesIntegrals
 import UndergradKB.ComplexAnalysis.ExamplesSingularities
 import UndergradKB.ComplexAnalysis.ExamplesMore
 import UndergradKB.ComplexAnalysis.GreenRectangle
+import UndergradKB.ComplexAnalysis.StarJordan
+import UndergradKB.ComplexAnalysis.StarJordanExamples
+import UndergradKB.ComplexAnalysis.LaurentInvSin
+import UndergradKB.ComplexAnalysis.GreenStarGeneral
+import UndergradKB.ComplexAnalysis.JordanSeparation
 import UndergradKB.ComplexAnalysis.Course.Beck1
 import UndergradKB.ComplexAnalysis.Course.Beck2
 import UndergradKB.ComplexAnalysis.Course.Beck3
@@ -49,6 +60,7 @@ import UndergradKB.ComplexAnalysis.Course.Beck7
 import UndergradKB.ComplexAnalysis.Course.Beck8
 import UndergradKB.ComplexAnalysis.Course.Beck9
 import UndergradKB.ComplexAnalysis.Course.BeckA
+import UndergradKB.ComplexAnalysis.Course.BeckDefs
 
 /-! # Complex analysis
 Topic root. Import every file of the topic here; a topic imports Mathlib modules

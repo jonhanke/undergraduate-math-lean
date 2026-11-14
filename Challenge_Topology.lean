@@ -14,9 +14,13 @@ import UndergradKB.Topology.DualityTheorem
 import UndergradKB.Topology.StructureTheorems
 import UndergradKB.Topology.SharkovskiiOdd4
 import UndergradKB.Topology.SharkovskiiOdd7
+import UndergradKB.Topology.HahnMazurkiewicz
+import UndergradKB.Topology.CantorBrouwer
+import UndergradKB.Topology.CantorCube
+import UndergradKB.Topology.CompactSection
 
 /-!
-# Headline statements of undergraduate-math-lean 0.2.1: topology (Morris, *Topology Without Tears*)
+# Headline statements of undergraduate-math-lean 0.2.2: topology (Morris, *Topology Without Tears*)
 
 The main results of this topic that Mathlib and Tau Ceti lack, one theorem each, with every proof a deliberate
 `sorry`: the period three theorem; Peano's space-filling curve onto the `n`-cube; the Banach–Mazur theorem (every
@@ -25,7 +29,11 @@ quotients of `ℝⁿ` and of closed subgroups of the torus; the Wallman compacti
 Stone–Čech compactification exactly for normal spaces; and Pontryagin–van Kampen duality for the groups
 `ℝᵃ × 𝕋ᵇ × ℤᶜ`; and, added in 0.2.1: Pontryagin–van Kampen duality for every locally compact Hausdorff abelian
 group; Sharkovskii's theorem on the periods of continuous maps of the real line and its converse; and the principal
-structure theorem for locally compact abelian groups, with its form for connected groups. To check what is claimed, read this file. `Solution_Topology.lean` proves the same statements from
+structure theorem for locally compact abelian groups, with its form for connected groups; and, added in 0.2.2: the
+Hahn–Mazurkiewicz theorem (the Hausdorff continuous images of `[0, 1]` are exactly the compact, connected, locally
+connected metrizable spaces); Brouwer's characterization of the Cantor set; every infinite totally disconnected compact
+group is homeomorphic to a Cantor cube `{0, 1}^κ`; and every compact group is homeomorphic to the product of its
+identity component and the quotient by it. To check what is claimed, read this file. `Solution_Topology.lean` proves the same statements from
 the library, and `lake comparator` (configured by `comparator/Topology.json`) checks that each proved statement is
 exactly the one here and uses only the standard axioms `propext`, `Classical.choice` and `Quot.sound`.
 
@@ -33,7 +41,8 @@ Each statement is the library's statement, copied. The statements were not yet r
 
 ## Definitions used
 
-Besides Mathlib (`Function.minimalPeriod`, `unitInterval`, `AddCircle`, `Circle`, `PontryaginDual`, `StoneCech`), the
+Besides Mathlib (`Function.minimalPeriod`, `unitInterval`, `AddCircle`, `Circle`, `PontryaginDual`, `StoneCech`,
+`cantorSet`, `Subgroup.connectedComponentOfOne`), the
 statements use these definitions of the library (namespace `UndergradKB.Topology`); a reader checking a statement
 should check these too:
 
@@ -171,6 +180,44 @@ theorem lca_connected_structure {G : Type u} [CommGroup G] [TopologicalSpace G] 
     ∃ (a : ℕ) (K : Type u) (_ : CommGroup K) (_ : TopologicalSpace K),
       IsTopologicalGroup K ∧ CompactSpace K ∧ T2Space K ∧ ConnectedSpace K ∧
         Nonempty (G ≃ₜ* (Fin a → Multiplicative ℝ) × K) := by
+  sorry
+
+/-- **The Hahn–Mazurkiewicz theorem** (Morris Theorem 9.5.12, both directions): a Hausdorff space is a continuous
+image of `[0, 1]` if and only if it is compact, connected, locally connected and metrizable. Related: Mathlib has
+Peano-type surjections only from the Cantor space onto compact metric spaces; neither Mathlib nor Tau Ceti has this
+theorem. -/
+theorem hahn_mazurkiewicz {X : Type*} [TopologicalSpace X] [T2Space X] :
+    (∃ f : unitInterval → X, Continuous f ∧ Function.Surjective f) ↔
+      CompactSpace X ∧ ConnectedSpace X ∧ LocallyConnectedSpace X ∧
+        TopologicalSpace.MetrizableSpace X := by
+  sorry
+
+/-- **Brouwer's characterization of the Cantor set** (Morris Exercises 9.1 #2; used for Theorem A5.0.23): every nonempty
+compact metrizable totally disconnected space without isolated points is homeomorphic to the Cantor set. Related:
+Mathlib proves that the Cantor set is homeomorphic to `ℕ → Bool` (`cantorSetHomeomorphNatToBool`), not this
+characterization; Tau Ceti does not have it. -/
+theorem brouwer_cantor_set {X : Type*} [TopologicalSpace X] [CompactSpace X]
+    [TopologicalSpace.MetrizableSpace X] [TotallyDisconnectedSpace X] [Nonempty X]
+    (hper : ∀ x : X, ¬ IsOpen ({x} : Set X)) : Nonempty (X ≃ₜ cantorSet) := by
+  sorry
+
+/-- **Totally disconnected compact groups are Cantor cubes** (Morris Theorem A5.0.23): an infinite compact Hausdorff
+totally disconnected group is homeomorphic to `{0, 1}^κ` for an infinite set `κ` (no metrizability assumed). Related:
+neither Mathlib nor Tau Ceti has it. -/
+theorem compact_totally_disconnected_group_cantor_cube {G : Type u} [Group G] [TopologicalSpace G]
+    [IsTopologicalGroup G] [CompactSpace G] [T2Space G] [TotallyDisconnectedSpace G] [Infinite G] :
+    ∃ κ : Type u, Infinite κ ∧ Nonempty (G ≃ₜ (κ → Bool)) := by
+  sorry
+
+/-- **A compact group is its identity component times a totally disconnected group, as a space** (Morris Theorem
+A5.0.26): a compact Hausdorff group `G` is homeomorphic to `G₀ × G/G₀`, where `G₀` is the connected component of the
+identity (the proof constructs a continuous cross-section of `G → G/G₀`). Related: Mathlib defines `G₀`
+(`Subgroup.connectedComponentOfOne`); neither Mathlib nor Tau Ceti has this decomposition. -/
+theorem compact_group_homeomorph_identityComponent_prod (G : Type*) [Group G] [TopologicalSpace G]
+    [IsTopologicalGroup G] [CompactSpace G] [T2Space G] :
+    have := normal_connectedComponentOfOne G
+    Nonempty (G ≃ₜ (Subgroup.connectedComponentOfOne G) ×
+      (G ⧸ Subgroup.connectedComponentOfOne G)) := by
   sorry
 
 end UndergradKB.Headlines.Topology

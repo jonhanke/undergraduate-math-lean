@@ -12,9 +12,10 @@ import UndergradKB.Probability.Shuffles
 import UndergradKB.Probability.LocalLimitLattice
 import UndergradKB.Probability.MarkovClt
 import UndergradKB.Probability.FirstMaximum
+import UndergradKB.Probability.LittleLaw
 
 /-!
-# Headline statements of undergraduate-math-lean 0.2.1: probability (Grinstead–Snell)
+# Headline statements of undergraduate-math-lean 0.2.2: probability (Grinstead–Snell)
 
 The main results of this topic that Mathlib and Tau Ceti lack, with every proof a deliberate `sorry`: the
 convergence theorems for regular and ergodic finite Markov chains; the theory of absorbing chains (absorption is
@@ -22,7 +23,8 @@ certain; the fundamental matrix gives the absorption times and probabilities); P
 the simple random walk in dimension 2 and its transience in dimension 3; the arc sine law for the time in the lead;
 the composition law and the counting formula for riffle shuffles; the local limit theorem for integer-valued
 sums; the central limit theorem for the number of visits of an ergodic Markov chain to a state; and the arc sine
-law for the time of the first maximum of a symmetric random walk with continuous step law. To check what is claimed, read this file. `Solution_Probability.lean` proves the same statements from the
+law for the time of the first maximum of a symmetric random walk with continuous step law; and, added in 0.2.2,
+Little's law `L = λW` in its sample-path form. To check what is claimed, read this file. `Solution_Probability.lean` proves the same statements from the
 library, and `lake comparator` (configured by `comparator/Probability.json`) checks that each proved statement is
 exactly the one here and uses only the standard axioms `propext`, `Classical.choice` and `Quot.sound`.
 
@@ -195,6 +197,18 @@ theorem firstMaxIndex_tendsto {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω}
     (α : ℝ) (h0 : 0 < α) (h1 : α < 1) :
     Tendsto (fun n : ℕ => (P {ω | (firstMaxIndex X n ω : ℝ) < n * α}).toReal) atTop
       (𝓝 ((2 / π) * Real.arcsin (√α))) := by
+  sorry
+
+/-- **Little's law, sample-path form** (Stidham's theorem; Grinstead–Snell Example 6.29 uses the law without proof):
+let customer `i` arrive at time `a i` (nondecreasing, `a 0 ≥ 0`) and stay for the time `w i ≥ 0`. If the arrival rate
+`λ = lim n / aₙ` exists and is positive and the mean time in the system `W = lim (w₀ + ⋯ + wₙ₋₁)/n` exists, then the
+time-average number in the system `(1/T) ∫₀^T N(t) dt` tends to `λ W`. A deterministic statement about one sample
+path, with no probability assumption. Related: neither Mathlib nor Tau Ceti has Little's law or queues. -/
+theorem little_law_sample_path (a w : ℕ → ℝ) (ha : Monotone a) (ha0 : 0 ≤ a 0) (hw : ∀ i, 0 ≤ w i)
+    {lam W : ℝ} (hlam : 0 < lam)
+    (hA : Tendsto (fun n : ℕ => (n : ℝ) / a n) atTop (𝓝 lam))
+    (hW : Tendsto (fun n : ℕ => (∑ i ∈ range n, w i) / n) atTop (𝓝 W)) :
+    Tendsto (fun T : ℝ => (∫ t in (0 : ℝ)..T, queueNumber a w t) / T) atTop (𝓝 (lam * W)) := by
   sorry
 
 end UndergradKB.Headlines.Probability

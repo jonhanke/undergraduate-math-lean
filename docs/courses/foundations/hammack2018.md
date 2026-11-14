@@ -3,7 +3,7 @@
 Generated from [`docs/coverage/foundations/checklist.md`](../../coverage/foundations/checklist.md); do not edit by hand.
 Items are in the book's order. Statements are our own paraphrases, not book text. Cite the Lean name; `lake build Foundations` builds this topic.
 
-346 items in 14 chapters; 310 with a Lean name (89.6%).
+360 items in 14 chapters; 324 with a Lean name (90.0%).
 
 ## Chapter 1
 
@@ -60,7 +60,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 2
 
-32 items; 15 with a Lean name; 6 proved proved here; 9 in Mathlib; 17 not a result.
+42 items; 25 with a Lean name; 16 proved proved here; 9 in Mathlib; 17 not a result.
 
 
 #### Section 2.1
@@ -99,14 +99,24 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Eq (2.4)**, p.64 [FO-047]: Distributive laws: P and (Q or R) = (P and Q) or (P and R); P or (Q and R) = (P or Q) and (P or R) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_eq_2_4_distrib`
 - **Eq (2.5)**, p.64 [FO-048]: Associative laws for and, or — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_eq_2_5_assoc`
 - **Def 2.1**, p.65 [FO-051]: Quantifiers: universal "for all" and existential "there exists", with their truth conditions and the terms universally/existentially quantified statement — *not a result* — –
+- **Example 2.5**, p.66 [FO-528]: Four translated statements (non-odd integers are even, a non-even integer exists, real cube roots exist, rational products are rational) are true — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_5_true_translations`
+- **Example 2.6**, p.66 [FO-529]: Four translated statements (all integers even, n^2=2, every real a square, sqrt(ab) rational) are false — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_6_false_translations`
 - **Sec 2.7**, p.66 [FO-051]: Quantifiers: universal "for all" and existential "there exists", with their truth conditions and the terms universally/existentially quantified statement — *not a result* — –
 - **Example 2.7**, p.67 [FO-052]: Order of quantifiers matters: forall x exists y does not imply exists y forall x, but exists y forall x implies forall x exists y — *proved proved here* — `UndergradKB.Foundations.forall_exists_of_exists_forall`, `UndergradKB.Foundations.cube_root_quantifier_order`, `UndergradKB.Foundations.lt_quantifier_order`
 - **Sec 2.8**, p.68 [FO-056]: Implicit universal quantifier: an unquantified open conditional P(x) => Q(x) is read as forall x (P(x) => Q(x)) — *not a result* — –
 - **Def 2.2**, p.69 [FO-056]: Implicit universal quantifier: an unquantified open conditional P(x) => Q(x) is read as forall x (P(x) => Q(x)) — *not a result* — –
+- **Example 2.8**, p.69 [FO-530]: Mean Value Theorem as a conditional statement — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_8_mean_value`
 - **Fact 2.2**, p.70 [FO-055]: Fact 2.2: forall x in X, Q(x) means the same as (x in X) => Q(x); "Every P-thing is a Q-thing" is forall x (P(x) => Q(x)) — *proved proved here* — `UndergradKB.Foundations.bounded_quantifiers`
+- **Example 2.9**, p.70 [FO-531]: Goldbach's set X of even integers above 2 equals range of 2k+4; Goldbach holds for 4..20 — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_9_goldbach_setup`
 - **Eq (2.8)**, p.72 [FO-054]: Negating quantified statements: not forall = exists not; not exists = forall not — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_eq_2_8_negate_quantifiers`, `not_exists`, `not_forall₂`
 - **Eq (2.9)**, p.72 [FO-054]: Negating quantified statements: not forall = exists not; not exists = forall not — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_eq_2_8_negate_quantifiers`, `not_exists`, `not_forall₂`
+- **Example 2.10**, p.72 [FO-532]: De Morgan: not (P or Q) iff not P and not Q — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_10_not_or`
+- **Example 2.11**, p.72 [FO-533]: Not both x,y odd iff x even or y even — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_11_not_both_odd`
 - **Eq (2.10)**, p.73 [FO-050]: Negation of an implication: not(P => Q) is equivalent to P and not Q — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_eq_2_10_not_imp`, `not_and_not_right`
+- **Example 2.12**, p.73 [FO-534]: Negation of "every real square is nonnegative" and its truth — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_12_neg_square_nonneg`
+- **Example 2.13**, p.73 [FO-535]: Negation of "every real has a cube root" is some x with y^3 != x for all y; it is false — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_13_neg_cube_root`
+- **Example 2.14**, p.74 [FO-536]: Negation of "if a odd then a^2 odd" is a odd and a^2 not odd; original true — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_14_neg_odd_square`
+- **Example 2.15**, p.74 [FO-537]: Negation of "for all x, x odd implies x^2 odd" and its truth — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_2_15_neg_odd_square_forall`
 - **Sec 2.11**, p.75 [FO-058]: Rules of inference: modus ponens, modus tollens, elimination (disjunctive syllogism); and-introduction, and-elimination, or-introduction — *proved proved here* — `UndergradKB.Foundations.rules_of_inference`
 - **Sec 2.11**, p.76 [FO-058]: Rules of inference: modus ponens, modus tollens, elimination (disjunctive syllogism); and-introduction, and-elimination, or-introduction — *proved proved here* — `UndergradKB.Foundations.rules_of_inference`
 
@@ -286,7 +296,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 8
 
-24 items; 23 with a Lean name; 10 proved proved here; 13 in Mathlib; 1 not a result.
+25 items; 24 with a Lean name; 11 proved proved here; 13 in Mathlib; 1 not a result.
 
 
 #### Section 8.1
@@ -298,6 +308,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 #### Section 8.2
 
 - **Prop §8.2 @171 (restates Definition 1.3)**, p.171 [FO-145]: Definition of subset A ⊆ B (and proper subset) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_s8_2_subset_def`, `Set.Subset`
+- **Example 8.3**, p.171 [FO-551]: Pairs (8,23),(100,75),(102,77) lie in the mod-5 congruence set, (6,10) does not, (4n+3,9n-2) always does — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_3_congruence_pairs`
 - **Example 8.4**, p.171 [FO-486]: -22, -1, 5 lie in {3x^3+2 : x in Z}; 0 and 12 do not. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_4_three_cubed_plus_two`
 - **Example 8.5**, p.172 [FO-386]: Integers divisible by 18 are a subset of integers divisible by 6. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_5_dvd_18_subset_dvd_6`
 - **Example 8.6**, p.172 [FO-387]: Integers divisible by both 2 and 9 are divisible by 6. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_8_6_dvd_2_inter_dvd_9`
@@ -391,7 +402,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 11
 
-25 items; 25 with a Lean name; 14 proved proved here; 11 in Mathlib.
+27 items; 27 with a Lean name; 16 proved proved here; 11 in Mathlib.
 
 - **Def 11.1**, p.214 [FO-062]: A (binary) relation on A, or from A to B, is a subset of A x A (resp. A x B) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_11_1_relation_is_subset`, `SetRel`
 - **Example 11.1**, p.214 [FO-457]: The ten listed pairs on {1,2,3,4} form the relation >=, and (3,4) is not in it. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_1_geq_relation`
@@ -410,12 +421,14 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Def 11.4**, p.223 [FO-066]: Equivalence class of a under an equivalence relation: [a] = set of x related to a — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_11_4_class_mem`, `Setoid.classes`, `Setoid.mem_classes`
 - **Example 11.9**, p.223 [FO-463]: Equality on {-1,1,2,3,4} has five singleton classes. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_9_equality_classes`
 - **Example 11.10**, p.223 [FO-464]: Same parity on {-1,1,2,3,4} has exactly the classes {2,4} and {-1,1,3}. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_10_parity_classes`
+- **Example 11.11**, p.223 [FO-544]: R4 of Figure 11.2 is an equivalence with classes {-1},{1,3},{2,4} — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_11_R4_classes`
 - **Example 11.12**, p.224 [FO-465]: Same degree is an equivalence relation on real polynomials; the class of 3x^2+2 is the degree-2 polynomials. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_12_same_degree`
 - **Example 11.13**, p.224 [FO-466]: Classes of congruence mod 3: [0] is the multiples of 3, [1] and [2] by remainder. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_13_classes_mod_three`, `UndergradKB.Foundations.Course.hammack_ex_11_13_class_names`
 - **Thm 11.1**, p.227 [FO-068]: For an equivalence relation, [a] = [b] iff aRb — *proved proved here* — `UndergradKB.Foundations.eqvClass_eq_iff`, `UndergradKB.Foundations.relClass_eq_iff`
 - **Thm 11.2**, p.228 [FO-070]: The equivalence classes of an equivalence relation on A form a partition of A — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_11_2_classes_partition`, `Setoid.isPartition_classes`, `Setoid.classes_eqv_classes`
 - **Def 11.5**, p.228 [FO-069]: Definition of partition of a set (nonempty blocks, cover, pairwise disjoint) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_11_5_partition`, `Setoid.IsPartition`
 - **Example 11.14**, p.228 [FO-467]: Five listed families of subsets of a 4-element set are partitions. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_14_partitions_of_four`
+- **Example 11.15**, p.228 [FO-545]: Classes of R1..R4 of Figure 11.2 form partitions of A with the listed blocks — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_15_classes_partition`
 - **Example 11.16**, p.228 [FO-468]: The classes of congruence mod 3 are the three remainder sets and form a partition of Z. — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_11_16_mod_three_partition`
 
 #### Section 11.4
@@ -430,7 +443,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 12
 
-35 items; 34 with a Lean name; 14 proved proved here; 20 in Mathlib; 1 not a result.
+36 items; 35 with a Lean name; 15 proved proved here; 20 in Mathlib; 1 not a result.
 
 - **Def 12.1**, p.236 [FO-078]: A function f : A -> B assigns to each element of A exactly one element of B (Hammack: a relation from A to B in which each x has a unique y; f(x) is the image of x) — *not a result* — –
 - **Example 12.1**, p.236 [FO-469]: {(n,\|n\|+2)} in Z x N is the graph of a function containing (1,3) and (-3,5). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_1_abs_plus_two_graph`
@@ -452,6 +465,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Prop §12.3**, p.246 [FO-085]: Any 10 integers in [1,100] have two different subsets with equal sum (pigeonhole application) — *proved proved here* — `UndergradKB.Foundations.exists_subsets_eq_sum`
 - **Def 12.5**, p.247 [FO-086]: Composition g∘f of f : A->B and g : B->C — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_def_12_5_comp`
 - **Example 12.8**, p.248 [FO-377]: The composition g o f of two small finite functions is (a,3),(b,1),(c,3). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_8_composition`
+- **Example 12.9**, p.248 [FO-546]: f: A->B, g: C->B with B != C and B not subset of C, so g after f undefined — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_9_composition_undefined`
 - **Example 12.10**, p.248 [FO-378]: g o f = x^2+x+1, f o g = x^2+3x+2 and they differ (composition is not commutative). — *proved proved here* — `UndergradKB.Foundations.Course.hammack_ex_12_10_composition_not_commutative`
 - **Thm 12.1**, p.249 [FO-087]: Function composition is associative — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_12_1_comp_assoc`, `Function.comp_assoc`
 - **Thm 12.2**, p.249 [FO-088]: Composites of injective (resp. surjective) functions are injective (resp. surjective) — *in Mathlib* — `UndergradKB.Foundations.Course.hammack_thm_12_2_comp`, `Function.Bijective.comp`

@@ -3,7 +3,7 @@
 Generated from [`docs/coverage/topology/checklist.md`](../../coverage/topology/checklist.md); do not edit by hand.
 Items are in the book's order. Statements are our own paraphrases, not book text. Cite the Lean name; `lake build Topology` builds this topic.
 
-814 items in 12 chapters; 789 with a Lean name (96.9%).
+814 items in 12 chapters; 792 with a Lean name (97.3%).
 
 ## Chapter 1
 
@@ -350,7 +350,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 9
 
-41 items; 34 with a Lean name; 9 proved proved here; 24 in Mathlib; 1 partly; 7 not formalized.
+41 items; 34 with a Lean name; 10 proved proved here; 24 in Mathlib; 7 not formalized.
 
 
 #### Section 9.1
@@ -400,7 +400,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Cor 9.5.7**, p.252 [TP-232]: A Hausdorff space is a continuous image of the Cantor space iff it is compact and metrizable. — *proved proved here* — `UndergradKB.Topology.exists_continuous_surjective_cantorSpace_iff`, `exists_nat_bool_continuous_surjective_of_compact`
 - **Thm 9.5.9**, p.252 [TP-233]: Peano: for each n there is a continuous surjection from [0,1] onto the n-cube $[0,1]^n$. — *proved proved here* — `UndergradKB.Topology.peano_exists_continuous_surjective_cube`, `UndergradKB.Topology.exists_continuous_surjective_hilbertCube`
 - **Def 9.5.10**, p.253 [TP-234]: A space is locally connected if it has a basis of connected open sets. — *in Mathlib* — `UndergradKB.Topology.Course.morris_9_5_10`, `LocallyConnectedSpace`
-- **Thm 9.5.12**, p.253 [TP-235]: Hahn-Mazurkiewicz: a Hausdorff space is a continuous image of [0,1] iff it is compact, connected, locally connected and metrizable. — *partly* — `UndergradKB.Topology.compact_connected_locallyConnected_metrizable_of_continuous_surjective_unitInterval`, `UndergradKB.Topology.locallyConnectedSpace_unitInterval`
+- **Thm 9.5.12**, p.253 [TP-235]: Hahn-Mazurkiewicz: a Hausdorff space is a continuous image of [0,1] iff it is compact, connected, locally connected and metrizable. — *proved proved here* — `UndergradKB.Topology.exists_continuous_surjective_unitInterval_iff`, `UndergradKB.Topology.exists_continuous_surjective_unitInterval_of_peano`, `UndergradKB.Topology.compact_connected_locallyConnected_metrizable_of_continuous_surjective_unitInterval`, `UndergradKB.Topology.HMPaths.exists_path_of_dist_lt`
 
 #### Section 9.6
 
@@ -549,7 +549,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 
 ## Chapter 12
 
-444 items; 428 with a Lean name; 225 proved proved here; 201 in Mathlib; 4 partly; 12 not formalized; 2 not a result.
+444 items; 431 with a Lean name; 228 proved proved here; 200 in Mathlib; 5 partly; 9 not formalized; 2 not a result.
 
 
 #### Section 12.1
@@ -750,14 +750,14 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Thm A5.0.20**, p.505 [TP-493]: A connected locally compact abelian group is topologically isomorphic to R^n times a compact connected abelian group — *proved proved here* — `UndergradKB.Topology.exists_equiv_real_compact_of_connectedSpace`
 - **Thm A5.0.21**, p.508 [TP-494]: A connected pro-Lie group is homeomorphic to R^J times a maximal compact subgroup (isomorphic if abelian) — *not formalized* — –
 - **Thm A5.0.22**, p.509 [TP-495]: A connected locally compact group is homeomorphic to R^n times a maximal compact subgroup (isomorphic if abelian) — *not formalized* — –
-- **Thm A5.0.23**, p.509 [TP-496]: The underlying space of an infinite totally disconnected compact group is a Cantor cube — *not formalized* — –
+- **Thm A5.0.23**, p.509 [TP-496]: The underlying space of an infinite totally disconnected compact group is a Cantor cube — *proved proved here* — `UndergradKB.Topology.nonempty_homeomorph_cantorCube_of_group`, `UndergradKB.Topology.CantorCube.nonempty_homeomorph_pi`, `UndergradKB.Topology.CantorCube.exists_homeomorph_cantorCube_pi`, `UndergradKB.Topology.nonempty_homeomorph_cantor_of_group`
 - **Def A5.0.24**, p.509 [TP-497]: The identity component G_0 is a closed normal subgroup, and G/G_0 is a totally disconnected group — *proved proved here* — `UndergradKB.Topology.coe_connectedComponentOfOne`, `UndergradKB.Topology.isClosed_connectedComponentOfOne`, `UndergradKB.Topology.normal_connectedComponentOfOne`, `UndergradKB.Topology.isConnected_fiber_quotient_connectedComponentOfOne`
 - **Prop A5.0.25**, p.509 [TP-497]: The identity component G_0 is a closed normal subgroup, and G/G_0 is a totally disconnected group — *proved proved here* — `UndergradKB.Topology.coe_connectedComponentOfOne`, `UndergradKB.Topology.isClosed_connectedComponentOfOne`, `UndergradKB.Topology.normal_connectedComponentOfOne`, `UndergradKB.Topology.isConnected_fiber_quotient_connectedComponentOfOne`
-- **Thm A5.0.26**, p.510 [TP-498]: A compact group is homeomorphic to G_0 times G/G_0 — *not formalized* — –
+- **Thm A5.0.26**, p.510 [TP-498]: A compact group is homeomorphic to G_0 times G/G_0 — *proved proved here* — `UndergradKB.Topology.nonempty_homeomorph_identityComponent_prod_of_compact`, `UndergradKB.Topology.exists_homeomorph_identityComponent_prod_cantorCube`, `UndergradKB.Topology.exists_continuous_section_of_totallyDisconnected`, `UndergradKB.Topology.Selection.exists_continuous_selection`
 - **Def A5.0.27**, p.510 [TP-499]: NSS group: a neighbourhood of identity containing no non-trivial subgroup — *proved proved here* — `UndergradKB.Topology.IsNSS`, `UndergradKB.Topology.IsAddNSS`, `UndergradKB.Topology.isNSS_of_discreteTopology`, `UndergradKB.Topology.isAddNSS_real`
-- **Thm A5.0.28**, p.510 [TP-500]: Hilbert 5 for compact groups: Lie iff NSS iff locally Euclidean — *partly* — `UndergradKB.Topology.exists_isClosedEmbedding_unitary_of_isNSS`, `UndergradKB.Topology.IsNSS`, `UndergradKB.Topology.isNSS_circle`
+- **Thm A5.0.28**, p.510 [TP-500]: Hilbert 5 for compact groups: Lie iff NSS iff locally Euclidean — *partly* — `UndergradKB.Topology.isNSS_iff_exists_isClosedEmbedding_unitary`, `UndergradKB.Topology.exists_isClosedEmbedding_unitary_of_isNSS`, `UndergradKB.Topology.isNSS_of_injective_unitary_pi`, `UndergradKB.Topology.isNSS_of_injective_normedRing`
 - **Def A5.0.29**, p.511 [TP-501]: Commutator and commutator subgroup G' — *in Mathlib* — `UndergradKB.Topology.Course.morris_A5_0_29`, `commutatorElement`, `commutator`
-- **Thm A5.0.30**, p.511 [TP-502]: For a connected compact group G: G' is connected, every element of G' is a commutator, G' is compact, G'' = G' — *not formalized* — –
+- **Thm A5.0.30**, p.511 [TP-502]: For a connected compact group G: G' is connected, every element of G' is a commutator, G' is compact, G'' = G' — *partly* — `UndergradKB.Topology.isConnected_commutator`, `UndergradKB.Topology.isConnected_closure_of_isPreconnected`
 - **Def A5.0.31**, p.511 [TP-503]: Semisimple connected compact group: G' = G; G' of a connected compact G is semisimple — *not formalized* — –
 - **Cor A5.0.32**, p.511 [TP-503]: Semisimple connected compact group: G' = G; G' of a connected compact G is semisimple — *not formalized* — –
 - **Thm A5.0.33**, p.511 [TP-504]: A connected compact group is homeomorphic to G' times G/G'; any compact group is homeomorphic to G/G_0 times (G_0)' times G_0/(G_0)' — *not formalized* — –
@@ -799,7 +799,7 @@ Items are in the book's order. Statements are our own paraphrases, not book text
 - **Thm A5.4.1**, p.535 [TP-534]: Baire category theorem for locally compact regular spaces — *in Mathlib* — `UndergradKB.Topology.Course.morris_A5_4_1`, `BaireSpace`
 - **Cor A5.4.3**, p.535 [TP-535]: A countable locally compact Hausdorff topological group is discrete — *proved proved here* — `UndergradKB.Topology.discreteTopology_of_countable_locallyCompact`
 - **Thm A5.4.4**, p.536 [TP-536]: Open mapping theorem: a continuous surjective homomorphism from a sigma-compact group to a locally compact Hausdorff group is open — *in Mathlib* — `UndergradKB.Topology.Course.morris_A5_4_4`, `MonoidHom.isOpenMap_of_sigmaCompact`, `isOpenMap_smul_of_sigmaCompact`
-- **§A5.5**, p.537 [TP-537]: Semidirect product G rtimes_eta H of groups determined by an action eta (topological version) — *in Mathlib* — `SemidirectProduct`
+- **§A5.5**, p.537 [TP-537]: Semidirect product G rtimes_eta H of groups determined by an action eta (topological version) — *proved proved here* — `UndergradKB.Topology.isTopologicalGroup_semidirectProduct`, `UndergradKB.Topology.actionHomeomorph`, `UndergradKB.Topology.semidirectProductTopology`, `UndergradKB.Topology.semidirectHomeomorphProd`
 - **Prop A5.5.1**, p.538 [TP-538]: Every non-discrete subgroup of R is dense — *in Mathlib* — `UndergradKB.Topology.Course.morris_A5_5_1`, `Subgroup.dense_or_cyclic`
 - **Prop A5.5.2**, p.539 [TP-539]: A closed subgroup of R is 0, R, or aZ for a > 0 — *proved proved here* — `UndergradKB.Topology.addSubgroup_real_eq_bot_or_top_or_zmultiples`
 - **Cor A5.5.3**, p.539 [TP-540]: The subgroup of R generated by a and b is closed iff a and b are rationally dependent — *proved proved here* — `UndergradKB.Topology.isClosed_closure_pair_iff`, `UndergradKB.Topology.isClosed_of_le_zmultiples`

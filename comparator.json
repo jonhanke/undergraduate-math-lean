@@ -55,28 +55,28 @@
       "config": "comparator/Statistics.json",
       "challenge_module": "Challenge_Statistics",
       "solution_module": "Solution_Statistics",
-      "theorems": 8
+      "theorems": 9
     },
     {
       "topic": "Probability",
       "config": "comparator/Probability.json",
       "challenge_module": "Challenge_Probability",
       "solution_module": "Solution_Probability",
-      "theorems": 13
+      "theorems": 14
     },
     {
       "topic": "Foundations",
       "config": "comparator/Foundations.json",
       "challenge_module": "Challenge_Foundations",
       "solution_module": "Solution_Foundations",
-      "theorems": 1
+      "theorems": 3
     },
     {
       "topic": "DifferentialEquations",
       "config": "comparator/DifferentialEquations.json",
       "challenge_module": "Challenge_DifferentialEquations",
       "solution_module": "Solution_DifferentialEquations",
-      "theorems": 6
+      "theorems": 9
     },
     {
       "topic": "ComplexAnalysis",
@@ -97,7 +97,7 @@
       "config": "comparator/Topology.json",
       "challenge_module": "Challenge_Topology",
       "solution_module": "Solution_Topology",
-      "theorems": 14
+      "theorems": 18
     },
     {
       "topic": "RealAnalysis",

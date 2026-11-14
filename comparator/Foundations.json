@@ -2,7 +2,9 @@
   "challenge_module": "Challenge_Foundations",
   "solution_module": "Solution_Foundations",
   "theorem_names": [
-    "UndergradKB.Headlines.Foundations.vizing"
+    "UndergradKB.Headlines.Foundations.vizing",
+    "UndergradKB.Headlines.Foundations.dprm",
+    "UndergradKB.Headlines.Foundations.hilbert_tenth"
   ],
   "definition_names": [],
   "permitted_axioms": [

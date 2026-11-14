@@ -44,6 +44,25 @@ import UndergradKB.DifferentialEquations.SturmLiouvilleFredholm
 import UndergradKB.DifferentialEquations.FrobeniusLog
 import UndergradKB.DifferentialEquations.LaplacePDE
 import UndergradKB.DifferentialEquations.FrobeniusAnalytic
+import UndergradKB.DifferentialEquations.FrobeniusSecond
+import UndergradKB.DifferentialEquations.FrobeniusLogExample
+import UndergradKB.DifferentialEquations.BesselSecondKindN
+import UndergradKB.DifferentialEquations.BesselOscillation
+import UndergradKB.DifferentialEquations.SteadyState
+import UndergradKB.DifferentialEquations.HeatFluxInversion
+import UndergradKB.DifferentialEquations.SpiralType
+import UndergradKB.DifferentialEquations.DiscreteEnumeration
+import UndergradKB.DifferentialEquations.KernelOperator
+import UndergradKB.DifferentialEquations.CompactSelfAdjoint
+import UndergradKB.DifferentialEquations.SturmLiouvilleGreen
+import UndergradKB.DifferentialEquations.SturmLiouvilleL2
+import UndergradKB.DifferentialEquations.SturmLiouvilleSpectrum
+import UndergradKB.DifferentialEquations.SturmLiouvilleKernel
+import UndergradKB.DifferentialEquations.SturmLiouvilleExpansion
+import UndergradKB.DifferentialEquations.SturmLiouvilleUniform
+import UndergradKB.DifferentialEquations.BesselOscillationAll
+import UndergradKB.DifferentialEquations.HeatFluxSolution
+import UndergradKB.DifferentialEquations.SteadyPeriodic
 import UndergradKB.DifferentialEquations.Course.Ch1
 import UndergradKB.DifferentialEquations.Course.Ch2
 import UndergradKB.DifferentialEquations.Course.Ch3
@@ -52,6 +71,12 @@ import UndergradKB.DifferentialEquations.Course.Ch6
 import UndergradKB.DifferentialEquations.Course.Ch7
 import UndergradKB.DifferentialEquations.Course.Ch8
 import UndergradKB.DifferentialEquations.Course.AppendixA
+import UndergradKB.DifferentialEquations.BendixsonDulac
+import UndergradKB.DifferentialEquations.RungeKuttaGlobal
+import UndergradKB.DifferentialEquations.SourceTypes
+import UndergradKB.DifferentialEquations.RungeKuttaTaylor
+import UndergradKB.DifferentialEquations.RungeKuttaLocal
+import UndergradKB.DifferentialEquations.RepeatedEigenSpiral
 
 /-! # Ordinary differential equations
 Topic root. Import every file of the topic here; a topic imports Mathlib modules

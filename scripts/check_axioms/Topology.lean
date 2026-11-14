@@ -16,3 +16,7 @@ import Solution_Topology
 #print axioms UndergradKB.Headlines.Topology.converse_sharkovskii
 #print axioms UndergradKB.Headlines.Topology.lca_principal_structure
 #print axioms UndergradKB.Headlines.Topology.lca_connected_structure
+#print axioms UndergradKB.Headlines.Topology.hahn_mazurkiewicz
+#print axioms UndergradKB.Headlines.Topology.brouwer_cantor_set
+#print axioms UndergradKB.Headlines.Topology.compact_totally_disconnected_group_cantor_cube
+#print axioms UndergradKB.Headlines.Topology.compact_group_homeomorph_identityComponent_prod
