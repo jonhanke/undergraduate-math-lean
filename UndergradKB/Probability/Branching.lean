@@ -25,7 +25,9 @@ structure IsOffspring (p : ℕ → ℝ) : Prop where
   nonneg : ∀ k, 0 ≤ p k
   hasSum : HasSum p 1
 
-/-- The generating function `h(z) = ∑ p_k z^k` of the offspring law (Grinstead–Snell §10.2). -/
+/-- The generating function `h(z) = ∑ p_k z^k` of the offspring law (Grinstead–Snell §10.2).
+**Restriction:** for an offspring law `p` the series converges for `|z| ≤ 1`; for other real `z` it may diverge, and
+then the value is 0 by Lean's convention, not an analytic continuation or the intended value. -/
 noncomputable def offspringGF (p : ℕ → ℝ) (z : ℝ) : ℝ := ∑' k, p k * z ^ k
 
 /-- The probability `d_n` of extinction by generation `n`: `d_0 = 0`, `d_n = h(d_{n-1})`. -/

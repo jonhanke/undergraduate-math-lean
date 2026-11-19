@@ -173,7 +173,10 @@ theorem disc_series_eq_poisson {g : ℝ → ℝ} (hg : IntervalIntegrable g volu
 noncomputable def discCoeffC (a b : ℕ → ℝ) (n : ℕ) : ℂ :=
   if n = 0 then ((a 0 / 2 : ℝ) : ℂ) else (a n : ℂ) - (b n : ℂ) * I
 
-/-- The disc series as a function on `ℂ`: `u(z) = Re ∑ cₙ zⁿ`. -/
+/-- The disc series as a function on `ℂ`: `u(z) = Re ∑ cₙ zⁿ`.
+**Restriction:** the series converges (absolutely) inside its disc of convergence (for instance for `|z| < 1` when
+the coefficients `a n`, `b n` are bounded); where it is not summable the sum, and hence the value, is 0 by Lean's
+convention, not an analytic continuation or the intended value. -/
 noncomputable def discSeries (a b : ℕ → ℝ) (z : ℂ) : ℝ :=
   (∑' n : ℕ, discCoeffC a b n * z ^ n).re
 

@@ -413,7 +413,10 @@ lemma gen_series_eq (P Q : ℕ → ℝ) {ρ : ℝ} (hP : ∀ x : ℝ, |x| < ρ �
   unfold fS0 at *
   linear_combination h0'
 
-/-- `∑ P_k x^k` as the coefficient function. -/
+/-- `∑ P_k x^k` as the coefficient function.
+**Restriction:** the series converges only where it is summable (for instance for `|x| < ρ` under the summability
+hypotheses used below); elsewhere the value is 0 by Lean's convention, not an analytic continuation or the intended
+value. -/
 noncomputable def psum (P : ℕ → ℝ) (x : ℝ) : ℝ := ∑' k, P k * x ^ k
 
 theorem gen_frob_ode (P Q : ℕ → ℝ) {ρ : ℝ} (hP : ∀ x : ℝ, |x| < ρ → Summable fun k => P k * x ^ k)

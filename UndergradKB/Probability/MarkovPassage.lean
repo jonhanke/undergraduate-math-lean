@@ -29,7 +29,10 @@ noncomputable def notYetHit (P : Matrix S S ℝ) (j : S) (n : ℕ) (i : S) : ℝ
 
 /-- Grinstead–Snell Definition 11.7 (PR-120): the mean first passage time `m i j` from `i` to `j`, the expected
 number of steps to reach `j` starting from `i`, written as the sum of the tail probabilities `P(T > n)`
-(`m j j = 0`). -/
+(`m j j = 0`).
+**Restriction:** for a stochastic matrix `P` the series of tail probabilities converges exactly when the mean
+passage time is finite; when it diverges (for instance when `j` cannot be reached from `i`) the value is 0 by Lean's
+convention, not the infinite mean passage time. -/
 @[kb "grinsteadsnell2006" "Definition 11.7, p. 461"]
 noncomputable def meanFirstPassage (P : Matrix S S ℝ) (i j : S) : ℝ := ∑' n, notYetHit P j n i
 

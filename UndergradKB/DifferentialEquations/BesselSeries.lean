@@ -23,7 +23,9 @@ section Series
 
 variable (b : ℕ → ℝ)
 
-/-- The even power series `∑ b_n x^(2n)`. -/
+/-- The even power series `∑ b_n x^(2n)`.
+**Restriction:** the series converges only where it is summable (depending on the coefficients `b`; the lemmas
+assume this); elsewhere the value is 0 by Lean's convention, not an analytic continuation or the intended value. -/
 noncomputable def evS (x : ℝ) : ℝ := ∑' n, b n * x ^ (2 * n)
 
 /-- Its termwise derivative. -/

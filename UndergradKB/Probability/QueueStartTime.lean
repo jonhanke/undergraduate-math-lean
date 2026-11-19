@@ -24,7 +24,9 @@ open Finset Filter Topology
 
 namespace UndergradKB.Probability
 
-/-- The Poisson mixture `∑_n e^{-νt} (νt)^n / n! · a_n`. -/
+/-- The Poisson mixture `∑_n e^{-νt} (νt)^n / n! · a_n`.
+**Restriction:** the series converges for instance when `a` is bounded; where it is not summable the value is 0
+by Lean's convention, not the intended value. -/
 noncomputable def poissonMix (ν t : ℝ) (a : ℕ → ℝ) : ℝ := ∑' n, poissonWeight ν t n * a n
 
 theorem poissonMix_summable {ν t : ℝ} (hν : 0 ≤ ν) (ht : 0 ≤ t) {a : ℕ → ℝ} (ha0 : ∀ n, 0 ≤ a n)

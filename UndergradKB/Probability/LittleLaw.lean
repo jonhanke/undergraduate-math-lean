@@ -26,7 +26,10 @@ open Finset Filter Topology MeasureTheory Set
 
 namespace UndergradKB.Probability
 
-/-- The number of customers in the system at time `t`: those `i` with `a i ≤ t < a i + w i`. -/
+/-- The number of customers in the system at time `t`: those `i` with `a i ≤ t < a i + w i`.
+**Restriction:** the sum is finite only when finitely many `i` satisfy this (for instance `a` monotone and
+eventually exceeding `t`); if infinitely many do, the series diverges and the value is 0 by Lean's convention, not
+the (infinite) count. -/
 noncomputable def queueNumber (a w : ℕ → ℝ) (t : ℝ) : ℝ :=
   ∑' i, (Ico (a i) (a i + w i)).indicator (1 : ℝ → ℝ) t
 

@@ -152,7 +152,10 @@ theorem frobCoef_bounded (p q : ℝ[X]) {r : ℝ} (hr : indF p q r = 0)
 
 /-! ### Power series with bounded coefficients on `|x| < 1` -/
 
-/-- The series `∑ a_k x^k`. -/
+/-- The series `∑ a_k x^k`.
+**Restriction:** the series converges where it is summable (for instance for `|x| < 1` when the coefficients
+`a k` are bounded); elsewhere the value is 0 by Lean's convention, not an analytic continuation or the intended
+value. -/
 noncomputable def fS0 (a : ℕ → ℝ) (x : ℝ) : ℝ := ∑' k, a k * x ^ k
 
 /-- Its termwise derivative. -/

@@ -236,7 +236,9 @@ theorem sG_summable (a b c : ℝ) (hs : 0 < c - a - b) (k : ℕ) :
 
 /-! ### The companion argument: sum the WZ equation over `n` -/
 
-/-- `S_k = ∑_{n ≥ 0} G(n, k)`. -/
+/-- `S_k = ∑_{n ≥ 0} G(n, k)`.
+**Restriction:** the series converges for `0 < c - a - b` (the hypothesis the lemmas assume; the definition does
+not enforce it); where it is not summable the value is 0 by Lean's convention, not the intended value. -/
 noncomputable def sS (a b c : ℝ) (k : ℕ) : ℝ := ∑' n : ℕ, sG a b c n k
 
 theorem sS_zero (a b c : ℝ) : sS a b c 0 = 0 := by simp [sS, sG]

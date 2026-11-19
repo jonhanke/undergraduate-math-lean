@@ -191,7 +191,9 @@ theorem gaussTerm_summable (a b c : ℝ) (hs : 0 < c - a - b) :
 
 /-! ### The contiguous relation, iteration and the limit `F(c + m) -> 1` -/
 
-/-- The sum of the series `2F1(a, b; c; 1)`. -/
+/-- The sum of the series `2F1(a, b; c; 1)`.
+**Restriction:** the series converges (absolutely) for `c - a - b > 0` (not enforced by the definition; the lemmas
+assume it); where it is not summable the value is 0 by Lean's convention, not the intended value. -/
 noncomputable def gaussSum (a b c : ℝ) : ℝ := ∑' k, gaussTerm a b c k
 
 theorem gaussTerm_summable' (a b c : ℝ) (hs : 0 < c - a - b) :
