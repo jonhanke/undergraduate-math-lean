@@ -72,7 +72,7 @@ sources:
   - title: "Abstract Algebra: Theory and Applications (2026 edition)"
     authors: ["Thomas W. Judson", "Robert A. Beezer"]
     type: "book"
-    location: "GNU FDL 1.2 or later; mapped in docs/books/judson2026.md"
+    location: "GNU FDL 1.2 or later; mapped in a map kept privately until licensing is confirmed"
     relationship: "formalizes"
     author_endorsement: "n/a"
   - title: "Applied Combinatorics (2017 edition)"
@@ -84,7 +84,7 @@ sources:
   - title: "A=B"
     authors: ["Marko Petkovsek", "Herbert S. Wilf", "Doron Zeilberger"]
     type: "book"
-    location: "A K Peters, 1996 (free download from the authors; cited only); mapped in docs/books/petkovsekwilfzeilberger1996.md"
+    location: "A K Peters, 1996 (free download from the authors; cited only); mapped in a map kept privately until licensing is confirmed"
     relationship: "formalizes"
     author_endorsement: "n/a"
   - title: "Calculus, Volumes 1-3"
@@ -132,7 +132,7 @@ sources:
   - title: "Book of Proof (3rd edition)"
     authors: ["Richard Hammack"]
     type: "book"
-    location: "2018, edition 3.4 (CC BY-NC-ND 4.0); mapped in docs/books/hammack2018.md"
+    location: "2018, edition 3.4 (CC BY-NC-ND 4.0); mapped in a map kept privately until licensing is confirmed"
     relationship: "formalizes"
     author_endorsement: "n/a"
   - title: "Discrete Mathematics: An Open Introduction (4th edition)"
@@ -156,7 +156,7 @@ sources:
   - title: "Introduction to Representation Theory"
     authors: ["Pavel Etingof", "Oleg Golberg", "Sebastian Hensel", "Tiankai Liu", "Alex Schwendner", "Dmitry Vaintrob", "Elena Yudovina"]
     type: "book"
-    location: "American Mathematical Society, 2011; arXiv:0901.0827v5 (cited only); mapped in docs/books/etingof2011.md"
+    location: "American Mathematical Society, 2011; arXiv:0901.0827v5 (cited only); mapped in a map kept privately until licensing is confirmed"
     relationship: "formalizes"
     author_endorsement: "n/a"
   - title: "Topology Without Tears"
