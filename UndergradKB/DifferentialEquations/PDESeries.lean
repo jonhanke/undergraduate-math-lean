@@ -118,7 +118,10 @@ lemma summable_sq_of_le {u : ℕ → ℝ} {w : ℕ → ℝ} (hw : Summable w)
 /-! ## The wave equation with general initial data (DE-145) -/
 
 /-- The series solution `∑ (bₙ cos(nπat/L) + cₙ L/(nπa) sin(nπat/L)) sin(nπx/L)` (indices `n = 0` contribute
-nothing since `sin 0 = 0`). -/
+nothing since `sin 0 = 0`).
+**Restriction:** the series converges (absolutely) under hypotheses on the coefficients `b`, `c` (for instance
+summability of `n² |bₙ|` and `n² |cₙ|`, as assumed in the lemmas); where it is not absolutely summable the value is 0
+by Lean's convention, not the intended value. -/
 noncomputable def waveSeries (a L : ℝ) (b c : ℕ → ℝ) (x t : ℝ) : ℝ :=
   ∑' n : ℕ, (b n * cos (n * π * a / L * t) + c n * (L / (n * π * a)) * sin (n * π * a / L * t))
     * sin (n * π / L * x)
@@ -294,7 +297,10 @@ lemma cosh_ratio_bounds {ω ω1 y h : ℝ} (hω1 : 0 < ω1) (hle : ω1 ≤ ω) (
       = Real.sinh (ω * h) + Real.sinh (ω * h) / Real.sinh (ω1 * h) := by ring
   rw [this]; linarith
 
-/-- The series `∑ bₙ sinh(nπy/w)/sinh(nπh/w) · sin(nπx/w)`. -/
+/-- The series `∑ bₙ sinh(nπy/w)/sinh(nπh/w) · sin(nπx/w)`.
+**Restriction:** the series converges (absolutely) under hypotheses on `b` (for instance `∑ n² |bₙ| < ∞` with
+`0 ≤ y ≤ h`, `w, h > 0`); where it is not absolutely summable the value is 0 by Lean's convention, not the intended
+value. -/
 noncomputable def rectSeries (w h : ℝ) (b : ℕ → ℝ) (x y : ℝ) : ℝ :=
   ∑' n : ℕ, b n * (Real.sinh (n * π / w * y) / Real.sinh (n * π / w * h)) * sin (n * π / w * x)
 

@@ -181,7 +181,10 @@ theorem sum_pow_div_factorial_radius :
 /-! ## The alternating zeta function (CX-147) -/
 
 /-- Beck §10.1 (CX-147): the alternating zeta function `η(s) = ∑_{k ≥ 1} (-1)^(k+1) / k^s`
-(summed from `k = 0` with the shift `k ↦ k + 1`). -/
+(summed from `k = 0` with the shift `k ↦ k + 1`).
+**Restriction:** `∑'` needs absolute convergence, which holds only for `Re s > 1`; for `0 < Re s ≤ 1` the series
+converges only conditionally, so (as for `Re s ≤ 0`) the value is 0 by Lean's convention, not `η(s)` or its
+analytic continuation. -/
 @[kb "beck2025" "Alternating zeta function, §10.1, p. 163"]
 noncomputable def altZeta (s : ℂ) : ℂ := ∑' k : ℕ, (-1 : ℂ) ^ k / ((k : ℂ) + 1) ^ s
 

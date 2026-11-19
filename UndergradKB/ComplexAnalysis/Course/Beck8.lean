@@ -27,7 +27,9 @@ open scoped Nat NNReal ENNReal
 /-- The radius of convergence of `∑ c_k (z - z₀)^k`. -/
 noncomputable abbrev rad (c : ℕ → ℂ) : ℝ≥0∞ := (FormalMultilinearSeries.ofScalars ℂ c).radius
 
-/-- The sum function `z ↦ ∑ c_k (z - z₀)^k` of a power series. -/
+/-- The sum function `z ↦ ∑ c_k (z - z₀)^k` of a power series.
+**Restriction:** the series converges for `‖z - z₀‖ < rad c` and diverges for `‖z - z₀‖ > rad c`; wherever it is
+not (absolutely) summable the value is 0 by Lean's convention, not an analytic continuation. -/
 noncomputable def psum (c : ℕ → ℂ) (z₀ : ℂ) (z : ℂ) : ℂ := ∑' k, c k * (z - z₀) ^ k
 
 lemma psum_eq (c : ℕ → ℂ) (z₀ : ℂ) :

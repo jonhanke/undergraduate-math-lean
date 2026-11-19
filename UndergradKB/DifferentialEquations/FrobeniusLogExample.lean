@@ -90,7 +90,10 @@ lemma fS0_inv_factorial (x : ℝ) : fS0 (fun k => 1 / (k.factorial : ℝ)) x = R
   funext k
   ring
 
-/-- The second solution of Example 7.3.2 in the book's form. -/
+/-- The second solution of Example 7.3.2 in the book's form.
+**Restriction:** the series `∑ b k * t ^ k` converges only for suitable coefficients `b` and `t` (the definition
+does not enforce this); where it diverges that sum is 0 by Lean's convention, not an analytic continuation or the
+intended value. -/
 noncomputable def ex732Y2 (b : ℕ → ℝ) (t : ℝ) : ℝ :=
   t ^ (1 / 2 : ℝ) * (∑' k, b k * t ^ k) + Real.log t * (t ^ (1 / 2 : ℝ) * Real.exp t)
 
